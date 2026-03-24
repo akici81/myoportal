@@ -2,6 +2,8 @@ import { createClient } from '@supabase/supabase-js'
 import { createClient as createServerClient } from '@/lib/supabase/server'
 import { NextResponse } from 'next/server'
 
+export const dynamic = 'force-dynamic'
+
 export async function POST(request: Request) {
   try {
     // Çağıranın system_admin olduğunu doğrula
