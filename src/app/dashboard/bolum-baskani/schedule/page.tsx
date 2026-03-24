@@ -50,12 +50,19 @@ export default function BolumBaskaniSchedulePage() {
     supabase.auth.getUser().then(async ({ data: { user } }) => {
       if (!user) return
 
-      const { data: prof } = await supabase.from('profiles').select('*, departments(*)').eq('id', user.id).single()
+      const { data: prof } = await supabase.from('profiles').select('id, full_name, role, department_id').eq('id', user.id).single()
       
       let finalDepartmentId = prof?.department_id
-      let finalDepartment = prof?.departments
+      let finalDepartment = null
 
-      if (!finalDepartmentId && prof?.role === 'bolum_baskani') {
+      // Try to load dept by department_id from profile
+      if (finalDepartmentId) {
+        const { data: deptById } = await supabase.from('departments').select('*').eq('id', finalDepartmentId).eq('is_active', true).single()
+        if (deptById) finalDepartment = deptById
+      }
+
+      // Fallback: check if they are head of a department
+      if (!finalDepartmentId || !finalDepartment) {
         const { data: headDept } = await supabase.from('departments').select('*').eq('head_id', user.id).eq('is_active', true).single()
         if (headDept) {
           finalDepartmentId = headDept.id
