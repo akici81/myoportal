@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { FileSpreadsheet, Printer } from 'lucide-react'
+import { useState, useRef } from 'react'
+import { FileSpreadsheet, Printer, Image as ImageIcon } from 'lucide-react'
 import { toast } from 'sonner'
 import type { ScheduleEntry, TimeSlot } from '@/types'
 
@@ -20,7 +20,8 @@ function getCourse(e: ScheduleEntry) {
 function getClassroom(e: ScheduleEntry) { return (e as any).classrooms ?? (e as any).classroom ?? null }
 
 export function ScheduleExport({ entries, timeSlots, title }: ScheduleExportProps) {
-  const [loading, setLoading] = useState<'pdf' | 'excel' | null>(null)
+  const [loading, setLoading] = useState<'pdf' | 'excel' | 'jpeg' | null>(null)
+  const tableRef = useRef<HTMLDivElement>(null)
 
   async function exportExcel() {
     setLoading('excel')
@@ -69,7 +70,9 @@ export function ScheduleExport({ entries, timeSlots, title }: ScheduleExportProp
       a.href = url; a.download = `${title}.xlsx`; a.click()
       URL.revokeObjectURL(url)
       toast.success('Excel olarak indirildi')
-    } catch (e: any) { toast.error('Excel hatası: ' + e.message) }
+    } catch (e: unknown) {
+      toast.error('Excel hatası: ' + (e instanceof Error ? e.message : String(e)))
+    }
     setLoading(null)
   }
 
@@ -142,32 +145,141 @@ td.time { font-weight:700; text-align:right; white-space:nowrap; color:#475569; 
     setTimeout(() => { w.print(); setLoading(null) }, 600)
   }
 
+  async function exportJPEG() {
+    setLoading('jpeg')
+    try {
+      const html2canvasModule = await import('html2canvas')
+      const html2canvas = html2canvasModule.default
+
+      const container = document.createElement('div')
+      container.style.position = 'absolute'
+      container.style.left = '-9999px'
+      container.style.background = '#f5f0eb'
+      container.style.padding = '24px'
+      document.body.appendChild(container)
+
+      const DAYS_MAP: Record<number, string> = { 1: 'Pazartesi', 2: 'Salı', 3: 'Çarşamba', 4: 'Perşembe', 5: 'Cuma' }
+      const grid: Record<string, ScheduleEntry> = {}
+      entries.forEach(e => { grid[`${e.day_of_week}_${e.time_slot_id}`] = e })
+      const uniqueSlotIds = Array.from(new Set(entries.map(e => e.time_slot_id)))
+      const sortedSlots = timeSlots.filter(s => uniqueSlotIds.includes(s.id))
+
+      const tableHTML = `
+        <div style="background: #f5f0eb; padding: 24px; width: 1200px;">
+          <div style="background: #B71C1C; border-radius: 12px 12px 0 0; padding: 20px; text-align: center; color: white;">
+            <div style="font-size: 12px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 4px; opacity: 0.85; text-transform: uppercase;">MESLEK YÜKSEKOKULU</div>
+            <div style="font-size: 13px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 4px; text-transform: uppercase;">T.C. İSTANBUL RUMELİ ÜNİVERSİTESİ</div>
+            <div style="font-size: 16px; font-weight: 900; letter-spacing: 0.5px; text-transform: uppercase;">${title}</div>
+          </div>
+          <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 0 0 12px 12px; overflow: hidden;">
+            <thead>
+              <tr>
+                <th style="background: #6d0000; color: white; padding: 10px; font-size: 12px; font-weight: 700; text-align: center; border: 1px solid #7a0000; width: 95px;">Saat</th>
+                ${[1,2,3,4,5].map(d => `<th style="background: #8B0000; color: white; padding: 10px; font-size: 13px; font-weight: 700; text-align: center; border: 1px solid #7a0000;">${DAYS_MAP[d]}</th>`).join('')}
+              </tr>
+            </thead>
+            <tbody>
+              ${sortedSlots.map((slot, idx) => {
+                const rowBg = idx % 2 === 0 ? '#ffffff' : '#fdf8f5'
+                return `
+                  <tr style="background: ${rowBg};">
+                    <td style="background: #8B0000; color: white; font-weight: 700; font-size: 11px; text-align: center; padding: 8px 4px; border: 1px solid #e8ddd5; white-space: nowrap;">
+                      ${slot.start_time.slice(0,5)}<br/>${slot.end_time.slice(0,5)}
+                    </td>
+                    ${[1,2,3,4,5].map(day => {
+                      const e = grid[`${day}_${slot.id}`]
+                      if (!e) return '<td style="border: 1px solid #e8ddd5; min-height: 52px;"></td>'
+                      const c = getCourse(e)
+                      const inst = getInstructor(e)
+                      const cls = getClassroom(e)
+                      return `
+                        <td style="border: 1px solid #e8ddd5; vertical-align: middle; text-align: center; padding: 6px 4px; min-height: 52px;">
+                          <div style="display: flex; flex-direction: column; align-items: center; gap: 2px;">
+                            ${c?.code ? `<span style="font-size: 9px; font-weight: 700; color: #8B0000; letter-spacing: 0.5px; text-transform: uppercase;">${c.code}</span>` : ''}
+                            <span style="font-size: 10.5px; font-weight: 600; color: #1a1a1a; line-height: 1.3;">${c?.name || ''}</span>
+                            ${cls?.name ? `<span style="font-size: 9.5px; color: #6b7280; background: #f3f4f6; padding: 1px 6px; border-radius: 10px;">${cls.name}</span>` : ''}
+                            ${inst?.full_name ? `<span style="font-size: 9px; color: #9ca3af; font-style: italic;">${inst.full_name}</span>` : ''}
+                          </div>
+                        </td>
+                      `
+                    }).join('')}
+                  </tr>
+                `
+              }).join('')}
+            </tbody>
+          </table>
+        </div>
+      `
+
+      container.innerHTML = tableHTML
+      await new Promise<void>(resolve => setTimeout(resolve, 300))
+
+      const canvas = await html2canvas(container, {
+        scale: 2,
+        backgroundColor: '#f5f0eb',
+        logging: false,
+      })
+
+      document.body.removeChild(container)
+
+      const link = document.createElement('a')
+      link.download = `${title.replace(/\s+/g, '-')}.jpeg`
+      link.href = canvas.toDataURL('image/jpeg', 0.95)
+      link.click()
+
+      toast.success('JPEG indirildi!')
+    } catch (e: unknown) {
+      toast.error('JPEG oluşturulamadı')
+      console.error(e)
+    }
+    setLoading(null)
+  }
+
   return (
-    <div className="flex items-center gap-2">
-      <button
-        onClick={exportExcel}
-        disabled={!!loading}
-        className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 shadow-lg shadow-emerald-500/20 transition-all disabled:opacity-50"
-        title="Excel olarak indir"
-      >
-        {loading === 'excel'
-          ? <span className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
-          : <FileSpreadsheet className="w-4 h-4" />
-        }
-        Excel
-      </button>
-      <button
-        onClick={exportPDF}
-        disabled={!!loading}
-        className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 shadow-lg shadow-cyan-500/20 transition-all disabled:opacity-50"
-        title="PDF olarak yazdır"
-      >
-        {loading === 'pdf'
-          ? <span className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
-          : <Printer className="w-4 h-4" />
-        }
-        PDF
-      </button>
-    </div>
+    <>
+      <div ref={tableRef} style={{ position: 'absolute', left: '-9999px' }} />
+
+      <div className="flex items-center gap-2">
+        <button
+          onClick={exportExcel}
+          disabled={!!loading}
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 shadow-lg shadow-emerald-500/20 transition-all disabled:opacity-50"
+          title="Excel olarak indir"
+        >
+          {loading === 'excel'
+            ? <span className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
+            : <FileSpreadsheet className="w-4 h-4" />
+          }
+          Excel
+        </button>
+        <button
+          onClick={exportPDF}
+          disabled={!!loading}
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 shadow-lg shadow-cyan-500/20 transition-all disabled:opacity-50"
+          title="PDF olarak yazdır"
+        >
+          {loading === 'pdf'
+            ? <span className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
+            : <Printer className="w-4 h-4" />
+          }
+          PDF
+        </button>
+        <button
+          onClick={exportJPEG}
+          disabled={!!loading}
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-white transition-all shadow-lg disabled:opacity-50"
+          style={{ background: 'var(--primary)' }}
+          onMouseEnter={(e) => { if (!loading) e.currentTarget.style.background = 'var(--accent-hover)' }}
+          onMouseLeave={(e) => { if (!loading) e.currentTarget.style.background = 'var(--primary)' }}
+          title="JPEG olarak indir"
+        >
+          {loading === 'jpeg'
+            ? <span className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
+            : <ImageIcon className="w-4 h-4" />
+          }
+          JPEG
+        </button>
+      </div>
+    </>
   )
 }

@@ -67,6 +67,17 @@ export default function BolumBaskaniSchedulePage() {
   const [selectedInstructor, setSelectedInstructor] = useState<string>('')
   const [allEntries, setAllEntries] = useState<any[]>([]) // tüm dönem entryleri (öğretmen görünümü için)
 
+  // ── Toplu Gün Girişi ──
+  const [bulkDayMode, setBulkDayMode] = useState(false)
+  const [bulkDay, setBulkDay] = useState(1)
+  const [bulkCourses, setBulkCourses] = useState<Array<{
+    program_course_id: string
+    instructor_id: string
+    classroom_id: string
+    start_time: string
+    duration: number // kaç saat
+  }>>([{ program_course_id: '', instructor_id: '', classroom_id: '', start_time: '09:00', duration: 2 }])
+
   // ─── Load Auth Profile & Base Data ──────────────────────────────────────────
   useEffect(() => {
     supabase.auth.getUser().then(async ({ data: { user } }) => {
@@ -330,6 +341,52 @@ export default function BolumBaskaniSchedulePage() {
     loadEntries()
   }
 
+  // ─── Bulk Day Entry ───────────────────────────────────────────────────────────
+  async function handleBulkDaySave() {
+    if (!selectedPeriod) return
+    const validCourses = bulkCourses.filter(c => c.program_course_id && c.instructor_id && c.classroom_id)
+    if (validCourses.length === 0) {
+      toast.error('En az bir ders bilgisini tam doldurun.')
+      return
+    }
+
+    setSaving(true)
+    let saved = 0, skipped = 0
+
+    for (const course of validCourses) {
+      const startIdx = timeSlots.findIndex(s => s.start_time?.slice(0, 5) === course.start_time)
+      if (startIdx === -1) { skipped++; continue }
+
+      for (let i = 0; i < course.duration; i++) {
+        const slot = timeSlots[startIdx + i]
+        if (!slot) break
+
+        const conflictResult = await checkConflictsForEntry(bulkDay, slot.id, course.program_course_id, course.instructor_id, course.classroom_id)
+        if (conflictResult.hasConflict) { skipped++; continue }
+
+        const res = await fetch('/api/schedule/entries', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            period_id: selectedPeriod.id,
+            program_course_id: course.program_course_id,
+            classroom_id: course.classroom_id,
+            instructor_id: course.instructor_id,
+            day_of_week: bulkDay,
+            time_slot_id: slot.id,
+          }),
+        })
+        if (res.ok) saved++; else skipped++
+      }
+    }
+
+    setSaving(false)
+    if (saved > 0) toast.success(`${saved} ders saati eklendi!`)
+    if (skipped > 0) toast.warning(`${skipped} slot çakışma nedeniyle atlandı.`)
+    setBulkDayMode(false)
+    loadEntries()
+  }
+
   // ─── Delete ───────────────────────────────────────────────────────────────────
   async function handleDelete(id: string) {
     const res = await fetch(`/api/schedule/entries?id=${id}`, { method: 'DELETE' })
@@ -398,6 +455,16 @@ export default function BolumBaskaniSchedulePage() {
                 >
                   <TimerIcon className="w-4 h-4" />
                   Saat Aralığı ile Ekle
+                </button>
+                <button
+                  onClick={() => { setBulkDayMode(true); setBulkDay(1); setBulkCourses([{ program_course_id: '', instructor_id: '', classroom_id: '', start_time: '09:00', duration: 2 }]); }}
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-white transition-all shadow-lg"
+                  style={{ background: 'var(--primary)' }}
+                  onMouseEnter={(e) => e.currentTarget.style.background = 'var(--accent-hover)'}
+                  onMouseLeave={(e) => e.currentTarget.style.background = 'var(--primary)'}
+                >
+                  <CalendarDays className="w-4 h-4" />
+                  Toplu Gün Girişi
                 </button>
               </>
             )}
@@ -795,6 +862,174 @@ export default function BolumBaskaniSchedulePage() {
                   : rangeMode ? <TimerIcon className="w-4 h-4" /> : <CheckCircle className="w-4 h-4" />
                 }
                 {saving ? 'Yerleştiriliyor...' : rangeMode ? 'Aralığı Programa Ekle' : 'Ders Saatini Programa Kaydet'}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── Toplu Gün Girişi Modal ────────────────────────────────────────────── */}
+      {bulkDayMode && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in">
+          <div className="glass-card w-full max-w-4xl p-0 rounded-2xl border border-gray-700/50 shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+            {/* Header */}
+            <div className="px-6 py-5 border-b border-gray-800 flex justify-between items-start" style={{ background: 'var(--primary-bg)' }}>
+              <div>
+                <h3 className="text-xl font-black text-white tracking-tight">Toplu Gün Girişi</h3>
+                <p className="text-xs text-gray-400 mt-1">Bir günün tüm derslerini tek seferde ekleyin</p>
+              </div>
+              <button onClick={() => setBulkDayMode(false)} className="text-gray-400 hover:text-white bg-gray-800/50 hover:bg-gray-700 rounded-lg p-2 transition">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="p-6 overflow-y-auto custom-scrollbar space-y-5">
+              {/* Gün Seçimi */}
+              <div>
+                <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block">Gün</label>
+                <div className="flex gap-2">
+                  {[1, 2, 3, 4, 5].map(d => (
+                    <button
+                      key={d}
+                      onClick={() => setBulkDay(d)}
+                      className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${
+                        bulkDay === d
+                          ? 'text-white shadow-sm'
+                          : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
+                      }`}
+                      style={bulkDay === d ? { background: 'var(--primary)' } : {}}
+                    >
+                      {DAYS[d]}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Dersler */}
+              <div className="space-y-3">
+                {bulkCourses.map((course, idx) => (
+                  <div key={idx} className="bg-gray-900/50 rounded-xl p-4 border border-gray-800 space-y-3">
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-xs font-bold text-gray-500 uppercase">Ders {idx + 1}</span>
+                      {bulkCourses.length > 1 && (
+                        <button
+                          onClick={() => setBulkCourses(p => p.filter((_, i) => i !== idx))}
+                          className="text-xs text-red-400 hover:text-red-300 font-medium"
+                        >
+                          ✕ Kaldır
+                        </button>
+                      )}
+                    </div>
+
+                    <div className="grid grid-cols-12 gap-3">
+                      {/* Başlangıç */}
+                      <div className="col-span-2">
+                        <label className="text-xs text-gray-500 mb-1 block">Başlangıç</label>
+                        <select
+                          value={course.start_time}
+                          onChange={(e) => setBulkCourses(p => p.map((c, i) => i === idx ? { ...c, start_time: e.target.value } : c))}
+                          className="w-full bg-gray-900/70 border border-gray-700/80 rounded-lg px-2 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
+                        >
+                          {timeSlots.map(s => (
+                            <option key={s.id} value={s.start_time?.slice(0, 5)}>{s.start_time?.slice(0, 5)}</option>
+                          ))}
+                        </select>
+                      </div>
+
+                      {/* Süre */}
+                      <div className="col-span-2">
+                        <label className="text-xs text-gray-500 mb-1 block">Kaç Saat</label>
+                        <select
+                          value={course.duration}
+                          onChange={(e) => setBulkCourses(p => p.map((c, i) => i === idx ? { ...c, duration: Number(e.target.value) } : c))}
+                          className="w-full bg-gray-900/70 border border-gray-700/80 rounded-lg px-2 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
+                        >
+                          {[1,2,3,4,5,6].map(n => <option key={n} value={n}>{n} saat</option>)}
+                        </select>
+                      </div>
+
+                      {/* Ders */}
+                      <div className="col-span-4">
+                        <label className="text-xs text-gray-500 mb-1 block">Ders</label>
+                        <select
+                          value={course.program_course_id}
+                          onChange={(e) => setBulkCourses(p => p.map((c, i) => i === idx ? { ...c, program_course_id: e.target.value } : c))}
+                          className="w-full bg-gray-900/70 border border-gray-700/80 rounded-lg px-2 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
+                        >
+                          <option value="">— Ders Seçin —</option>
+                          {programCourses.map(pc => (
+                            <option key={pc.id} value={pc.id}>{pc.courses?.code} - {pc.courses?.name}</option>
+                          ))}
+                        </select>
+                      </div>
+
+                      {/* Hoca */}
+                      <div className="col-span-2">
+                        <label className="text-xs text-gray-500 mb-1 block">Hoca</label>
+                        <select
+                          value={course.instructor_id}
+                          onChange={(e) => setBulkCourses(p => p.map((c, i) => i === idx ? { ...c, instructor_id: e.target.value } : c))}
+                          className="w-full bg-gray-900/70 border border-gray-700/80 rounded-lg px-2 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
+                        >
+                          <option value="">— Seçin —</option>
+                          {instructors.map(i => (
+                            <option key={i.id} value={i.id}>{i.title} {i.full_name}</option>
+                          ))}
+                        </select>
+                      </div>
+
+                      {/* Derslik */}
+                      <div className="col-span-2">
+                        <label className="text-xs text-gray-500 mb-1 block">Derslik</label>
+                        <select
+                          value={course.classroom_id}
+                          onChange={(e) => setBulkCourses(p => p.map((c, i) => i === idx ? { ...c, classroom_id: e.target.value } : c))}
+                          className="w-full bg-gray-900/70 border border-gray-700/80 rounded-lg px-2 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
+                        >
+                          <option value="">— Seçin —</option>
+                          {classrooms.map(c => (
+                            <option key={c.id} value={c.id}>{c.name}</option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Ders Ekle Butonu */}
+              <button
+                onClick={() => setBulkCourses(p => [...p, { program_course_id: '', instructor_id: '', classroom_id: '', start_time: '09:00', duration: 2 }])}
+                className="w-full border-2 border-dashed border-gray-700 text-gray-400 hover:border-gray-600 hover:text-gray-300 text-sm font-medium py-3 rounded-xl transition"
+              >
+                + Ders Ekle
+              </button>
+            </div>
+
+            {/* Footer */}
+            <div className="px-6 py-4 bg-gray-900/80 border-t border-gray-800/80 flex gap-3">
+              <button
+                onClick={() => setBulkDayMode(false)}
+                className="flex-1 px-4 py-2.5 rounded-xl font-bold text-sm text-gray-400 bg-gray-800/50 hover:bg-gray-700 hover:text-white transition"
+              >
+                İptal
+              </button>
+              <button
+                onClick={handleBulkDaySave}
+                disabled={saving}
+                className="flex-[2] px-4 py-2.5 rounded-xl text-sm font-bold text-white transition-all shadow-lg disabled:opacity-50"
+                style={{ background: 'var(--primary)' }}
+                onMouseEnter={(e) => !saving && (e.currentTarget.style.background = 'var(--accent-hover)')}
+                onMouseLeave={(e) => !saving && (e.currentTarget.style.background = 'var(--primary)')}
+              >
+                {saving ? (
+                  <div className="flex items-center justify-center gap-2">
+                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    Kaydediliyor...
+                  </div>
+                ) : (
+                  `Tümünü Kaydet (${bulkCourses.filter(c => c.program_course_id && c.instructor_id && c.classroom_id).length} ders)`
+                )}
               </button>
             </div>
           </div>
