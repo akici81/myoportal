@@ -70,6 +70,37 @@ export async function POST(request: Request) {
   }
 }
 
+export async function PATCH(request: Request) {
+  try {
+    const supabase = await createClient()
+    const { data: { user } } = await supabase.auth.getUser()
+    if (!user) return NextResponse.json({ error: 'Yetkisiz erişim' }, { status: 401 })
+
+    const body = await request.json()
+    const { id, day_of_week, time_slot_id } = body
+
+    if (!id || day_of_week === undefined || !time_slot_id) {
+      return NextResponse.json({ error: 'id, day_of_week ve time_slot_id zorunlu' }, { status: 400 })
+    }
+
+    const { data, error } = await supabase
+      .from('schedule_entries')
+      .update({ day_of_week, time_slot_id })
+      .eq('id', id)
+      .select()
+      .single()
+
+    if (error) {
+      if (error.code === '23505') return NextResponse.json({ error: 'Hedef slot zaten dolu' }, { status: 400 })
+      throw error
+    }
+
+    return NextResponse.json({ success: true, entry: data })
+  } catch (err: any) {
+    return NextResponse.json({ error: err.message }, { status: 500 })
+  }
+}
+
 export async function DELETE(request: Request) {
   try {
     const supabase = await createClient()

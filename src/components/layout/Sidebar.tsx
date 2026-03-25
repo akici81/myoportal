@@ -52,6 +52,7 @@ const NAV_SYSTEM_ADMIN_GROUPS: NavGroup[] = [
   {
     label: 'Platform Ayarları', icon: Settings, items: [
       { label: 'Kullanıcı Yönetimi', href: '/dashboard/system-admin/users', icon: UserCog },
+      { label: 'Ders Saatleri', href: '/dashboard/system-admin/time-slots', icon: CalendarDays },
     ]
   },
   {
@@ -163,7 +164,8 @@ const NAV_BOLUM_BASKANI_GROUPS: NavGroup[] = [
     icon: BookOpen,
     defaultOpen: true,
     items: [
-      { label: 'Ders Görevlendirme', href: '/dashboard/bolum-baskani/course-assignments', icon: ClipboardList },
+      { label: 'Program Müfredatı', href: '/dashboard/bolum-baskani/program-courses', icon: ClipboardList },
+      { label: 'Ders Görevlendirme', href: '/dashboard/bolum-baskani/course-assignments', icon: UserCog },
       { label: 'Öğrenci Sayıları', href: '/dashboard/bolum-baskani/student-enrollments', icon: Users },
       { label: 'Akıllı Yerleştirme', href: '/dashboard/bolum-baskani/auto-schedule', icon: Wand2 },
     ],

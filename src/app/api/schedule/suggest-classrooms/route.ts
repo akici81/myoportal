@@ -23,20 +23,34 @@ export async function POST(request: Request) {
       .eq('period_id', period_id)
       .eq('day_of_week', day_of_week)
       .eq('time_slot_id', time_slot_id)
-      
-    const busyClassroomIds = (busyEntries || []).map(e => e.classroom_id)
 
-    // Açık ve kapasitesi yeten sınıfları listele
-    let query = supabase.from('classrooms').select('*').eq('is_active', true).gte('capacity', min_capacity).order('capacity', { ascending: true })
-    
-    const { data: availableClassrooms, error } = await query
-    
+    const busyClassroomIds = new Set((busyEntries || []).map(e => e.classroom_id))
+
+    // Tüm aktif sınıfları çek
+    const { data: allClassrooms, error } = await supabase
+      .from('classrooms')
+      .select('*')
+      .eq('is_active', true)
+      .gte('capacity', min_capacity)
+      .order('capacity', { ascending: true })
+
     if (error) throw error
 
-    // Dolu olanları filtrele
-    const suggested = (availableClassrooms || []).filter(c => !busyClassroomIds.includes(c.id))
+    // Her sınıfa müsaitlik bilgisi ekle
+    const classroomsWithAvailability = (allClassrooms || []).map(c => ({
+      ...c,
+      is_available: !busyClassroomIds.has(c.id),
+    }))
 
-    return NextResponse.json({ classrooms: suggested })
+    const suggested = classroomsWithAvailability.filter(c => c.is_available)
+    const busy = classroomsWithAvailability.filter(c => !c.is_available)
+
+    return NextResponse.json({
+      classrooms: suggested,              // geriye dönük uyumluluk
+      all_classrooms: classroomsWithAvailability,  // tüm liste (doluluk dahil)
+      suggested,
+      busy,
+    })
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 })
   }
