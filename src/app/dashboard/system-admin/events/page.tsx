@@ -139,8 +139,8 @@ export default function EventsPage() {
   return (
     <div className="space-y-6 animate-in">
       {/* Premium Header */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-rose-900/40 via-fuchsia-900/20 to-gray-900 p-8 border border-rose-800/30 shadow-lg">
-        <div className="absolute -right-10 -top-10 opacity-10 rotate-12">
+      <div className="relative overflow-hidden rounded-2xl card p-8 border border-rose-800/30 shadow-lg">
+        <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
           <CalendarHeart className="w-48 h-48 text-rose-400" />
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -196,7 +196,7 @@ export default function EventsPage() {
           </button>
           {Object.entries(CATEGORY_MAP).map(([k, v]) => (
             <button key={k} onClick={() => setFilterCat(k)}
-                    className={clsx('px-3.5 py-2 text-[11px] font-bold uppercase tracking-wider rounded-lg transition-all border flex items-center gap-1.5', filterCat === k ? '' : 'opacity-60 hover:opacity-100 hover:border-gray-600 bg-gray-900/50')}
+                    className={clsx('px-3.5 py-2 text-[11px] font-bold uppercase tracking-wider rounded-lg transition-all border flex items-center gap-1.5', filterCat === k ? '' : 'opacity-60 hover:opacity-50 hover:border-gray-600 bg-gray-900/50')}
                     style={filterCat === k ? { background: v.bg, color: v.color, borderColor: v.border, boxShadow: `0 0 10px ${v.bg}` } : { color: v.color, borderColor: 'transparent' }}>
               <div className="w-2 h-2 rounded-full" style={{ backgroundColor: v.color }}></div>
               {v.label}
@@ -256,7 +256,7 @@ export default function EventsPage() {
                           <div className="flex justify-between items-start mb-2">
                             <div className={clsx(
                               'w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shadow-inner transition-all',
-                              isToday ? 'bg-gradient-to-br from-rose-500 to-fuchsia-600 text-white' : 'text-gray-400 group-hover:text-gray-200'
+                              isToday ? 'bg-cyan-600 text-white' : 'text-gray-400 group-hover:text-gray-200'
                             )}>
                               {date.getDate()}
                             </div>
@@ -329,7 +329,7 @@ export default function EventsPage() {
                           style={{ borderColor: cat.border, background: `linear-gradient(135deg, ${cat.bg.replace('0.1', '0.03')}, rgba(15, 23, 42, 0.4))` }}
                           onClick={() => setSelected(ev)}
                         >
-                          <div className="absolute left-0 top-0 bottom-0 w-1 opacity-50 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: cat.color }}></div>
+                          <div className="absolute left-0 top-0 bottom-0 w-1 opacity-50 group-hover:opacity-50 transition-opacity" style={{ backgroundColor: cat.color }}></div>
                           
                           {/* Top Date Box */}
                           <div className="w-16 h-16 rounded-xl flex flex-col items-center justify-center shrink-0 border shadow-inner" style={{ background: cat.bg, borderColor: cat.border }}>
@@ -380,7 +380,7 @@ export default function EventsPage() {
           <div className="card w-full max-w-lg p-0 rounded-3xl border border-gray-700/50 shadow-2xl overflow-hidden relative">
             
             {/* Modal Header Gradient */}
-            <div className="h-32 w-full absolute top-0 left-0 opacity-20 pointer-events-none" style={{ background: `linear-gradient(to bottom, ${CATEGORY_MAP[selected.category]?.color ?? '#64748b'}, transparent)` }}></div>
+            <div className="h-32 w-full absolute top-0 left-0 opacity-10 pointer-events-none" style={{ background: `linear-gradient(to bottom, ${CATEGORY_MAP[selected.category]?.color ?? '#64748b'}, transparent)` }}></div>
             
             <div className="p-8 relative z-10 text-center">
               <button onClick={() => setSelected(null)} className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-800 text-gray-400 hover:text-white transition-colors bg-gray-900/50">
@@ -437,9 +437,9 @@ export default function EventsPage() {
       {showForm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in fade-in zoom-in-95 duration-200">
           <div className="card w-full max-w-2xl p-0 rounded-3xl border border-gray-700/50 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-            <div className="px-8 py-6 border-b border-rose-900/30 bg-gradient-to-r from-rose-950/80 to-gray-900 flex justify-between items-center">
+            <div className="px-8 py-6 border-b border-rose-900/30 bg-cyan-600 flex justify-between items-center">
               <h3 className="text-xl font-black text-white flex items-center gap-3 tracking-tight">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-500 to-fuchsia-600 flex items-center justify-center shadow-lg">
+                <div className="w-10 h-10 rounded-xl bg-cyan-600 flex items-center justify-center shadow-lg">
                   <CalendarDays className="w-5 h-5 text-white" />
                 </div>
                 Yeni Etkinlik Oluştur
@@ -509,7 +509,7 @@ export default function EventsPage() {
 
               <div className="flex gap-3 pt-6 border-t border-gray-800">
                 <button type="button" onClick={() => { setShowForm(false); setForm(EMPTY_FORM); }} className="px-4 py-3 rounded-xl font-bold text-sm text-gray-400 bg-gray-800/50 hover:bg-gray-700 hover:text-white transition flex-1">İptal</button>
-                <button type="submit" disabled={saving || !form.title || !form.date || !form.start_time || !form.end_time} className="px-4 py-3 rounded-xl text-sm font-black text-white flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all bg-gradient-to-r from-rose-600 to-fuchsia-600 hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed">
+                <button type="submit" disabled={saving || !form.title || !form.date || !form.start_time || !form.end_time} className="px-4 py-3 rounded-xl text-sm font-black text-white flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all bg-cyan-600 hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed">
                   {saving ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div> : <Info className="w-4 h-4" /> }
                   {saving ? 'Kaydediliyor...' : 'Etkinliği Takvime Ekle'}
                 </button>

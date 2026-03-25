@@ -63,8 +63,8 @@ export default function MudurYardimcisiDashboard() {
   return (
     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
       {/* Header Banner */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-violet-900/50 via-purple-900/30 to-gray-900 p-8 border border-purple-800/30 shadow-lg">
-        <div className="absolute -right-10 -top-10 opacity-10 rotate-12">
+      <div className="relative overflow-hidden rounded-2xl card p-8 border border-purple-800/30 shadow-lg">
+        <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
           <KeyRound className="w-48 h-48 text-purple-400" />
         </div>
         <div className="relative z-10">
@@ -83,7 +83,7 @@ export default function MudurYardimcisiDashboard() {
         <h2 className="text-lg font-bold text-gray-300 mb-4 px-1">Öğrenci & İdari Süreçler</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {V1_MODULE_CARDS.map((stat, i) => (
-            <div key={i} className={`rounded-xl p-6 bg-gradient-to-br from-gray-900/90 to-gray-900/50 border ${stat.border} shadow-lg`}>
+            <div key={i} className={`rounded-xl p-6 bg-cyan-600 border ${stat.border} shadow-lg`}>
               <div className="flex items-center justify-between gap-4">
                 <div className={`p-3 rounded-xl ${stat.bg} ${stat.color} shrink-0`}>
                   <stat.icon className="w-6 h-6" />

@@ -253,7 +253,7 @@ export default function ProgramCoursesPage() {
                   onClick={() => setSelectedYear(y)}
                   className={`px-5 py-2.5 rounded-lg text-sm font-bold transition-all min-w-[90px] ${
                     selectedYear === y
-                      ? 'bg-gradient-to-br from-cyan-500 to-teal-600 text-white shadow-lg'
+                      ? 'bg-cyan-600 text-white shadow-lg'
                       : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800'
                   }`}
                 >
@@ -318,7 +318,7 @@ export default function ProgramCoursesPage() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="flex items-center gap-2 opacity-0 group-hover:opacity-50 transition-opacity">
                   <button
                     onClick={() => handleEdit(pc)}
                     className="p-2 rounded-lg bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 transition-colors"

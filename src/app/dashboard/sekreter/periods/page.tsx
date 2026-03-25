@@ -75,8 +75,8 @@ export default function PeriodsPage() {
   return (
     <div className="space-y-8 animate-in pb-20">
       {/* Premium Header */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-teal-900/40 via-emerald-900/20 to-gray-900 p-8 border border-teal-800/30">
-        <div className="absolute -right-10 -top-10 opacity-10 rotate-12">
+      <div className="relative overflow-hidden rounded-2xl card p-8 border border-teal-800/30">
+        <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
           <CalendarDays className="w-48 h-48 text-teal-400" />
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -95,7 +95,7 @@ export default function PeriodsPage() {
         {/* Left Side: Create Form */}
         <div className="xl:col-span-1 space-y-6">
           <div className="card rounded-2xl border border-teal-500/20 p-6 relative overflow-hidden group">
-            <div className="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-transparent opacity-0 group-hover:opacity-50 transition-opacity duration-500"></div>
             
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-6">
@@ -148,7 +148,7 @@ export default function PeriodsPage() {
                   <button 
                     type="submit" 
                     disabled={saving} 
-                    className="w-full btn-glow bg-gradient-to-r from-teal-600 to-emerald-600 hover:brightness-110 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_15px_rgba(20,184,166,0.3)]"
+                    className="w-full btn-glow bg-cyan-600 hover:brightness-110 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_15px_rgba(20,184,166,0.3)]"
                   >
                     {saving ? (
                       <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
@@ -209,7 +209,7 @@ export default function PeriodsPage() {
                         className={clsx(
                           'relative p-5 rounded-2xl border transition-all duration-300 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 group',
                           p.is_active 
-                            ? 'bg-gradient-to-r from-teal-900/40 to-emerald-900/10 border-teal-500/50 shadow-[0_0_20px_rgba(20,184,166,0.1)]' 
+                            ? 'bg-cyan-600 border-teal-500/50 shadow-[0_0_20px_rgba(20,184,166,0.1)]' 
                             : 'bg-gray-900/40 border-gray-800/80 hover:border-gray-600/60'
                         )}
                         style={{ animationDelay: `${index * 0.1}s` }}

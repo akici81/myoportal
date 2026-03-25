@@ -85,8 +85,8 @@ export default function DepartmentsPage() {
   return (
     <div className="space-y-6 animate-in">
       {/* Premium Header */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-red-900/40 via-orange-900/20 to-gray-900 p-8 border border-red-800/30">
-        <div className="absolute -right-10 -top-10 opacity-10 rotate-12">
+      <div className="relative overflow-hidden rounded-2xl card p-8 border border-red-800/30">
+        <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
           <Building2 className="w-48 h-48 text-red-400" />
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -224,7 +224,7 @@ export default function DepartmentsPage() {
                       {d.is_active ? 'Aktif' : 'Pasif'}
                     </span>
                   </div>
-                  <div className="flex items-center gap-1 bg-gray-900/80 rounded-lg p-1 border border-gray-800/60 translate-x-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-0 transition-all">
+                  <div className="flex items-center gap-1 bg-gray-900/80 rounded-lg p-1 border border-gray-800/60 translate-x-2 opacity-0 group-hover:opacity-50 group-hover:translate-x-0 transition-all">
                     <button 
                       onClick={() => setEditItem(d)} 
                       className="p-1.5 rounded-md hover:bg-gray-700 text-gray-400 hover:text-white transition-colors"
@@ -255,7 +255,7 @@ export default function DepartmentsPage() {
               <X className="w-5 h-5" />
             </button>
             <h3 className="text-xl font-bold text-white mb-2 flex items-center gap-3">
-              <div className={`p-2 rounded-lg ${editItem.id ? 'bg-gradient-to-br from-blue-500 to-indigo-600' : 'bg-gradient-to-br from-red-500 to-orange-600'}`}>
+              <div className={`p-2 rounded-lg ${editItem.id ? 'bg-cyan-600' : 'bg-cyan-600'}`}>
                 {editItem.id ? <Edit className="w-5 h-5 text-white" /> : <Building2 className="w-5 h-5 text-white" />}
               </div>
               {editItem.id ? 'Bölümü Düzenle' : 'Yeni Bölüm'}
@@ -306,7 +306,7 @@ export default function DepartmentsPage() {
               
               <div className="pt-4 flex gap-3">
                 <button type="button" onClick={() => setEditItem(null)} className="px-4 py-2.5 rounded-lg font-medium text-sm text-gray-400 bg-gray-800 hover:bg-gray-700 hover:text-white transition flex-1">İptal</button>
-                <button type="submit" disabled={saving} className={`px-4 py-2.5 rounded-lg text-sm font-medium text-white flex-1 flex items-center justify-center gap-2 shadow-lg transition-all ${editItem.id ? 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:brightness-110' : 'bg-gradient-to-r from-red-600 to-orange-600 hover:brightness-110'}`}>
+                <button type="submit" disabled={saving} className={`px-4 py-2.5 rounded-lg text-sm font-medium text-white flex-1 flex items-center justify-center gap-2 shadow-lg transition-all ${editItem.id ? 'bg-cyan-600 hover:brightness-110' : 'bg-cyan-600 hover:brightness-110'}`}>
                   {saving ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div> : <Save className="w-4 h-4" /> }
                   {saving ? 'Kaydediliyor...' : 'Kaydet'}
                 </button>

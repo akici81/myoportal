@@ -44,8 +44,8 @@ export default async function BolumBaskaniInstructorsPage() {
 
   return (
     <div className="space-y-6 animate-in">
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-cyan-900/50 via-teal-900/30 to-gray-900 p-8 border border-cyan-800/30">
-        <div className="absolute -right-10 -top-10 opacity-10 rotate-12">
+      <div className="relative overflow-hidden rounded-2xl card p-8 border border-cyan-800/30">
+        <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
           <Users className="w-48 h-48 text-cyan-400" />
         </div>
         <div className="relative z-10">

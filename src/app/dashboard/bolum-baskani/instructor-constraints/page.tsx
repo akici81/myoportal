@@ -159,8 +159,8 @@ export default function InstructorConstraintsPage() {
     <div className="space-y-6 animate-in">
       
       {/* Premium Header */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-violet-900/40 via-purple-900/20 to-gray-900 p-8 border border-violet-800/30 shadow-lg">
-        <div className="absolute -right-10 -top-10 opacity-10 rotate-12">
+      <div className="relative overflow-hidden rounded-2xl card p-8 border border-violet-800/30 shadow-lg">
+        <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
           <Settings2 className="w-48 h-48 text-violet-400" />
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
@@ -314,7 +314,7 @@ export default function InstructorConstraintsPage() {
                                               <p className="mt-2 text-[11px] text-gray-500 border-l-2 border-gray-700 pl-2">Sebep: {c.reason}</p>
                                            )}
                                         </div>
-                                        <button onClick={() => deleteConstraint(c.id)} className="absolute top-4 right-4 w-7 h-7 flex items-center justify-center rounded border border-transparent hover:border-rose-500/30 hover:bg-rose-500/10 text-gray-600 hover:text-rose-400 opacity-0 group-hover/item:opacity-100 transition-all">
+                                        <button onClick={() => deleteConstraint(c.id)} className="absolute top-4 right-4 w-7 h-7 flex items-center justify-center rounded border border-transparent hover:border-rose-500/30 hover:bg-rose-500/10 text-gray-600 hover:text-rose-400 opacity-0 group-hover/item:opacity-50 transition-all">
                                            <Trash2 className="w-4 h-4" />
                                         </button>
                                      </div>
@@ -335,7 +335,7 @@ export default function InstructorConstraintsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in fade-in zoom-in-95 duration-200">
            <div className="card w-full max-w-2xl p-0 rounded-2xl border border-violet-900/30 shadow-2xl overflow-hidden flex flex-col max-h-[95vh]">
               
-              <div className="px-6 py-5 bg-gradient-to-r from-violet-900/50 to-gray-900 border-b border-violet-900/40 flex justify-between items-center">
+              <div className="px-6 py-5 bg-cyan-600 border-b border-violet-900/40 flex justify-between items-center">
                  <h3 className="text-xl font-black text-white flex items-center gap-2">Yeni Kısıt Kuralı Yarat</h3>
                  <button type="button" onClick={() => setShowModal(false)} className="text-gray-400 hover:text-white bg-gray-800/50 hover:bg-gray-700 rounded-lg p-2 transition">
                     <X className="w-5 h-5" />
@@ -455,7 +455,7 @@ export default function InstructorConstraintsPage() {
 
               <div className="px-6 py-4 bg-gray-900/80 border-t border-gray-800/80 mt-auto flex gap-3">
                  <button onClick={() => setShowModal(false)} className="px-4 py-2.5 rounded-xl font-bold text-sm text-gray-400 bg-gray-800/50 hover:bg-gray-700 hover:text-white transition flex-1">İptal, Sil</button>
-                 <button onClick={save} disabled={saving} className="px-4 py-2.5 rounded-xl text-sm font-bold text-white flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:brightness-110 disabled:opacity-50">
+                 <button onClick={save} disabled={saving} className="px-4 py-2.5 rounded-xl text-sm font-bold text-white flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all bg-cyan-600 hover:brightness-110 disabled:opacity-50">
                     {saving ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : <Save className="w-4 h-4" />}
                     <span>{saving ? 'Kurallar İşleniyor...' : 'Veritabanına Kuralı Uygula'}</span>
                  </button>

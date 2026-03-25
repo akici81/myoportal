@@ -172,8 +172,8 @@ export default function AutoSchedulePage() {
   return (
     <div className="space-y-8 animate-in pb-20">
       {/* Premium Header Container */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-900/40 via-blue-900/20 to-gray-900 p-8 border border-indigo-800/30">
-        <div className="absolute top-0 right-0 p-8 opacity-10 rotate-12 pointer-events-none">
+      <div className="relative overflow-hidden rounded-2xl card p-8 border border-indigo-800/30">
+        <div className="absolute top-0 right-0 p-8 opacity-5 rotate-12 pointer-events-none">
           <Cpu className="w-48 h-48 text-indigo-400" />
         </div>
         
@@ -291,7 +291,7 @@ export default function AutoSchedulePage() {
              <button
                onClick={generateSchedule}
                disabled={generating || !selectedPeriod}
-               className="w-full mt-6 btn-glow inline-flex border border-indigo-500/50 items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-indigo-600 to-blue-600 px-6 py-3.5 font-bold text-white transition-all hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(79,70,229,0.4)] disabled:opacity-50 disabled:scale-100 disabled:shadow-none"
+               className="w-full mt-6 btn-glow inline-flex border border-indigo-500/50 items-center justify-center gap-3 rounded-xl bg-cyan-600 px-6 py-3.5 font-bold text-white transition-all hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(79,70,229,0.4)] disabled:opacity-50 disabled:scale-100 disabled:shadow-none"
              >
                {generating ? (
                  <>
@@ -349,7 +349,7 @@ export default function AutoSchedulePage() {
            {generating && (
               <div className="card p-8 rounded-2xl border border-indigo-500/30 bg-gray-900/50 flex flex-col items-center justify-center min-h-[500px] text-center relative overflow-hidden">
                  <div className="absolute top-0 left-0 w-full h-1 bg-gray-800">
-                    <div className="h-full bg-gradient-to-r from-indigo-500 to-blue-500 w-1/3 animate-[slide_1.5s_ease-in-out_infinite]"></div>
+                    <div className="h-full bg-cyan-600 w-1/3 animate-[slide_1.5s_ease-in-out_infinite]"></div>
                  </div>
                  <div className="w-32 h-32 relative mb-8">
                     <div className="absolute inset-0 border-4 border-indigo-500/20 rounded-full"></div>
@@ -369,7 +369,7 @@ export default function AutoSchedulePage() {
 
            {result && !generating && (
               <div className="space-y-6 animate-in fade-in slide-in-from-bottom-5 duration-500">
-                <div className="card p-8 rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-emerald-900/10 to-gray-900 relative overflow-hidden">
+                <div className="card p-8 rounded-2xl border border-emerald-500/30 bg-cyan-600 relative overflow-hidden">
                    <div className="absolute top-0 right-0 p-6 opacity-5 rotate-12 pointer-events-none">
                      <ShieldCheck className="w-64 h-64 text-emerald-400" />
                    </div>
@@ -411,7 +411,7 @@ export default function AutoSchedulePage() {
                         </div>
                         <div className="h-4 rounded-full bg-gray-900 border border-gray-800 overflow-hidden shadow-inner p-0.5">
                           <div
-                            className="h-full rounded-full bg-gradient-to-r from-emerald-600 to-emerald-400 relative overflow-hidden"
+                            className="h-full rounded-full bg-cyan-600 relative overflow-hidden"
                             style={{
                               width: `${result.stats.totalCourses > 0 ? (result.stats.placedCourses / result.stats.totalCourses) * 100 : 0}%`,
                             }}
@@ -435,10 +435,10 @@ export default function AutoSchedulePage() {
                              const percentage = (count / maxCount) * 100
                              return (
                                <div key={day} className="flex flex-col items-center justify-end h-full relative group">
-                                 <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-8 bg-gray-800 text-white text-xs font-bold px-2 py-1 rounded shadow-lg pointer-events-none">
+                                 <div className="opacity-0 group-hover:opacity-50 transition-opacity absolute -top-8 bg-gray-800 text-white text-xs font-bold px-2 py-1 rounded shadow-lg pointer-events-none">
                                    {count} Saat
                                  </div>
-                                 <div className="w-full max-w-[40px] bg-gradient-to-t from-indigo-600/50 to-indigo-400 hover:brightness-110 transition-colors rounded-t-lg relative overflow-hidden shadow-[0_0_10px_rgba(99,102,241,0.2)]"
+                                 <div className="w-full max-w-[40px] bg-cyan-600 hover:brightness-110 transition-colors rounded-t-lg relative overflow-hidden shadow-[0_0_10px_rgba(99,102,241,0.2)]"
                                       style={{ height: `${percentage}%`, minHeight: count > 0 ? '12px' : '4px' }}>
                                  </div>
                                  <p className="text-xs font-bold text-gray-400 mt-2">{day}</p>
@@ -453,7 +453,7 @@ export default function AutoSchedulePage() {
 
                 {/* Failed Placements */}
                 {result.failed.length > 0 && (
-                  <div className="card p-6 rounded-2xl border border-amber-500/30 bg-gradient-to-br from-amber-900/10 to-gray-900">
+                  <div className="card p-6 rounded-2xl border border-amber-500/30 bg-cyan-600">
                     <h3 className="font-bold text-white mb-6 flex items-center gap-2">
                       <AlertTriangle className="w-5 h-5 text-amber-400" />
                       Yerleşemeyen & Açıkta Kalan Dersler ({result.failed.length})

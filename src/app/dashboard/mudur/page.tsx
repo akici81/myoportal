@@ -57,7 +57,7 @@ export default async function MudurDashboard() {
                 <stat.icon className="h-6 w-6" />
               </div>
             </div>
-            <div className="mt-4 flex items-center text-sm text-purple-400 opacity-0 transition-opacity group-hover:opacity-100">
+            <div className="mt-4 flex items-center text-sm text-purple-400 opacity-0 transition-opacity group-hover:opacity-50">
               Görüntüle
               <ArrowRight className="ml-1 h-4 w-4" />
             </div>

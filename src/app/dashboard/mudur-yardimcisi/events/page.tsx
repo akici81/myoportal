@@ -114,8 +114,8 @@ export default function EventsPage() {
   return (
     <div className="space-y-6 animate-in">
       {/* Header */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-violet-900/40 via-purple-900/20 to-gray-900 p-8 border border-violet-800/30">
-        <div className="absolute -right-10 -top-10 opacity-10 rotate-12">
+      <div className="relative overflow-hidden rounded-2xl card p-8 border border-violet-800/30">
+        <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
           <CalendarDays className="w-48 h-48 text-violet-400" />
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -154,7 +154,7 @@ export default function EventsPage() {
             className={`px-3 py-1.5 text-xs rounded-lg border transition ${filterCat === 'all' ? 'border-violet-500/50 bg-violet-500/15 text-violet-400' : 'border-gray-700 text-gray-500 hover:text-white'}`}>Tümü</button>
           {Object.entries(CATEGORY_MAP).map(([k, v]) => (
             <button key={k} onClick={() => setFilterCat(k)}
-              className={`px-3 py-1.5 text-xs rounded-lg border transition ${filterCat === k ? '' : 'border-transparent opacity-60 hover:opacity-100'}`}
+              className={`px-3 py-1.5 text-xs rounded-lg border transition ${filterCat === k ? '' : 'border-transparent opacity-60 hover:opacity-50'}`}
               style={filterCat === k ? { background: v.bg, color: v.color, borderColor: v.color + '50' } : { color: v.color }}>
               {v.label}
             </button>

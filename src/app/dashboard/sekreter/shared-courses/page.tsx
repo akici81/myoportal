@@ -220,8 +220,8 @@ export default function SharedCoursesPage() {
   return (
     <div className="space-y-8 animate-in pb-20">
       {/* Premium Header Container */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-900/40 via-blue-900/20 to-gray-900 p-8 border border-indigo-800/30">
-        <div className="absolute top-0 right-0 p-8 opacity-10 rotate-12 pointer-events-none">
+      <div className="relative overflow-hidden rounded-2xl card p-8 border border-indigo-800/30">
+        <div className="absolute top-0 right-0 p-8 opacity-5 rotate-12 pointer-events-none">
           <Link2 className="w-48 h-48 text-indigo-400" />
         </div>
         
@@ -236,7 +236,7 @@ export default function SharedCoursesPage() {
           </div>
           <button
             onClick={openCreateModal}
-            className="btn-glow inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-3 font-semibold text-white transition-all hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(79,70,229,0.4)] disabled:opacity-50 shrink-0"
+            className="btn-glow inline-flex items-center justify-center gap-2 rounded-xl bg-cyan-600 px-6 py-3 font-semibold text-white transition-all hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(79,70,229,0.4)] disabled:opacity-50 shrink-0"
           >
             <Plus className="w-5 h-5 flex-shrink-0" />
             <span>Yeni Havuz Oluştur</span>
@@ -351,7 +351,7 @@ export default function SharedCoursesPage() {
                           </div>
                         </div>
                         
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500/20 to-blue-500/20 border border-indigo-500/30 flex items-center justify-center shrink-0 shadow-inner">
+                        <div className="w-12 h-12 rounded-xl bg-cyan-600 border border-indigo-500/30 flex items-center justify-center shrink-0 shadow-inner">
                           <BookOpen className="w-6 h-6 text-indigo-400" />
                         </div>
                         
@@ -388,7 +388,7 @@ export default function SharedCoursesPage() {
                     {/* Expanded Content */}
                     <div className={clsx(
                       "grid grid-rows-[0fr] transition-all duration-300",
-                      isExpanded ? "grid-rows-[1fr] opacity-100" : "opacity-0"
+                      isExpanded ? "grid-rows-[1fr] opacity-50" : "opacity-0"
                     )}>
                       <div className="overflow-hidden">
                         <div className="p-5 border-t border-gray-800/80 bg-gray-900/40">
@@ -410,7 +410,7 @@ export default function SharedCoursesPage() {
                                 <button
                                   onClick={() => removeFromGroup(programCourseId)}
                                   title="Havuzdan Çıkar"
-                                  className="text-xs px-2.5 py-1.5 rounded-lg border border-transparent text-gray-500 hover:border-red-500/30 hover:text-red-400 hover:bg-red-500/10 transition-colors flex items-center justify-center shrink-0 opacity-0 group-hover/item:opacity-100"
+                                  className="text-xs px-2.5 py-1.5 rounded-lg border border-transparent text-gray-500 hover:border-red-500/30 hover:text-red-400 hover:bg-red-500/10 transition-colors flex items-center justify-center shrink-0 opacity-0 group-hover/item:opacity-50"
                                 >
                                   <Unlink className="w-3.5 h-3.5" />
                                 </button>
@@ -647,7 +647,7 @@ export default function SharedCoursesPage() {
               <button
                 onClick={createSharedGroup}
                 disabled={saving || !selectedCourse || selectedPrograms.length < 2}
-                className="flex-1 btn-glow py-3 px-4 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-indigo-600 to-blue-600 hover:brightness-110 transition-all shadow-lg disabled:opacity-50 disabled:shadow-none flex items-center justify-center gap-2"
+                className="flex-1 btn-glow py-3 px-4 rounded-xl text-sm font-bold text-white bg-cyan-600 hover:brightness-110 transition-all shadow-lg disabled:opacity-50 disabled:shadow-none flex items-center justify-center gap-2"
               >
                 {saving ? (
                   <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>

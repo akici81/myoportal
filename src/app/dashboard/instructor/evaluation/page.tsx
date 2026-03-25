@@ -90,7 +90,7 @@ export default function EvaluationPage() {
 
         {/* Bölüm 2 */}
         <div className="rounded-2xl border border-white/5 bg-gray-800/30 overflow-hidden">
-           <div className="bg-gradient-to-r from-amber-500/10 to-orange-500/5 px-6 py-4 border-b border-white/5 flex items-center gap-3">
+           <div className="bg-cyan-600 px-6 py-4 border-b border-white/5 flex items-center gap-3">
               <Lightbulb className="h-5 w-5 text-amber-400" />
               <h2 className="font-semibold text-white">Açık Uçlu Değerlendirmeler</h2>
            </div>

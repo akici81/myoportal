@@ -147,8 +147,8 @@ export default function InstructorSchedulePage() {
   return (
     <div className="space-y-6 animate-in">
       {/* Header Container Premium Violet */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-violet-900/50 via-purple-900/30 to-gray-900 p-8 border border-violet-800/30 shadow-lg">
-        <div className="absolute -right-10 -top-10 opacity-10 rotate-12">
+      <div className="relative overflow-hidden rounded-2xl card p-8 border border-violet-800/30 shadow-lg">
+        <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
           <User className="w-48 h-48 text-violet-400" />
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -209,7 +209,7 @@ export default function InstructorSchedulePage() {
             {/* Stats Overview */}
             {selectedInstructor && (
               <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-                <div className="card p-5 rounded-2xl border border-blue-500/20 bg-gradient-to-br from-gray-900 to-blue-900/10">
+                <div className="card p-5 rounded-2xl border border-blue-500/20 bg-cyan-600">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-blue-500/10 border border-blue-500/20 shadow-inner">
                       <Clock className="w-6 h-6 text-blue-400" />
@@ -221,7 +221,7 @@ export default function InstructorSchedulePage() {
                   </div>
                 </div>
 
-                <div className="card p-5 rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-gray-900 to-emerald-900/10">
+                <div className="card p-5 rounded-2xl border border-emerald-500/20 bg-cyan-600">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-emerald-500/10 border border-emerald-500/20 shadow-inner">
                       <Calendar className="w-6 h-6 text-emerald-400" />
@@ -233,7 +233,7 @@ export default function InstructorSchedulePage() {
                   </div>
                 </div>
 
-                <div className="card p-5 rounded-2xl border border-amber-500/20 bg-gradient-to-br from-gray-900 to-amber-900/10">
+                <div className="card p-5 rounded-2xl border border-amber-500/20 bg-cyan-600">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-amber-500/10 border border-amber-500/20 shadow-inner">
                       <BookOpen className="w-6 h-6 text-amber-400" />
@@ -246,7 +246,7 @@ export default function InstructorSchedulePage() {
                 </div>
                 
                 {/* Gün Bazlı Yük Dağılımı Özeti */}
-                <div className="card p-4 rounded-2xl border border-violet-500/20 bg-gradient-to-br from-gray-900 to-violet-900/10 flex flex-col justify-center">
+                <div className="card p-4 rounded-2xl border border-violet-500/20 bg-cyan-600 flex flex-col justify-center">
                   <p className="text-[10px] font-bold text-violet-400/80 uppercase tracking-widest mb-2 border-b border-violet-500/20 pb-1">Gündelik Dağılım</p>
                   <div className="flex items-end justify-between gap-1 h-8">
                     {[1, 2, 3, 4, 5].map((d) => {
@@ -255,7 +255,7 @@ export default function InstructorSchedulePage() {
                       const height = Math.max((h / max) * 100, 10);
                       return (
                         <div key={d} className="w-full flex flex-col items-center gap-1 group relative">
-                          {h > 0 && <span className="absolute -top-4 text-[9px] font-bold text-white opacity-0 group-hover:opacity-100 transition-opacity">{h}s</span>}
+                          {h > 0 && <span className="absolute -top-4 text-[9px] font-bold text-white opacity-0 group-hover:opacity-50 transition-opacity">{h}s</span>}
                           <div className={clsx("w-full rounded-sm transition-all duration-500", h > 0 ? "bg-violet-500" : "bg-gray-800")} style={{ height: `${height}%` }}></div>
                         </div>
                       )
@@ -300,7 +300,7 @@ export default function InstructorSchedulePage() {
                             return (
                               <td key={day} className="p-1.5 border-b border-r border-gray-800/60 align-top relative group">
                                 {entry ? (
-                                  <div className={clsx("h-full min-h-[76px] p-2.5 rounded-xl border relative flex flex-col justify-center transition-all bg-opacity-10 hover:bg-opacity-20 shadow-lg", colorClass)}>
+                                  <div className={clsx("h-full min-h-[76px] p-2.5 rounded-xl border relative flex flex-col justify-center transition-all bg-opacity-5 hover:bg-opacity-10 shadow-lg", colorClass)}>
                                     <p className="font-black text-sm leading-tight mb-1 truncate drop-shadow-sm flex items-center gap-1.5">
                                       <BookOpen className="w-3.5 h-3.5 opacity-70" />
                                       {entry.program_courses?.courses?.code}
@@ -308,7 +308,7 @@ export default function InstructorSchedulePage() {
                                     <p className="text-[11px] font-medium leading-tight truncate mb-1 opacity-90">
                                       {entry.program_courses?.courses?.name}
                                     </p>
-                                    <div className="flex items-center justify-between mt-auto pt-1 border-t border-current border-opacity-10">
+                                    <div className="flex items-center justify-between mt-auto pt-1 border-t border-current border-opacity-5">
                                       <p className="text-[10px] font-bold truncate opacity-80 flex items-center gap-1">
                                         {entry.classrooms?.name}
                                       </p>

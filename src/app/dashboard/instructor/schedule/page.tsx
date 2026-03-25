@@ -92,8 +92,8 @@ export default function InstructorSchedulePage() {
   return (
     <div className="space-y-8 animate-in pb-20">
       {/* Premium Header Container */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-emerald-900/40 via-teal-900/20 to-gray-900 p-8 border border-emerald-800/30">
-        <div className="absolute top-0 right-0 p-8 opacity-10 rotate-12 pointer-events-none">
+      <div className="relative overflow-hidden rounded-2xl card p-8 border border-emerald-800/30">
+        <div className="absolute top-0 right-0 p-8 opacity-5 rotate-12 pointer-events-none">
           <Calendar className="w-48 h-48 text-emerald-400" />
         </div>
         
@@ -156,7 +156,7 @@ export default function InstructorSchedulePage() {
           <>
             {/* Verilen dersler özeti */}
             {programSet.size > 0 && (
-              <div className="card p-6 rounded-2xl border border-gray-800 bg-gradient-to-br from-gray-900/80 to-gray-900/30">
+              <div className="card p-6 rounded-2xl border border-gray-800 bg-cyan-600">
                 <div className="flex items-center gap-2 mb-4">
                   <GraduationCap className="w-5 h-5 text-gray-400" />
                   <p className="text-sm font-bold uppercase tracking-widest text-gray-300">

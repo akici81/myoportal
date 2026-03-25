@@ -208,8 +208,8 @@ export default function CourseAssignmentsPage() {
     <div className="space-y-6 animate-in">
       
       {/* Premium Header */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-amber-900/40 via-orange-900/20 to-gray-900 p-8 border border-amber-800/30 shadow-lg">
-        <div className="absolute -right-10 -top-10 opacity-10 rotate-12">
+      <div className="relative overflow-hidden rounded-2xl card p-8 border border-amber-800/30 shadow-lg">
+        <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
           <BookMarked className="w-48 h-48 text-amber-400" />
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
@@ -243,7 +243,7 @@ export default function CourseAssignmentsPage() {
           {/* STATS */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 relative overflow-hidden group">
-              <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-50 transition-opacity"></div>
               <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20 shrink-0">
                 <BookOpen className="w-6 h-6 text-blue-500" />
               </div>
@@ -254,7 +254,7 @@ export default function CourseAssignmentsPage() {
             </div>
 
             <div className="card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 relative overflow-hidden group">
-              <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-50 transition-opacity"></div>
               <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 shrink-0">
                 <UserCheck className="w-6 h-6 text-emerald-500" />
               </div>
@@ -265,7 +265,7 @@ export default function CourseAssignmentsPage() {
             </div>
 
             <div className="card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 relative overflow-hidden group">
-              <div className="absolute inset-0 bg-rose-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-rose-500/5 opacity-0 group-hover:opacity-50 transition-opacity"></div>
               <div className="w-12 h-12 rounded-xl bg-rose-500/10 flex items-center justify-center border border-rose-500/20 shrink-0">
                 <AlertTriangle className="w-6 h-6 text-rose-500" />
               </div>
@@ -276,7 +276,7 @@ export default function CourseAssignmentsPage() {
             </div>
 
             <div className="card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 relative overflow-hidden group">
-              <div className="absolute inset-0 bg-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute inset-0 bg-purple-500/5 opacity-0 group-hover:opacity-50 transition-opacity"></div>
               <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center border border-purple-500/20 shrink-0">
                 <Users className="w-6 h-6 text-purple-500" />
               </div>

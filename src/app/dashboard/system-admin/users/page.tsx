@@ -119,7 +119,7 @@ export default function UsersPage() {
     <div className="space-y-6 animate-in">
       {/* Premium Header */}
       <div className="relative overflow-hidden rounded-2xl card p-8 border border-cyan-800/30">
-        <div className="absolute -right-10 -top-10 opacity-10 rotate-12">
+        <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
           <Users className="w-48 h-48 text-cyan-400" />
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -275,7 +275,7 @@ export default function UsersPage() {
                       <td className="px-6 py-4 text-right">
                         <button 
                           onClick={() => setEditUser(u)} 
-                          className="p-2 rounded-lg bg-gray-800 text-gray-400 hover:text-cyan-400 hover:bg-gray-700 transition duration-200 opacity-0 group-hover:opacity-100"
+                          className="p-2 rounded-lg bg-gray-800 text-gray-400 hover:text-cyan-400 hover:bg-gray-700 transition duration-200 opacity-0 group-hover:opacity-50"
                           title="Düzenle"
                         >
                           <Edit className="w-4 h-4" />

@@ -46,8 +46,8 @@ export default function InstructorEventsPage() {
 
   return (
     <div className="space-y-6 animate-in">
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-violet-900/40 via-purple-900/20 to-gray-900 p-8 border border-violet-800/30">
-        <div className="absolute -right-10 -top-10 opacity-10 rotate-12"><CalendarDays className="w-48 h-48 text-violet-400" /></div>
+      <div className="relative overflow-hidden rounded-2xl card p-8 border border-violet-800/30">
+        <div className="absolute -right-10 -top-10 opacity-5 rotate-12"><CalendarDays className="w-48 h-48 text-violet-400" /></div>
         <div className="relative z-10">
           <h1 className="text-3xl font-bold text-white">Etkinlik Takvimi</h1>
           <p className="mt-2 text-gray-400">{MONTHS_TR[currentDate.getMonth()]} {currentDate.getFullYear()} — Yaklaşan tüm etkinlikler</p>
@@ -63,7 +63,7 @@ export default function InstructorEventsPage() {
         </div>
         <div className="flex gap-1.5 flex-wrap">
           <button onClick={() => setFilterCat('all')} className={`px-3 py-1.5 text-xs rounded-lg border transition ${filterCat === 'all' ? 'border-violet-500/50 bg-violet-500/15 text-violet-400' : 'border-gray-700 text-gray-500'}`}>Tümü</button>
-          {Object.entries(CATEGORY_MAP).map(([k, v]) => (<button key={k} onClick={() => setFilterCat(k)} className={`px-3 py-1.5 text-xs rounded-lg border transition ${filterCat === k ? '' : 'border-transparent opacity-60 hover:opacity-100'}`} style={filterCat === k ? { background: v.bg, color: v.color, borderColor: v.color + '50' } : { color: v.color }}>{v.label}</button>))}
+          {Object.entries(CATEGORY_MAP).map(([k, v]) => (<button key={k} onClick={() => setFilterCat(k)} className={`px-3 py-1.5 text-xs rounded-lg border transition ${filterCat === k ? '' : 'border-transparent opacity-60 hover:opacity-50'}`} style={filterCat === k ? { background: v.bg, color: v.color, borderColor: v.color + '50' } : { color: v.color }}>{v.label}</button>))}
         </div>
         <div className="ml-auto flex rounded-lg overflow-hidden border border-gray-700">
           <button onClick={() => setView('month')} className={`px-3 py-2 text-xs flex items-center gap-1.5 ${view === 'month' ? 'bg-gray-800 text-white' : 'text-gray-500'}`}><Grid3X3 className="w-3.5 h-3.5" /> Aylık</button>

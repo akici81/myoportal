@@ -426,8 +426,8 @@ export default function BolumBaskaniSchedulePage() {
   return (
     <div className="space-y-6 animate-in">
       {/* Header */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-cyan-900/50 via-teal-900/30 to-gray-900 p-8 border border-cyan-800/30 shadow-lg">
-        <div className="absolute -right-10 -top-10 opacity-10 rotate-12">
+      <div className="relative overflow-hidden rounded-2xl card p-8 border border-cyan-800/30 shadow-lg">
+        <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
           <CalendarDays className="w-48 h-48 text-cyan-400" />
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -444,14 +444,14 @@ export default function BolumBaskaniSchedulePage() {
               <>
                 <button
                   onClick={handleOpenAddModal}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-cyan-600 to-teal-600 hover:brightness-110 shadow-lg transition-all"
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-white bg-cyan-600 hover:brightness-110 shadow-lg transition-all"
                 >
                   <Plus className="w-4 h-4" />
                   Ders Ekle
                 </button>
                 <button
                   onClick={handleOpenRangeMode}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-violet-600 to-purple-600 hover:brightness-110 shadow-lg transition-all"
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-white bg-cyan-600 hover:brightness-110 shadow-lg transition-all"
                 >
                   <TimerIcon className="w-4 h-4" />
                   Saat Aralığı ile Ekle
@@ -526,7 +526,7 @@ export default function BolumBaskaniSchedulePage() {
                       className={clsx(
                         'px-5 py-2.5 rounded-lg text-sm font-bold transition-all min-w-[90px]',
                         selectedYear === y
-                          ? 'bg-gradient-to-br from-cyan-500 to-teal-600 text-white shadow-lg'
+                          ? 'bg-cyan-600 text-white shadow-lg'
                           : 'bg-transparent text-gray-400 hover:text-gray-200 hover:bg-gray-800'
                       )}
                     >
@@ -557,7 +557,7 @@ export default function BolumBaskaniSchedulePage() {
                   className={clsx(
                     'flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all',
                     viewMode === 'program'
-                      ? 'bg-gradient-to-br from-cyan-500 to-teal-600 text-white shadow-lg'
+                      ? 'bg-cyan-600 text-white shadow-lg'
                       : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800'
                   )}
                 >
@@ -662,7 +662,7 @@ export default function BolumBaskaniSchedulePage() {
           <div className="card w-full max-w-xl p-0 rounded-2xl border border-gray-700/50 shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
 
             {/* Header */}
-            <div className="px-6 py-5 border-b border-cyan-900/30 bg-gradient-to-r from-cyan-950 to-gray-900 flex justify-between items-start">
+            <div className="px-6 py-5 border-b border-cyan-900/30 bg-cyan-600 flex justify-between items-start">
               <div>
                 <h3 className="text-xl font-black text-white tracking-tight">
                   {rangeMode ? 'Saat Aralığı ile Ders Yerleştir' : 'Derse Görevlendirme'}
@@ -855,7 +855,7 @@ export default function BolumBaskaniSchedulePage() {
               <button
                 onClick={rangeMode ? handleSaveRange : handleSave}
                 disabled={saving || !form.program_course_id || !form.classroom_id || !form.instructor_id || (rangeMode && (!form.range_start || !form.range_end))}
-                className="px-4 py-2.5 rounded-xl text-sm font-bold text-white flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all bg-gradient-to-r from-cyan-600 to-teal-600 hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-4 py-2.5 rounded-xl text-sm font-bold text-white flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all bg-cyan-600 hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {saving
                   ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />

@@ -177,8 +177,8 @@ export default function InstructorConstraintsPage() {
   return (
     <div className="space-y-8 animate-in pb-20">
       {/* Premium Header */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-amber-900/40 via-red-900/10 to-gray-900 p-8 border border-amber-800/30 shadow-lg">
-        <div className="absolute top-0 right-0 p-8 opacity-10 rotate-12 pointer-events-none">
+      <div className="relative overflow-hidden rounded-2xl card p-8 border border-amber-800/30 shadow-lg">
+        <div className="absolute top-0 right-0 p-8 opacity-5 rotate-12 pointer-events-none">
           <AlertTriangle className="w-48 h-48 text-amber-400" />
         </div>
         
@@ -207,7 +207,7 @@ export default function InstructorConstraintsPage() {
                  setFormReason('')
                  setIsModalOpen(true)
                }}
-               className="btn-glow inline-flex border border-amber-500/50 items-center gap-2 rounded-xl bg-gradient-to-r from-amber-600 to-red-600 px-6 py-3 font-semibold text-white transition-all hover:scale-105"
+               className="btn-glow inline-flex border border-amber-500/50 items-center gap-2 rounded-xl bg-cyan-600 px-6 py-3 font-semibold text-white transition-all hover:scale-105"
              >
                <Plus className="w-5 h-5" />
                Yeni Kısıt Ekle

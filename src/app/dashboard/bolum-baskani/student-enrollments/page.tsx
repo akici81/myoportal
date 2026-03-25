@@ -211,8 +211,8 @@ export default function StudentEnrollmentsPage() {
   return (
     <div className="space-y-8 animate-in pb-20">
       {/* Premium Header */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-rose-900/40 via-pink-900/20 to-gray-900 p-8 border border-rose-800/30">
-        <div className="absolute -right-10 -top-10 opacity-10 rotate-12">
+      <div className="relative overflow-hidden rounded-2xl card p-8 border border-rose-800/30">
+        <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
           <Users className="w-48 h-48 text-rose-400" />
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -309,7 +309,7 @@ export default function StudentEnrollmentsPage() {
             <div key={program.id} className="card group hover:-translate-y-1 hover:shadow-2xl hover:shadow-rose-900/20 transition-all duration-300 border border-gray-800/60 hover:border-rose-500/30 rounded-2xl overflow-hidden flex flex-col relative">
               
               {/* Top Gradient Ribbon */}
-              <div className="bg-gradient-to-r from-rose-500 to-pink-500 h-1.5 w-full opacity-80 group-hover:opacity-100 transition-opacity"></div>
+              <div className="bg-cyan-600 h-1.5 w-full opacity-80 group-hover:opacity-50 transition-opacity"></div>
 
               <div className="p-5 flex-1 flex flex-col">
                 {/* Header */}
@@ -417,7 +417,7 @@ export default function StudentEnrollmentsPage() {
             <button
               onClick={saveChanges}
               disabled={saving}
-              className="ml-auto btn-glow bg-gradient-to-r from-rose-600 to-pink-600 py-2 px-5 rounded-full text-xs font-bold text-white shadow-lg flex items-center gap-2 hover:brightness-110 disabled:opacity-50"
+              className="ml-auto btn-glow bg-cyan-600 py-2 px-5 rounded-full text-xs font-bold text-white shadow-lg flex items-center gap-2 hover:brightness-110 disabled:opacity-50"
             >
               <Save className="w-3.5 h-3.5" />
               {saving ? 'Kayıt...' : 'Uygula'}

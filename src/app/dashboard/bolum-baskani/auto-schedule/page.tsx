@@ -183,7 +183,7 @@ export default function AutoSchedulePage() {
   return (
     <div className="space-y-6 animate-in">
       {/* Premium Header */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-900/40 via-indigo-900/20 to-gray-900 p-8 border border-blue-800/30 shadow-lg">
+      <div className="relative overflow-hidden rounded-2xl card p-8 border border-blue-800/30 shadow-lg">
         <div className="absolute -right-6 -top-6 opacity-[0.05] rotate-12">
           <Wand2 className="w-56 h-56 text-blue-400" />
         </div>
@@ -319,9 +319,9 @@ export default function AutoSchedulePage() {
                            if (!c) return null
                            return (
                               <div key={classroomId} className="flex items-center gap-3 p-3 rounded-xl bg-gray-900 border border-gray-800 hover:border-gray-700 transition-colors group">
-                                 <div className="flex flex-col gap-0.5 opacity-50 group-hover:opacity-100 transition-opacity">
-                                    <button onClick={() => movePriority(index, 'up')} disabled={index===0} className="hover:text-white disabled:opacity-20"><ChevronUp className="w-4 h-4" /></button>
-                                    <button onClick={() => movePriority(index, 'down')} disabled={index===priorityClassrooms.length-1} className="hover:text-white disabled:opacity-20"><ChevronDown className="w-4 h-4" /></button>
+                                 <div className="flex flex-col gap-0.5 opacity-50 group-hover:opacity-50 transition-opacity">
+                                    <button onClick={() => movePriority(index, 'up')} disabled={index===0} className="hover:text-white disabled:opacity-10"><ChevronUp className="w-4 h-4" /></button>
+                                    <button onClick={() => movePriority(index, 'down')} disabled={index===priorityClassrooms.length-1} className="hover:text-white disabled:opacity-10"><ChevronDown className="w-4 h-4" /></button>
                                  </div>
                                  <div className="w-6 h-6 rounded bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-black text-xs border border-indigo-500/30">
                                     {index + 1}
@@ -376,7 +376,7 @@ export default function AutoSchedulePage() {
                          <span className="text-sm font-black text-emerald-400">{result.stats.totalCourses > 0 ? Math.round((result.stats.placedCourses / result.stats.totalCourses) * 100) : 0}%</span>
                       </div>
                       <div className="h-3 bg-gray-900 rounded-full overflow-hidden border border-gray-800 shadow-inner">
-                         <div className="h-full bg-gradient-to-r from-emerald-600 to-emerald-400 transition-all duration-1000 ease-out" style={{ width: `${result.stats.totalCourses > 0 ? (result.stats.placedCourses / result.stats.totalCourses) * 100 : 0}%` }} />
+                         <div className="h-full bg-cyan-600 transition-all duration-1000 ease-out" style={{ width: `${result.stats.totalCourses > 0 ? (result.stats.placedCourses / result.stats.totalCourses) * 100 : 0}%` }} />
                       </div>
                    </div>
 
@@ -392,7 +392,7 @@ export default function AutoSchedulePage() {
                              return (
                                <div key={day} className="flex flex-col items-center">
                                  <div className="w-full h-24 bg-gray-900 rounded-lg border border-gray-800 flex items-end justify-center p-1 mb-2">
-                                   <div className="w-full rounded bg-gradient-to-t from-blue-600 to-indigo-400 transition-all duration-1000 delay-300 ease-out" style={{ height: `${percentage}%`, minHeight: count > 0 ? '4px' : '0' }} />
+                                   <div className="w-full rounded bg-cyan-600 transition-all duration-1000 delay-300 ease-out" style={{ height: `${percentage}%`, minHeight: count > 0 ? '4px' : '0' }} />
                                  </div>
                                  <p className="text-sm font-black text-white">{count}</p>
                                  <p className="text-[11px] font-bold text-gray-500">{day}</p>

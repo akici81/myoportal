@@ -121,7 +121,7 @@ export default async function SystemAdminDashboard() {
                 <stat.icon className={`h-6 w-6 ${stat.iconColor}`} />
               </div>
             </div>
-            <div className={`mt-4 flex items-center text-sm font-medium ${stat.iconColor} opacity-0 transition-opacity duration-300 group-hover:opacity-100`}>
+            <div className={`mt-4 flex items-center text-sm font-medium ${stat.iconColor} opacity-0 transition-opacity duration-300 group-hover:opacity-50`}>
               Yönet
               <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
             </div>

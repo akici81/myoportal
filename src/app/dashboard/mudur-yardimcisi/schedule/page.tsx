@@ -21,8 +21,8 @@ export default async function MYSchedulePage() {
 
   return (
     <div className="space-y-6 animate-in">
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-900/40 via-blue-900/20 to-gray-900 p-8 border border-indigo-800/30">
-        <div className="absolute -right-10 -top-10 opacity-10 rotate-12"><CalendarDays className="w-48 h-48 text-indigo-400" /></div>
+      <div className="relative overflow-hidden rounded-2xl card p-8 border border-indigo-800/30">
+        <div className="absolute -right-10 -top-10 opacity-5 rotate-12"><CalendarDays className="w-48 h-48 text-indigo-400" /></div>
         <div className="relative z-10">
           <h1 className="text-3xl font-bold text-white">Tüm Ders Programları</h1>
           <p className="mt-2 text-gray-400">

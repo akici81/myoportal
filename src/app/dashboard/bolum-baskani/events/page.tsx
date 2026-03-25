@@ -66,8 +66,8 @@ export default function EventsReadOnlyPage() {
 
   return (
     <div className="space-y-6 animate-in">
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-rose-900/40 via-fuchsia-900/20 to-gray-900 p-8 border border-rose-800/30 shadow-lg">
-        <div className="absolute -right-10 -top-10 opacity-10 rotate-12">
+      <div className="relative overflow-hidden rounded-2xl card p-8 border border-rose-800/30 shadow-lg">
+        <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
           <CalendarHeart className="w-48 h-48 text-rose-400" />
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -105,7 +105,7 @@ export default function EventsReadOnlyPage() {
             Tümü
           </button>
           {Object.entries(CATEGORY_MAP).map(([k, v]) => (
-            <button key={k} onClick={() => setFilterCat(k)} className={clsx('px-3.5 py-2 text-[11px] font-bold uppercase tracking-wider rounded-lg transition-all border flex items-center gap-1.5', filterCat === k ? '' : 'opacity-60 hover:opacity-100 hover:border-gray-600 bg-gray-900/50')} style={filterCat === k ? { background: v.bg, color: v.color, borderColor: v.border, boxShadow: `0 0 10px ${v.bg}` } : { color: v.color, borderColor: 'transparent' }}>
+            <button key={k} onClick={() => setFilterCat(k)} className={clsx('px-3.5 py-2 text-[11px] font-bold uppercase tracking-wider rounded-lg transition-all border flex items-center gap-1.5', filterCat === k ? '' : 'opacity-60 hover:opacity-50 hover:border-gray-600 bg-gray-900/50')} style={filterCat === k ? { background: v.bg, color: v.color, borderColor: v.border, boxShadow: `0 0 10px ${v.bg}` } : { color: v.color, borderColor: 'transparent' }}>
               <div className="w-2 h-2 rounded-full" style={{ backgroundColor: v.color }}></div>{v.label}
             </button>
           ))}
@@ -145,7 +145,7 @@ export default function EventsReadOnlyPage() {
                       {date && (
                         <div className="flex flex-col h-full">
                           <div className="flex justify-between items-start mb-2">
-                            <div className={clsx('w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shadow-inner transition-all', isToday ? 'bg-gradient-to-br from-rose-500 to-fuchsia-600 text-white' : 'text-gray-400 group-hover:text-gray-200')}>
+                            <div className={clsx('w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shadow-inner transition-all', isToday ? 'bg-cyan-600 text-white' : 'text-gray-400 group-hover:text-gray-200')}>
                               {date.getDate()}
                             </div>
                             {dayEvents.length > 0 && <div className="w-1.5 h-1.5 rounded-full bg-rose-500/50 mt-2 mr-1"></div>}
@@ -192,7 +192,7 @@ export default function EventsReadOnlyPage() {
                           <div className="flex items-center gap-4 mt-8 mb-4 pl-2"><h3 className="text-lg font-black text-white uppercase tracking-widest shrink-0">{monthKey}</h3><div className="h-px bg-gradient-to-r from-gray-700 to-transparent flex-1"></div></div>
                         )}
                         <div className="card p-5 cursor-pointer flex flex-col sm:flex-row items-start sm:items-center gap-5 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/40 group overflow-hidden relative mb-3" style={{ borderColor: cat.border, background: `linear-gradient(135deg, ${cat.bg.replace('0.1', '0.03')}, rgba(15, 23, 42, 0.4))` }} onClick={() => setSelected(ev)}>
-                          <div className="absolute left-0 top-0 bottom-0 w-1 opacity-50 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: cat.color }}></div>
+                          <div className="absolute left-0 top-0 bottom-0 w-1 opacity-50 group-hover:opacity-50 transition-opacity" style={{ backgroundColor: cat.color }}></div>
                           <div className="w-16 h-16 rounded-xl flex flex-col items-center justify-center shrink-0 border shadow-inner" style={{ background: cat.bg, borderColor: cat.border }}>
                             <div className="text-2xl font-black leading-none" style={{ color: cat.color }}>{d.getDate()}</div>
                             <div className="text-[10px] font-bold uppercase tracking-widest mt-0.5" style={{ color: cat.color }}>{DAYS_SHORT[d.getDay() === 0 ? 6 : d.getDay() - 1]}</div>
@@ -223,7 +223,7 @@ export default function EventsReadOnlyPage() {
       {selected && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in fade-in zoom-in-95 duration-200">
           <div className="card w-full max-w-lg p-0 rounded-3xl border border-gray-700/50 shadow-2xl overflow-hidden relative">
-            <div className="h-32 w-full absolute top-0 left-0 opacity-20 pointer-events-none" style={{ background: `linear-gradient(to bottom, ${CATEGORY_MAP[selected.category]?.color ?? '#64748b'}, transparent)` }}></div>
+            <div className="h-32 w-full absolute top-0 left-0 opacity-10 pointer-events-none" style={{ background: `linear-gradient(to bottom, ${CATEGORY_MAP[selected.category]?.color ?? '#64748b'}, transparent)` }}></div>
             <div className="p-8 relative z-10 text-center">
               <button onClick={() => setSelected(null)} className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-800 text-gray-400 hover:text-white transition-colors bg-gray-900/50"><X className="w-5 h-5" /></button>
               <div className="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center border-2 border-dashed shadow-2xl rotate-3" style={{ background: CATEGORY_MAP[selected.category]?.bg ?? '#64748b15', borderColor: CATEGORY_MAP[selected.category]?.color ?? '#64748b' }}><Tag className="w-8 h-8" style={{ color: CATEGORY_MAP[selected.category]?.color ?? '#64748b' }} /></div>

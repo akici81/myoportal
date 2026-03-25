@@ -329,8 +329,8 @@ export default function ConstraintsPage() {
   return (
     <div className="space-y-8 animate-in pb-20">
       {/* Premium Header */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-violet-900/40 via-purple-900/20 to-gray-900 p-8 border border-violet-800/30">
-        <div className="absolute top-0 right-0 p-8 opacity-10 rotate-12 pointer-events-none">
+      <div className="relative overflow-hidden rounded-2xl card p-8 border border-violet-800/30">
+        <div className="absolute top-0 right-0 p-8 opacity-5 rotate-12 pointer-events-none">
           <ClipboardList className="w-48 h-48 text-violet-400" />
         </div>
         
@@ -345,7 +345,7 @@ export default function ConstraintsPage() {
           </div>
           <button
             onClick={() => openModal()}
-            className="btn-glow inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-violet-600 to-fuchsia-600 px-6 py-3 font-semibold text-white transition-all hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] disabled:opacity-50 shrink-0"
+            className="btn-glow inline-flex items-center justify-center gap-2 rounded-xl bg-cyan-600 px-6 py-3 font-semibold text-white transition-all hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] disabled:opacity-50 shrink-0"
           >
             <Plus className="w-5 h-5 flex-shrink-0" />
             <span>Merkezi Kısıt Ekle</span>
@@ -479,7 +479,7 @@ export default function ConstraintsPage() {
                               </div>
                            </div>
                            
-                           <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500/20 to-indigo-500/20 border border-violet-500/30 flex items-center justify-center shrink-0 shadow-inner">
+                           <div className="w-12 h-12 rounded-xl bg-cyan-600 border border-violet-500/30 flex items-center justify-center shrink-0 shadow-inner">
                              <span className="text-xl font-black text-violet-400">
                                {instructor.full_name?.charAt(0)}
                              </span>
@@ -519,7 +519,7 @@ export default function ConstraintsPage() {
                        {/* Expanded Content */}
                        <div className={clsx(
                          "grid grid-rows-[0fr] transition-all duration-300",
-                         open ? "grid-rows-[1fr] opacity-100" : "opacity-0"
+                         open ? "grid-rows-[1fr] opacity-50" : "opacity-0"
                        )}>
                           <div className="overflow-hidden">
                              <div className="p-4 border-t border-gray-800/80 bg-gray-900/40 space-y-2">
@@ -869,7 +869,7 @@ export default function ConstraintsPage() {
               <button
                 onClick={save}
                 disabled={saving || getRecordCount() === 0 || !editForm.instructor_id}
-                className="flex-1 btn-glow py-3 px-4 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-violet-600 to-purple-600 hover:brightness-110 transition-all shadow-lg disabled:opacity-50 disabled:shadow-none flex items-center justify-center gap-2"
+                className="flex-1 btn-glow py-3 px-4 rounded-xl text-sm font-bold text-white bg-cyan-600 hover:brightness-110 transition-all shadow-lg disabled:opacity-50 disabled:shadow-none flex items-center justify-center gap-2"
               >
                 {saving ? (
                   <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>

@@ -130,8 +130,8 @@ export default function ClassroomSchedulePage() {
   return (
     <div className="space-y-6 animate-in">
       {/* Header Container Premium Blue */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-900/50 via-indigo-900/30 to-gray-900 p-8 border border-blue-800/30 shadow-lg">
-        <div className="absolute -right-10 -top-10 opacity-10 rotate-12">
+      <div className="relative overflow-hidden rounded-2xl card p-8 border border-blue-800/30 shadow-lg">
+        <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
           <Building2 className="w-48 h-48 text-blue-400" />
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -213,7 +213,7 @@ export default function ClassroomSchedulePage() {
                     }}
                     className="p-5 rounded-2xl cursor-pointer transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/10 bg-gray-900 border border-gray-800 hover:border-blue-500/30 group relative overflow-hidden"
                   >
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-white/5 to-transparent rounded-bl-full opacity-50 group-hover:opacity-100 transition-opacity" />
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-white/5 to-transparent rounded-bl-full opacity-50 group-hover:opacity-50 transition-opacity" />
                     
                     <div className="flex items-start justify-between mb-4 relative z-10">
                       <h4 className="font-black text-gray-100 text-lg group-hover:text-blue-400 transition-colors dropdown-title truncate pr-2">{room.name}</h4>
@@ -233,7 +233,7 @@ export default function ClassroomSchedulePage() {
                       <div
                         className={clsx(
                           "h-full transition-all duration-1000 ease-out shadow-inner",
-                          rate > 80 ? 'bg-gradient-to-r from-red-600 to-red-400' : rate > 50 ? 'bg-gradient-to-r from-amber-500 to-amber-400' : 'bg-gradient-to-r from-emerald-500 to-emerald-400'
+                          rate > 80 ? 'bg-cyan-600' : rate > 50 ? 'bg-cyan-600' : 'bg-cyan-600'
                         )}
                         style={{ width: `${Math.min(rate, 100)}%` }}
                       />
@@ -297,7 +297,7 @@ export default function ClassroomSchedulePage() {
             {/* Stats Cards */}
             {selectedClassroom && (
               <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-                <div className="card p-5 rounded-2xl border border-blue-500/20 bg-gradient-to-br from-gray-900 to-blue-900/10">
+                <div className="card p-5 rounded-2xl border border-blue-500/20 bg-cyan-600">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-blue-500/10 border border-blue-500/20 shadow-inner">
                       <BookOpen className="w-6 h-6 text-blue-400" />
@@ -309,7 +309,7 @@ export default function ClassroomSchedulePage() {
                   </div>
                 </div>
 
-                <div className="card p-5 rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-gray-900 to-emerald-900/10">
+                <div className="card p-5 rounded-2xl border border-emerald-500/20 bg-cyan-600">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-emerald-500/10 border border-emerald-500/20 shadow-inner">
                       <CheckCircle className="w-6 h-6 text-emerald-400" />
@@ -321,7 +321,7 @@ export default function ClassroomSchedulePage() {
                   </div>
                 </div>
 
-                <div className="card p-5 rounded-2xl border border-red-500/20 bg-gradient-to-br from-gray-900 to-red-900/10">
+                <div className="card p-5 rounded-2xl border border-red-500/20 bg-cyan-600">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-red-500/10 border border-red-500/20 shadow-inner">
                       <XCircle className="w-6 h-6 text-red-400" />
@@ -333,7 +333,7 @@ export default function ClassroomSchedulePage() {
                   </div>
                 </div>
 
-                <div className="card p-5 rounded-2xl border border-amber-500/20 bg-gradient-to-br from-gray-900 to-amber-900/10">
+                <div className="card p-5 rounded-2xl border border-amber-500/20 bg-cyan-600">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-amber-500/10 border border-amber-500/20 shadow-inner">
                       <Clock className="w-6 h-6 text-amber-400" />

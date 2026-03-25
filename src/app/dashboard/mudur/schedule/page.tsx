@@ -88,8 +88,8 @@ export default function ScheduleReadOnlyPage() {
 
   return (
     <div className="space-y-6 animate-in">
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-cyan-900/50 via-teal-900/30 to-gray-900 p-8 border border-cyan-800/30 shadow-lg">
-        <div className="absolute -right-10 -top-10 opacity-10 rotate-12">
+      <div className="relative overflow-hidden rounded-2xl card p-8 border border-cyan-800/30 shadow-lg">
+        <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
           <CalendarDays className="w-48 h-48 text-cyan-400" />
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -171,7 +171,7 @@ export default function ScheduleReadOnlyPage() {
                       className={clsx(
                         'px-5 py-2.5 rounded-lg text-sm font-bold transition-all flex items-center justify-center min-w-[90px]',
                         selectedYear === y
-                          ? 'bg-gradient-to-br from-cyan-500 to-teal-600 text-white shadow-lg shadow-inner'
+                          ? 'bg-cyan-600 text-white shadow-lg shadow-inner'
                           : 'bg-transparent text-gray-400 hover:text-gray-200 hover:bg-gray-800'
                       )}
                     >

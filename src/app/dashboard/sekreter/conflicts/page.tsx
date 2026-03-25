@@ -330,12 +330,12 @@ export default function ConflictsPage() {
       <div className={clsx(
         "relative overflow-hidden rounded-2xl p-8 border transition-colors duration-1000",
         stats.errors > 0 
-          ? "bg-gradient-to-br from-rose-900/40 via-red-900/20 to-gray-900 border-red-800/30"
+          ? "card border-red-800/30"
           : stats.warnings > 0
-            ? "bg-gradient-to-br from-amber-900/40 via-orange-900/20 to-gray-900 border-amber-800/30"
-            : "bg-gradient-to-br from-emerald-900/40 via-teal-900/20 to-gray-900 border-emerald-800/30"
+            ? "card border-amber-800/30"
+            : "card border-emerald-800/30"
       )}>
-        <div className="absolute top-0 right-0 p-8 opacity-10 rotate-12 pointer-events-none">
+        <div className="absolute top-0 right-0 p-8 opacity-5 rotate-12 pointer-events-none">
           {stats.errors > 0 ? (
             <ShieldAlert className="w-48 h-48 text-red-400" />
           ) : stats.warnings > 0 ? (
@@ -349,9 +349,9 @@ export default function ConflictsPage() {
           <div className="max-w-xl">
             <h1 className={clsx(
               "text-3xl font-bold text-transparent bg-clip-text flex items-center gap-3",
-              stats.errors > 0 ? "bg-gradient-to-r from-red-400 to-rose-400" 
-              : stats.warnings > 0 ? "bg-gradient-to-r from-orange-400 to-amber-400" 
-              : "bg-gradient-to-r from-teal-400 to-emerald-400"
+              stats.errors > 0 ? "bg-cyan-600" 
+              : stats.warnings > 0 ? "bg-cyan-600" 
+              : "bg-cyan-600"
             )}>
               Çakışma ve İhlal Raporu
             </h1>
@@ -366,9 +366,9 @@ export default function ConflictsPage() {
             disabled={loading}
             className={clsx(
               "btn-glow inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 font-semibold text-white transition-all hover:scale-[1.02] disabled:opacity-50 shrink-0",
-              stats.errors > 0 ? "bg-gradient-to-r from-red-600 to-rose-600 hover:shadow-[0_0_20px_rgba(225,29,72,0.4)]"
-              : stats.warnings > 0 ? "bg-gradient-to-r from-amber-600 to-orange-600 hover:shadow-[0_0_20px_rgba(245,158,11,0.4)]"
-              : "bg-gradient-to-r from-teal-600 to-emerald-600 hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]"
+              stats.errors > 0 ? "bg-cyan-600 hover:shadow-[0_0_20px_rgba(225,29,72,0.4)]"
+              : stats.warnings > 0 ? "bg-cyan-600 hover:shadow-[0_0_20px_rgba(245,158,11,0.4)]"
+              : "bg-cyan-600 hover:shadow-[0_0_20px_rgba(16,185,129,0.4)]"
             )}
           >
             <RefreshCw className={clsx("w-5 h-5 flex-shrink-0", loading && "animate-spin")} />

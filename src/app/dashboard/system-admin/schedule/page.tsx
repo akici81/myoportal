@@ -226,8 +226,8 @@ export default function SchedulePage() {
   return (
     <div className="space-y-6 animate-in">
       {/* Header Container Premium Cyan*/}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-cyan-900/50 via-teal-900/30 to-gray-900 p-8 border border-cyan-800/30 shadow-lg">
-        <div className="absolute -right-10 -top-10 opacity-10 rotate-12">
+      <div className="relative overflow-hidden rounded-2xl card p-8 border border-cyan-800/30 shadow-lg">
+        <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
           <CalendarDays className="w-48 h-48 text-cyan-400" />
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -310,7 +310,7 @@ export default function SchedulePage() {
                       className={clsx(
                         'px-5 py-2.5 rounded-lg text-sm font-bold transition-all flex items-center justify-center min-w-[90px]',
                         selectedYear === y
-                          ? 'bg-gradient-to-br from-cyan-500 to-teal-600 text-white shadow-lg shadow-inner'
+                          ? 'bg-cyan-600 text-white shadow-lg shadow-inner'
                           : 'bg-transparent text-gray-400 hover:text-gray-200 hover:bg-gray-800'
                       )}
                     >
@@ -367,7 +367,7 @@ export default function SchedulePage() {
       {showAddModal && addSlot && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in fade-in zoom-in-95 duration-200">
           <div className="card w-full max-w-xl p-0 rounded-2xl border border-gray-700/50 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-            <div className="px-6 py-5 border-b border-cyan-900/30 bg-gradient-to-r from-cyan-950 to-gray-900 flex justify-between items-start">
+            <div className="px-6 py-5 border-b border-cyan-900/30 bg-cyan-600 flex justify-between items-start">
               <div>
                 <h3 className="text-xl font-black text-white flex items-center gap-2 tracking-tight">
                   Derse Görevlendirme
@@ -492,7 +492,7 @@ export default function SchedulePage() {
               <button 
                 onClick={handleSave} 
                 disabled={saving || !form.program_course_id || !form.classroom_id || !form.instructor_id} 
-                className="px-4 py-2.5 rounded-xl text-sm font-bold text-white flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all bg-gradient-to-r from-cyan-600 to-teal-600 hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-4 py-2.5 rounded-xl text-sm font-bold text-white flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all bg-cyan-600 hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {saving ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div> : <CheckCircle className="w-4 h-4" />}
                 {saving ? 'Sisteme İşleniyor...' : 'Ders Saatini Programa Kaydet'}

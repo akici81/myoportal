@@ -96,8 +96,8 @@ export default function ClassroomsPage() {
 
   return (
     <div className="space-y-6 animate-in">
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-900/40 via-teal-900/20 to-gray-900 p-8 border border-emerald-800/30">
-        <div className="absolute -right-10 -top-10 opacity-10 rotate-12">
+      <div className="relative overflow-hidden rounded-2xl card p-8 border border-emerald-800/30">
+        <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
           <Building2 className="w-48 h-48 text-emerald-400" />
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -262,7 +262,7 @@ export default function ClassroomsPage() {
                               {c.is_active ? 'Aktif' : 'Pasif'}
                             </span>
                             
-                            <div className="flex gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <div className="flex gap-1.5 opacity-0 group-hover:opacity-50 transition-opacity">
                               <button onClick={() => setEditItem(c)} className="p-1.5 rounded-md hover:bg-gray-800 text-gray-400 hover:text-white transition-colors" title="Düzenle">
                                 <Edit className="w-3.5 h-3.5" />
                               </button>
@@ -288,7 +288,7 @@ export default function ClassroomsPage() {
       {editItem && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in">
           <div className="card w-full max-w-lg p-0 rounded-2xl border border-gray-700/50 shadow-2xl overflow-hidden">
-            <div className={`px-6 py-4 border-b border-gray-800/80 flex justify-between items-center ${editItem.id ? 'bg-gradient-to-r from-blue-900/40 to-indigo-900/40' : 'bg-gradient-to-r from-emerald-900/40 to-teal-900/40'}`}>
+            <div className={`px-6 py-4 border-b border-gray-800/80 flex justify-between items-center ${editItem.id ? 'bg-cyan-600' : 'bg-cyan-600'}`}>
               <h3 className="text-lg font-bold text-white flex items-center gap-2">
                 {editItem.id ? <Edit className="w-5 h-5 text-blue-400" /> : <Plus className="w-5 h-5 text-emerald-400" />}
                 {editItem.id ? 'Derslik Düzenle' : 'Yeni Derslik Ekle'}
@@ -367,7 +367,7 @@ export default function ClassroomsPage() {
 
               <div className="pt-4 flex gap-3 border-t border-gray-800/80 mt-6">
                 <button type="button" onClick={() => setEditItem(null)} className="px-4 py-2.5 rounded-lg font-medium text-sm text-gray-400 bg-gray-800/50 hover:bg-gray-700 hover:text-white transition flex-1">İptal Et</button>
-                <button type="submit" disabled={saving} className={`px-4 py-2.5 rounded-lg text-sm font-bold text-white flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all ${editItem.id ? 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:brightness-110' : 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:brightness-110'}`}>
+                <button type="submit" disabled={saving} className={`px-4 py-2.5 rounded-lg text-sm font-bold text-white flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all ${editItem.id ? 'bg-cyan-600 hover:brightness-110' : 'bg-cyan-600 hover:brightness-110'}`}>
                   {saving ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div> : <Save className="w-4 h-4" /> }
                   {saving ? 'Kaydediliyor...' : (editItem.id ? 'Değişiklikleri Kaydet' : 'Dersliği Oluştur')}
                 </button>
