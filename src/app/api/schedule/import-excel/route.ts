@@ -166,7 +166,7 @@ export async function POST(request: Request) {
         // Find instructor (use from program_course or match by name)
         let instructorId = programCourse.instructor_id
         if (!instructorId && instructorName) {
-          instructorId = instructorMap.get(instructorName)
+          instructorId = instructorMap.get(instructorName) || null
         }
         if (!instructorId) {
           skipped.push({ row: i + 3, day: DAYS_MAP[day], code: courseCode, reason: 'Eğitmen bulunamadı' })
@@ -176,7 +176,7 @@ export async function POST(request: Request) {
         // Find classroom
         let classroomId: string | null = null
         if (classroomName) {
-          classroomId = classroomMap.get(classroomName)
+          classroomId = classroomMap.get(classroomName) || null
         }
         if (!classroomId) {
           // Try to find a default classroom
