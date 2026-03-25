@@ -8,6 +8,9 @@ export default function NewLeaveRequestPage() {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [leaveType, setLeaveType] = useState('annual')
+
+  const isHourly = leaveType === 'hourly'
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -15,10 +18,30 @@ export default function NewLeaveRequestPage() {
     setError(null)
 
     const formData = new FormData(e.currentTarget)
+
+    let start_date = formData.get('start_date') as string
+    let end_date = formData.get('end_date') as string
+
+    // Saatlik izin için tarih + saat birleştir
+    if (isHourly) {
+      const date = formData.get('hourly_date') as string
+      const start_time = formData.get('start_time') as string
+      const end_time = formData.get('end_time') as string
+
+      if (!date || !start_time || !end_time) {
+        setError('Lütfen tarih ve saat aralığını giriniz.')
+        setLoading(false)
+        return
+      }
+
+      start_date = `${date}T${start_time}`
+      end_date = `${date}T${end_time}`
+    }
+
     const data = {
       leave_type: formData.get('leave_type'),
-      start_date: formData.get('start_date'),
-      end_date: formData.get('end_date'),
+      start_date,
+      end_date,
       reason: formData.get('reason')
     }
 
@@ -67,40 +90,83 @@ export default function NewLeaveRequestPage() {
           </div>
         )}
 
-        <div className="grid gap-6 sm:grid-cols-2">
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-300">Başlangıç Tarihi</label>
-            <input 
-              type="date" 
-              name="start_date" 
-              required
-              className="w-full rounded-xl border border-white/10 bg-gray-900/50 px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20" 
-            />
-          </div>
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-300">Bitiş Tarihi</label>
-            <input 
-              type="date" 
-              name="end_date" 
-              required
-              className="w-full rounded-xl border border-white/10 bg-gray-900/50 px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20" 
-            />
-          </div>
-        </div>
-
         <div className="space-y-2">
           <label className="text-sm font-medium text-gray-300">İzin Türü</label>
-          <select 
-            name="leave_type" 
+          <select
+            name="leave_type"
+            value={leaveType}
+            onChange={(e) => setLeaveType(e.target.value)}
             required
             className="w-full rounded-xl border border-white/10 bg-gray-900/50 px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
           >
             <option value="annual">Yıllık İzin</option>
             <option value="sick">Hastalık / Sağlık Raporu</option>
             <option value="excuse">Mazeret İzni</option>
+            <option value="hourly">Saatlik İzin</option>
             <option value="conference">Akademik Konferans / Sempozyum</option>
           </select>
         </div>
+
+        {isHourly ? (
+          /* Saatlik İzin Formu */
+          <div className="grid gap-6 sm:grid-cols-3">
+            <div className="space-y-2 sm:col-span-3">
+              <label className="text-sm font-medium text-gray-300">Tarih</label>
+              <input
+                type="date"
+                name="hourly_date"
+                required
+                className="w-full rounded-xl border border-white/10 bg-gray-900/50 px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-300">Başlangıç Saati</label>
+              <input
+                type="time"
+                name="start_time"
+                required
+                className="w-full rounded-xl border border-white/10 bg-gray-900/50 px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-300">Bitiş Saati</label>
+              <input
+                type="time"
+                name="end_time"
+                required
+                className="w-full rounded-xl border border-white/10 bg-gray-900/50 px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-400">Süre</label>
+              <div className="text-sm text-gray-500 px-4 py-2.5">
+                Başlangıç ve bitiş saatini seçin
+              </div>
+            </div>
+          </div>
+        ) : (
+          /* Günlük İzin Formu */
+          <div className="grid gap-6 sm:grid-cols-2">
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-300">Başlangıç Tarihi</label>
+              <input
+                type="date"
+                name="start_date"
+                required
+                className="w-full rounded-xl border border-white/10 bg-gray-900/50 px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-gray-300">Bitiş Tarihi</label>
+              <input
+                type="date"
+                name="end_date"
+                required
+                className="w-full rounded-xl border border-white/10 bg-gray-900/50 px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
+              />
+            </div>
+          </div>
+        )}
 
         <div className="space-y-2">
           <label className="text-sm font-medium text-gray-300">Açıklama / Mazeret</label>
