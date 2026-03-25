@@ -78,7 +78,7 @@ export default function AdminCoursesPage() {
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-fuchsia-400">
+            <h1 className="text-3xl font-bold text-white">
               Genel Ders Havuzu
             </h1>
             <p className="mt-2 text-gray-400 max-w-xl">
@@ -97,7 +97,7 @@ export default function AdminCoursesPage() {
       </div>
 
       {/* Search */}
-      <div className="glass-card p-4 rounded-xl flex flex-col sm:flex-row gap-4 items-center justify-between border border-gray-800/60">
+      <div className="card p-4 rounded-xl flex flex-col sm:flex-row gap-4 items-center justify-between border border-gray-800/60">
         <div className="relative w-full sm:w-80">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
           <input
@@ -111,7 +111,7 @@ export default function AdminCoursesPage() {
       </div>
 
       {/* Table */}
-      <div className="overflow-hidden rounded-2xl border border-white/5 bg-gray-800/30 backdrop-blur-xl">
+      <div className="overflow-hidden rounded-2xl border border-white/5 bg-gray-800/30">
         <table className="w-full text-left text-sm text-gray-300">
           <thead className="bg-gray-900/50 text-xs uppercase text-gray-500">
             <tr>
@@ -153,8 +153,8 @@ export default function AdminCoursesPage() {
 
       {/* Modal */}
       {editItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in">
-          <div className="glass-card w-full max-w-lg p-6 rounded-2xl border border-gray-700/50 shadow-2xl relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in">
+          <div className="card w-full max-w-lg p-6 rounded-2xl border border-gray-700/50 shadow-2xl relative">
             <button onClick={() => setEditItem(null)} className="absolute right-4 top-4 p-2 text-gray-400 hover:text-white rounded-lg hover:bg-gray-800">
               <X className="w-5 h-5" />
             </button>

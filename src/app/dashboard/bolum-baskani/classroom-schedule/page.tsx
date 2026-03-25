@@ -136,7 +136,7 @@ export default function ClassroomSchedulePage() {
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400 flex items-center gap-3 tracking-tight">
+            <h1 className="text-3xl font-black text-white flex items-center gap-3 tracking-tight">
               Derslik İzleme Merkezi
             </h1>
             <p className="mt-2 text-gray-400 max-w-2xl font-medium">
@@ -179,13 +179,13 @@ export default function ClassroomSchedulePage() {
 
       <div className="max-w-screen-2xl mx-auto space-y-6">
         {loading ? (
-           <div className="glass-card flex flex-col items-center justify-center py-32 text-center rounded-2xl border border-gray-800/60">
+           <div className="card flex flex-col items-center justify-center py-32 text-center rounded-2xl border border-gray-800/60">
              <div className="w-12 h-12 rounded-full border-4 border-blue-800 border-t-blue-500 animate-spin mb-4" />
              <h3 className="text-xl font-bold text-white tracking-tight">Derslik Verileri Yükleniyor</h3>
            </div>
         ) : viewMode === 'overview' ? (
           /* Overview - All Classrooms */
-          <div className="glass-card overflow-hidden rounded-2xl border border-gray-800/60 shadow-xl">
+          <div className="card overflow-hidden rounded-2xl border border-gray-800/60 shadow-xl">
             <div className="px-6 py-5 border-b border-gray-800/60 bg-gray-900/30 flex items-center justify-between">
               <div>
                 <h3 className="text-xl font-black text-white flex items-center gap-2">
@@ -259,7 +259,7 @@ export default function ClassroomSchedulePage() {
           /* Single Classroom View */
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-6">
             {/* Classroom Selection Glass Card */}
-            <div className="glass-card p-6 rounded-2xl border border-gray-800/60 shadow-xl flex items-center justify-between gap-6 flex-wrap">
+            <div className="card p-6 rounded-2xl border border-gray-800/60 shadow-xl flex items-center justify-between gap-6 flex-wrap">
               <div className="flex-1 min-w-[300px]">
                 <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block pl-1">İncelenen Derslik</label>
                 <select
@@ -297,7 +297,7 @@ export default function ClassroomSchedulePage() {
             {/* Stats Cards */}
             {selectedClassroom && (
               <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-                <div className="glass-card p-5 rounded-2xl border border-blue-500/20 bg-gradient-to-br from-gray-900 to-blue-900/10">
+                <div className="card p-5 rounded-2xl border border-blue-500/20 bg-gradient-to-br from-gray-900 to-blue-900/10">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-blue-500/10 border border-blue-500/20 shadow-inner">
                       <BookOpen className="w-6 h-6 text-blue-400" />
@@ -309,7 +309,7 @@ export default function ClassroomSchedulePage() {
                   </div>
                 </div>
 
-                <div className="glass-card p-5 rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-gray-900 to-emerald-900/10">
+                <div className="card p-5 rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-gray-900 to-emerald-900/10">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-emerald-500/10 border border-emerald-500/20 shadow-inner">
                       <CheckCircle className="w-6 h-6 text-emerald-400" />
@@ -321,7 +321,7 @@ export default function ClassroomSchedulePage() {
                   </div>
                 </div>
 
-                <div className="glass-card p-5 rounded-2xl border border-red-500/20 bg-gradient-to-br from-gray-900 to-red-900/10">
+                <div className="card p-5 rounded-2xl border border-red-500/20 bg-gradient-to-br from-gray-900 to-red-900/10">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-red-500/10 border border-red-500/20 shadow-inner">
                       <XCircle className="w-6 h-6 text-red-400" />
@@ -333,7 +333,7 @@ export default function ClassroomSchedulePage() {
                   </div>
                 </div>
 
-                <div className="glass-card p-5 rounded-2xl border border-amber-500/20 bg-gradient-to-br from-gray-900 to-amber-900/10">
+                <div className="card p-5 rounded-2xl border border-amber-500/20 bg-gradient-to-br from-gray-900 to-amber-900/10">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-amber-500/10 border border-amber-500/20 shadow-inner">
                       <Clock className="w-6 h-6 text-amber-400" />
@@ -349,7 +349,7 @@ export default function ClassroomSchedulePage() {
 
             {/* Schedule Grid Table */}
             {selectedClassroom ? (
-              <div className="glass-card overflow-hidden rounded-2xl border border-gray-800/60 shadow-2xl">
+              <div className="card overflow-hidden rounded-2xl border border-gray-800/60 shadow-2xl">
                 <div className="overflow-x-auto w-full custom-scrollbar">
                   <table className="w-full text-sm border-collapse min-w-[900px]">
                     <thead>

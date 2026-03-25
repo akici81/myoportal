@@ -63,7 +63,7 @@ export default async function InstructorCommissionsPage() {
         
         <Link 
           href="/dashboard/instructor/commissions/meeting-request"
-          className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-2 text-sm font-medium text-white shadow-lg shadow-cyan-500/20 transition-all hover:from-cyan-400 hover:to-blue-400 hover:shadow-cyan-500/30 active:scale-95"
+          className="inline-flex items-center justify-center rounded-xl bg-cyan-600 px-4 py-2 text-sm font-medium text-white shadow-lg transition-all hover:brightness-110 hover:shadow-cyan-500/30 active:scale-95"
         >
           <CalendarPlus className="mr-2 h-4 w-4" /> Toplantı İsteği
         </Link>
@@ -71,14 +71,14 @@ export default async function InstructorCommissionsPage() {
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {!myCommissions || myCommissions.length === 0 ? (
-          <div className="col-span-full rounded-2xl border border-white/5 bg-gray-800/30 p-8 text-center backdrop-blur-xl">
+          <div className="col-span-full rounded-2xl border border-white/5 bg-gray-800/30 p-8 text-center">
             <Users className="mx-auto h-12 w-12 text-gray-500/50 mb-3" />
             <h3 className="text-lg font-medium text-white">Aktif Görev Yok</h3>
             <p className="mt-1 text-sm text-gray-400">Şu anda atandığınız aktif bir komisyon görevi bulunmamaktadır.</p>
           </div>
         ) : (
           myCommissions.map((member: any) => (
-            <div key={member.id} className="relative rounded-2xl border border-white/5 bg-gray-800/30 p-6 backdrop-blur-xl transition-all hover:border-cyan-500/30">
+            <div key={member.id} className="relative rounded-2xl border border-white/5 bg-gray-800/30 p-6 transition-all hover:border-cyan-500/30">
               <div className="flex items-start justify-between gap-4">
                 <div className="rounded-xl bg-gray-900/50 p-3">
                   <Target className="h-6 w-6 text-cyan-400" />

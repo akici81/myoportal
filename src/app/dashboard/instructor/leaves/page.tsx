@@ -74,13 +74,13 @@ export default async function InstructorLeavesPage() {
         
         <Link 
           href="/dashboard/instructor/leaves/new"
-          className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-2 text-sm font-medium text-white shadow-lg shadow-cyan-500/20 transition-all hover:from-cyan-400 hover:to-blue-400 hover:shadow-cyan-500/30 active:scale-95"
+          className="inline-flex items-center justify-center rounded-xl bg-cyan-600 px-4 py-2 text-sm font-medium text-white shadow-lg transition-all hover:brightness-110 hover:shadow-cyan-500/30 active:scale-95"
         >
           <Plus className="mr-2 h-4 w-4" /> Yeni İzin Talebi
         </Link>
       </div>
 
-      <div className="rounded-2xl border border-white/5 bg-gray-800/30 overflow-hidden backdrop-blur-xl">
+      <div className="rounded-2xl border border-white/5 bg-gray-800/30 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm text-gray-300">
             <thead className="bg-gray-900/50 text-xs uppercase text-gray-500">

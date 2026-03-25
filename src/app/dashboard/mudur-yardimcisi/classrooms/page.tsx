@@ -25,7 +25,7 @@ export default async function MYClassroomsPage() {
           <Building2 className="w-48 h-48 text-teal-400" />
         </div>
         <div className="relative z-10">
-          <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400">
+          <h1 className="text-3xl font-bold text-white">
             Derslik Envanteri
           </h1>
           <p className="mt-2 text-gray-400">MYO bünyesindeki tüm fiziksel ve sanal derslikler</p>
@@ -34,7 +34,7 @@ export default async function MYClassroomsPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {classrooms?.map(c => (
-          <div key={c.id} className="glass-card p-5 rounded-xl border border-gray-700/50">
+          <div key={c.id} className="card p-5 rounded-xl border border-gray-700/50">
             <div className="flex items-center gap-3 mb-3">
               <div className="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center text-teal-400 border border-teal-500/20">
                 <Building2 className="w-5 h-5" />

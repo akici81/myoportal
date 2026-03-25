@@ -49,12 +49,12 @@ export default function MYUsersPage() {
       <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-red-900/40 via-orange-900/20 to-gray-900 p-8 border border-red-800/30">
         <div className="absolute -right-10 -top-10 opacity-10 rotate-12"><UserCog className="w-48 h-48 text-red-400" /></div>
         <div className="relative z-10">
-          <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400">Kullanıcı Yönetimi</h1>
+          <h1 className="text-3xl font-bold text-white">Kullanıcı Yönetimi</h1>
           <p className="mt-2 text-gray-400">Sistemdeki tüm kullanıcılar ve rol atamaları</p>
         </div>
       </div>
 
-      <div className="glass-card p-4 rounded-xl flex flex-col sm:flex-row gap-4 items-center justify-between border border-gray-800/60">
+      <div className="card p-4 rounded-xl flex flex-col sm:flex-row gap-4 items-center justify-between border border-gray-800/60">
         <div className="relative w-full sm:w-80">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
           <input className="w-full bg-gray-900/50 border border-gray-700/50 rounded-lg pl-10 pr-4 py-2.5 text-sm text-gray-200 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500/30 font-medium" placeholder="Ad veya e-posta ara..." value={search} onChange={e => setSearch(e.target.value)} />
@@ -62,7 +62,7 @@ export default function MYUsersPage() {
         <div className="text-gray-400 text-sm font-medium">Toplam <span className="text-white">{filtered.length}</span> Kullanıcı</div>
       </div>
 
-      <div className="overflow-hidden rounded-2xl border border-white/5 bg-gray-800/30 backdrop-blur-xl">
+      <div className="overflow-hidden rounded-2xl border border-white/5 bg-gray-800/30">
         <table className="w-full text-left text-sm text-gray-300">
           <thead className="bg-gray-900/50 text-xs uppercase text-gray-500">
             <tr>
@@ -101,8 +101,8 @@ export default function MYUsersPage() {
       </div>
 
       {editItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in">
-          <div className="glass-card w-full max-w-sm p-6 rounded-2xl border border-gray-700/50 shadow-2xl relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in">
+          <div className="card w-full max-w-sm p-6 rounded-2xl border border-gray-700/50 shadow-2xl relative">
             <button onClick={() => setEditItem(null)} className="absolute right-4 top-4 p-2 text-gray-400 hover:text-white rounded-lg hover:bg-gray-800"><X className="w-5 h-5" /></button>
             <h3 className="text-lg font-bold text-white mb-1 flex items-center gap-2"><Shield className="w-5 h-5 text-red-400" /> Rol Değiştir</h3>
             <p className="text-sm text-gray-400 mb-5">{editItem.full_name}</p>

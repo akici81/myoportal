@@ -118,13 +118,13 @@ export default function UsersPage() {
   return (
     <div className="space-y-6 animate-in">
       {/* Premium Header */}
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-cyan-900/40 via-blue-900/20 to-gray-900 p-8 border border-cyan-800/30">
+      <div className="relative overflow-hidden rounded-2xl card p-8 border border-cyan-800/30">
         <div className="absolute -right-10 -top-10 opacity-10 rotate-12">
           <Users className="w-48 h-48 text-cyan-400" />
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
+            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-cyan-600">
               Kullanıcı Yönetimi
             </h1>
             <p className="mt-2 text-gray-400 max-w-xl">
@@ -176,7 +176,7 @@ export default function UsersPage() {
       </div>
 
       {/* Main Table Container */}
-      <div className="glass-card overflow-hidden border border-gray-800/60 rounded-xl">
+      <div className="card overflow-hidden border border-gray-800/60 rounded-xl">
         {/* Toolbar */}
         <div className="p-4 border-b border-gray-800/60 bg-gray-900/50 flex items-center justify-between">
           <div className="relative w-full max-w-sm">
@@ -292,13 +292,13 @@ export default function UsersPage() {
 
       {/* Yeni Kullanıcı Modal */}
       {showNew && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in">
-          <div className="glass-card w-full max-w-lg p-6 rounded-2xl border border-gray-700/50 shadow-2xl relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in">
+          <div className="card w-full max-w-lg p-6 rounded-2xl border border-gray-700/50 shadow-2xl relative">
             <button onClick={() => setShowNew(false)} className="absolute right-4 top-4 p-2 text-gray-400 hover:text-white rounded-lg hover:bg-gray-800 transition">
               <X className="w-5 h-5" />
             </button>
             <h3 className="text-xl font-bold text-white mb-1 flex items-center gap-2">
-              <div className="p-2 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-lg">
+              <div className="p-2 bg-cyan-600 rounded-lg">
                 <Plus className="w-5 h-5 text-white" />
               </div>
               Yeni Kullanıcı
@@ -362,13 +362,13 @@ export default function UsersPage() {
 
       {/* Edit Modal */}
       {editUser && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in">
-          <div className="glass-card w-full max-w-lg p-6 rounded-2xl border border-gray-700/50 shadow-2xl relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in">
+          <div className="card w-full max-w-lg p-6 rounded-2xl border border-gray-700/50 shadow-2xl relative">
             <button onClick={() => setEditUser(null)} className="absolute right-4 top-4 p-2 text-gray-400 hover:text-white rounded-lg hover:bg-gray-800 transition">
               <X className="w-5 h-5" />
             </button>
             <h3 className="text-xl font-bold text-white mb-1 flex items-center gap-2">
-              <div className="p-2 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-lg">
+              <div className="p-2 bg-purple-600 rounded-lg">
                 <Shield className="w-5 h-5 text-white" />
               </div>
               Kullanıcıyı Düzenle
@@ -429,7 +429,7 @@ export default function UsersPage() {
               
               <div className="pt-4 flex gap-3">
                 <button type="button" onClick={() => setEditUser(null)} className="px-4 py-2.5 rounded-lg font-medium text-sm text-gray-400 bg-gray-800 hover:bg-gray-700 hover:text-white transition flex-1">İptal</button>
-                <button type="submit" disabled={saving} className="px-4 py-2.5 rounded-lg text-sm font-medium text-white flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 shadow-lg shadow-purple-500/20 transition-all">
+                <button type="submit" disabled={saving} className="px-4 py-2.5 rounded-lg text-sm font-medium text-white flex-1 flex items-center justify-center gap-2 bg-purple-600 hover:brightness-110 shadow-lg transition-all">
                   {saving ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div> : <Save className="w-4 h-4" /> }
                   {saving ? 'Kaydediliyor...' : 'Değişiklikleri Kaydet'}
                 </button>

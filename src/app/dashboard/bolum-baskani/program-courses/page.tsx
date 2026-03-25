@@ -342,7 +342,7 @@ export default function ProgramCoursesPage() {
 
       {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in fade-in">
           <div className="card w-full max-w-lg p-6">
             <h3 className="text-xl font-black text-white mb-4">
               {editingId ? 'Dersi Düzenle' : 'Yeni Ders Ekle'}

@@ -217,7 +217,7 @@ export default function StudentEnrollmentsPage() {
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-pink-400 flex items-center gap-3">
+            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
               Öğrenci Sayıları
             </h1>
             <p className="mt-2 text-gray-400 max-w-xl">
@@ -243,7 +243,7 @@ export default function StudentEnrollmentsPage() {
 
       {/* Info Banner & Settings */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        <div className="lg:col-span-2 glass-card rounded-xl p-5 border border-rose-500/20 bg-rose-500/5 backdrop-blur-sm relative overflow-hidden group">
+        <div className="lg:col-span-2 card rounded-xl p-5 border border-rose-500/20 bg-rose-500/5 relative overflow-hidden group">
           <div className="absolute -left-10 -top-10 bg-rose-500/10 w-32 h-32 rounded-full blur-2xl group-hover:bg-rose-500/20 transition-all duration-500"></div>
           <div className="flex items-start gap-4 relative z-10">
             <div className="w-10 h-10 rounded-full bg-rose-500/20 flex items-center justify-center shrink-0 border border-rose-500/30">
@@ -259,7 +259,7 @@ export default function StudentEnrollmentsPage() {
           </div>
         </div>
 
-        <div className="glass-card border border-gray-700/60 rounded-xl p-5 flex flex-col justify-center gap-4">
+        <div className="card border border-gray-700/60 rounded-xl p-5 flex flex-col justify-center gap-4">
           <div className="flex items-center gap-3">
              <div className="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center border border-gray-700">
                <Calendar className="w-4 h-4 text-rose-400" />
@@ -306,7 +306,7 @@ export default function StudentEnrollmentsPage() {
           const total = count1 + count2
 
           return (
-            <div key={program.id} className="glass-card group hover:-translate-y-1 hover:shadow-2xl hover:shadow-rose-900/20 transition-all duration-300 border border-gray-800/60 hover:border-rose-500/30 rounded-2xl overflow-hidden flex flex-col relative">
+            <div key={program.id} className="card group hover:-translate-y-1 hover:shadow-2xl hover:shadow-rose-900/20 transition-all duration-300 border border-gray-800/60 hover:border-rose-500/30 rounded-2xl overflow-hidden flex flex-col relative">
               
               {/* Top Gradient Ribbon */}
               <div className="bg-gradient-to-r from-rose-500 to-pink-500 h-1.5 w-full opacity-80 group-hover:opacity-100 transition-opacity"></div>
@@ -392,7 +392,7 @@ export default function StudentEnrollmentsPage() {
       </div>
 
       {programs.length === 0 && !loading && (
-        <div className="glass-card border border-gray-800/60 rounded-2xl py-24 px-6 text-center flex flex-col items-center">
+        <div className="card border border-gray-800/60 rounded-2xl py-24 px-6 text-center flex flex-col items-center">
           <div className="w-20 h-20 bg-gray-800/60 rounded-full flex items-center justify-center mb-6 shadow-inner ring-1 ring-white/5">
             <GraduationCap className="w-10 h-10 text-gray-500" />
           </div>
@@ -406,7 +406,7 @@ export default function StudentEnrollmentsPage() {
       {/* Floating Action Button (Sticky Bottom) - modern implementation */}
       {totalChanges > 0 && (
         <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 animate-in fade-in slide-in-from-bottom flex justify-center w-full max-w-md pointer-events-none">
-          <div className="glass-card bg-gray-900/95 border border-rose-500/30 rounded-full p-2 pr-6 shadow-2xl flex items-center gap-4 pointer-events-auto backdrop-blur-md">
+          <div className="card bg-gray-900/95 border border-rose-500/30 rounded-full p-2 pr-6 shadow-2xl flex items-center gap-4 pointer-events-auto">
             <div className="w-10 h-10 rounded-full bg-rose-500/20 flex items-center justify-center border border-rose-500/30 shadow-[0_0_15px_rgba(225,29,72,0.3)]">
               <span className="font-bold text-rose-400">{totalChanges}</span>
             </div>
@@ -417,7 +417,7 @@ export default function StudentEnrollmentsPage() {
             <button
               onClick={saveChanges}
               disabled={saving}
-              className="ml-auto btn-glow bg-gradient-to-r from-rose-600 to-pink-600 py-2 px-5 rounded-full text-xs font-bold text-white shadow-lg flex items-center gap-2 hover:from-rose-500 hover:to-pink-500 disabled:opacity-50"
+              className="ml-auto btn-glow bg-gradient-to-r from-rose-600 to-pink-600 py-2 px-5 rounded-full text-xs font-bold text-white shadow-lg flex items-center gap-2 hover:brightness-110 disabled:opacity-50"
             >
               <Save className="w-3.5 h-3.5" />
               {saving ? 'Kayıt...' : 'Uygula'}

@@ -68,7 +68,7 @@ export default function MudurYardimcisiDashboard() {
           <KeyRound className="w-48 h-48 text-purple-400" />
         </div>
         <div className="relative z-10">
-          <h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-400 flex items-center gap-3 tracking-tight">
+          <h1 className="text-3xl font-black text-white flex items-center gap-3 tracking-tight">
             Müdür Yardımcısı Paneli
           </h1>
           <p className="mt-2 text-gray-400 max-w-xl font-medium">

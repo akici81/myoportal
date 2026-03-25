@@ -141,7 +141,7 @@ export default function InstructorsPage() {
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-violet-400 flex items-center gap-3">
+            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
               Akademik Personel
             </h1>
             <p className="mt-2 text-gray-400 max-w-xl">
@@ -160,7 +160,7 @@ export default function InstructorsPage() {
       </div>
 
       {/* Toolbar */}
-      <div className="glass-card p-4 rounded-xl flex flex-col md:flex-row gap-4 items-center justify-between border border-gray-800/60">
+      <div className="card p-4 rounded-xl flex flex-col md:flex-row gap-4 items-center justify-between border border-gray-800/60">
         <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
           <div className="relative w-full sm:w-72">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-indigo-600/50" />
@@ -202,7 +202,7 @@ export default function InstructorsPage() {
           <p className="text-gray-500 font-medium">Akademik kadro yükleniyor...</p>
         </div>
       ) : filtered.length === 0 ? (
-        <div className="glass-card py-20 text-center rounded-xl border border-gray-800/60">
+        <div className="card py-20 text-center rounded-xl border border-gray-800/60">
           <div className="w-16 h-16 bg-gray-800/50 rounded-full flex items-center justify-center mx-auto mb-4">
             <UserCircle className="w-8 h-8 text-gray-500" />
           </div>
@@ -247,7 +247,7 @@ export default function InstructorsPage() {
                       <div className="p-5 flex-1 flex flex-col relative overflow-hidden">
                         {/* Status absolute badge */}
                         <div className="absolute right-4 top-4">
-                          <div className={`w-2 h-2 rounded-full shadow-md ${i.is_active ? 'bg-emerald-500 shadow-emerald-500/50' : 'bg-red-500 shadow-red-500/50'}`}></div>
+                          <div className={`w-2 h-2 rounded-full shadow-md ${i.is_active ? 'bg-emerald-500' : 'bg-red-500'}`}></div>
                         </div>
 
                         {/* User Avatar & Identity */}
@@ -269,7 +269,7 @@ export default function InstructorsPage() {
                         </div>
 
                         {/* Contact Info */}
-                        <div className="space-y-2.5 mt-2 bg-gray-900/40 rounded-xl p-3 border border-gray-800/40 backdrop-blur-sm">
+                        <div className="space-y-2.5 mt-2 bg-gray-900/40 rounded-xl p-3 border border-gray-800/40">
                           <div className="flex items-center gap-2.5 text-xs text-gray-400">
                             <Mail className="w-3.5 h-3.5 text-gray-500 shrink-0" />
                             <span className="truncate group-hover:text-gray-300 transition-colors">{i.email || <span className="text-gray-600 italic">E-posta yok</span>}</span>
@@ -306,8 +306,8 @@ export default function InstructorsPage() {
 
       {/* Edit/Add Modal */}
       {editItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in">
-          <div className="glass-card w-full max-w-lg p-0 rounded-2xl border border-gray-700/50 shadow-2xl overflow-hidden">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in">
+          <div className="card w-full max-w-lg p-0 rounded-2xl border border-gray-700/50 shadow-2xl overflow-hidden">
             {/* Header */}
             <div className={`px-6 py-5 border-b border-gray-800/80 flex justify-between items-center ${editItem.id ? 'bg-gradient-to-r from-indigo-900/50 to-purple-900/50' : 'bg-gradient-to-r from-violet-900/50 to-indigo-900/50'}`}>
               <h3 className="text-lg font-bold text-white flex items-center gap-2.5">
@@ -413,7 +413,7 @@ export default function InstructorsPage() {
                 <button type="button" onClick={() => setEditItem(null)} className="px-4 py-2.5 rounded-lg font-medium text-sm text-gray-400 bg-gray-800/50 hover:bg-gray-700 hover:text-white transition flex-1">
                   Vazgeç
                 </button>
-                <button type="submit" disabled={saving} className={`px-4 py-2.5 rounded-lg text-sm font-bold text-white flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all ${editItem.id ? 'bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 shadow-indigo-500/20' : 'bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 shadow-violet-500/20'}`}>
+                <button type="submit" disabled={saving} className={`px-4 py-2.5 rounded-lg text-sm font-bold text-white flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all ${editItem.id ? 'bg-gradient-to-r from-indigo-600 to-violet-600 hover:brightness-110' : 'bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:brightness-110'}`}>
                   {saving ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div> : <Save className="w-4 h-4" /> }
                   {saving ? 'Kayıt Yapılıyor...' : (editItem.id ? 'Değişiklikleri Kaydet' : 'Personeli Sisteme Ekle')}
                 </button>

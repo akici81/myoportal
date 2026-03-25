@@ -26,7 +26,7 @@ export default async function MYDepartmentsPage() {
           <GraduationCap className="w-48 h-48 text-rose-400" />
         </div>
         <div className="relative z-10">
-          <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-pink-400">
+          <h1 className="text-3xl font-bold text-white">
             Akademik Bölümler
           </h1>
           <p className="mt-2 text-gray-400">MYO bünyesindeki tüm bölümler, bölüm başkanları ve program dağılımları</p>
@@ -37,7 +37,7 @@ export default async function MYDepartmentsPage() {
         {departments?.map(d => {
           const deptProgs = programs?.filter(p => p.department_id === d.id) || []
           return (
-            <div key={d.id} className="glass-card p-5 rounded-xl border border-gray-700/50 flex flex-col">
+            <div key={d.id} className="card p-5 rounded-xl border border-gray-700/50 flex flex-col">
               <div className="flex items-start gap-4 mb-4">
                 <div className="w-12 h-12 rounded-xl bg-rose-500/10 text-rose-400 font-bold text-lg flex items-center justify-center border border-rose-500/20 flex-shrink-0">
                   {d.short_code}

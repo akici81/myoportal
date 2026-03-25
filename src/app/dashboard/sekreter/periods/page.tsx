@@ -81,7 +81,7 @@ export default function PeriodsPage() {
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-400 flex items-center gap-3">
+            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
               Akademik Dönemler
             </h1>
             <p className="mt-2 text-gray-400 max-w-xl">
@@ -94,7 +94,7 @@ export default function PeriodsPage() {
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
         {/* Left Side: Create Form */}
         <div className="xl:col-span-1 space-y-6">
-          <div className="glass-card rounded-2xl border border-teal-500/20 p-6 relative overflow-hidden group">
+          <div className="card rounded-2xl border border-teal-500/20 p-6 relative overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-br from-teal-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             
             <div className="relative z-10">
@@ -148,7 +148,7 @@ export default function PeriodsPage() {
                   <button 
                     type="submit" 
                     disabled={saving} 
-                    className="w-full btn-glow bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-500 hover:to-emerald-500 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_15px_rgba(20,184,166,0.3)]"
+                    className="w-full btn-glow bg-gradient-to-r from-teal-600 to-emerald-600 hover:brightness-110 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_15px_rgba(20,184,166,0.3)]"
                   >
                     {saving ? (
                       <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
@@ -164,7 +164,7 @@ export default function PeriodsPage() {
             </div>
           </div>
 
-          <div className="glass-card rounded-2xl border border-gray-800/60 p-5 bg-gray-900/40">
+          <div className="card rounded-2xl border border-gray-800/60 p-5 bg-gray-900/40">
             <h4 className="text-sm font-bold text-gray-300 flex items-center gap-2 mb-2">
               <Settings className="w-4 h-4 text-gray-500" /> Uyarılar & Bilgilendirme
             </h4>
@@ -178,7 +178,7 @@ export default function PeriodsPage() {
 
         {/* Right Side: Periods List */}
         <div className="xl:col-span-2">
-          <div className="glass-card rounded-2xl border border-gray-800/60 overflow-hidden h-full flex flex-col">
+          <div className="card rounded-2xl border border-gray-800/60 overflow-hidden h-full flex flex-col">
             <div className="px-6 py-5 border-b border-gray-800/60 bg-gray-900/60 flex items-center justify-between">
               <h3 className="font-bold text-white text-lg flex items-center gap-2">
                 Tanımlı Dönemler 

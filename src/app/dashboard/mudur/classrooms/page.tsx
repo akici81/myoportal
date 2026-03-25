@@ -54,7 +54,7 @@ export default function ClassroomsReadOnlyPage() {
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400 flex items-center gap-3">
+            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
               Derslik Katalogu
             </h1>
             <p className="mt-2 text-gray-400 max-w-xl">
@@ -96,7 +96,7 @@ export default function ClassroomsReadOnlyPage() {
         })}
       </div>
 
-      <div className="glass-card p-4 rounded-xl flex flex-col sm:flex-row gap-4 items-center justify-between border border-gray-800/60">
+      <div className="card p-4 rounded-xl flex flex-col sm:flex-row gap-4 items-center justify-between border border-gray-800/60">
         <div className="relative w-full sm:w-80">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-600/50" />
           <input 
@@ -122,7 +122,7 @@ export default function ClassroomsReadOnlyPage() {
           <p className="text-gray-500 font-medium">Yerleşke bilgileri yükleniyor...</p>
         </div>
       ) : filtered.length === 0 ? (
-        <div className="glass-card py-20 text-center rounded-xl border border-gray-800/60">
+        <div className="card py-20 text-center rounded-xl border border-gray-800/60">
           <div className="w-16 h-16 bg-gray-800/50 rounded-full flex items-center justify-center mx-auto mb-4">
             <Search className="w-8 h-8 text-gray-500" />
           </div>

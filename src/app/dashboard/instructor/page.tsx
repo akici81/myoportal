@@ -190,7 +190,7 @@ export default async function InstructorDashboard() {
       </div>
 
       {/* Bugünkü Derslerim */}
-      <div className="animate-in-delay-3 rounded-2xl border border-white/5 bg-gray-800/30 p-6 backdrop-blur-xl">
+      <div className="animate-in-delay-3 rounded-2xl border border-white/5 bg-gray-800/30 p-6">
         <div className="mb-6 flex items-center justify-between">
           <h2 className="text-lg font-semibold text-white">Bugünkü Eğitmenlik ({displayDayName})</h2>
         </div>

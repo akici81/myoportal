@@ -102,7 +102,7 @@ export default function ClassroomsPage() {
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400 flex items-center gap-3">
+            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
               Derslik Yönetimi
             </h1>
             <p className="mt-2 text-gray-400 max-w-xl">
@@ -152,7 +152,7 @@ export default function ClassroomsPage() {
         })}
       </div>
 
-      <div className="glass-card p-4 rounded-xl flex flex-col sm:flex-row gap-4 items-center justify-between border border-gray-800/60">
+      <div className="card p-4 rounded-xl flex flex-col sm:flex-row gap-4 items-center justify-between border border-gray-800/60">
         <div className="relative w-full sm:w-80">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-600/50" />
           <input 
@@ -178,7 +178,7 @@ export default function ClassroomsPage() {
           <p className="text-gray-500 font-medium">Yerleşke bilgileri yükleniyor...</p>
         </div>
       ) : filtered.length === 0 ? (
-        <div className="glass-card py-20 text-center rounded-xl border border-gray-800/60">
+        <div className="card py-20 text-center rounded-xl border border-gray-800/60">
           <div className="w-16 h-16 bg-gray-800/50 rounded-full flex items-center justify-center mx-auto mb-4">
             <Search className="w-8 h-8 text-gray-500" />
           </div>
@@ -286,8 +286,8 @@ export default function ClassroomsPage() {
       )}
 
       {editItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in">
-          <div className="glass-card w-full max-w-lg p-0 rounded-2xl border border-gray-700/50 shadow-2xl overflow-hidden">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in">
+          <div className="card w-full max-w-lg p-0 rounded-2xl border border-gray-700/50 shadow-2xl overflow-hidden">
             <div className={`px-6 py-4 border-b border-gray-800/80 flex justify-between items-center ${editItem.id ? 'bg-gradient-to-r from-blue-900/40 to-indigo-900/40' : 'bg-gradient-to-r from-emerald-900/40 to-teal-900/40'}`}>
               <h3 className="text-lg font-bold text-white flex items-center gap-2">
                 {editItem.id ? <Edit className="w-5 h-5 text-blue-400" /> : <Plus className="w-5 h-5 text-emerald-400" />}
@@ -367,7 +367,7 @@ export default function ClassroomsPage() {
 
               <div className="pt-4 flex gap-3 border-t border-gray-800/80 mt-6">
                 <button type="button" onClick={() => setEditItem(null)} className="px-4 py-2.5 rounded-lg font-medium text-sm text-gray-400 bg-gray-800/50 hover:bg-gray-700 hover:text-white transition flex-1">İptal Et</button>
-                <button type="submit" disabled={saving} className={`px-4 py-2.5 rounded-lg text-sm font-bold text-white flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all ${editItem.id ? 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 shadow-blue-500/20' : 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 shadow-emerald-500/20'}`}>
+                <button type="submit" disabled={saving} className={`px-4 py-2.5 rounded-lg text-sm font-bold text-white flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all ${editItem.id ? 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:brightness-110' : 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:brightness-110'}`}>
                   {saving ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div> : <Save className="w-4 h-4" /> }
                   {saving ? 'Kaydediliyor...' : (editItem.id ? 'Değişiklikleri Kaydet' : 'Dersliği Oluştur')}
                 </button>

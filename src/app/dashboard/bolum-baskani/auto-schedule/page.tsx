@@ -193,7 +193,7 @@ export default function AutoSchedulePage() {
               <span className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-blue-400 bg-blue-500/10 px-2.5 py-1 rounded border border-blue-500/20"><Sparkles className="w-3.5 h-3.5" /> Yapay Zeka Destekli Sistem</span>
               <span className="text-xs font-medium text-gray-500 hidden sm:inline-block">({departmentName})</span>
             </div>
-            <h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400 flex items-center gap-3 tracking-tight">
+            <h1 className="text-3xl font-black text-white flex items-center gap-3 tracking-tight">
               Otomatik Ders Programı Sihirbazı
             </h1>
             <p className="mt-2 text-gray-400 max-w-2xl font-medium leading-relaxed">
@@ -208,7 +208,7 @@ export default function AutoSchedulePage() {
       </div>
 
       {loading ? (
-        <div className="glass-card py-24 flex flex-col items-center justify-center rounded-2xl border border-gray-800/60">
+        <div className="card py-24 flex flex-col items-center justify-center rounded-2xl border border-gray-800/60">
           <div className="w-12 h-12 rounded-full border-4 border-blue-900 border-t-blue-500 animate-spin mb-4" />
           <p className="text-gray-400 font-medium tracking-wide">Analiz yapılıyor, Lütfen bekleyin...</p>
         </div>
@@ -216,19 +216,19 @@ export default function AutoSchedulePage() {
         <>
           {/* Dashboard Stats */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="glass-card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 group hover:border-blue-500/50 transition-colors">
+            <div className="card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 group hover:border-blue-500/50 transition-colors">
               <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20 shrink-0"><BookOpen className="w-6 h-6 text-blue-500" /></div>
               <div><p className="text-2xl font-black text-white leading-none mb-1">{stats.totalCourses}</p><p className="text-xs font-bold text-gray-500 uppercase tracking-wider">Hedef Ders</p></div>
             </div>
-            <div className="glass-card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 group hover:border-emerald-500/50 transition-colors">
+            <div className="card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 group hover:border-emerald-500/50 transition-colors">
               <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 shrink-0"><Clock className="w-6 h-6 text-emerald-500" /></div>
               <div><p className="text-2xl font-black text-white leading-none mb-1">{stats.totalHours}</p><p className="text-xs font-bold text-gray-500 uppercase tracking-wider">Toplam Saat</p></div>
             </div>
-            <div className="glass-card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 group hover:border-fuchsia-500/50 transition-colors">
+            <div className="card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 group hover:border-fuchsia-500/50 transition-colors">
               <div className="w-12 h-12 rounded-xl bg-fuchsia-500/10 flex items-center justify-center border border-fuchsia-500/20 shrink-0"><Users className="w-6 h-6 text-fuchsia-500" /></div>
               <div><p className="text-2xl font-black text-white leading-none mb-1">{stats.withInstructor}</p><p className="text-xs font-bold text-gray-500 uppercase tracking-wider">Hocası Hazır</p></div>
             </div>
-            <div className="glass-card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 group hover:border-amber-500/50 transition-colors">
+            <div className="card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 group hover:border-amber-500/50 transition-colors">
               <div className="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20 shrink-0"><AlertTriangle className="w-6 h-6 text-amber-500" /></div>
               <div><p className="text-2xl font-black text-white leading-none mb-1">{stats.withConstraints}</p><p className="text-xs font-bold text-gray-500 uppercase tracking-wider">Kısıtlı Eğitmen</p></div>
             </div>
@@ -236,7 +236,7 @@ export default function AutoSchedulePage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Konfigürasyon Panel */}
-            <div className="glass-card rounded-2xl border border-gray-800/60 p-6 flex flex-col h-full">
+            <div className="card rounded-2xl border border-gray-800/60 p-6 flex flex-col h-full">
                <h3 className="font-black text-white mb-6 flex items-center gap-2.5 text-lg">
                   <Settings className="w-5 h-5 text-blue-500" /> Yerleştirme Algoritması Ayarları
                </h3>
@@ -287,7 +287,7 @@ export default function AutoSchedulePage() {
             </div>
 
             {/* Öncelikli Derslikler Paneil */}
-            <div className="glass-card rounded-2xl border border-gray-800/60 p-6 flex flex-col h-full">
+            <div className="card rounded-2xl border border-gray-800/60 p-6 flex flex-col h-full">
                <div className="flex items-center justify-between mb-6">
                   <h3 className="font-black text-white flex items-center gap-2.5 text-lg">
                      <Layers className="w-5 h-5 text-indigo-500" /> Konum / Derslik Önceliği
@@ -344,7 +344,7 @@ export default function AutoSchedulePage() {
 
           {/* Results Modal/Card */}
           {result && (
-             <div className="glass-card overflow-hidden rounded-2xl border border-gray-800/60 shadow-xl mt-6 animate-in slide-in-from-bottom-8 duration-500 bg-gray-900/50">
+             <div className="card overflow-hidden rounded-2xl border border-gray-800/60 shadow-xl mt-6 animate-in slide-in-from-bottom-8 duration-500 bg-gray-900/50">
                 <div className="p-6 lg:p-8">
                    <div className="flex items-center gap-3 mb-6">
                       <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center border border-emerald-500/30"><CheckCircle className="w-5 h-5 text-emerald-400" /></div>
@@ -432,8 +432,8 @@ export default function AutoSchedulePage() {
 
       {/* Classroom Picker Dialog */}
       {showClassroomPicker && (
-         <div className="fixed inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-in fade-in duration-200">
-            <div className="glass-card w-full max-w-3xl rounded-2xl border border-gray-800 shadow-2xl p-0 overflow-hidden flex flex-col max-h-[85vh]">
+         <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4 animate-in fade-in duration-200">
+            <div className="card w-full max-w-3xl rounded-2xl border border-gray-800 shadow-2xl p-0 overflow-hidden flex flex-col max-h-[85vh]">
                <div className="p-6 border-b border-gray-800 flex items-center justify-between bg-gray-900/50">
                   <div>
                      <h2 className="text-xl font-black text-white">Derslik Arşivinden Seçim Yapın</h2>

@@ -179,7 +179,7 @@ export default function AutoSchedulePage() {
         
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="max-w-2xl">
-            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400 flex items-center gap-3">
+            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
               Yapay Zeka Destekli Merkezi Program Oluşturucu
             </h1>
             <p className="mt-2 text-gray-400 leading-relaxed">
@@ -196,28 +196,28 @@ export default function AutoSchedulePage() {
            
            {/* Stat Overview Boxes */}
            <div className="grid grid-cols-2 gap-4">
-              <div className="glass-card p-4 rounded-xl border border-blue-500/20 bg-blue-500/5">
+              <div className="card p-4 rounded-xl border border-blue-500/20 bg-blue-500/5">
                  <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400 mb-3 border border-blue-500/30">
                    <BookOpen className="w-5 h-5" />
                  </div>
                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Havuzdaki Ders</p>
                  <p className="text-2xl font-black text-white mt-1">{stats.totalCourses}</p>
               </div>
-              <div className="glass-card p-4 rounded-xl border border-violet-500/20 bg-violet-500/5">
+              <div className="card p-4 rounded-xl border border-violet-500/20 bg-violet-500/5">
                  <div className="w-10 h-10 rounded-lg bg-violet-500/20 flex items-center justify-center text-violet-400 mb-3 border border-violet-500/30">
                    <Blocks className="w-5 h-5" />
                  </div>
                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Eğitmen Kısıtı</p>
                  <p className="text-2xl font-black text-white mt-1">{stats.totalConstraints}</p>
               </div>
-              <div className="glass-card p-4 rounded-xl border border-emerald-500/20 bg-emerald-500/5">
+              <div className="card p-4 rounded-xl border border-emerald-500/20 bg-emerald-500/5">
                  <div className="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400 mb-3 border border-emerald-500/30">
                    <Link2 className="w-5 h-5" />
                  </div>
                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Ortak Grup</p>
                  <p className="text-2xl font-black text-white mt-1">{stats.sharedGroups}</p>
               </div>
-              <div className="glass-card p-4 rounded-xl border border-amber-500/20 bg-amber-500/5">
+              <div className="card p-4 rounded-xl border border-amber-500/20 bg-amber-500/5">
                  <div className="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400 mb-3 border border-amber-500/30">
                    <Calendar className="w-5 h-5" />
                  </div>
@@ -227,7 +227,7 @@ export default function AutoSchedulePage() {
            </div>
 
            {/* Settings Card */}
-           <div className="glass-card p-6 rounded-2xl border border-gray-800 bg-gray-900/50">
+           <div className="card p-6 rounded-2xl border border-gray-800 bg-gray-900/50">
              <h3 className="font-bold text-white mb-5 flex items-center gap-2">
                <Wand2 className="w-5 h-5 text-indigo-400" />
                Motor Çalıştırma Parametreleri
@@ -312,7 +312,7 @@ export default function AutoSchedulePage() {
         <div className="lg:col-span-2 space-y-6">
            
            {!result && !generating && (
-              <div className="glass-card p-8 rounded-2xl border border-blue-500/20 bg-gradient-to-br from-blue-900/10 to-transparent flex flex-col items-center justify-center min-h-[500px] text-center">
+              <div className="card p-8 rounded-2xl border border-blue-500/20 bg-gradient-to-br from-blue-900/10 to-transparent flex flex-col items-center justify-center min-h-[500px] text-center">
                  <div className="w-24 h-24 bg-blue-500/10 rounded-full flex items-center justify-center border border-blue-500/20 shadow-inner mb-6 relative">
                     <div className="absolute inset-0 bg-blue-500/20 rounded-full animate-ping opacity-50"></div>
                     <Cpu className="w-12 h-12 text-blue-400" />
@@ -347,7 +347,7 @@ export default function AutoSchedulePage() {
            )}
 
            {generating && (
-              <div className="glass-card p-8 rounded-2xl border border-indigo-500/30 bg-gray-900/50 flex flex-col items-center justify-center min-h-[500px] text-center relative overflow-hidden">
+              <div className="card p-8 rounded-2xl border border-indigo-500/30 bg-gray-900/50 flex flex-col items-center justify-center min-h-[500px] text-center relative overflow-hidden">
                  <div className="absolute top-0 left-0 w-full h-1 bg-gray-800">
                     <div className="h-full bg-gradient-to-r from-indigo-500 to-blue-500 w-1/3 animate-[slide_1.5s_ease-in-out_infinite]"></div>
                  </div>
@@ -369,7 +369,7 @@ export default function AutoSchedulePage() {
 
            {result && !generating && (
               <div className="space-y-6 animate-in fade-in slide-in-from-bottom-5 duration-500">
-                <div className="glass-card p-8 rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-emerald-900/10 to-gray-900 relative overflow-hidden">
+                <div className="card p-8 rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-emerald-900/10 to-gray-900 relative overflow-hidden">
                    <div className="absolute top-0 right-0 p-6 opacity-5 rotate-12 pointer-events-none">
                      <ShieldCheck className="w-64 h-64 text-emerald-400" />
                    </div>
@@ -438,7 +438,7 @@ export default function AutoSchedulePage() {
                                  <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-8 bg-gray-800 text-white text-xs font-bold px-2 py-1 rounded shadow-lg pointer-events-none">
                                    {count} Saat
                                  </div>
-                                 <div className="w-full max-w-[40px] bg-gradient-to-t from-indigo-600/50 to-indigo-400 hover:from-indigo-500 hover:to-indigo-300 transition-colors rounded-t-lg relative overflow-hidden shadow-[0_0_10px_rgba(99,102,241,0.2)]"
+                                 <div className="w-full max-w-[40px] bg-gradient-to-t from-indigo-600/50 to-indigo-400 hover:brightness-110 transition-colors rounded-t-lg relative overflow-hidden shadow-[0_0_10px_rgba(99,102,241,0.2)]"
                                       style={{ height: `${percentage}%`, minHeight: count > 0 ? '12px' : '4px' }}>
                                  </div>
                                  <p className="text-xs font-bold text-gray-400 mt-2">{day}</p>
@@ -453,7 +453,7 @@ export default function AutoSchedulePage() {
 
                 {/* Failed Placements */}
                 {result.failed.length > 0 && (
-                  <div className="glass-card p-6 rounded-2xl border border-amber-500/30 bg-gradient-to-br from-amber-900/10 to-gray-900">
+                  <div className="card p-6 rounded-2xl border border-amber-500/30 bg-gradient-to-br from-amber-900/10 to-gray-900">
                     <h3 className="font-bold text-white mb-6 flex items-center gap-2">
                       <AlertTriangle className="w-5 h-5 text-amber-400" />
                       Yerleşemeyen & Açıkta Kalan Dersler ({result.failed.length})

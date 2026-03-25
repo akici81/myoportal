@@ -43,7 +43,7 @@ export default async function AdminInternshipsPage() {
         </div>
       </div>
 
-      <div className="rounded-2xl border border-white/5 bg-gray-800/30 overflow-hidden backdrop-blur-xl">
+      <div className="rounded-2xl border border-white/5 bg-gray-800/30 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm text-gray-300">
             <thead className="bg-gray-900/50 text-xs uppercase text-gray-500">

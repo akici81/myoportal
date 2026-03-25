@@ -52,14 +52,14 @@ export default async function BolumBaskaniInstructorsPage() {
           <div className="flex items-center gap-2 mb-2">
              <span className="text-xs font-bold uppercase tracking-widest text-cyan-500 bg-cyan-500/10 px-2 py-1 rounded border border-cyan-500/20">{department?.name}</span>
           </div>
-          <h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
+          <h1 className="text-3xl font-black text-white">
             Bölüm Öğretim Elemanları
           </h1>
           <p className="mt-2 text-gray-400">Bölümünüzde görevli kadrolu hocaların ve dışarıdan atanan eğitmenlerin listesi</p>
         </div>
       </div>
 
-      <div className="overflow-hidden rounded-2xl border border-white/5 bg-gray-800/30 backdrop-blur-xl shadow-xl">
+      <div className="overflow-hidden rounded-2xl border border-white/5 bg-gray-800/30 shadow-xl">
         <table className="w-full text-left text-sm text-gray-300">
           <thead className="bg-gray-900/80 text-[11px] font-black uppercase text-gray-500 tracking-widest border-b border-gray-800">
             <tr>

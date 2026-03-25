@@ -120,7 +120,7 @@ export default function EventsPage() {
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-400">
+            <h1 className="text-3xl font-bold text-white">
               Etkinlik Takvimi
             </h1>
             <p className="mt-2 text-gray-400">{MONTHS_TR[currentDate.getMonth()]} {currentDate.getFullYear()}</p>
@@ -136,7 +136,7 @@ export default function EventsPage() {
       </div>
 
       {/* Controls */}
-      <div className="glass-card p-4 rounded-xl border border-gray-800/60 flex flex-wrap items-center gap-3">
+      <div className="card p-4 rounded-xl border border-gray-800/60 flex flex-wrap items-center gap-3">
         <div className="flex items-center gap-1">
           <button onClick={() => setCurrent(d => new Date(d.getFullYear(), d.getMonth()-1, 1))}
             className="p-2 rounded-lg hover:bg-gray-800 text-gray-500 hover:text-white transition"><ChevronLeft className="w-4 h-4" /></button>
@@ -175,7 +175,7 @@ export default function EventsPage() {
 
       {/* MONTH VIEW */}
       {view === 'month' && (
-        <div className="glass-card overflow-hidden rounded-xl border border-gray-800/60">
+        <div className="card overflow-hidden rounded-xl border border-gray-800/60">
           <div className="grid grid-cols-7 border-b border-gray-800" style={{ background: 'rgba(0,0,0,0.3)' }}>
             {DAYS_SHORT.map(d => (
               <div key={d} className="py-2.5 text-center text-xs font-semibold text-gray-500">{d}</div>
@@ -220,7 +220,7 @@ export default function EventsPage() {
       {view === 'list' && (
         <div className="space-y-3">
           {upcomingEvents.length === 0 ? (
-            <div className="glass-card py-16 text-center rounded-xl border border-gray-800/60">
+            <div className="card py-16 text-center rounded-xl border border-gray-800/60">
               <CalendarDays className="w-10 h-10 mx-auto mb-3 text-gray-600" />
               <p className="font-medium text-white">Yaklaşan etkinlik yok</p>
             </div>
@@ -229,7 +229,7 @@ export default function EventsPage() {
               const d = new Date(ev.date)
               const cat = CATEGORY_MAP[ev.category] ?? CATEGORY_MAP.diger
               return (
-                <div key={ev.id} className="glass-card p-4 rounded-xl border border-gray-700/50 cursor-pointer hover:border-gray-600 transition flex items-start gap-4"
+                <div key={ev.id} className="card p-4 rounded-xl border border-gray-700/50 cursor-pointer hover:border-gray-600 transition flex items-start gap-4"
                   onClick={() => setSelected(ev)}>
                   <div className="w-12 text-center flex-shrink-0">
                     <div className="text-xl font-bold text-white">{d.getDate()}</div>
@@ -257,8 +257,8 @@ export default function EventsPage() {
 
       {/* Event Detail Modal */}
       {selected && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in">
-          <div className="glass-card w-full max-w-md p-6 rounded-2xl border border-gray-700/50 shadow-2xl relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in">
+          <div className="card w-full max-w-md p-6 rounded-2xl border border-gray-700/50 shadow-2xl relative">
             <button onClick={() => setSelected(null)} className="absolute right-4 top-4 p-2 text-gray-400 hover:text-white rounded-lg hover:bg-gray-800 transition">
               <X className="w-5 h-5" />
             </button>
@@ -285,8 +285,8 @@ export default function EventsPage() {
 
       {/* Add Event Modal */}
       {showForm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in">
-          <div className="glass-card w-full max-w-lg p-6 rounded-2xl border border-gray-700/50 shadow-2xl relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in">
+          <div className="card w-full max-w-lg p-6 rounded-2xl border border-gray-700/50 shadow-2xl relative">
             <button onClick={() => { setShowForm(false); setForm(EMPTY_FORM) }} className="absolute right-4 top-4 p-2 text-gray-400 hover:text-white rounded-lg hover:bg-gray-800 transition">
               <X className="w-5 h-5" />
             </button>

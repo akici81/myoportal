@@ -168,7 +168,7 @@ export default function InstructorConstraintsPage() {
             <div className="flex items-center gap-2 mb-2">
               <span className="text-xs font-bold uppercase tracking-widest text-violet-400 bg-violet-500/10 px-2 py-1 rounded border border-violet-500/20">{departmentName}</span>
             </div>
-            <h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-400 flex items-center gap-3 tracking-tight">
+            <h1 className="text-3xl font-black text-white flex items-center gap-3 tracking-tight">
               Öğretim Elemanı Kısıtları
             </h1>
             <p className="mt-2 text-gray-400 max-w-2xl font-medium">
@@ -182,7 +182,7 @@ export default function InstructorConstraintsPage() {
       </div>
 
       {loading ? (
-        <div className="glass-card py-24 flex flex-col items-center justify-center rounded-2xl border border-gray-800/60">
+        <div className="card py-24 flex flex-col items-center justify-center rounded-2xl border border-gray-800/60">
           <div className="w-12 h-12 rounded-full border-4 border-violet-900 border-t-violet-500 animate-spin mb-4" />
           <p className="text-gray-400 font-medium tracking-wide">Kısıt kuralları derleniyor...</p>
         </div>
@@ -190,7 +190,7 @@ export default function InstructorConstraintsPage() {
         <>
           {/* STATS */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="glass-card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 group">
+            <div className="card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 group">
               <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20 shrink-0">
                 <User className="w-6 h-6 text-blue-500" />
               </div>
@@ -199,7 +199,7 @@ export default function InstructorConstraintsPage() {
                 <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">Hoca</p>
               </div>
             </div>
-            <div className="glass-card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 group">
+            <div className="card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 group">
               <div className="w-12 h-12 rounded-xl bg-fuchsia-500/10 flex items-center justify-center border border-fuchsia-500/20 shrink-0">
                 <AlertTriangle className="w-6 h-6 text-fuchsia-500" />
               </div>
@@ -208,7 +208,7 @@ export default function InstructorConstraintsPage() {
                 <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">Toplam Kısıt</p>
               </div>
             </div>
-            <div className="glass-card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 group">
+            <div className="card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 group">
               <div className="w-12 h-12 rounded-xl bg-rose-500/10 flex items-center justify-center border border-rose-500/20 shrink-0">
                 <CalendarOff className="w-6 h-6 text-rose-500" />
               </div>
@@ -217,7 +217,7 @@ export default function InstructorConstraintsPage() {
                 <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">Zorunlu Kısıt</p>
               </div>
             </div>
-            <div className="glass-card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 group">
+            <div className="card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 group">
               <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 shrink-0">
                 <CheckCircle className="w-6 h-6 text-emerald-500" />
               </div>
@@ -249,7 +249,7 @@ export default function InstructorConstraintsPage() {
                 const hasItems = items.length > 0
 
                 return (
-                   <div key={instructor.id} className="glass-card overflow-hidden rounded-xl border border-gray-800/60 transition-all hover:border-gray-700/80">
+                   <div key={instructor.id} className="card overflow-hidden rounded-xl border border-gray-800/60 transition-all hover:border-gray-700/80">
                       <div className="p-4 flex flex-wrap items-center justify-between cursor-pointer group" onClick={() => hasItems && setExpandedInstructors(p => p.includes(instructor.id) ? p.filter(id => id !== instructor.id) : [...p, instructor.id])}>
                          
                          <div className="flex items-center gap-4">
@@ -332,8 +332,8 @@ export default function InstructorConstraintsPage() {
 
       {/* Editor Modal */}
       {showModal && editForm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in zoom-in-95 duration-200">
-           <div className="glass-card w-full max-w-2xl p-0 rounded-2xl border border-violet-900/30 shadow-2xl overflow-hidden flex flex-col max-h-[95vh]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in fade-in zoom-in-95 duration-200">
+           <div className="card w-full max-w-2xl p-0 rounded-2xl border border-violet-900/30 shadow-2xl overflow-hidden flex flex-col max-h-[95vh]">
               
               <div className="px-6 py-5 bg-gradient-to-r from-violet-900/50 to-gray-900 border-b border-violet-900/40 flex justify-between items-center">
                  <h3 className="text-xl font-black text-white flex items-center gap-2">Yeni Kısıt Kuralı Yarat</h3>
@@ -385,7 +385,7 @@ export default function InstructorConstraintsPage() {
                           {DAYS.map(d => {
                              const sel = editForm.selected_days.includes(d.value)
                              return (
-                                <button key={d.value} type="button" onClick={() => toggleDay(d.value)} className={clsx("flex-1 px-3 py-2.5 rounded-lg border text-sm font-bold transition-all relative", sel ? 'bg-violet-600 border-violet-500 text-white shadow-lg shadow-violet-500/20' : 'bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-700 hover:text-white')}>
+                                <button key={d.value} type="button" onClick={() => toggleDay(d.value)} className={clsx("flex-1 px-3 py-2.5 rounded-lg border text-sm font-bold transition-all relative", sel ? 'bg-violet-600 border-violet-500 text-white shadow-lg' : 'bg-gray-800 border-gray-700 text-gray-400 hover:bg-gray-700 hover:text-white')}>
                                    {d.label}
                                    {sel && <Check className="w-3.5 h-3.5 absolute top-1 right-1 opacity-50" />}
                                 </button>
@@ -455,7 +455,7 @@ export default function InstructorConstraintsPage() {
 
               <div className="px-6 py-4 bg-gray-900/80 border-t border-gray-800/80 mt-auto flex gap-3">
                  <button onClick={() => setShowModal(false)} className="px-4 py-2.5 rounded-xl font-bold text-sm text-gray-400 bg-gray-800/50 hover:bg-gray-700 hover:text-white transition flex-1">İptal, Sil</button>
-                 <button onClick={save} disabled={saving} className="px-4 py-2.5 rounded-xl text-sm font-bold text-white flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 shadow-violet-500/20 disabled:opacity-50">
+                 <button onClick={save} disabled={saving} className="px-4 py-2.5 rounded-xl text-sm font-bold text-white flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:brightness-110 disabled:opacity-50">
                     {saving ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : <Save className="w-4 h-4" />}
                     <span>{saving ? 'Kurallar İşleniyor...' : 'Veritabanına Kuralı Uygula'}</span>
                  </button>

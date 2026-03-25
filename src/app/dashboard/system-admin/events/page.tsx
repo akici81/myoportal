@@ -145,7 +145,7 @@ export default function EventsPage() {
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-fuchsia-400 flex items-center gap-3 tracking-tight">
+            <h1 className="text-3xl font-black text-white flex items-center gap-3 tracking-tight">
               Etkinlik Takvimi
             </h1>
             <p className="mt-2 text-gray-400 max-w-2xl font-medium">
@@ -166,7 +166,7 @@ export default function EventsPage() {
       </div>
 
       {/* Toolbar & Filters */}
-      <div className="glass-card p-4 rounded-xl flex flex-col lg:flex-row gap-5 items-center justify-between border border-gray-800/60 shadow-xl">
+      <div className="card p-4 rounded-xl flex flex-col lg:flex-row gap-5 items-center justify-between border border-gray-800/60 shadow-xl">
         
         {/* Month Navigation */}
         <div className="flex items-center gap-1.5 bg-gray-900/50 p-1.5 rounded-xl border border-gray-700/50">
@@ -218,7 +218,7 @@ export default function EventsPage() {
       </div>
 
       {loading ? (
-        <div className="glass-card py-20 flex flex-col items-center justify-center rounded-2xl border border-gray-800/60">
+        <div className="card py-20 flex flex-col items-center justify-center rounded-2xl border border-gray-800/60">
           <div className="w-12 h-12 rounded-full border-4 border-rose-900 border-t-rose-500 animate-spin mb-4" />
           <p className="text-gray-400 font-medium tracking-wide">Takvim verileri yükleniyor...</p>
         </div>
@@ -226,7 +226,7 @@ export default function EventsPage() {
         <>
           {/* ── MONTH VIEW ── */}
           {view === 'month' && (
-            <div className="glass-card rounded-2xl border border-gray-800/60 shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-300">
+            <div className="card rounded-2xl border border-gray-800/60 shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-300">
               {/* Day Headers */}
               <div className="grid grid-cols-7 border-b border-gray-800/80 bg-gray-900/90">
                 {DAYS_SHORT.map(d => (
@@ -256,7 +256,7 @@ export default function EventsPage() {
                           <div className="flex justify-between items-start mb-2">
                             <div className={clsx(
                               'w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shadow-inner transition-all',
-                              isToday ? 'bg-gradient-to-br from-rose-500 to-fuchsia-600 text-white shadow-rose-500/30' : 'text-gray-400 group-hover:text-gray-200'
+                              isToday ? 'bg-gradient-to-br from-rose-500 to-fuchsia-600 text-white' : 'text-gray-400 group-hover:text-gray-200'
                             )}>
                               {date.getDate()}
                             </div>
@@ -298,7 +298,7 @@ export default function EventsPage() {
           {view === 'list' && (
             <div className="max-w-4xl mx-auto space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-300">
               {upcomingEvents.length === 0 ? (
-                <div className="glass-card py-20 text-center rounded-2xl border border-gray-800/60 border-dashed bg-gray-900/20">
+                <div className="card py-20 text-center rounded-2xl border border-gray-800/60 border-dashed bg-gray-900/20">
                   <div className="w-20 h-20 bg-gray-800/50 rounded-full flex items-center justify-center mx-auto mb-6 ring-8 ring-gray-900/50">
                     <CalendarHeart className="w-10 h-10 text-gray-600" />
                   </div>
@@ -325,7 +325,7 @@ export default function EventsPage() {
                         )}
                         
                         <div 
-                          className="glass-card p-5 cursor-pointer flex flex-col sm:flex-row items-start sm:items-center gap-5 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/40 group overflow-hidden relative mb-3"
+                          className="card p-5 cursor-pointer flex flex-col sm:flex-row items-start sm:items-center gap-5 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-black/40 group overflow-hidden relative mb-3"
                           style={{ borderColor: cat.border, background: `linear-gradient(135deg, ${cat.bg.replace('0.1', '0.03')}, rgba(15, 23, 42, 0.4))` }}
                           onClick={() => setSelected(ev)}
                         >
@@ -376,8 +376,8 @@ export default function EventsPage() {
 
       {/* EVENT DETAIL MODAL */}
       {selected && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in zoom-in-95 duration-200">
-          <div className="glass-card w-full max-w-lg p-0 rounded-3xl border border-gray-700/50 shadow-2xl overflow-hidden relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in fade-in zoom-in-95 duration-200">
+          <div className="card w-full max-w-lg p-0 rounded-3xl border border-gray-700/50 shadow-2xl overflow-hidden relative">
             
             {/* Modal Header Gradient */}
             <div className="h-32 w-full absolute top-0 left-0 opacity-20 pointer-events-none" style={{ background: `linear-gradient(to bottom, ${CATEGORY_MAP[selected.category]?.color ?? '#64748b'}, transparent)` }}></div>
@@ -435,11 +435,11 @@ export default function EventsPage() {
 
       {/* EVENT ADD MODAL */}
       {showForm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in zoom-in-95 duration-200">
-          <div className="glass-card w-full max-w-2xl p-0 rounded-3xl border border-gray-700/50 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in fade-in zoom-in-95 duration-200">
+          <div className="card w-full max-w-2xl p-0 rounded-3xl border border-gray-700/50 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
             <div className="px-8 py-6 border-b border-rose-900/30 bg-gradient-to-r from-rose-950/80 to-gray-900 flex justify-between items-center">
               <h3 className="text-xl font-black text-white flex items-center gap-3 tracking-tight">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-500 to-fuchsia-600 flex items-center justify-center shadow-lg shadow-rose-500/20">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-500 to-fuchsia-600 flex items-center justify-center shadow-lg">
                   <CalendarDays className="w-5 h-5 text-white" />
                 </div>
                 Yeni Etkinlik Oluştur
@@ -509,7 +509,7 @@ export default function EventsPage() {
 
               <div className="flex gap-3 pt-6 border-t border-gray-800">
                 <button type="button" onClick={() => { setShowForm(false); setForm(EMPTY_FORM); }} className="px-4 py-3 rounded-xl font-bold text-sm text-gray-400 bg-gray-800/50 hover:bg-gray-700 hover:text-white transition flex-1">İptal</button>
-                <button type="submit" disabled={saving || !form.title || !form.date || !form.start_time || !form.end_time} className="px-4 py-3 rounded-xl text-sm font-black text-white flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all bg-gradient-to-r from-rose-600 to-fuchsia-600 hover:from-rose-500 hover:to-fuchsia-500 shadow-rose-500/20 disabled:opacity-50 disabled:cursor-not-allowed">
+                <button type="submit" disabled={saving || !form.title || !form.date || !form.start_time || !form.end_time} className="px-4 py-3 rounded-xl text-sm font-black text-white flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all bg-gradient-to-r from-rose-600 to-fuchsia-600 hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed">
                   {saving ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div> : <Info className="w-4 h-4" /> }
                   {saving ? 'Kaydediliyor...' : 'Etkinliği Takvime Ekle'}
                 </button>

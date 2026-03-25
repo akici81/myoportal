@@ -56,8 +56,8 @@ export default function EvaluationPage() {
       <form onSubmit={handleSubmit} className="space-y-8">
         
         {/* Bölüm 1 */}
-        <div className="rounded-2xl border border-white/5 bg-gray-800/30 overflow-hidden backdrop-blur-xl">
-           <div className="bg-gradient-to-r from-cyan-500/10 to-blue-500/5 px-6 py-4 border-b border-white/5 flex items-center gap-3">
+        <div className="rounded-2xl border border-white/5 bg-gray-800/30 overflow-hidden">
+           <div className="bg-cyan-600 px-6 py-4 border-b border-white/5 flex items-center gap-3">
               <Target className="h-5 w-5 text-cyan-400" />
               <h2 className="font-semibold text-white">Akademik Süreçler & Fiziksel Şartlar</h2>
            </div>
@@ -89,7 +89,7 @@ export default function EvaluationPage() {
         </div>
 
         {/* Bölüm 2 */}
-        <div className="rounded-2xl border border-white/5 bg-gray-800/30 overflow-hidden backdrop-blur-xl">
+        <div className="rounded-2xl border border-white/5 bg-gray-800/30 overflow-hidden">
            <div className="bg-gradient-to-r from-amber-500/10 to-orange-500/5 px-6 py-4 border-b border-white/5 flex items-center gap-3">
               <Lightbulb className="h-5 w-5 text-amber-400" />
               <h2 className="font-semibold text-white">Açık Uçlu Değerlendirmeler</h2>
@@ -126,7 +126,7 @@ export default function EvaluationPage() {
            <button
              type="submit"
              disabled={loading}
-             className="inline-flex items-center rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-cyan-500/25 transition-all hover:bg-cyan-400 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed group"
+             className="inline-flex items-center rounded-xl bg-cyan-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:bg-cyan-400 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed group"
            >
              {loading ? 'Gönderiliyor...' : (
                <>

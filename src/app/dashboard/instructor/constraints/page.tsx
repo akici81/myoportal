@@ -156,7 +156,7 @@ export default function InstructorConstraintsPage() {
 
   if (!period) {
      return (
-       <div className="glass-card border border-amber-500/30 bg-amber-500/5 rounded-2xl p-16 flex flex-col items-center justify-center text-center">
+       <div className="card border border-amber-500/30 bg-amber-500/5 rounded-2xl p-16 flex flex-col items-center justify-center text-center">
          <AlertTriangle className="w-16 h-16 mx-auto mb-4 text-amber-500/50" />
          <p className="text-xl font-bold text-amber-400 mb-2">Aktif Dönem Kapalı</p>
          <p className="text-amber-500/70 max-w-md">Şu anda sistemde aktif bir akademik dönem bulunmadığı için kısıt talep edilemiyor.</p>
@@ -166,7 +166,7 @@ export default function InstructorConstraintsPage() {
 
   if (!instructorId) {
      return (
-       <div className="glass-card border border-red-500/30 bg-red-500/5 rounded-2xl p-16 flex flex-col items-center justify-center text-center">
+       <div className="card border border-red-500/30 bg-red-500/5 rounded-2xl p-16 flex flex-col items-center justify-center text-center">
          <AlertTriangle className="w-16 h-16 mx-auto mb-4 text-red-500/50" />
          <p className="text-xl font-bold text-red-400 mb-2">Eğitmen Profili Eksik</p>
          <p className="text-red-500/70 max-w-md">Kısıt girebilmeniz için sistemde kayıtlı bir eğitmen kodunuzun (Instructor Profile) olması gerekiyor.</p>
@@ -184,7 +184,7 @@ export default function InstructorConstraintsPage() {
         
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="max-w-2xl">
-            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-red-400 flex items-center gap-3">
+            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
               Çalışma Saatlerim & Kısıtlarım
             </h1>
             <p className="mt-2 text-gray-400 leading-relaxed text-sm">
@@ -230,7 +230,7 @@ export default function InstructorConstraintsPage() {
              const Icon = typeDef?.icon || AlertTriangle
 
              return (
-               <div key={c.id} className="glass-card rounded-2xl border border-gray-800 bg-gray-900/80 overflow-hidden flex flex-col transition-all hover:border-gray-700">
+               <div key={c.id} className="card rounded-2xl border border-gray-800 bg-gray-900/80 overflow-hidden flex flex-col transition-all hover:border-gray-700">
                   <div className={clsx("h-1.5 w-full", c.is_approved ? "bg-emerald-500" : "bg-amber-500")}></div>
                   <div className="p-5 flex-1 relative">
                      <div className="flex justify-between items-start mb-4">
@@ -277,7 +277,7 @@ export default function InstructorConstraintsPage() {
 
       {/* Add Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 animate-in fade-in duration-200">
           <div className="bg-[#0f111a] border border-gray-800 rounded-2xl w-full max-w-lg shadow-2xl flex flex-col max-h-[90vh]">
             <div className="p-6 border-b border-gray-800">
               <h3 className="text-xl font-bold text-white">Yeni Kısıt Talebi</h3>
@@ -412,7 +412,7 @@ export default function InstructorConstraintsPage() {
                 type="submit"
                 form="constraint-form"
                 disabled={saving}
-                className="px-5 py-2.5 rounded-xl font-bold text-white bg-amber-500 hover:bg-amber-400 disabled:opacity-50 transition-colors shadow-lg shadow-amber-500/20"
+                className="px-5 py-2.5 rounded-xl font-bold text-white bg-amber-500 hover:bg-amber-400 disabled:opacity-50 transition-colors shadow-lg"
               >
                 {saving ? 'Kaydediliyor...' : 'Talebi İlet'}
               </button>

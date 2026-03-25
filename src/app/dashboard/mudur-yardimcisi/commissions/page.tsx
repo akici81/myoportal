@@ -40,13 +40,13 @@ export default async function AdminCommissionsPage() {
           </h1>
           <p className="mt-1 text-sm text-gray-500">MYO bünyesindeki tüm komisyonları, üye dağılımlarını ve toplantı taleplerini denetleyin.</p>
         </div>
-        <button className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-2 text-sm font-medium text-white shadow-lg shadow-cyan-500/20 hover:from-cyan-400 hover:to-blue-400 active:scale-95 transition-all">
+        <button className="inline-flex items-center justify-center rounded-xl bg-cyan-600 px-4 py-2 text-sm font-medium text-white shadow-lg hover:brightness-110 active:scale-95 transition-all">
           <Plus className="mr-2 h-4 w-4" /> Yeni Komisyon Kur
         </button>
       </div>
 
       {pendingMeetings && pendingMeetings.length > 0 && (
-        <div className="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-6 backdrop-blur-xl">
+        <div className="rounded-2xl border border-amber-500/20 bg-amber-500/5 p-6">
            <h2 className="text-lg font-semibold text-amber-400 flex items-center mb-4">
              <Target className="mr-2 h-5 w-5" />
              Onay Bekleyen Toplantı İstekleri ({pendingMeetings.length})
@@ -71,7 +71,7 @@ export default async function AdminCommissionsPage() {
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {commissions?.map((com) => (
-          <div key={com.id} className="relative rounded-2xl border border-white/5 bg-gray-800/30 p-6 backdrop-blur-xl group hover:border-cyan-500/30 transition-all cursor-pointer">
+          <div key={com.id} className="relative rounded-2xl border border-white/5 bg-gray-800/30 p-6 group hover:border-cyan-500/30 transition-all cursor-pointer">
             <div className="flex items-start justify-between">
               <div className="rounded-xl bg-gray-900/50 p-3 ring-1 ring-inset ring-white/5 group-hover:ring-cyan-500/30">
                 <Target className="h-6 w-6 text-cyan-400" />

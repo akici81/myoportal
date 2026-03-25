@@ -81,7 +81,7 @@ export default function AdminProgramsPage() {
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400 flex items-center gap-3">
+            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-cyan-600 flex items-center gap-3">
               Önlisans Programları
             </h1>
             <p className="mt-2 text-gray-400 max-w-xl">
@@ -99,7 +99,7 @@ export default function AdminProgramsPage() {
         </div>
       </div>
 
-      <div className="glass-card p-4 rounded-xl flex flex-col sm:flex-row gap-4 items-center justify-between border border-gray-800/60">
+      <div className="card p-4 rounded-xl flex flex-col sm:flex-row gap-4 items-center justify-between border border-gray-800/60">
         <div className="relative w-full sm:w-80">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
           <input 
@@ -114,7 +114,7 @@ export default function AdminProgramsPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
          {filtered.map(p => (
-            <div key={p.id} className="glass-card p-5 rounded-xl border border-gray-700/50 flex flex-col h-full group">
+            <div key={p.id} className="card p-5 rounded-xl border border-gray-700/50 flex flex-col h-full group">
                <div className="flex items-start gap-4 mb-3">
                   <div className="w-12 h-12 rounded-xl flex items-center justify-center font-bold text-lg flex-shrink-0 shadow-inner bg-cyan-900/20 text-cyan-400 border border-cyan-500/20">
                      {p.short_code}
@@ -142,8 +142,8 @@ export default function AdminProgramsPage() {
       </div>
 
       {editItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in">
-          <div className="glass-card w-full max-w-md p-6 rounded-2xl border border-gray-700/50 shadow-2xl relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in">
+          <div className="card w-full max-w-md p-6 rounded-2xl border border-gray-700/50 shadow-2xl relative">
             <button onClick={() => setEditItem(null)} className="absolute right-4 top-4 p-2 text-gray-400 hover:text-white rounded-lg hover:bg-gray-800 transition">
               <X className="w-5 h-5" />
             </button>

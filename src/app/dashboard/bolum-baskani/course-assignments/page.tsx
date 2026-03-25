@@ -217,7 +217,7 @@ export default function CourseAssignmentsPage() {
             <div className="flex items-center gap-2 mb-2">
               <span className="text-xs font-bold uppercase tracking-widest text-amber-500 bg-amber-500/10 px-2 py-1 rounded border border-amber-500/20">{departmentName}</span>
             </div>
-            <h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-400 flex items-center gap-3 tracking-tight">
+            <h1 className="text-3xl font-black text-white flex items-center gap-3 tracking-tight">
               Ders Görevlendirmeleri
             </h1>
             <p className="mt-2 text-gray-400 max-w-2xl font-medium">
@@ -234,7 +234,7 @@ export default function CourseAssignmentsPage() {
       </div>
 
       {loading ? (
-        <div className="glass-card py-24 flex flex-col items-center justify-center rounded-2xl border border-gray-800/60">
+        <div className="card py-24 flex flex-col items-center justify-center rounded-2xl border border-gray-800/60">
           <div className="w-12 h-12 rounded-full border-4 border-amber-900 border-t-amber-500 animate-spin mb-4" />
           <p className="text-gray-400 font-medium tracking-wide">Ders listesi ve kadro hazırlanıyor...</p>
         </div>
@@ -242,7 +242,7 @@ export default function CourseAssignmentsPage() {
         <>
           {/* STATS */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="glass-card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 relative overflow-hidden group">
+            <div className="card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 relative overflow-hidden group">
               <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20 shrink-0">
                 <BookOpen className="w-6 h-6 text-blue-500" />
@@ -253,7 +253,7 @@ export default function CourseAssignmentsPage() {
               </div>
             </div>
 
-            <div className="glass-card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 relative overflow-hidden group">
+            <div className="card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 relative overflow-hidden group">
               <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 shrink-0">
                 <UserCheck className="w-6 h-6 text-emerald-500" />
@@ -264,7 +264,7 @@ export default function CourseAssignmentsPage() {
               </div>
             </div>
 
-            <div className="glass-card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 relative overflow-hidden group">
+            <div className="card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 relative overflow-hidden group">
               <div className="absolute inset-0 bg-rose-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div className="w-12 h-12 rounded-xl bg-rose-500/10 flex items-center justify-center border border-rose-500/20 shrink-0">
                 <AlertTriangle className="w-6 h-6 text-rose-500" />
@@ -275,7 +275,7 @@ export default function CourseAssignmentsPage() {
               </div>
             </div>
 
-            <div className="glass-card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 relative overflow-hidden group">
+            <div className="card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 relative overflow-hidden group">
               <div className="absolute inset-0 bg-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center border border-purple-500/20 shrink-0">
                 <Users className="w-6 h-6 text-purple-500" />
@@ -297,7 +297,7 @@ export default function CourseAssignmentsPage() {
               </div>
             </div>
 
-            <div className="glass-card p-2 rounded-xl border border-gray-800/60 flex flex-wrap gap-2 lg:w-max">
+            <div className="card p-2 rounded-xl border border-gray-800/60 flex flex-wrap gap-2 lg:w-max">
               <div className="relative flex-1 min-w-[180px]">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
                 <input type="text" placeholder="Ders Ara..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-gray-900/50 border border-gray-700/50 rounded-lg text-sm font-semibold text-white focus:outline-none focus:border-amber-500 transition-colors placeholder:text-gray-600" />
@@ -323,7 +323,7 @@ export default function CourseAssignmentsPage() {
           </div>
 
           {/* MAIN GRID */}
-          <div className="glass-card overflow-hidden rounded-2xl border border-gray-800/60 shadow-xl">
+          <div className="card overflow-hidden rounded-2xl border border-gray-800/60 shadow-xl">
              <div className="overflow-x-auto custom-scrollbar">
                 <table className="w-full text-left border-collapse">
                    <thead>

@@ -37,13 +37,13 @@ interface TimeSlot {
 
 const DAYS = ['', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma']
 const COLORS = [
-  'bg-blue-500/10 text-blue-400 border-blue-500/20 shadow-blue-500/10',
-  'bg-emerald-500/10 text-emerald-400 border-emerald-500/20 shadow-emerald-500/10',
-  'bg-amber-500/10 text-amber-400 border-amber-500/20 shadow-amber-500/10',
-  'bg-purple-500/10 text-purple-400 border-purple-500/20 shadow-purple-500/10',
-  'bg-rose-500/10 text-rose-400 border-rose-500/20 shadow-rose-500/10',
-  'bg-cyan-500/10 text-cyan-400 border-cyan-500/20 shadow-cyan-500/10',
-  'bg-pink-500/10 text-pink-400 border-pink-500/20 shadow-pink-500/10'
+  'bg-blue-500/10 text-blue-400 border-blue-500/20',
+  'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
+  'bg-amber-500/10 text-amber-400 border-amber-500/20',
+  'bg-purple-500/10 text-purple-400 border-purple-500/20',
+  'bg-rose-500/10 text-rose-400 border-rose-500/20',
+  'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',
+  'bg-pink-500/10 text-pink-400 border-pink-500/20'
 ]
 
 export default function InstructorSchedulePage() {
@@ -153,7 +153,7 @@ export default function InstructorSchedulePage() {
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-purple-400 flex items-center gap-3 tracking-tight">
+            <h1 className="text-3xl font-black text-white flex items-center gap-3 tracking-tight">
               Eğitmen Programları
             </h1>
             <p className="mt-2 text-gray-400 max-w-2xl font-medium">
@@ -165,7 +165,7 @@ export default function InstructorSchedulePage() {
 
       <div className="max-w-screen-2xl mx-auto space-y-6">
         {loading ? (
-           <div className="glass-card flex flex-col items-center justify-center py-32 text-center rounded-2xl border border-gray-800/60">
+           <div className="card flex flex-col items-center justify-center py-32 text-center rounded-2xl border border-gray-800/60">
              <div className="w-12 h-12 rounded-full border-4 border-violet-800 border-t-violet-500 animate-spin mb-4" />
              <h3 className="text-xl font-bold text-white tracking-tight">Veriler Yükleniyor</h3>
            </div>
@@ -173,7 +173,7 @@ export default function InstructorSchedulePage() {
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-6">
             
             {/* Instructor Selection & Filters */}
-            <div className="glass-card p-6 rounded-2xl border border-gray-800/60 shadow-xl flex flex-wrap items-center justify-between gap-6">
+            <div className="card p-6 rounded-2xl border border-gray-800/60 shadow-xl flex flex-wrap items-center justify-between gap-6">
               <div className="flex-1 min-w-[300px] relative text-gray-400 focus-within:text-violet-500 transition-colors">
                 <Search className="w-5 h-5 absolute left-4 top-[38px]" />
                 <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block pl-1">Kadrolu Eğitmen Seçimi</label>
@@ -209,7 +209,7 @@ export default function InstructorSchedulePage() {
             {/* Stats Overview */}
             {selectedInstructor && (
               <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-                <div className="glass-card p-5 rounded-2xl border border-blue-500/20 bg-gradient-to-br from-gray-900 to-blue-900/10">
+                <div className="card p-5 rounded-2xl border border-blue-500/20 bg-gradient-to-br from-gray-900 to-blue-900/10">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-blue-500/10 border border-blue-500/20 shadow-inner">
                       <Clock className="w-6 h-6 text-blue-400" />
@@ -221,7 +221,7 @@ export default function InstructorSchedulePage() {
                   </div>
                 </div>
 
-                <div className="glass-card p-5 rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-gray-900 to-emerald-900/10">
+                <div className="card p-5 rounded-2xl border border-emerald-500/20 bg-gradient-to-br from-gray-900 to-emerald-900/10">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-emerald-500/10 border border-emerald-500/20 shadow-inner">
                       <Calendar className="w-6 h-6 text-emerald-400" />
@@ -233,7 +233,7 @@ export default function InstructorSchedulePage() {
                   </div>
                 </div>
 
-                <div className="glass-card p-5 rounded-2xl border border-amber-500/20 bg-gradient-to-br from-gray-900 to-amber-900/10">
+                <div className="card p-5 rounded-2xl border border-amber-500/20 bg-gradient-to-br from-gray-900 to-amber-900/10">
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-amber-500/10 border border-amber-500/20 shadow-inner">
                       <BookOpen className="w-6 h-6 text-amber-400" />
@@ -246,7 +246,7 @@ export default function InstructorSchedulePage() {
                 </div>
                 
                 {/* Gün Bazlı Yük Dağılımı Özeti */}
-                <div className="glass-card p-4 rounded-2xl border border-violet-500/20 bg-gradient-to-br from-gray-900 to-violet-900/10 flex flex-col justify-center">
+                <div className="card p-4 rounded-2xl border border-violet-500/20 bg-gradient-to-br from-gray-900 to-violet-900/10 flex flex-col justify-center">
                   <p className="text-[10px] font-bold text-violet-400/80 uppercase tracking-widest mb-2 border-b border-violet-500/20 pb-1">Gündelik Dağılım</p>
                   <div className="flex items-end justify-between gap-1 h-8">
                     {[1, 2, 3, 4, 5].map((d) => {
@@ -272,7 +272,7 @@ export default function InstructorSchedulePage() {
 
             {/* Schedule Grid Table */}
             {selectedInstructor ? (
-              <div className="glass-card overflow-hidden rounded-2xl border border-gray-800/60 shadow-2xl">
+              <div className="card overflow-hidden rounded-2xl border border-gray-800/60 shadow-2xl">
                 <div className="overflow-x-auto w-full custom-scrollbar">
                   <table className="w-full text-sm border-collapse min-w-[900px]">
                     <thead>

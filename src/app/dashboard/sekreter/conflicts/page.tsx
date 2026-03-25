@@ -379,7 +379,7 @@ export default function ConflictsPage() {
 
       {/* Summary Scoreboard */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="glass-card p-6 rounded-2xl border border-gray-800 flex items-center gap-4 bg-gradient-to-br from-gray-800/20 to-transparent">
+        <div className="card p-6 rounded-2xl border border-gray-800 flex items-center gap-4 bg-gradient-to-br from-gray-800/20 to-transparent">
           <div className="w-14 h-14 rounded-full bg-gray-800 flex items-center justify-center border border-gray-700 text-gray-400 shadow-inner">
             <Layers className="w-7 h-7" />
           </div>
@@ -434,7 +434,7 @@ export default function ConflictsPage() {
       </div>
 
       {/* Main Content */}
-      <div className="glass-card rounded-2xl border border-gray-800 overflow-hidden bg-gray-900/40">
+      <div className="card rounded-2xl border border-gray-800 overflow-hidden bg-gray-900/40">
         <div className="p-6 border-b border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gray-900/60">
            <h3 className="font-bold text-white text-lg flex items-center gap-2">
              <ShieldAlert className="w-5 h-5 text-gray-400" />

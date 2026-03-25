@@ -45,7 +45,7 @@ export default function DepartmentsReadOnlyPage() {
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400 flex items-center gap-3">
+            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
               Bölümler Kataloğu
             </h1>
             <p className="mt-2 text-gray-400 max-w-xl">
@@ -55,7 +55,7 @@ export default function DepartmentsReadOnlyPage() {
         </div>
       </div>
 
-      <div className="glass-card p-4 rounded-xl flex flex-col sm:flex-row gap-4 items-center justify-between border border-gray-800/60">
+      <div className="card p-4 rounded-xl flex flex-col sm:flex-row gap-4 items-center justify-between border border-gray-800/60">
         <div className="relative w-full sm:w-80">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
           <input 
@@ -80,7 +80,7 @@ export default function DepartmentsReadOnlyPage() {
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {Array.from({length: 6}).map((_, i) => (
-            <div key={i} className="glass-card h-48 rounded-xl border border-gray-800 p-5 flex flex-col justify-between animate-pulse">
+            <div key={i} className="card h-48 rounded-xl border border-gray-800 p-5 flex flex-col justify-between animate-pulse">
               <div className="flex gap-4">
                 <div className="w-12 h-12 bg-gray-800 rounded-xl" />
                 <div className="flex-1 space-y-2">
@@ -92,7 +92,7 @@ export default function DepartmentsReadOnlyPage() {
           ))}
         </div>
       ) : filtered.length === 0 ? (
-        <div className="glass-card py-20 text-center rounded-xl border border-gray-800/60 flex flex-col items-center justify-center">
+        <div className="card py-20 text-center rounded-xl border border-gray-800/60 flex flex-col items-center justify-center">
           <div className="w-16 h-16 bg-gray-800/50 rounded-full flex items-center justify-center mb-4">
             <Building2 className="w-8 h-8 text-gray-500" />
           </div>

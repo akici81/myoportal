@@ -94,7 +94,7 @@ export default function ScheduleReadOnlyPage() {
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400 flex items-center gap-3 tracking-tight">
+            <h1 className="text-3xl font-black text-white flex items-center gap-3 tracking-tight">
               Kurum Ders Programları
             </h1>
             <p className="mt-2 text-gray-400 max-w-2xl font-medium">
@@ -108,7 +108,7 @@ export default function ScheduleReadOnlyPage() {
       </div>
 
       <div className="space-y-6 max-w-screen-2xl mx-auto">
-        <div className="glass-card p-5 rounded-2xl border border-gray-800/60 shadow-xl relative z-20">
+        <div className="card p-5 rounded-2xl border border-gray-800/60 shadow-xl relative z-20">
           <div className="flex items-center gap-2 mb-4">
             <MousePointerClick className="w-4 h-4 text-cyan-500" />
             <h3 className="text-sm font-bold text-gray-200 uppercase tracking-wider">Hedef Program Filtresi</h3>
@@ -171,7 +171,7 @@ export default function ScheduleReadOnlyPage() {
                       className={clsx(
                         'px-5 py-2.5 rounded-lg text-sm font-bold transition-all flex items-center justify-center min-w-[90px]',
                         selectedYear === y
-                          ? 'bg-gradient-to-br from-cyan-500 to-teal-600 text-white shadow-lg shadow-cyan-500/20 shadow-inner'
+                          ? 'bg-gradient-to-br from-cyan-500 to-teal-600 text-white shadow-lg shadow-inner'
                           : 'bg-transparent text-gray-400 hover:text-gray-200 hover:bg-gray-800'
                       )}
                     >
@@ -194,7 +194,7 @@ export default function ScheduleReadOnlyPage() {
         <div className="min-h-[500px]">
           {selectedProgram && selectedPeriod ? (
             loading ? (
-              <div className="glass-card flex flex-col items-center justify-center py-32 text-center rounded-2xl border border-gray-800/60">
+              <div className="card flex flex-col items-center justify-center py-32 text-center rounded-2xl border border-gray-800/60">
                 <div className="w-12 h-12 rounded-full border-4 border-cyan-800 border-t-cyan-500 animate-spin mb-4" />
                 <h3 className="text-xl font-bold text-white tracking-tight">Program Yükleniyor</h3>
                 <p className="text-gray-500 mt-2">Ders blokları analiz ediliyor, lütfen bekleyin...</p>
@@ -208,7 +208,7 @@ export default function ScheduleReadOnlyPage() {
               </div>
             )
           ) : (
-            <div className="glass-card flex flex-col items-center justify-center py-32 text-center rounded-2xl border border-gray-800/60 border-dashed bg-gray-900/20">
+            <div className="card flex flex-col items-center justify-center py-32 text-center rounded-2xl border border-gray-800/60 border-dashed bg-gray-900/20">
               <div className="w-20 h-20 bg-gray-800/50 rounded-full flex items-center justify-center mb-6 ring-8 ring-gray-900/50">
                 <CalendarDays className="w-10 h-10 text-gray-600" />
               </div>

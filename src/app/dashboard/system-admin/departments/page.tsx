@@ -91,7 +91,7 @@ export default function DepartmentsPage() {
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-orange-400 flex items-center gap-3">
+            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
               Bölüm Yönetimi
             </h1>
             <p className="mt-2 text-gray-400 max-w-xl">
@@ -110,7 +110,7 @@ export default function DepartmentsPage() {
       </div>
 
       {/* Toolbar */}
-      <div className="glass-card p-4 rounded-xl flex flex-col sm:flex-row gap-4 items-center justify-between border border-gray-800/60">
+      <div className="card p-4 rounded-xl flex flex-col sm:flex-row gap-4 items-center justify-between border border-gray-800/60">
         <div className="relative w-full sm:w-80">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
           <input 
@@ -136,7 +136,7 @@ export default function DepartmentsPage() {
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {Array.from({length: 6}).map((_, i) => (
-            <div key={i} className="glass-card h-48 rounded-xl border border-gray-800 p-5 flex flex-col justify-between animate-pulse">
+            <div key={i} className="card h-48 rounded-xl border border-gray-800 p-5 flex flex-col justify-between animate-pulse">
               <div className="flex gap-4">
                 <div className="w-12 h-12 bg-gray-800 rounded-xl" />
                 <div className="flex-1 space-y-2">
@@ -155,7 +155,7 @@ export default function DepartmentsPage() {
           ))}
         </div>
       ) : filtered.length === 0 ? (
-        <div className="glass-card py-20 text-center rounded-xl border border-gray-800/60 flex flex-col items-center justify-center">
+        <div className="card py-20 text-center rounded-xl border border-gray-800/60 flex flex-col items-center justify-center">
           <div className="w-16 h-16 bg-gray-800/50 rounded-full flex items-center justify-center mb-4">
             <Building2 className="w-8 h-8 text-gray-500" />
           </div>
@@ -249,8 +249,8 @@ export default function DepartmentsPage() {
 
       {/* Edit/Add Modal */}
       {editItem && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in">
-          <div className="glass-card w-full max-w-md p-6 rounded-2xl border border-gray-700/50 shadow-2xl relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in">
+          <div className="card w-full max-w-md p-6 rounded-2xl border border-gray-700/50 shadow-2xl relative">
             <button onClick={() => setEditItem(null)} className="absolute right-4 top-4 p-2 text-gray-400 hover:text-white rounded-lg hover:bg-gray-800 transition">
               <X className="w-5 h-5" />
             </button>
@@ -306,7 +306,7 @@ export default function DepartmentsPage() {
               
               <div className="pt-4 flex gap-3">
                 <button type="button" onClick={() => setEditItem(null)} className="px-4 py-2.5 rounded-lg font-medium text-sm text-gray-400 bg-gray-800 hover:bg-gray-700 hover:text-white transition flex-1">İptal</button>
-                <button type="submit" disabled={saving} className={`px-4 py-2.5 rounded-lg text-sm font-medium text-white flex-1 flex items-center justify-center gap-2 shadow-lg transition-all ${editItem.id ? 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 shadow-blue-500/20' : 'bg-gradient-to-r from-red-600 to-orange-600 hover:from-red-500 hover:to-orange-500 shadow-red-500/20'}`}>
+                <button type="submit" disabled={saving} className={`px-4 py-2.5 rounded-lg text-sm font-medium text-white flex-1 flex items-center justify-center gap-2 shadow-lg transition-all ${editItem.id ? 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:brightness-110' : 'bg-gradient-to-r from-red-600 to-orange-600 hover:brightness-110'}`}>
                   {saving ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div> : <Save className="w-4 h-4" /> }
                   {saving ? 'Kaydediliyor...' : 'Kaydet'}
                 </button>

@@ -50,7 +50,7 @@ export default function GeneralRequestsForm() {
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6 rounded-2xl border border-white/5 bg-gray-800/30 p-8 backdrop-blur-xl">
+      <form onSubmit={handleSubmit} className="space-y-6 rounded-2xl border border-white/5 bg-gray-800/30 p-8">
         
         <div className="space-y-2">
             <label className="text-sm font-medium text-gray-300">Talep Konusu / Başlık</label>
@@ -95,7 +95,7 @@ export default function GeneralRequestsForm() {
            <button
              type="submit"
              disabled={loading}
-             className="inline-flex items-center rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-cyan-500/25 transition-all hover:bg-cyan-400 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed group"
+             className="inline-flex items-center rounded-xl bg-cyan-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:bg-cyan-400 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed group"
            >
              {loading ? 'Sisteme İletiliyor...' : (
                <>
