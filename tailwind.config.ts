@@ -9,19 +9,46 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Sora"', 'system-ui', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace'],
+        sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        mono: ['"DM Mono"', 'monospace'],
       },
       colors: {
-        brand: {
-          red:    '#c0392b',
-          red2:   '#e74c3c',
-          dark:   '#07090f',
-          card:   '#0d1220',
-          border: '#1a2540',
-          surface:'#111827',
+        // Rumeli Üniversitesi Kurumsal Renkleri
+        primary: {
+          DEFAULT: '#B71C1C',
+          50: '#FFF5F5',
+          100: '#FFEBEE',
+          200: '#FFCDD2',
+          300: '#EF9A9A',
+          400: '#E57373',
+          500: '#EF5350',
+          600: '#E53935',
+          700: '#D32F2F',
+          800: '#C62828',
+          900: '#B71C1C',
+          950: '#7F1212',
         },
-        primary: { 50: '#ecfeff', 100: '#cffafe', 200: '#a5f3fc', 300: '#67e8f9', 400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2', 700: '#0e7490', 800: '#155e75', 900: '#164e63', 950: '#083344' }
+        // Nötr Palet (Beyaz Tema)
+        surface: {
+          DEFAULT: '#FFFFFF',
+          50: '#F7F8FA',
+          100: '#F1F3F7',
+          200: '#E4E7EE',
+          300: '#D1D5DE',
+        },
+      },
+      backgroundColor: {
+        'card': '#FFFFFF',
+        'card-hover': '#FFFFFF',
+      },
+      borderColor: {
+        DEFAULT: '#E4E7EE',
+        'card': '#E4E7EE',
+      },
+      textColor: {
+        DEFAULT: '#111827',
+        'muted': '#6B7280',
+        'faint': '#9CA3AF',
       },
       animation: {
         'fade-in': 'fadeIn 0.3s ease-in-out',
