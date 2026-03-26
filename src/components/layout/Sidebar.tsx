@@ -160,7 +160,7 @@ function NavGroupItem({ group, pathname }: { group: NavGroup; pathname: string }
       <button
         onClick={() => setOpen(!open)}
         className="flex w-full items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold uppercase tracking-wider transition-colors"
-        style={{ color: hasActive ? '#B71C1C' : '#9CA3AF' }}
+        style={{ color: hasActive ? '#B71C1C' : 'rgba(255, 255, 255, 0.35)' }}
       >
         <span className="flex items-center gap-2">
           <group.icon className="h-3.5 w-3.5" />
@@ -185,13 +185,13 @@ function NavGroupItem({ group, pathname }: { group: NavGroup; pathname: string }
                 href={item.href}
                 className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-all duration-150"
                 style={active
-                  ? { background: '#FFF5F5', color: '#B71C1C', fontWeight: 600, borderLeft: '2px solid #B71C1C' }
-                  : { color: '#6B7280' }
+                  ? { background: '#B71C1C', color: '#FFFFFF', fontWeight: 600 }
+                  : { color: '#c9d1e0' }
                 }
-                onMouseEnter={e => { if (!active) (e.currentTarget as HTMLElement).style.background = '#F7F8FA' }}
+                onMouseEnter={e => { if (!active) (e.currentTarget as HTMLElement).style.background = 'rgba(255, 255, 255, 0.07)' }}
                 onMouseLeave={e => { if (!active) (e.currentTarget as HTMLElement).style.background = 'transparent' }}
               >
-                <item.icon className={clsx("h-4 w-4 flex-shrink-0", active ? "opacity-100" : "opacity-60")} />
+                <item.icon className={clsx("h-4 w-4 flex-shrink-0", active ? "opacity-100" : "opacity-80")} />
                 <span>{item.label}</span>
               </Link>
             )
@@ -209,13 +209,13 @@ function SingleNavItem({ item, pathname }: { item: NavItem; pathname: string }) 
       href={item.href}
       className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-all duration-150"
       style={active
-        ? { background: '#FFF5F5', color: '#B71C1C', fontWeight: 600, borderLeft: '2px solid #B71C1C' }
-        : { color: '#6B7280' }
+        ? { background: '#B71C1C', color: '#FFFFFF', fontWeight: 600 }
+        : { color: '#c9d1e0' }
       }
-      onMouseEnter={e => { if (!active) (e.currentTarget as HTMLElement).style.background = '#F7F8FA' }}
+      onMouseEnter={e => { if (!active) (e.currentTarget as HTMLElement).style.background = 'rgba(255, 255, 255, 0.07)' }}
       onMouseLeave={e => { if (!active) (e.currentTarget as HTMLElement).style.background = 'transparent' }}
     >
-      <item.icon className={clsx("h-4 w-4 flex-shrink-0", active ? "opacity-100" : "opacity-60")} />
+      <item.icon className={clsx("h-4 w-4 flex-shrink-0", active ? "opacity-100" : "opacity-80")} />
       <span>{item.label}</span>
     </Link>
   )
@@ -259,10 +259,10 @@ export function Sidebar({ role, userName }: SidebarProps) {
     .toUpperCase()
 
   const SidebarContent = () => (
-    <div className="flex flex-col h-full" style={{ background: '#FFFFFF' }}>
+    <div className="flex flex-col h-full" style={{ background: '#1a1f2e' }}>
 
       {/* Logo Alanı */}
-      <div className="flex items-center gap-3 px-5 h-16 border-b flex-shrink-0" style={{ borderColor: '#E4E7EE' }}>
+      <div className="flex items-center gap-3 px-5 h-16 border-b flex-shrink-0" style={{ borderColor: 'rgba(255, 255, 255, 0.08)' }}>
         <div
           className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
           style={{ background: '#B71C1C' }}
@@ -270,8 +270,8 @@ export function Sidebar({ role, userName }: SidebarProps) {
           <span className="text-white font-black text-xs tracking-tight">MYO</span>
         </div>
         <div>
-          <p className="text-sm font-bold leading-none" style={{ color: '#111827' }}>MYO Portal</p>
-          <p className="text-[10px] mt-0.5 tracking-wider uppercase" style={{ color: '#9CA3AF' }}>
+          <p className="text-sm font-bold leading-none" style={{ color: '#FFFFFF' }}>MYO Portal</p>
+          <p className="text-[10px] mt-0.5 tracking-wider uppercase" style={{ color: 'rgba(255, 255, 255, 0.35)' }}>
             Rumeli Üniversitesi
           </p>
         </div>
@@ -283,7 +283,7 @@ export function Sidebar({ role, userName }: SidebarProps) {
         {/* Dashboard linki */}
         <SingleNavItem item={{ label: 'Dashboard', href: dashboardLink, icon: LayoutDashboard }} pathname={pathname} />
 
-        <div className="my-3" style={{ borderTop: '1px solid #F1F3F7' }} />
+        <div className="my-3" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.08)' }} />
 
         {navGroups.map(group => (
           <NavGroupItem key={group.label} group={group} pathname={pathname} />
@@ -291,7 +291,7 @@ export function Sidebar({ role, userName }: SidebarProps) {
 
         {role === 'bolum_baskani' && (
           <>
-            <div className="my-3" style={{ borderTop: '1px solid #F1F3F7' }} />
+            <div className="my-3" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.08)' }} />
             {NAV_BOLUM_BASKANI_SINGLE.map(item => (
               <SingleNavItem key={item.href} item={item} pathname={pathname} />
             ))}
@@ -300,30 +300,30 @@ export function Sidebar({ role, userName }: SidebarProps) {
       </nav>
 
       {/* Kullanıcı Alanı */}
-      <div className="p-3 border-t flex-shrink-0" style={{ borderColor: '#E4E7EE' }}>
-        <div className="flex items-center gap-3 px-3 py-2.5 rounded-xl mb-1" style={{ background: '#F7F8FA' }}>
+      <div className="p-3 border-t flex-shrink-0" style={{ borderColor: 'rgba(255, 255, 255, 0.08)' }}>
+        <div className="flex items-center gap-3 px-3 py-2.5 rounded-xl mb-1" style={{ background: 'rgba(255, 255, 255, 0.05)' }}>
           <div
             className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold flex-shrink-0"
-            style={{ background: '#FFF5F5', color: '#B71C1C', border: '1px solid #FFE0E0' }}
+            style={{ background: 'rgba(183, 28, 28, 0.2)', color: '#FFFFFF', border: '1px solid rgba(183, 28, 28, 0.4)' }}
           >
             {initials}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-xs font-semibold truncate" style={{ color: '#111827' }}>{userName}</p>
-            <p className="text-[10px] truncate font-medium" style={{ color: '#B71C1C' }}>{meta.label}</p>
+            <p className="text-xs font-semibold truncate" style={{ color: '#FFFFFF' }}>{userName}</p>
+            <p className="text-[10px] truncate font-medium" style={{ color: 'rgba(255, 255, 255, 0.5)' }}>{meta.label}</p>
           </div>
         </div>
         <button
           onClick={handleLogout}
           className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-colors"
-          style={{ color: '#9CA3AF' }}
+          style={{ color: 'rgba(255, 255, 255, 0.5)' }}
           onMouseEnter={e => {
-            (e.currentTarget as HTMLElement).style.background = '#FFF5F5'
-            ;(e.currentTarget as HTMLElement).style.color = '#B71C1C'
+            (e.currentTarget as HTMLElement).style.background = 'rgba(220, 38, 38, 0.15)'
+            ;(e.currentTarget as HTMLElement).style.color = '#EF4444'
           }}
           onMouseLeave={e => {
             (e.currentTarget as HTMLElement).style.background = 'transparent'
-            ;(e.currentTarget as HTMLElement).style.color = '#9CA3AF'
+            ;(e.currentTarget as HTMLElement).style.color = 'rgba(255, 255, 255, 0.5)'
           }}
         >
           <LogOut className="w-4 h-4" />
