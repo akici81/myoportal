@@ -124,25 +124,25 @@ export function ScheduleGrid({ entries, timeSlots, readonly, onDelete, onCellCli
       )}
 
       {/* Legend */}
-      <div className="px-5 py-3 border-b border-gray-800/60 bg-gray-900/60 backdrop-blur-sm flex flex-wrap gap-4 items-center">
-        <span className="text-xs font-bold text-gray-500 uppercase tracking-wider mr-2">Eğitmenler:</span>
+      <div className="px-5 py-3 border-b flex flex-wrap gap-4 items-center" style={{ borderColor: 'var(--border)', background: 'var(--surface-2)' }}>
+        <span className="text-xs font-bold uppercase tracking-wider mr-2" style={{ color: 'var(--muted)' }}>Eğitmenler:</span>
         {instructorList.map(e => {
           const color = e.instructor_id ? instColors[e.instructor_id] : '#64748b'
           const inst = getInstructor(e)
           return (
-            <div key={e.instructor_id} className="flex items-center gap-2 text-xs font-medium bg-gray-800/50 px-2 py-1 rounded-md border border-gray-700/50 hover:bg-gray-800 transition-colors cursor-default shadow-sm">
-              <div className="w-2.5 h-2.5 rounded-full flex-shrink-0 shadow-sm" style={{ background: color, boxShadow: `0 0 8px ${color}60` }} />
+            <div key={e.instructor_id} className="flex items-center gap-2 text-xs font-medium px-2 py-1 rounded-md border transition-colors cursor-default" style={{ background: 'var(--surface)', borderColor: 'var(--border)' }}>
+              <div className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: 'var(--primary)' }} />
               <span style={{ color: 'var(--text)' }}>{inst?.title} {inst?.full_name ?? '—'}</span>
             </div>
           )
         })}
         {!entries.length && (
-          <span className="text-xs font-medium text-gray-500 bg-gray-800/40 px-3 py-1 rounded-full border border-gray-700/30">
+          <span className="text-xs font-medium px-3 py-1 rounded-full border" style={{ color: 'var(--muted)', background: 'var(--surface)', borderColor: 'var(--border)' }}>
             Ders programı boş
           </span>
         )}
         {!readonly && entries.length > 0 && (
-          <span className="ml-auto text-[10px] text-gray-600 font-medium flex items-center gap-1.5">
+          <span className="ml-auto text-[10px] font-medium flex items-center gap-1.5" style={{ color: 'var(--muted)' }}>
             <GripVertical className="w-3 h-3" />
             Sürükleyerek taşıyabilirsiniz
           </span>
@@ -154,11 +154,11 @@ export function ScheduleGrid({ entries, timeSlots, readonly, onDelete, onCellCli
         <table className="w-full text-sm border-collapse" style={{ minWidth: 800 }}>
           <thead>
             <tr>
-              <th className="py-4 px-3 text-center font-bold border-b border-r border-gray-800/80 w-24 bg-gray-900/90 text-gray-500 uppercase tracking-widest text-[10px] sticky left-0 z-10 backdrop-blur-md">
+              <th className="py-4 px-3 text-center font-bold border-b border-r w-24 uppercase tracking-widest text-[10px] sticky left-0 z-10" style={{ borderColor: 'var(--border)', background: 'var(--primary)', color: 'var(--on-primary)' }}>
                 Zaman
               </th>
               {[1, 2, 3, 4, 5].map(d => (
-                <th key={d} className="py-4 px-4 text-center font-black tracking-wide border-b border-r border-gray-800/80 bg-gray-900/50" style={{ color: 'var(--text)' }}>
+                <th key={d} className="py-4 px-4 text-center font-black tracking-wide border-b border-r" style={{ borderColor: 'var(--border)', background: 'var(--primary-subtle)', color: 'var(--text)' }}>
                   {DAY_MAP[d]}
                 </th>
               ))}
@@ -166,9 +166,9 @@ export function ScheduleGrid({ entries, timeSlots, readonly, onDelete, onCellCli
           </thead>
           <tbody>
             {timeSlots.map((slot, idx) => (
-              <tr key={slot.id} className="group/row transition-colors hover:bg-gray-800/20" style={{ background: idx % 2 === 0 ? 'rgba(15,23,42,0.2)' : 'rgba(15,23,42,0.4)' }}>
+              <tr key={slot.id} className="group/row transition-colors" style={{ background: idx % 2 === 0 ? 'var(--surface)' : 'var(--surface-2)' }}>
                 {/* Time */}
-                <td className="py-3 px-3 text-center border-b border-r border-gray-800/80 font-mono whitespace-nowrap bg-gray-900/90 group-hover/row:bg-gray-800/90 transition-colors sticky left-0 z-10">
+                <td className="py-3 px-3 text-center border-b border-r font-mono whitespace-nowrap transition-colors sticky left-0 z-10" style={{ borderColor: 'var(--border)', background: 'var(--primary-muted)' }}>
                   <div className="flex flex-col items-center justify-center">
                     <span className="text-xs font-bold" style={{ color: 'var(--text)' }}>{slot.start_time.slice(0, 5)}</span>
                     <span className="text-[10px] font-medium mt-0.5" style={{ color: 'var(--muted)' }}>{slot.end_time.slice(0, 5)}</span>
@@ -190,12 +190,16 @@ export function ScheduleGrid({ entries, timeSlots, readonly, onDelete, onCellCli
                     <td
                       key={day}
                       className={clsx(
-                        'p-1.5 border-b border-r border-gray-800/60 align-top transition-all relative',
-                        !readonly && isEmpty && 'cursor-pointer hover:bg-cyan-900/10',
-                        isDropTarget && isEmpty && 'bg-cyan-900/30 ring-2 ring-inset ring-cyan-500/50',
-                        isDropTarget && !isEmpty && 'bg-amber-900/20 ring-2 ring-inset ring-amber-500/40',
+                        'p-1.5 border-b border-r align-top transition-all relative',
+                        !readonly && isEmpty && 'cursor-pointer',
+                        isDropTarget && isEmpty && 'ring-2 ring-inset ring-red-300',
+                        isDropTarget && !isEmpty && 'ring-2 ring-inset ring-amber-300',
                       )}
-                      style={{ minWidth: 140 }}
+                      style={{
+                        minWidth: 140,
+                        borderColor: 'var(--border)',
+                        background: !readonly && isEmpty ? (isDropTarget ? 'var(--primary-subtle)' : 'transparent') : 'transparent'
+                      }}
                       onClick={() => !readonly && isEmpty && !draggingId && onCellClick?.(day, slot.id)}
                       onDragOver={!readonly ? (e) => handleDragOver(e, day, slot.id) : undefined}
                       onDragLeave={!readonly ? handleDragLeave : undefined}
@@ -234,15 +238,16 @@ export function ScheduleGrid({ entries, timeSlots, readonly, onDelete, onCellCli
                               onDragStart={!readonly ? (ev) => handleDragStart(ev, e.id) : undefined}
                               onDragEnd={!readonly ? handleDragEnd : undefined}
                               className={clsx(
-                                'relative p-2.5 rounded-xl border border-gray-700/50 flex flex-col gap-0.5 transition-all w-full h-full min-h-[90px]',
-                                !readonly && 'hover:shadow-lg hover:z-10 group/cell cursor-grab active:cursor-grabbing',
-                                isDragging && 'opacity-40 scale-95 ring-2 ring-cyan-500/50',
+                                'relative p-2.5 rounded-lg border flex flex-col gap-0.5 transition-all w-full h-full min-h-[90px]',
+                                !readonly && 'hover:shadow-md hover:z-10 group/cell cursor-grab active:cursor-grabbing',
+                                isDragging && 'opacity-40 scale-95',
                               )}
                               style={{
-                                background: `linear-gradient(145deg, ${color}15, ${color}0D)`,
-                                borderColor: `${color}40`,
-                                borderLeftColor: color,
-                                borderLeftWidth: 4,
+                                background: 'var(--surface)',
+                                borderColor: 'var(--primary)',
+                                borderLeftColor: 'var(--primary)',
+                                borderLeftWidth: 3,
+                                boxShadow: '0 1px 3px rgba(183, 28, 28, 0.08)'
                               }}
                             >
                               {/* Drag handle hint */}
@@ -253,11 +258,11 @@ export function ScheduleGrid({ entries, timeSlots, readonly, onDelete, onCellCli
                               )}
 
                               <div className="flex justify-between items-start gap-2">
-                                <p className="font-bold text-xs leading-tight" style={{ color }}>
+                                <p className="font-bold text-xs leading-tight" style={{ color: 'var(--primary)' }}>
                                   {course?.code ?? 'Kod Yok'}
                                 </p>
                                 {program && (
-                                  <span className="text-[9px] font-bold px-1.5 py-0.5 rounded bg-gray-900/50 border border-gray-700 whitespace-nowrap" style={{ color: 'var(--muted)' }}>
+                                  <span className="text-[9px] font-bold px-1.5 py-0.5 rounded border whitespace-nowrap" style={{ color: 'var(--muted)', borderColor: 'var(--border)', background: 'var(--surface-2)' }}>
                                     {program.short_code}-{pc?.year_number}
                                   </span>
                                 )}
@@ -268,12 +273,12 @@ export function ScheduleGrid({ entries, timeSlots, readonly, onDelete, onCellCli
                               </p>
 
                               <div className="mt-auto pt-2 flex flex-col gap-0.5">
-                                <p className="text-[10px] flex items-center gap-1 font-medium" style={{ color: 'var(--faint)' }}>
-                                  <span className="w-1 h-1 rounded-full bg-gray-600" />
+                                <p className="text-[10px] flex items-center gap-1 font-medium" style={{ color: 'var(--muted)' }}>
+                                  <span className="w-1 h-1 rounded-full" style={{ background: 'var(--primary)' }} />
                                   {inst?.title} {inst?.full_name?.split(' ').slice(-1)[0] ?? 'Hoca Yok'}
                                 </p>
-                                <p className="text-[10px] flex items-center gap-1 font-medium text-cyan-300/80">
-                                  <span className="w-1 h-1 rounded-full bg-cyan-700/50" />
+                                <p className="text-[10px] flex items-center gap-1 font-medium" style={{ color: 'var(--muted)' }}>
+                                  <span className="w-1 h-1 rounded-full" style={{ background: 'var(--info)' }} />
                                   {classroom?.name ?? 'Derslik Yok'}
                                 </p>
                               </div>
@@ -282,7 +287,8 @@ export function ScheduleGrid({ entries, timeSlots, readonly, onDelete, onCellCli
                                 <button
                                   onClick={ev => { ev.stopPropagation(); onDelete(e.id) }}
                                   title="Dersi Sil"
-                                  className="absolute -top-2 -right-2 opacity-0 group-hover/cell:opacity-100 scale-90 group-hover/cell:scale-100 w-6 h-6 rounded-full bg-red-500 text-white flex items-center justify-center transition-all shadow-lg hover:bg-red-600 focus:outline-none z-20 border-2 border-gray-900"
+                                  className="absolute -top-2 -right-2 opacity-0 group-hover/cell:opacity-100 scale-90 group-hover/cell:scale-100 w-6 h-6 rounded-full bg-red-500 text-white flex items-center justify-center transition-all shadow-lg hover:bg-red-600 focus:outline-none z-20 border-2"
+                                  style={{ borderColor: 'var(--surface)' }}
                                 >
                                   <Trash2 className="w-3 h-3" />
                                 </button>
