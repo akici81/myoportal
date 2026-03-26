@@ -132,7 +132,7 @@ export function ScheduleGrid({ entries, timeSlots, readonly, onDelete, onCellCli
           return (
             <div key={e.instructor_id} className="flex items-center gap-2 text-xs font-medium bg-gray-800/50 px-2 py-1 rounded-md border border-gray-700/50 hover:bg-gray-800 transition-colors cursor-default shadow-sm">
               <div className="w-2.5 h-2.5 rounded-full flex-shrink-0 shadow-sm" style={{ background: color, boxShadow: `0 0 8px ${color}60` }} />
-              <span className="text-gray-300">{inst?.title} {inst?.full_name ?? '—'}</span>
+              <span style={{ color: 'var(--text)' }}>{inst?.title} {inst?.full_name ?? '—'}</span>
             </div>
           )
         })}
@@ -158,7 +158,7 @@ export function ScheduleGrid({ entries, timeSlots, readonly, onDelete, onCellCli
                 Zaman
               </th>
               {[1, 2, 3, 4, 5].map(d => (
-                <th key={d} className="py-4 px-4 text-center font-black tracking-wide border-b border-r border-gray-800/80 bg-gray-900/50 text-gray-200">
+                <th key={d} className="py-4 px-4 text-center font-black tracking-wide border-b border-r border-gray-800/80 bg-gray-900/50" style={{ color: 'var(--text)' }}>
                   {DAY_MAP[d]}
                 </th>
               ))}
@@ -170,8 +170,8 @@ export function ScheduleGrid({ entries, timeSlots, readonly, onDelete, onCellCli
                 {/* Time */}
                 <td className="py-3 px-3 text-center border-b border-r border-gray-800/80 font-mono whitespace-nowrap bg-gray-900/90 group-hover/row:bg-gray-800/90 transition-colors sticky left-0 z-10">
                   <div className="flex flex-col items-center justify-center">
-                    <span className="text-xs font-bold text-gray-300">{slot.start_time.slice(0, 5)}</span>
-                    <span className="text-[10px] font-medium text-gray-600 mt-0.5">{slot.end_time.slice(0, 5)}</span>
+                    <span className="text-xs font-bold" style={{ color: 'var(--text)' }}>{slot.start_time.slice(0, 5)}</span>
+                    <span className="text-[10px] font-medium mt-0.5" style={{ color: 'var(--muted)' }}>{slot.end_time.slice(0, 5)}</span>
                     {slot.is_uzem_slot && (
                       <span className="mt-1 text-[9px] bg-indigo-500/20 text-indigo-400 px-1.5 py-0.5 rounded font-bold uppercase tracking-wider flex items-center gap-1 border border-indigo-500/30">
                         <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" /> UZEM
@@ -263,7 +263,7 @@ export function ScheduleGrid({ entries, timeSlots, readonly, onDelete, onCellCli
                                 )}
                               </div>
 
-                              <p className="text-[11px] font-semibold text-gray-200 leading-snug line-clamp-2 mt-0.5">
+                              <p className="text-[11px] font-semibold leading-snug line-clamp-2 mt-0.5" style={{ color: 'var(--text)' }}>
                                 {course?.name ?? 'Ders Adı Yok'}
                               </p>
 

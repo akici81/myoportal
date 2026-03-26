@@ -417,10 +417,10 @@ export default function SchedulePage() {
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-black text-white tracking-tight">
+            <h1 className="text-3xl font-black tracking-tight" style={{ color: 'var(--text)' }}>
               Ders Programı Merkezi
             </h1>
-            <p className="mt-2 text-gray-400 max-w-2xl font-medium">
+            <p className="mt-2 max-w-2xl font-medium" style={{ color: 'var(--muted)' }}>
               Tüm programların haftalık ders akışlarını oluşturun, sınıf doluluk durumlarını anlık görün.
             </p>
           </div>
@@ -455,7 +455,7 @@ export default function SchedulePage() {
         <div className="card p-5 rounded-2xl border border-gray-800/60 shadow-xl relative z-20">
           <div className="flex items-center gap-2 mb-4">
             <MousePointerClick className="w-4 h-4 text-cyan-500" />
-            <h3 className="text-sm font-bold text-gray-200 uppercase tracking-wider">Hedef Program Seçimi</h3>
+            <h3 className="text-sm font-bold uppercase tracking-wider" style={{ color: 'var(--text)' }}>Hedef Program Seçimi</h3>
           </div>
 
           <div className="flex flex-wrap gap-4 items-end">
@@ -534,7 +534,7 @@ export default function SchedulePage() {
             loading ? (
               <div className="card flex flex-col items-center justify-center py-32 text-center rounded-2xl border border-gray-800/60">
                 <div className="w-12 h-12 rounded-full border-4 border-cyan-800 border-t-cyan-500 animate-spin mb-4" />
-                <h3 className="text-xl font-bold text-white tracking-tight">Program Yükleniyor</h3>
+                <h3 className="text-xl font-bold tracking-tight" style={{ color: 'var(--text)' }}>Program Yükleniyor</h3>
               </div>
             ) : (
               <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -552,7 +552,7 @@ export default function SchedulePage() {
               <div className="w-20 h-20 bg-gray-800/50 rounded-full flex items-center justify-center mb-6 ring-8 ring-gray-900/50">
                 <CalendarDays className="w-10 h-10 text-gray-600" />
               </div>
-              <h3 className="text-2xl font-black text-gray-200 tracking-tight">Henüz Program Seçilmedi</h3>
+              <h3 className="text-2xl font-black tracking-tight" style={{ color: 'var(--text)' }}>Henüz Program Seçilmedi</h3>
               <p className="text-gray-500 mt-3 max-w-md mx-auto leading-relaxed">
                 Tabloyu görüntülemek için yukarıdan bölüm ve program seçin.
               </p>
@@ -569,7 +569,7 @@ export default function SchedulePage() {
             {/* Modal Header */}
             <div className="px-6 py-5 border-b border-cyan-900/30 bg-cyan-600 flex justify-between items-start">
               <div>
-                <h3 className="text-xl font-black text-white tracking-tight">
+                <h3 className="text-xl font-black tracking-tight" style={{ color: 'var(--text)' }}>
                   {rangeMode ? 'Saat Aralığı ile Ders Yerleştir' : 'Derse Görevlendirme'}
                 </h3>
                 {!rangeMode && addSlot && selectedSlot && (
