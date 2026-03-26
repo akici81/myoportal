@@ -318,28 +318,28 @@ export default function AutoSchedulePage() {
                     <Cpu className="w-12 h-12 text-red-400" />
                  </div>
                  <h2 className="text-2xl font-bold text-default mb-3" style={{ color: 'var(--text)' }}>Motor Beklemede</h2>
-                 <p className="text-muted max-w-md mx-auto leading-relaxed mb-8">
+                 <p className="text-default max-w-md mx-auto leading-relaxed mb-8" style={{ color: '#374151' }}>
                    Sol taraftaki panelden ayarlarınızı yapılandırıp butona tıkladığınızda otomasyon devreye girecektir.
                  </p>
-                 
+
                  <div className="text-left w-full max-w-lg card border p-6 rounded-2xl relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-1 h-full bg-red-600"></div>
-                    <h4 className="font-bold text-muted mb-4 flex items-center gap-2">
+                    <h4 className="font-bold text-default mb-4 flex items-center gap-2" style={{ color: 'var(--text)' }}>
                        <Info className="w-4 h-4 text-red-400" />
                        Yapay Zeka Çalışma Sırası
                     </h4>
                     <ul className="space-y-4 relative z-10">
                       <li className="flex gap-3 items-start">
                         <span className="w-6 h-6 shrink-0 rounded bg-red-600/20 text-red-400 flex items-center justify-center text-xs font-black border border-red-600/30">1</span>
-                        <p className="text-sm text-muted leading-snug"><span className="text-muted font-semibold">Ortak Havuz Dersleri</span> en kısıtlı birimler olarak algılanır ve önce onlar bloklanır.</p>
+                        <p className="text-sm text-default leading-snug" style={{ color: '#374151' }}><span className="font-semibold" style={{ color: '#1F2937' }}>Ortak Havuz Dersleri</span> en kısıtlı birimler olarak algılanır ve önce onlar bloklanır.</p>
                       </li>
                       <li className="flex gap-3 items-start">
                         <span className="w-6 h-6 shrink-0 rounded bg-red-600/20 text-red-400 flex items-center justify-center text-xs font-black border border-red-600/30">2</span>
-                        <p className="text-sm text-muted leading-snug"><span className="text-muted font-semibold">Hoca Kısıtları (Constraints)</span> incelenir ve kapalı saat/gün/saat limitleri harici zaman blokları işaretlenir.</p>
+                        <p className="text-sm text-default leading-snug" style={{ color: '#374151' }}><span className="font-semibold" style={{ color: '#1F2937' }}>Hoca Kısıtları (Constraints)</span> incelenir ve kapalı saat/gün/saat limitleri harici zaman blokları işaretlenir.</p>
                       </li>
                       <li className="flex gap-3 items-start">
                         <span className="w-6 h-6 shrink-0 rounded bg-red-600/20 text-red-400 flex items-center justify-center text-xs font-black border border-red-600/30">3</span>
-                        <p className="text-sm text-muted leading-snug"><span className="text-muted font-semibold">Aktif Çakışma Önleme</span> ile Derslik Kapasiteleri ve program öğrenci sayıları eşleşerek slotlara dizilir.</p>
+                        <p className="text-sm text-default leading-snug" style={{ color: '#374151' }}><span className="font-semibold" style={{ color: '#1F2937' }}>Aktif Çakışma Önleme</span> ile Derslik Kapasiteleri ve program öğrenci sayıları eşleşerek slotlara dizilir.</p>
                       </li>
                     </ul>
                  </div>
