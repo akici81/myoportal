@@ -32,7 +32,7 @@ export default async function MYSchedulePage() {
       </div>
 
       {!period ? (
-        <div className="card py-16 text-center rounded-xl border border-gray-800/60">
+        <div className="card py-16 text-center rounded-xl border">
           <CalendarDays className="w-10 h-10 mx-auto mb-3 text-gray-600" />
           <p className="font-medium text-white">Aktif akademik dönem bulunamadı</p>
           <p className="text-sm text-gray-400 mt-1">Lütfen Sekreterlikten bir dönem aktif edilmesini isteyin.</p>
@@ -42,7 +42,7 @@ export default async function MYSchedulePage() {
           {departments?.map(d => {
             const deptProgs = programs?.filter(p => p.department_id === d.id) || []
             return (
-              <div key={d.id} className="card p-5 rounded-xl border border-gray-700/50 flex flex-col">
+              <div key={d.id} className="card p-5 rounded-xl border flex flex-col">
                 <div className="flex items-start gap-4 mb-4">
                   <div className="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 font-bold text-lg flex items-center justify-center border border-indigo-500/20 flex-shrink-0">
                     {d.short_code}
@@ -55,7 +55,7 @@ export default async function MYSchedulePage() {
                 <div className="space-y-2 flex-1">
                   {deptProgs.map(p => (
                     <Link key={p.id} href={`/dashboard/sekreter/schedule?program=${p.id}`}
-                      className="flex items-center gap-2 text-sm text-gray-300 hover:text-white p-2 rounded-lg hover:bg-gray-800/50 transition group">
+                      className="flex items-center gap-2 text-sm text-gray-300 hover:text-white p-2 rounded-lg hover:card/50 transition group">
                       <BookOpen className="w-4 h-4 text-gray-500 group-hover:text-indigo-400 transition" />
                       {p.name}
                     </Link>

@@ -145,14 +145,14 @@ export default function ClassroomSchedulePage() {
           </div>
           
           {/* View Mode Switcher */}
-          <div className="flex bg-gray-900/80 p-1.5 rounded-xl border border-gray-700/50 shadow-inner">
+          <div className="flex card p-1.5 rounded-xl border shadow-inner">
             <button
               onClick={() => setViewMode('overview')}
               className={clsx(
                 'flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold transition-all',
                 viewMode === 'overview'
                   ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
-                  : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/50 transparent border border-transparent'
+                  : 'text-gray-400 hover:text-gray-200 hover:card/50 transparent border border-transparent'
               )}
             >
               <LayoutGrid className="w-4 h-4" />
@@ -167,7 +167,7 @@ export default function ClassroomSchedulePage() {
                 'flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold transition-all',
                 viewMode === 'single'
                   ? 'bg-indigo-500/20 text-indigo-400 border border-indigo-500/30'
-                  : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/50 transparent border border-transparent'
+                  : 'text-gray-400 hover:text-gray-200 hover:card/50 transparent border border-transparent'
               )}
             >
               <Maximize2 className="w-4 h-4" />
@@ -179,14 +179,14 @@ export default function ClassroomSchedulePage() {
 
       <div className="max-w-screen-2xl mx-auto space-y-6">
         {loading ? (
-           <div className="card flex flex-col items-center justify-center py-32 text-center rounded-2xl border border-gray-800/60">
+           <div className="card flex flex-col items-center justify-center py-32 text-center rounded-2xl border">
              <div className="w-12 h-12 rounded-full border-4 border-blue-800 border-t-blue-500 animate-spin mb-4" />
              <h3 className="text-xl font-bold text-white tracking-tight">Derslik Verileri Yükleniyor</h3>
            </div>
         ) : viewMode === 'overview' ? (
           /* Overview - All Classrooms */
-          <div className="card overflow-hidden rounded-2xl border border-gray-800/60 shadow-xl">
-            <div className="px-6 py-5 border-b border-gray-800/60 bg-gray-900/30 flex items-center justify-between">
+          <div className="card overflow-hidden rounded-2xl border shadow-xl">
+            <div className="px-6 py-5 border-b card flex items-center justify-between">
               <div>
                 <h3 className="text-xl font-black text-white flex items-center gap-2">
                   <Sparkles className="w-5 h-5 text-blue-400" />
@@ -211,7 +211,7 @@ export default function ClassroomSchedulePage() {
                       setSelectedClassroom(room.id)
                       setViewMode('single')
                     }}
-                    className="p-5 rounded-2xl cursor-pointer transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/10 bg-gray-900 border border-gray-800 hover:border-blue-500/30 group relative overflow-hidden"
+                    className="p-5 rounded-2xl cursor-pointer transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/10 card border hover:border-blue-500/30 group relative overflow-hidden"
                   >
                     <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-white/5 to-transparent rounded-bl-full opacity-50 group-hover:opacity-50 transition-opacity" />
                     
@@ -229,7 +229,7 @@ export default function ClassroomSchedulePage() {
                       </span>
                     </div>
                     
-                    <div className="h-2.5 rounded-full bg-gray-950/80 overflow-hidden relative z-10 border border-gray-800">
+                    <div className="h-2.5 rounded-full bg-gray-950/80 overflow-hidden relative z-10 border">
                       <div
                         className={clsx(
                           "h-full transition-all duration-1000 ease-out shadow-inner",
@@ -259,17 +259,17 @@ export default function ClassroomSchedulePage() {
           /* Single Classroom View */
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-6">
             {/* Classroom Selection Glass Card */}
-            <div className="card p-6 rounded-2xl border border-gray-800/60 shadow-xl flex items-center justify-between gap-6 flex-wrap">
+            <div className="card p-6 rounded-2xl border shadow-xl flex items-center justify-between gap-6 flex-wrap">
               <div className="flex-1 min-w-[300px]">
                 <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block pl-1">İncelenen Derslik</label>
                 <select
-                  className="w-full bg-gray-900/50 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-colors font-bold shadow-inner"
+                  className="w-full card border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-colors font-bold shadow-inner"
                   value={selectedClassroom}
                   onChange={(e) => setSelectedClassroom(e.target.value)}
                 >
                   <option value="">— Cihaz Tipi / Derslik Seçin —</option>
                   {classrooms.map((room) => (
-                    <option key={room.id} value={room.id} className="bg-gray-900">
+                    <option key={room.id} value={room.id} className="card">
                       {room.name} — ({room.building} Binası, {room.capacity} Kişilik)
                     </option>
                   ))}
@@ -277,12 +277,12 @@ export default function ClassroomSchedulePage() {
               </div>
               
               {selectedClassroomInfo && (
-                <div className="flex gap-4 p-4 rounded-xl bg-gray-900/50 border border-gray-800/80 shadow-inner">
-                   <div className="text-center px-4 border-r border-gray-700/50">
+                <div className="flex gap-4 p-4 rounded-xl card border shadow-inner">
+                   <div className="text-center px-4 border-r">
                      <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Bina</p>
                      <p className="font-bold text-gray-200">{selectedClassroomInfo.building}</p>
                    </div>
-                   <div className="text-center px-4 border-r border-gray-700/50">
+                   <div className="text-center px-4 border-r">
                      <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Kapasite</p>
                      <p className="font-bold text-indigo-400">{selectedClassroomInfo.capacity} Kişi</p>
                    </div>
@@ -349,16 +349,16 @@ export default function ClassroomSchedulePage() {
 
             {/* Schedule Grid Table */}
             {selectedClassroom ? (
-              <div className="card overflow-hidden rounded-2xl border border-gray-800/60 shadow-2xl">
+              <div className="card overflow-hidden rounded-2xl border shadow-2xl">
                 <div className="overflow-x-auto w-full custom-scrollbar">
                   <table className="w-full text-sm border-collapse min-w-[900px]">
                     <thead>
-                      <tr className="bg-gray-900/80 border-b border-gray-800/60">
-                        <th className="py-4 px-5 text-left font-black text-gray-400 uppercase tracking-wider border-r border-gray-800/60 w-28 bg-gray-950/50">
+                      <tr className="card border-b">
+                        <th className="py-4 px-5 text-left font-black text-gray-400 uppercase tracking-wider border-r w-28 bg-gray-950/50">
                           Zaman
                         </th>
                         {[1, 2, 3, 4, 5].map((d) => (
-                          <th key={d} className="py-4 px-4 text-center font-black text-gray-300 uppercase tracking-wider border-r border-gray-800/60 w-[calc((100%-7rem)/5)]">
+                          <th key={d} className="py-4 px-4 text-center font-black text-gray-300 uppercase tracking-wider border-r w-[calc((100%-7rem)/5)]">
                             {DAYS[d]}
                           </th>
                         ))}
@@ -366,14 +366,14 @@ export default function ClassroomSchedulePage() {
                     </thead>
                     <tbody className="bg-[#050505]">
                       {timeSlots.filter((s) => parseInt(s.start_time) < 18).map((slot, idx) => (
-                        <tr key={slot.id} className={clsx("transition-colors hover:bg-gray-900/30", idx % 2 === 0 ? "bg-transparent" : "bg-gray-900/20")}>
-                          <td className="py-2.5 px-4 text-center border-b border-r border-gray-800/60 font-mono text-gray-500 font-bold bg-gray-950/20 text-[13px]">
+                        <tr key={slot.id} className={clsx("transition-colors hover:card", idx % 2 === 0 ? "bg-transparent" : "card")}>
+                          <td className="py-2.5 px-4 text-center border-b border-r font-mono text-gray-500 font-bold bg-gray-950/20 text-[13px]">
                             {slot.start_time.slice(0, 5)}
                           </td>
                           {[1, 2, 3, 4, 5].map((day) => {
                             const entry = grid[`${day}_${slot.id}`]
                             return (
-                              <td key={day} className="p-1.5 border-b border-r border-gray-800/60 align-top relative group">
+                              <td key={day} className="p-1.5 border-b border-r align-top relative group">
                                 {entry ? (
                                   <div className="h-full min-h-[76px] p-2.5 rounded-xl border relative overflow-hidden flex flex-col justify-center transition-all bg-indigo-500/10 border-indigo-500/20 hover:bg-indigo-500/20 hover:border-indigo-500/40">
                                     <div className="absolute left-0 top-0 bottom-0 w-1 bg-indigo-500"></div>
@@ -393,7 +393,7 @@ export default function ClassroomSchedulePage() {
                                     </div>
                                   </div>
                                 ) : (
-                                  <div className="h-full min-h-[76px] rounded-xl flex items-center justify-center group-hover:bg-gray-800/20 transition-colors border border-dashed border-transparent group-hover:border-gray-700/50">
+                                  <div className="h-full min-h-[76px] rounded-xl flex items-center justify-center group-hover:card/20 transition-colors border border-dashed border-transparent group-hover:border-gray-700/50">
                                     <span className="text-xs font-semibold text-gray-700/50 group-hover:text-gray-600 transition-colors tracking-widest uppercase">—</span>
                                   </div>
                                 )}

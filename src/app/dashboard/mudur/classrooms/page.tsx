@@ -75,7 +75,7 @@ export default function ClassroomsReadOnlyPage() {
           const IconObj = info.icon
           
           return (
-            <div key={type} className={`glass-card p-4 rounded-xl border border-gray-800/60 relative overflow-hidden animate-in-delay-${(i % 3) + 1}`}>
+            <div key={type} className={`glass-card p-4 rounded-xl border relative overflow-hidden animate-in-delay-${(i % 3) + 1}`}>
               <div className="absolute -right-4 -top-4 opacity-[0.03]">
                 <IconObj className="w-24 h-24" style={{ color: info.color }} />
               </div>
@@ -87,7 +87,7 @@ export default function ClassroomsReadOnlyPage() {
                 {info.label}
               </div>
               {totalCap > 0 && (
-                <div className="text-[10px] mt-2 font-medium text-gray-500 bg-gray-900/50 inline-block px-2 py-0.5 rounded border border-gray-800">
+                <div className="text-[10px] mt-2 font-medium text-gray-500 card inline-block px-2 py-0.5 rounded border">
                   Kapasite: {totalCap}
                 </div>
               )}
@@ -96,11 +96,11 @@ export default function ClassroomsReadOnlyPage() {
         })}
       </div>
 
-      <div className="card p-4 rounded-xl flex flex-col sm:flex-row gap-4 items-center justify-between border border-gray-800/60">
+      <div className="card p-4 rounded-xl flex flex-col sm:flex-row gap-4 items-center justify-between border">
         <div className="relative w-full sm:w-80">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-600/50" />
           <input 
-            className="w-full bg-gray-900/50 border border-gray-700/50 rounded-lg pl-10 pr-4 py-2.5 text-sm text-gray-200 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500/50 transition-all font-medium" 
+            className="w-full card border rounded-lg pl-10 pr-4 py-2.5 text-sm text-gray-200 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500/50 transition-all font-medium" 
             placeholder="Derslik ID veya Bina adı ara..." 
             value={search} 
             onChange={(e) => setSearch(e.target.value)} 
@@ -122,8 +122,8 @@ export default function ClassroomsReadOnlyPage() {
           <p className="text-gray-500 font-medium">Yerleşke bilgileri yükleniyor...</p>
         </div>
       ) : filtered.length === 0 ? (
-        <div className="card py-20 text-center rounded-xl border border-gray-800/60">
-          <div className="w-16 h-16 bg-gray-800/50 rounded-full flex items-center justify-center mx-auto mb-4">
+        <div className="card py-20 text-center rounded-xl border">
+          <div className="w-16 h-16 card/50 rounded-full flex items-center justify-center mx-auto mb-4">
             <Search className="w-8 h-8 text-gray-500" />
           </div>
           <h3 className="text-lg font-medium text-white mb-1">Derslik Bulunamadı</h3>
@@ -144,7 +144,7 @@ export default function ClassroomsReadOnlyPage() {
                   <h3 className="text-xl font-bold text-white tracking-tight">
                     {bldg} <span className="text-gray-500 font-normal text-sm ml-2">({bldgRooms.length} Kayıt)</span>
                   </h3>
-                  <div className="h-px bg-gray-800/60 flex-1 ml-4 shadow-[0_1px_0_0_rgba(255,255,255,0.02)]"></div>
+                  <div className="h-px card/60 flex-1 ml-4 shadow-[0_1px_0_0_rgba(255,255,255,0.02)]"></div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -155,7 +155,7 @@ export default function ClassroomsReadOnlyPage() {
                     return (
                       <div 
                         key={c.id} 
-                        className={`glass-card rounded-xl border transition-all duration-300 flex flex-col group hover:shadow-xl hover:shadow-black/20 ${c.is_active ? 'border-gray-700/50 hover:border-gray-600' : 'border-red-900/20 bg-gray-900/50 opacity-60 grayscale-[50%] hover:grayscale-0'}`}
+                        className={`glass-card rounded-xl border transition-all duration-300 flex flex-col group hover:shadow-xl hover:shadow-black/20 ${c.is_active ? 'border-gray-700/50 hover:border-gray-600' : 'border-red-900/20 card opacity-60 grayscale-[50%] hover:grayscale-0'}`}
                       >
                         <div className="h-1 w-full rounded-t-xl" style={{ backgroundColor: typeInfo.color }}></div>
                         <div className="p-4 flex-1 flex flex-col">
@@ -170,7 +170,7 @@ export default function ClassroomsReadOnlyPage() {
                               </span>
                             </div>
                             {c.capacity && (
-                              <div className="text-center bg-gray-900/80 rounded-lg px-2 py-1 border border-gray-800/80 shadow-inner">
+                              <div className="text-center card rounded-lg px-2 py-1 border shadow-inner">
                                 <div className="text-xs font-bold text-white">{c.capacity}</div>
                                 <div className="text-[9px] text-gray-500 uppercase tracking-widest font-semibold">Kapasite</div>
                               </div>
@@ -201,7 +201,7 @@ export default function ClassroomsReadOnlyPage() {
                             </div>
                           </div>
 
-                          <div className="mt-auto pt-3 border-t border-gray-800/60 flex items-center justify-between">
+                          <div className="mt-auto pt-3 border-t flex items-center justify-between">
                             <span className={`badge ${c.is_active ? 'badge-emerald' : 'badge-amber'} scale-90 origin-left`}>
                               {c.is_active ? 'Aktif' : 'Pasif'}
                             </span>

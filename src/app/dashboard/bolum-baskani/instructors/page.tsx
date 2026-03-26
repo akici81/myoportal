@@ -59,9 +59,9 @@ export default async function BolumBaskaniInstructorsPage() {
         </div>
       </div>
 
-      <div className="overflow-hidden rounded-2xl border border-white/5 bg-gray-800/30 shadow-xl">
+      <div className="overflow-hidden rounded-2xl border border-white/5 card/30 shadow-xl">
         <table className="w-full text-left text-sm text-gray-300">
-          <thead className="bg-gray-900/80 text-[11px] font-black uppercase text-gray-500 tracking-widest border-b border-gray-800">
+          <thead className="card text-[11px] font-black uppercase text-gray-500 tracking-widest border-b">
             <tr>
               <th className="px-6 py-4">Ad Soyad</th>
               <th className="px-6 py-4">Unvan</th>

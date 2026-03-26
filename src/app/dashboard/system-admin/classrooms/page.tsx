@@ -131,7 +131,7 @@ export default function ClassroomsPage() {
           const IconObj = info.icon
           
           return (
-            <div key={type} className={`glass-card p-4 rounded-xl border border-gray-800/60 relative overflow-hidden animate-in-delay-${(i % 3) + 1}`}>
+            <div key={type} className={`glass-card p-4 rounded-xl border relative overflow-hidden animate-in-delay-${(i % 3) + 1}`}>
               <div className="absolute -right-4 -top-4 opacity-[0.03]">
                 <IconObj className="w-24 h-24" style={{ color: info.color }} />
               </div>
@@ -143,7 +143,7 @@ export default function ClassroomsPage() {
                 {info.label}
               </div>
               {totalCap > 0 && (
-                <div className="text-[10px] mt-2 font-medium text-gray-500 bg-gray-900/50 inline-block px-2 py-0.5 rounded border border-gray-800">
+                <div className="text-[10px] mt-2 font-medium text-gray-500 card inline-block px-2 py-0.5 rounded border">
                   Kapasite: {totalCap}
                 </div>
               )}
@@ -152,11 +152,11 @@ export default function ClassroomsPage() {
         })}
       </div>
 
-      <div className="card p-4 rounded-xl flex flex-col sm:flex-row gap-4 items-center justify-between border border-gray-800/60">
+      <div className="card p-4 rounded-xl flex flex-col sm:flex-row gap-4 items-center justify-between border">
         <div className="relative w-full sm:w-80">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-600/50" />
           <input 
-            className="w-full bg-gray-900/50 border border-gray-700/50 rounded-lg pl-10 pr-4 py-2.5 text-sm text-gray-200 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500/50 transition-all font-medium" 
+            className="w-full card border rounded-lg pl-10 pr-4 py-2.5 text-sm text-gray-200 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500/50 transition-all font-medium" 
             placeholder="Derslik ID veya Bina adı ara..." 
             value={search} 
             onChange={(e) => setSearch(e.target.value)} 
@@ -178,8 +178,8 @@ export default function ClassroomsPage() {
           <p className="text-gray-500 font-medium">Yerleşke bilgileri yükleniyor...</p>
         </div>
       ) : filtered.length === 0 ? (
-        <div className="card py-20 text-center rounded-xl border border-gray-800/60">
-          <div className="w-16 h-16 bg-gray-800/50 rounded-full flex items-center justify-center mx-auto mb-4">
+        <div className="card py-20 text-center rounded-xl border">
+          <div className="w-16 h-16 card/50 rounded-full flex items-center justify-center mx-auto mb-4">
             <Search className="w-8 h-8 text-gray-500" />
           </div>
           <h3 className="text-lg font-medium text-white mb-1">Derslik Bulunamadı</h3>
@@ -200,7 +200,7 @@ export default function ClassroomsPage() {
                   <h3 className="text-xl font-bold text-white tracking-tight">
                     {bldg} <span className="text-gray-500 font-normal text-sm ml-2">({bldgRooms.length} Kayıt)</span>
                   </h3>
-                  <div className="h-px bg-gray-800/60 flex-1 ml-4 shadow-[0_1px_0_0_rgba(255,255,255,0.02)]"></div>
+                  <div className="h-px card/60 flex-1 ml-4 shadow-[0_1px_0_0_rgba(255,255,255,0.02)]"></div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
@@ -211,7 +211,7 @@ export default function ClassroomsPage() {
                     return (
                       <div 
                         key={c.id} 
-                        className={`glass-card rounded-xl border transition-all duration-300 flex flex-col group hover:shadow-xl hover:shadow-black/20 ${c.is_active ? 'border-gray-700/50 hover:border-gray-600' : 'border-red-900/20 bg-gray-900/50 opacity-60 grayscale-[50%] hover:grayscale-0'}`}
+                        className={`glass-card rounded-xl border transition-all duration-300 flex flex-col group hover:shadow-xl hover:shadow-black/20 ${c.is_active ? 'border-gray-700/50 hover:border-gray-600' : 'border-red-900/20 card opacity-60 grayscale-[50%] hover:grayscale-0'}`}
                       >
                         <div className="h-1 w-full rounded-t-xl" style={{ backgroundColor: typeInfo.color }}></div>
                         <div className="p-4 flex-1 flex flex-col">
@@ -226,7 +226,7 @@ export default function ClassroomsPage() {
                               </span>
                             </div>
                             {c.capacity && (
-                              <div className="text-center bg-gray-900/80 rounded-lg px-2 py-1 border border-gray-800/80 shadow-inner">
+                              <div className="text-center card rounded-lg px-2 py-1 border shadow-inner">
                                 <div className="text-xs font-bold text-white">{c.capacity}</div>
                                 <div className="text-[9px] text-gray-500 uppercase tracking-widest font-semibold">Kapasite</div>
                               </div>
@@ -257,16 +257,16 @@ export default function ClassroomsPage() {
                             </div>
                           </div>
 
-                          <div className="mt-auto pt-3 border-t border-gray-800/60 flex items-center justify-between">
+                          <div className="mt-auto pt-3 border-t flex items-center justify-between">
                             <span className={`badge ${c.is_active ? 'badge-emerald' : 'badge-amber'} scale-90 origin-left`}>
                               {c.is_active ? 'Aktif' : 'Pasif'}
                             </span>
                             
                             <div className="flex gap-1.5 opacity-0 group-hover:opacity-50 transition-opacity">
-                              <button onClick={() => setEditItem(c)} className="p-1.5 rounded-md hover:bg-gray-800 text-gray-400 hover:text-white transition-colors" title="Düzenle">
+                              <button onClick={() => setEditItem(c)} className="p-1.5 rounded-md hover:card text-gray-400 hover:text-white transition-colors" title="Düzenle">
                                 <Edit className="w-3.5 h-3.5" />
                               </button>
-                              <button onClick={() => toggle(c.id, c.is_active)} className="p-1.5 rounded-md hover:bg-gray-800 text-gray-400 hover:text-white transition-colors" title="Durumu Değiştir">
+                              <button onClick={() => toggle(c.id, c.is_active)} className="p-1.5 rounded-md hover:card text-gray-400 hover:text-white transition-colors" title="Durumu Değiştir">
                                 {c.is_active ? <ToggleLeft className="w-3.5 h-3.5 text-amber-500" /> : <ToggleRight className="w-3.5 h-3.5 text-emerald-500" />}
                               </button>
                               <button onClick={() => remove(c.id)} className="p-1.5 rounded-md hover:bg-red-500/20 text-gray-400 hover:text-red-400 transition-colors" title="Sil">
@@ -287,13 +287,13 @@ export default function ClassroomsPage() {
 
       {editItem && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in">
-          <div className="card w-full max-w-lg p-0 rounded-2xl border border-gray-700/50 shadow-2xl overflow-hidden">
-            <div className={`px-6 py-4 border-b border-gray-800/80 flex justify-between items-center ${editItem.id ? 'bg-cyan-600' : 'bg-cyan-600'}`}>
+          <div className="card w-full max-w-lg p-0 rounded-2xl border shadow-2xl overflow-hidden">
+            <div className={`px-6 py-4 border-b flex justify-between items-center ${editItem.id ? 'bg-cyan-600' : 'bg-cyan-600'}`}>
               <h3 className="text-lg font-bold text-white flex items-center gap-2">
                 {editItem.id ? <Edit className="w-5 h-5 text-blue-400" /> : <Plus className="w-5 h-5 text-emerald-400" />}
                 {editItem.id ? 'Derslik Düzenle' : 'Yeni Derslik Ekle'}
               </h3>
-              <button type="button" onClick={() => setEditItem(null)} className="text-gray-400 hover:text-white bg-gray-900/50 hover:bg-gray-800 rounded-lg p-1.5 transition">
+              <button type="button" onClick={() => setEditItem(null)} className="text-gray-400 hover:text-white card hover:card rounded-lg p-1.5 transition">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -302,19 +302,19 @@ export default function ClassroomsPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="col-span-2">
                   <label className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1.5 block">Derslik ID / İsim <span className="text-emerald-500">*</span></label>
-                  <input className="w-full bg-gray-900/70 border border-gray-700/80 rounded-lg px-4 py-2.5 text-sm font-bold text-white focus:outline-none focus:border-emerald-500 transition-colors uppercase tracking-widest placeholder:normal-case placeholder:font-normal placeholder:tracking-normal" placeholder="Örn: B122-123" required value={editItem.name || ''} onChange={(e) => setEditItem({ ...editItem, name: e.target.value.toUpperCase() })} />
+                  <input className="w-full card border rounded-lg px-4 py-2.5 text-sm font-bold text-white focus:outline-none focus:border-emerald-500 transition-colors uppercase tracking-widest placeholder:normal-case placeholder:font-normal placeholder:tracking-normal" placeholder="Örn: B122-123" required value={editItem.name || ''} onChange={(e) => setEditItem({ ...editItem, name: e.target.value.toUpperCase() })} />
                 </div>
                 <div>
                   <label className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1.5 block">Blok / Bina</label>
-                  <input className="w-full bg-gray-900/50 border border-gray-700/80 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 transition-colors" placeholder="D Blok" value={editItem.building || ''} onChange={(e) => setEditItem({ ...editItem, building: e.target.value })} />
+                  <input className="w-full card border rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 transition-colors" placeholder="D Blok" value={editItem.building || ''} onChange={(e) => setEditItem({ ...editItem, building: e.target.value })} />
                 </div>
                 <div>
                   <label className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1.5 block">Kapasite</label>
-                  <input className="w-full bg-gray-900/50 border border-gray-700/80 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 transition-colors" type="number" min="1" max="1000" placeholder="Örn: 40" value={editItem.capacity || ''} onChange={(e) => setEditItem({ ...editItem, capacity: parseInt(e.target.value) || undefined })} />
+                  <input className="w-full card border rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 transition-colors" type="number" min="1" max="1000" placeholder="Örn: 40" value={editItem.capacity || ''} onChange={(e) => setEditItem({ ...editItem, capacity: parseInt(e.target.value) || undefined })} />
                 </div>
                 <div>
                   <label className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1.5 block">Kullanım Türü</label>
-                  <select className="w-full bg-gray-900/50 border border-gray-700/80 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 transition-colors form-select appearance-none" value={editItem.type || 'classroom'} onChange={(e) => setEditItem({ ...editItem, type: e.target.value })}>
+                  <select className="w-full card border rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 transition-colors form-select appearance-none" value={editItem.type || 'classroom'} onChange={(e) => setEditItem({ ...editItem, type: e.target.value })}>
                     {Object.entries(TYPE_MAP).map(([k, v]) => k !== 'normal' && (
                       <option key={k} value={k}>{v.label}</option>
                     ))}
@@ -322,31 +322,31 @@ export default function ClassroomsPage() {
                 </div>
                 <div>
                   <label className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1.5 block">Bulunduğu Kat</label>
-                  <input className="w-full bg-gray-900/50 border border-gray-700/80 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 transition-colors" placeholder="1. Kat" value={editItem.floor || ''} onChange={(e) => setEditItem({ ...editItem, floor: e.target.value })} />
+                  <input className="w-full card border rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 transition-colors" placeholder="1. Kat" value={editItem.floor || ''} onChange={(e) => setEditItem({ ...editItem, floor: e.target.value })} />
                 </div>
               </div>
 
               <div>
                 <label className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-2 block">Derslik İçi Donanımlar</label>
                 <div className="grid grid-cols-2 gap-3">
-                  <label className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all ${editItem.has_projector ? 'bg-blue-900/20 border-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.1)]' : 'bg-gray-900/30 border-gray-700/50 hover:border-gray-600'}`}>
-                    <input type="checkbox" checked={editItem.has_projector || false} onChange={(e) => setEditItem({ ...editItem, has_projector: e.target.checked })} className="w-4 h-4 rounded text-blue-500 focus:ring-blue-500 bg-gray-800 border-gray-600" />
+                  <label className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all ${editItem.has_projector ? 'bg-blue-900/20 border-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.1)]' : 'card hover:border-gray-600'}`}>
+                    <input type="checkbox" checked={editItem.has_projector || false} onChange={(e) => setEditItem({ ...editItem, has_projector: e.target.checked })} className="w-4 h-4 rounded text-blue-500 focus:ring-blue-500 card border-gray-600" />
                     <Projector className={`w-5 h-5 ${editItem.has_projector ? 'text-blue-400' : 'text-gray-500'}`} />
                     <span className={`text-sm font-medium ${editItem.has_projector ? 'text-blue-100' : 'text-gray-400'}`}>Projeksiyon</span>
                   </label>
                   
-                  <label className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all ${editItem.has_smartboard ? 'bg-purple-900/20 border-purple-500/50 shadow-[0_0_15px_rgba(168,85,247,0.1)]' : 'bg-gray-900/30 border-gray-700/50 hover:border-gray-600'}`}>
-                    <input type="checkbox" checked={editItem.has_smartboard || false} onChange={(e) => setEditItem({ ...editItem, has_smartboard: e.target.checked })} className="w-4 h-4 rounded text-purple-500 focus:ring-purple-500 bg-gray-800 border-gray-600" />
+                  <label className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all ${editItem.has_smartboard ? 'bg-purple-900/20 border-purple-500/50 shadow-[0_0_15px_rgba(168,85,247,0.1)]' : 'card hover:border-gray-600'}`}>
+                    <input type="checkbox" checked={editItem.has_smartboard || false} onChange={(e) => setEditItem({ ...editItem, has_smartboard: e.target.checked })} className="w-4 h-4 rounded text-purple-500 focus:ring-purple-500 card border-gray-600" />
                     <Monitor className={`w-5 h-5 ${editItem.has_smartboard ? 'text-purple-400' : 'text-gray-500'}`} />
                     <span className={`text-sm font-medium ${editItem.has_smartboard ? 'text-purple-100' : 'text-gray-400'}`}>Akıllı Tahta</span>
                   </label>
                   
-                  <label className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all col-span-2 ${editItem.has_computer ? 'bg-emerald-900/20 border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.1)]' : 'bg-gray-900/30 border-gray-700/50 hover:border-gray-600'}`}>
-                    <input type="checkbox" checked={editItem.has_computer || false} onChange={(e) => setEditItem({ ...editItem, has_computer: e.target.checked })} className="w-4 h-4 rounded text-emerald-500 focus:ring-emerald-500 bg-gray-800 border-gray-600" />
+                  <label className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all col-span-2 ${editItem.has_computer ? 'bg-emerald-900/20 border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.1)]' : 'card hover:border-gray-600'}`}>
+                    <input type="checkbox" checked={editItem.has_computer || false} onChange={(e) => setEditItem({ ...editItem, has_computer: e.target.checked })} className="w-4 h-4 rounded text-emerald-500 focus:ring-emerald-500 card border-gray-600" />
                     <Laptop className={`w-5 h-5 ${editItem.has_computer ? 'text-emerald-400' : 'text-gray-500'}`} />
                     <span className={`text-sm font-medium flex-1 ${editItem.has_computer ? 'text-emerald-100' : 'text-gray-400'}`}>Bilgisayar Sistemi / Lab</span>
                     {editItem.has_computer && (
-                      <input type="number" min="1" max="100" className="w-20 bg-gray-900/80 border border-emerald-500/30 rounded px-2 py-1 text-xs text-white focus:outline-none focus:border-emerald-500" placeholder="Adet" value={editItem.computer_count || ''} onClick={(e) => e.stopPropagation()} onChange={(e) => setEditItem({ ...editItem, computer_count: parseInt(e.target.value) || null })} />
+                      <input type="number" min="1" max="100" className="w-20 card border border-emerald-500/30 rounded px-2 py-1 text-xs text-white focus:outline-none focus:border-emerald-500" placeholder="Adet" value={editItem.computer_count || ''} onClick={(e) => e.stopPropagation()} onChange={(e) => setEditItem({ ...editItem, computer_count: parseInt(e.target.value) || null })} />
                     )}
                   </label>
                 </div>
@@ -354,7 +354,7 @@ export default function ClassroomsPage() {
 
               <div>
                 <label className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1.5 block">Varsa Ek Notlar</label>
-                <input className="w-full bg-gray-900/50 border border-gray-700/80 rounded-lg px-3 py-2.5 text-sm text-gray-300 focus:outline-none focus:border-emerald-500 transition-colors placeholder:text-gray-600" placeholder="Örn: Klima arızalı, geçici depo olarak kullanılıyor..." value={editItem.notes || ''} onChange={(e) => setEditItem({ ...editItem, notes: e.target.value })} />
+                <input className="w-full card border rounded-lg px-3 py-2.5 text-sm text-gray-300 focus:outline-none focus:border-emerald-500 transition-colors placeholder:text-gray-600" placeholder="Örn: Klima arızalı, geçici depo olarak kullanılıyor..." value={editItem.notes || ''} onChange={(e) => setEditItem({ ...editItem, notes: e.target.value })} />
               </div>
 
               <div className="pt-2 flex justify-between items-center">
@@ -365,8 +365,8 @@ export default function ClassroomsPage() {
                 </label>
               </div>
 
-              <div className="pt-4 flex gap-3 border-t border-gray-800/80 mt-6">
-                <button type="button" onClick={() => setEditItem(null)} className="px-4 py-2.5 rounded-lg font-medium text-sm text-gray-400 bg-gray-800/50 hover:bg-gray-700 hover:text-white transition flex-1">İptal Et</button>
+              <div className="pt-4 flex gap-3 border-t mt-6">
+                <button type="button" onClick={() => setEditItem(null)} className="px-4 py-2.5 rounded-lg font-medium text-sm text-gray-400 card/50 hover:bg-gray-700 hover:text-white transition flex-1">İptal Et</button>
                 <button type="submit" disabled={saving} className={`px-4 py-2.5 rounded-lg text-sm font-bold text-white flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all ${editItem.id ? 'bg-cyan-600 hover:brightness-110' : 'bg-cyan-600 hover:brightness-110'}`}>
                   {saving ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div> : <Save className="w-4 h-4" /> }
                   {saving ? 'Kaydediliyor...' : (editItem.id ? 'Değişiklikleri Kaydet' : 'Dersliği Oluştur')}

@@ -55,11 +55,11 @@ export default function DepartmentsReadOnlyPage() {
         </div>
       </div>
 
-      <div className="card p-4 rounded-xl flex flex-col sm:flex-row gap-4 items-center justify-between border border-gray-800/60">
+      <div className="card p-4 rounded-xl flex flex-col sm:flex-row gap-4 items-center justify-between border">
         <div className="relative w-full sm:w-80">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
           <input 
-            className="w-full bg-gray-900/50 border border-gray-700/50 rounded-lg pl-10 pr-4 py-2.5 text-sm text-gray-200 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500/30 focus:border-red-500/50 transition-all font-medium" 
+            className="w-full card border rounded-lg pl-10 pr-4 py-2.5 text-sm text-gray-200 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500/30 focus:border-red-500/50 transition-all font-medium" 
             placeholder="Bölüm adı veya kısa kod ara..." 
             value={search} 
             onChange={e => setSearch(e.target.value)} 
@@ -72,7 +72,7 @@ export default function DepartmentsReadOnlyPage() {
             </div>
             <span className="text-gray-400 font-medium group-hover:text-gray-300 transition-colors">Pasifleri Göster</span>
           </label>
-          <div className="hidden sm:block w-px h-6 bg-gray-800"></div>
+          <div className="hidden sm:block w-px h-6 card"></div>
           <div className="text-gray-400 font-medium">Toplam <span className="text-white">{filtered.length}</span> Bölüm</div>
         </div>
       </div>
@@ -80,20 +80,20 @@ export default function DepartmentsReadOnlyPage() {
       {loading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {Array.from({length: 6}).map((_, i) => (
-            <div key={i} className="card h-48 rounded-xl border border-gray-800 p-5 flex flex-col justify-between animate-pulse">
+            <div key={i} className="card h-48 rounded-xl border p-5 flex flex-col justify-between animate-pulse">
               <div className="flex gap-4">
-                <div className="w-12 h-12 bg-gray-800 rounded-xl" />
+                <div className="w-12 h-12 card rounded-xl" />
                 <div className="flex-1 space-y-2">
-                  <div className="h-5 bg-gray-800 rounded w-3/4" />
-                  <div className="h-3 bg-gray-800/50 rounded w-1/2" />
+                  <div className="h-5 card rounded w-3/4" />
+                  <div className="h-3 card/50 rounded w-1/2" />
                 </div>
               </div>
             </div>
           ))}
         </div>
       ) : filtered.length === 0 ? (
-        <div className="card py-20 text-center rounded-xl border border-gray-800/60 flex flex-col items-center justify-center">
-          <div className="w-16 h-16 bg-gray-800/50 rounded-full flex items-center justify-center mb-4">
+        <div className="card py-20 text-center rounded-xl border flex flex-col items-center justify-center">
+          <div className="w-16 h-16 card/50 rounded-full flex items-center justify-center mb-4">
             <Building2 className="w-8 h-8 text-gray-500" />
           </div>
           <h3 className="text-lg font-medium text-white mb-1">Bölüm Bulunamadı</h3>
@@ -132,13 +132,13 @@ export default function DepartmentsReadOnlyPage() {
                   {deptPrograms.length > 0 ? (
                     <div className="flex flex-wrap gap-2 mb-4">
                       {deptPrograms.slice(0, 3).map(p => (
-                        <span key={p.id} className="inline-flex items-center gap-1.5 text-[11px] px-2.5 py-1 rounded bg-gray-800/60 text-gray-300 border border-gray-700/50">
+                        <span key={p.id} className="inline-flex items-center gap-1.5 text-[11px] px-2.5 py-1 rounded card/60 text-gray-300 border">
                           <BookOpen className="w-3 h-3 text-cyan-500" />
                           {p.name}
                         </span>
                       ))}
                       {deptPrograms.length > 3 && (
-                        <span className="inline-flex items-center gap-1 text-[11px] px-2 py-1 rounded bg-gray-800/30 text-gray-500">
+                        <span className="inline-flex items-center gap-1 text-[11px] px-2 py-1 rounded card/30 text-gray-500">
                           +{deptPrograms.length - 3} program
                         </span>
                       )}
@@ -149,7 +149,7 @@ export default function DepartmentsReadOnlyPage() {
                 </div>
 
                 {/* Footer Stats */}
-                <div className="pt-4 mt-auto border-t border-gray-800/60 flex items-center justify-between">
+                <div className="pt-4 mt-auto border-t flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <div className="flex items-center gap-1.5 text-xs font-medium text-gray-400" title="Öğretim Elemanları">
                       <Users className="w-4 h-4 text-gray-500" />

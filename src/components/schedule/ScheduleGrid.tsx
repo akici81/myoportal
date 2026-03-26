@@ -112,11 +112,11 @@ export function ScheduleGrid({ entries, timeSlots, readonly, onDelete, onCellCli
   }
 
   return (
-    <div className="glass-card rounded-2xl border border-gray-800/60 overflow-hidden shadow-2xl">
+    <div className="glass-card rounded-2xl border overflow-hidden shadow-2xl">
       {/* Moving overlay */}
       {moving && (
         <div className="absolute inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center rounded-2xl">
-          <div className="flex items-center gap-3 bg-gray-900 border border-cyan-700/50 px-6 py-3 rounded-xl shadow-xl text-cyan-300 font-bold text-sm">
+          <div className="flex items-center gap-3 card border border-cyan-700/50 px-6 py-3 rounded-xl shadow-xl text-cyan-300 font-bold text-sm">
             <div className="w-4 h-4 border-2 border-cyan-400/30 border-t-cyan-400 rounded-full animate-spin" />
             Ders taşınıyor...
           </div>

@@ -108,7 +108,7 @@ export default function ScheduleReadOnlyPage() {
       </div>
 
       <div className="space-y-6 max-w-screen-2xl mx-auto">
-        <div className="card p-5 rounded-2xl border border-gray-800/60 shadow-xl relative z-20">
+        <div className="card p-5 rounded-2xl border shadow-xl relative z-20">
           <div className="flex items-center gap-2 mb-4">
             <MousePointerClick className="w-4 h-4 text-cyan-500" />
             <h3 className="text-sm font-bold text-gray-200 uppercase tracking-wider">Hedef Program Filtresi</h3>
@@ -118,7 +118,7 @@ export default function ScheduleReadOnlyPage() {
             <div className="flex-1 min-w-[200px] max-w-[250px]">
               <label className="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1 block pl-1">Akademik Dönem</label>
               <select
-                className="w-full bg-gray-900/70 border border-gray-700/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all font-semibold"
+                className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all font-semibold"
                 value={selectedPeriod?.id ?? ''}
                 onChange={(e) => setSelectedPeriod(periods.find((x) => x.id === e.target.value) ?? null)}
               >
@@ -134,7 +134,7 @@ export default function ScheduleReadOnlyPage() {
             <div className="flex-1 min-w-[200px]">
               <label className="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1 block pl-1">Kategori / Bölüm</label>
               <select
-                className="w-full bg-gray-900/70 border border-gray-700/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all font-semibold"
+                className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all font-semibold"
                 value={selectedDept}
                 onChange={(e) => setSelectedDept(e.target.value)}
               >
@@ -154,7 +154,7 @@ export default function ScheduleReadOnlyPage() {
                   onChange={(e) => setSelectedProgram(e.target.value)}
                 >
                   {programs.map((p) => (
-                    <option key={p.id} value={p.id} className="bg-gray-900 text-white">{p.name}</option>
+                    <option key={p.id} value={p.id} className="card text-white">{p.name}</option>
                   ))}
                 </select>
               </div>
@@ -163,7 +163,7 @@ export default function ScheduleReadOnlyPage() {
             {selectedProgram && (
               <div>
                 <label className="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1 block pl-1">Sınıf</label>
-                <div className="flex gap-1.5 p-1 rounded-xl bg-gray-900/50 border border-gray-800">
+                <div className="flex gap-1.5 p-1 rounded-xl card border">
                   {([1, 2] as const).map((y) => (
                     <button
                       key={y}
@@ -172,7 +172,7 @@ export default function ScheduleReadOnlyPage() {
                         'px-5 py-2.5 rounded-lg text-sm font-bold transition-all flex items-center justify-center min-w-[90px]',
                         selectedYear === y
                           ? 'bg-cyan-600 text-white shadow-lg shadow-inner'
-                          : 'bg-transparent text-gray-400 hover:text-gray-200 hover:bg-gray-800'
+                          : 'bg-transparent text-gray-400 hover:text-gray-200 hover:card'
                       )}
                     >
                       {y}. Sınıf
@@ -194,7 +194,7 @@ export default function ScheduleReadOnlyPage() {
         <div className="min-h-[500px]">
           {selectedProgram && selectedPeriod ? (
             loading ? (
-              <div className="card flex flex-col items-center justify-center py-32 text-center rounded-2xl border border-gray-800/60">
+              <div className="card flex flex-col items-center justify-center py-32 text-center rounded-2xl border">
                 <div className="w-12 h-12 rounded-full border-4 border-cyan-800 border-t-cyan-500 animate-spin mb-4" />
                 <h3 className="text-xl font-bold text-white tracking-tight">Program Yükleniyor</h3>
                 <p className="text-gray-500 mt-2">Ders blokları analiz ediliyor, lütfen bekleyin...</p>
@@ -208,8 +208,8 @@ export default function ScheduleReadOnlyPage() {
               </div>
             )
           ) : (
-            <div className="card flex flex-col items-center justify-center py-32 text-center rounded-2xl border border-gray-800/60 border-dashed bg-gray-900/20">
-              <div className="w-20 h-20 bg-gray-800/50 rounded-full flex items-center justify-center mb-6 ring-8 ring-gray-900/50">
+            <div className="card flex flex-col items-center justify-center py-32 text-center rounded-2xl border border-dashed card">
+              <div className="w-20 h-20 card/50 rounded-full flex items-center justify-center mb-6 ring-8 ring-gray-900/50">
                 <CalendarDays className="w-10 h-10 text-gray-600" />
               </div>
               <h3 className="text-2xl font-black text-gray-200 tracking-tight">Henüz Program Seçilmedi</h3>

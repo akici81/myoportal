@@ -379,8 +379,8 @@ export default function ConflictsPage() {
 
       {/* Summary Scoreboard */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="card p-6 rounded-2xl border border-gray-800 flex items-center gap-4 bg-gradient-to-br from-gray-800/20 to-transparent">
-          <div className="w-14 h-14 rounded-full bg-gray-800 flex items-center justify-center border border-gray-700 text-gray-400 shadow-inner">
+        <div className="card p-6 rounded-2xl border flex items-center gap-4 bg-gradient-to-br from-gray-800/20 to-transparent">
+          <div className="w-14 h-14 rounded-full card flex items-center justify-center border text-gray-400 shadow-inner">
             <Layers className="w-7 h-7" />
           </div>
           <div>
@@ -397,7 +397,7 @@ export default function ConflictsPage() {
         )}>
           <div className={clsx(
             "w-14 h-14 rounded-full flex items-center justify-center border shadow-inner transition-colors duration-500",
-            stats.errors > 0 ? "bg-red-500/20 border-red-500/30 text-red-500 relative" : "bg-gray-800 border-gray-700 text-gray-500"
+            stats.errors > 0 ? "bg-red-500/20 border-red-500/30 text-red-500 relative" : "card text-gray-500"
           )}>
             {stats.errors > 0 && <div className="absolute inset-0 bg-red-500/20 rounded-full animate-ping"></div>}
             <XCircle className="w-7 h-7 relative z-10" />
@@ -419,7 +419,7 @@ export default function ConflictsPage() {
         )}>
           <div className={clsx(
             "w-14 h-14 rounded-full flex items-center justify-center border shadow-inner transition-colors duration-500",
-            stats.warnings > 0 ? "bg-amber-500/20 border-amber-500/30 text-amber-500" : "bg-gray-800 border-gray-700 text-gray-500"
+            stats.warnings > 0 ? "bg-amber-500/20 border-amber-500/30 text-amber-500" : "card text-gray-500"
           )}>
             <AlertTriangle className="w-7 h-7" />
           </div>
@@ -434,8 +434,8 @@ export default function ConflictsPage() {
       </div>
 
       {/* Main Content */}
-      <div className="card rounded-2xl border border-gray-800 overflow-hidden bg-gray-900/40">
-        <div className="p-6 border-b border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4 bg-gray-900/60">
+      <div className="card rounded-2xl border overflow-hidden card">
+        <div className="p-6 border-b flex flex-col sm:flex-row items-center justify-between gap-4 card">
            <h3 className="font-bold text-white text-lg flex items-center gap-2">
              <ShieldAlert className="w-5 h-5 text-gray-400" />
              Ayrıntılı Bulgu Listesi
@@ -443,7 +443,7 @@ export default function ConflictsPage() {
            <div className="relative w-full sm:w-80">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
               <input
-                className="w-full bg-gray-950/50 border border-gray-700/80 rounded-full pl-10 pr-4 py-2 text-sm text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50 transition-colors shadow-inner placeholder:text-gray-600"
+                className="w-full bg-gray-950/50 border rounded-full pl-10 pr-4 py-2 text-sm text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50 transition-colors shadow-inner placeholder:text-gray-600"
                 placeholder="Kod, gün veya hoca ara..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -485,7 +485,7 @@ export default function ConflictsPage() {
                  return (
                    <div 
                      key={idx}
-                     className="p-6 flex flex-col sm:flex-row sm:items-start gap-5 hover:bg-gray-800/30 transition-colors duration-200 group"
+                     className="p-6 flex flex-col sm:flex-row sm:items-start gap-5 hover:card/30 transition-colors duration-200 group"
                    >
                      <div className={clsx(
                        "w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border shadow-inner",
@@ -514,7 +514,7 @@ export default function ConflictsPage() {
                        </p>
                        
                        <div className="flex flex-wrap items-center gap-2">
-                         <span className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg bg-gray-950/60 border border-gray-800 text-gray-300">
+                         <span className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg bg-gray-950/60 border text-gray-300">
                            <Clock className="w-3.5 h-3.5 text-gray-500" />
                            {DAYS[conflict.day]} · {conflict.time}
                          </span>

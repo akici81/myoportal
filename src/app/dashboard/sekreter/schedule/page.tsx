@@ -462,7 +462,7 @@ export default function SchedulePage() {
             <div className="flex-1 min-w-[200px] max-w-[250px]">
               <label className="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1 block pl-1">Akademik Dönem</label>
               <select
-                className="w-full bg-gray-900/70 border border-gray-700/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all font-semibold"
+                className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all font-semibold"
                 value={selectedPeriod?.id ?? ''}
                 onChange={(e) => setSelectedPeriod(periods.find((x) => x.id === e.target.value) ?? null)}
               >
@@ -478,7 +478,7 @@ export default function SchedulePage() {
             <div className="flex-1 min-w-[200px]">
               <label className="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1 block pl-1">Bölüm</label>
               <select
-                className="w-full bg-gray-900/70 border border-gray-700/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all font-semibold"
+                className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all font-semibold"
                 value={selectedDept}
                 onChange={(e) => setSelectedDept(e.target.value)}
               >
@@ -498,7 +498,7 @@ export default function SchedulePage() {
                   onChange={(e) => setSelectedProgram(e.target.value)}
                 >
                   {programs.map((p) => (
-                    <option key={p.id} value={p.id} className="bg-gray-900 text-white">{p.name}</option>
+                    <option key={p.id} value={p.id} className="card text-white">{p.name}</option>
                   ))}
                 </select>
               </div>
@@ -507,7 +507,7 @@ export default function SchedulePage() {
             {selectedProgram && (
               <div>
                 <label className="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1 block pl-1">Sınıf</label>
-                <div className="flex gap-1.5 p-1 rounded-xl bg-gray-900/50 border border-gray-800">
+                <div className="flex gap-1.5 p-1 rounded-xl card border">
                   {([1, 2] as const).map((y) => (
                     <button
                       key={y}
@@ -516,7 +516,7 @@ export default function SchedulePage() {
                         'px-5 py-2.5 rounded-lg text-sm font-bold transition-all min-w-[90px]',
                         selectedYear === y
                           ? 'bg-cyan-600 text-white shadow-lg'
-                          : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800'
+                          : 'text-gray-400 hover:text-gray-200 hover:card'
                       )}
                     >
                       {y}. Sınıf
@@ -532,7 +532,7 @@ export default function SchedulePage() {
         <div className="min-h-[500px]">
           {selectedProgram && selectedPeriod ? (
             loading ? (
-              <div className="card flex flex-col items-center justify-center py-32 text-center rounded-2xl border border-gray-800/60">
+              <div className="card flex flex-col items-center justify-center py-32 text-center rounded-2xl border">
                 <div className="w-12 h-12 rounded-full border-4 border-cyan-800 border-t-cyan-500 animate-spin mb-4" />
                 <h3 className="text-xl font-bold tracking-tight" style={{ color: 'var(--text)' }}>Program Yükleniyor</h3>
               </div>
@@ -564,7 +564,7 @@ export default function SchedulePage() {
       {/* ── Editor Modal ──────────────────────────────────────────────────────── */}
       {showAddModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in fade-in zoom-in-95 duration-200">
-          <div className="card w-full max-w-2xl p-0 rounded-2xl border border-gray-700/50 shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+          <div className="card w-full max-w-2xl p-0 rounded-2xl border shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
 
             {/* Modal Header */}
             <div className="px-6 py-5 border-b border-cyan-900/30 bg-cyan-600 flex justify-between items-start">
@@ -573,13 +573,13 @@ export default function SchedulePage() {
                   {rangeMode ? 'Saat Aralığı ile Ders Yerleştir' : 'Derse Görevlendirme'}
                 </h3>
                 {!rangeMode && addSlot && selectedSlot && (
-                  <div className="flex items-center gap-1.5 mt-2 bg-gray-900/80 px-2 py-1 rounded inline-flex text-xs font-semibold uppercase tracking-widest text-cyan-400 border border-cyan-900/50">
+                  <div className="flex items-center gap-1.5 mt-2 card px-2 py-1 rounded inline-flex text-xs font-semibold uppercase tracking-widest text-cyan-400 border border-cyan-900/50">
                     <Clock className="w-3.5 h-3.5" />
                     {DAYS[addSlot.day]} · {selectedSlot.start_time?.slice(0, 5)} – {selectedSlot.end_time?.slice(0, 5)}
                   </div>
                 )}
               </div>
-              <button type="button" onClick={() => setShowAddModal(false)} className="text-gray-400 hover:text-white bg-gray-800/50 hover:bg-gray-700 rounded-lg p-2 transition">
+              <button type="button" onClick={() => setShowAddModal(false)} className="text-gray-400 hover:text-white card/50 hover:bg-gray-700 rounded-lg p-2 transition">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -596,7 +596,7 @@ export default function SchedulePage() {
                       'flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold border transition-all',
                       sharedCourseMode
                         ? 'bg-amber-500/20 border-amber-500/50 text-amber-400'
-                        : 'bg-gray-800/50 border-gray-700 text-gray-400 hover:text-gray-200'
+                        : 'card/50 text-gray-400 hover:text-gray-200'
                     )}
                   >
                     <Link2 className="w-3.5 h-3.5" />
@@ -607,7 +607,7 @@ export default function SchedulePage() {
                   <button
                     type="button"
                     onClick={() => setRangeMode(true)}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold border border-gray-700 text-gray-400 hover:text-white bg-gray-800/50 transition-all"
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold border text-gray-400 hover:text-white card/50 transition-all"
                   >
                     <TimerIcon className="w-3.5 h-3.5" />
                     Saat Aralığı Modu
@@ -634,7 +634,7 @@ export default function SchedulePage() {
                             'px-3 py-1.5 rounded-lg text-xs font-bold transition-all border',
                             form.range_day === d
                               ? 'bg-violet-600 border-violet-500 text-white'
-                              : 'border-gray-700 bg-gray-800/50 text-gray-400 hover:text-white'
+                              : 'border-gray-700 card/50 text-gray-400 hover:text-white'
                           )}
                         >
                           {DAYS[d]}
@@ -649,7 +649,7 @@ export default function SchedulePage() {
                         type="time"
                         value={form.range_start}
                         onChange={e => setForm(f => ({ ...f, range_start: e.target.value }))}
-                        className="w-full bg-gray-900/50 border border-gray-700/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/50"
+                        className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/50"
                       />
                     </div>
                     <div>
@@ -658,7 +658,7 @@ export default function SchedulePage() {
                         type="time"
                         value={form.range_end}
                         onChange={e => setForm(f => ({ ...f, range_end: e.target.value }))}
-                        className="w-full bg-gray-900/50 border border-gray-700/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/50"
+                        className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/50"
                       />
                     </div>
                   </div>
@@ -675,7 +675,7 @@ export default function SchedulePage() {
                 <div>
                   <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5 block pl-1">İlgili Ders</label>
                   <select
-                    className="w-full bg-gray-900/50 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-colors form-select appearance-none font-semibold"
+                    className="w-full card border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-colors form-select appearance-none font-semibold"
                     value={form.program_course_id}
                     onChange={(e) => {
                       const pc = programCourses.find((x) => x.id === e.target.value)
@@ -709,7 +709,7 @@ export default function SchedulePage() {
                             'w-full text-left px-3 py-2 rounded-lg text-sm flex items-center gap-3 transition-all border',
                             checked
                               ? 'bg-amber-500/20 border-amber-500/40 text-amber-100'
-                              : 'bg-gray-800/40 border-gray-700/50 text-gray-300 hover:bg-gray-700/50'
+                              : 'card/40 text-gray-300 hover:bg-gray-700/50'
                           )}
                         >
                           <div className={clsx(
@@ -737,7 +737,7 @@ export default function SchedulePage() {
               <div>
                 <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5 block pl-1">Atanan Öğretim Elemanı</label>
                 <select
-                  className="w-full bg-gray-900/50 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-colors form-select appearance-none"
+                  className="w-full card border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-colors form-select appearance-none"
                   value={form.instructor_id}
                   onChange={(e) => setForm(f => ({ ...f, instructor_id: e.target.value }))}
                 >
@@ -766,13 +766,13 @@ export default function SchedulePage() {
                   </div>
                 </div>
                 <select
-                  className="w-full bg-gray-900/50 border border-gray-700/80 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-colors form-select appearance-none"
+                  className="w-full card border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-colors form-select appearance-none"
                   value={form.classroom_id}
                   onChange={(e) => setForm(f => ({ ...f, classroom_id: e.target.value }))}
                 >
                   <option value="">— Derslik Seçin —</option>
                   {availableClassrooms.length > 0 && (
-                    <optgroup label="✓ Bu Saatte Boş Derslikler" className="bg-gray-800 text-emerald-400">
+                    <optgroup label="✓ Bu Saatte Boş Derslikler" className="card text-emerald-400">
                       {availableClassrooms.map((c) => (
                         <option key={c.id} value={c.id} className="text-white">
                           🟢 {c.name} — {c.capacity} Kişilik
@@ -784,7 +784,7 @@ export default function SchedulePage() {
                     </optgroup>
                   )}
                   {busyClassrooms.length > 0 && (
-                    <optgroup label="✗ Bu Saatte Dolu Derslikler" className="bg-gray-900 text-rose-400">
+                    <optgroup label="✗ Bu Saatte Dolu Derslikler" className="card text-rose-400">
                       {busyClassrooms.map((c) => (
                         <option key={c.id} value={c.id} className="text-white">
                           🔴 {c.name} — {c.capacity} Kişilik (DOLU)
@@ -824,10 +824,10 @@ export default function SchedulePage() {
             </div>
 
             {/* Footer */}
-            <div className="px-6 py-4 bg-gray-900/80 border-t border-gray-800/80 mt-auto flex gap-3">
+            <div className="px-6 py-4 card border-t mt-auto flex gap-3">
               <button
                 onClick={() => { setShowAddModal(false); setConflicts([]); }}
-                className="px-4 py-2.5 rounded-xl font-bold text-sm text-gray-400 bg-gray-800/50 hover:bg-gray-700 hover:text-white transition flex-1"
+                className="px-4 py-2.5 rounded-xl font-bold text-sm text-gray-400 card/50 hover:bg-gray-700 hover:text-white transition flex-1"
               >
                 İptal Et
               </button>

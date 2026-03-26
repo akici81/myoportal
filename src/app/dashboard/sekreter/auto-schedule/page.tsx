@@ -227,7 +227,7 @@ export default function AutoSchedulePage() {
            </div>
 
            {/* Settings Card */}
-           <div className="card p-6 rounded-2xl border border-gray-800 bg-gray-900/50">
+           <div className="card p-6 rounded-2xl border card">
              <h3 className="font-bold text-white mb-5 flex items-center gap-2">
                <Wand2 className="w-5 h-5 text-indigo-400" />
                Motor Çalıştırma Parametreleri
@@ -237,7 +237,7 @@ export default function AutoSchedulePage() {
                 <div>
                   <label className="text-xs font-bold uppercase tracking-wider text-gray-400 ml-1">Hedef Akademik Dönem</label>
                   <select
-                    className="w-full mt-1.5 bg-gray-950/50 border border-gray-700/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/50 transition-colors shadow-inner appearance-none cursor-pointer"
+                    className="w-full mt-1.5 bg-gray-950/50 border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/50 transition-colors shadow-inner appearance-none cursor-pointer"
                     value={selectedPeriod}
                     disabled={generating}
                     onChange={(e) => setSelectedPeriod(e.target.value)}
@@ -251,7 +251,7 @@ export default function AutoSchedulePage() {
                   </select>
                 </div>
                 
-                <div className="p-4 rounded-xl border border-gray-800 bg-gray-950/40">
+                <div className="p-4 rounded-xl border bg-gray-950/40">
                   <label className="flex items-start gap-4 cursor-pointer group">
                     <div className="pt-0.5">
                       <div className="relative flex items-center">
@@ -322,7 +322,7 @@ export default function AutoSchedulePage() {
                    Sol taraftaki panelden ayarlarınızı yapılandırıp butona tıkladığınızda otomasyon devreye girecektir.
                  </p>
                  
-                 <div className="text-left w-full max-w-lg bg-gray-900/50 border border-gray-800 p-6 rounded-2xl relative overflow-hidden">
+                 <div className="text-left w-full max-w-lg card border p-6 rounded-2xl relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
                     <h4 className="font-bold text-gray-200 mb-4 flex items-center gap-2">
                        <Info className="w-4 h-4 text-blue-400" />
@@ -347,8 +347,8 @@ export default function AutoSchedulePage() {
            )}
 
            {generating && (
-              <div className="card p-8 rounded-2xl border border-indigo-500/30 bg-gray-900/50 flex flex-col items-center justify-center min-h-[500px] text-center relative overflow-hidden">
-                 <div className="absolute top-0 left-0 w-full h-1 bg-gray-800">
+              <div className="card p-8 rounded-2xl border border-indigo-500/30 card flex flex-col items-center justify-center min-h-[500px] text-center relative overflow-hidden">
+                 <div className="absolute top-0 left-0 w-full h-1 card">
                     <div className="h-full bg-cyan-600 w-1/3 animate-[slide_1.5s_ease-in-out_infinite]"></div>
                  </div>
                  <div className="w-32 h-32 relative mb-8">
@@ -383,7 +383,7 @@ export default function AutoSchedulePage() {
                      </h3>
 
                      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-                       <div className="p-4 rounded-xl border border-gray-800 bg-gray-900/60 shadow-inner text-center">
+                       <div className="p-4 rounded-xl border card shadow-inner text-center">
                          <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">Hedef Ders Modülü</p>
                          <p className="text-3xl font-black text-white mt-1">{result.stats.totalCourses}</p>
                        </div>
@@ -391,7 +391,7 @@ export default function AutoSchedulePage() {
                          <p className="text-xs font-semibold uppercase tracking-wider text-emerald-400/80">Tamamlanan</p>
                          <p className="text-3xl font-black text-emerald-400 mt-1">{result.stats.placedCourses}</p>
                        </div>
-                       <div className={clsx("p-4 rounded-xl border shadow-inner text-center", result.stats.failedCourses > 0 ? "border-red-500/20 bg-red-500/10" : "border-gray-800 bg-gray-900/60")}>
+                       <div className={clsx("p-4 rounded-xl border shadow-inner text-center", result.stats.failedCourses > 0 ? "border-red-500/20 bg-red-500/10" : "border-gray-800 card")}>
                          <p className={clsx("text-xs font-semibold uppercase tracking-wider", result.stats.failedCourses > 0 ? "text-red-400/80" : "text-gray-500")}>Dışarıda Kalan</p>
                          <p className={clsx("text-3xl font-black mt-1", result.stats.failedCourses > 0 ? "text-red-400" : "text-white")}>{result.stats.failedCourses}</p>
                        </div>
@@ -409,7 +409,7 @@ export default function AutoSchedulePage() {
                              {result.stats.totalCourses > 0 ? Math.round((result.stats.placedCourses / result.stats.totalCourses) * 100) : 0}%
                            </span>
                         </div>
-                        <div className="h-4 rounded-full bg-gray-900 border border-gray-800 overflow-hidden shadow-inner p-0.5">
+                        <div className="h-4 rounded-full card border overflow-hidden shadow-inner p-0.5">
                           <div
                             className="h-full rounded-full bg-cyan-600 relative overflow-hidden"
                             style={{
@@ -423,7 +423,7 @@ export default function AutoSchedulePage() {
 
                      {/* Distribution Histogram */}
                      {dayDistribution && (
-                       <div className="pt-6 border-t border-gray-800">
+                       <div className="pt-6 border-t">
                          <h4 className="text-sm font-bold text-gray-300 mb-6 flex items-center gap-2">
                            <Calendar className="w-4 h-4 text-gray-500" />
                            Haftalık Dağılım Yoğunluğu
@@ -435,7 +435,7 @@ export default function AutoSchedulePage() {
                              const percentage = (count / maxCount) * 100
                              return (
                                <div key={day} className="flex flex-col items-center justify-end h-full relative group">
-                                 <div className="opacity-0 group-hover:opacity-50 transition-opacity absolute -top-8 bg-gray-800 text-white text-xs font-bold px-2 py-1 rounded shadow-lg pointer-events-none">
+                                 <div className="opacity-0 group-hover:opacity-50 transition-opacity absolute -top-8 card text-white text-xs font-bold px-2 py-1 rounded shadow-lg pointer-events-none">
                                    {count} Saat
                                  </div>
                                  <div className="w-full max-w-[40px] bg-cyan-600 hover:brightness-110 transition-colors rounded-t-lg relative overflow-hidden shadow-[0_0_10px_rgba(99,102,241,0.2)]"
@@ -458,7 +458,7 @@ export default function AutoSchedulePage() {
                       <AlertTriangle className="w-5 h-5 text-amber-400" />
                       Yerleşemeyen & Açıkta Kalan Dersler ({result.failed.length})
                     </h3>
-                    <p className="text-sm text-gray-400 mb-4 bg-gray-900/50 p-3 rounded-lg border border-gray-800">
+                    <p className="text-sm text-gray-400 mb-4 card p-3 rounded-lg border">
                       Aşağıdaki dersler, mevcut sınıf veya hoca kısıtlamaları (boş saat eksikliği vb.) sebebiyle sisteme otomatik <strong>yerleştirilememiştir</strong>. Lütfen bunları manuel yerleştirin.
                     </p>
 
@@ -466,7 +466,7 @@ export default function AutoSchedulePage() {
                       {result.failed.map((f, i) => (
                         <div
                           key={i}
-                          className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl border border-gray-800 bg-gray-900 shadow-inner group hover:border-gray-700 transition-colors"
+                          className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl border card shadow-inner group hover:border-gray-700 transition-colors"
                         >
                           <div>
                             <p className="text-sm font-bold text-gray-200 group-hover:text-white transition-colors">{f.course}</p>

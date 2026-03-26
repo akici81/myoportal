@@ -230,7 +230,7 @@ export default function ProgramCoursesPage() {
               Program
             </label>
             <select
-              className="w-full bg-gray-900/70 border border-gray-700/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all font-semibold"
+              className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all font-semibold"
               value={selectedProgram}
               onChange={(e) => setSelectedProgram(e.target.value)}
             >
@@ -246,7 +246,7 @@ export default function ProgramCoursesPage() {
             <label className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1.5 block pl-1">
               Sınıf Yılı
             </label>
-            <div className="flex gap-1.5 p-1 rounded-xl bg-gray-900/50 border border-gray-800">
+            <div className="flex gap-1.5 p-1 rounded-xl card border">
               {([1, 2] as const).map((y) => (
                 <button
                   key={y}
@@ -254,7 +254,7 @@ export default function ProgramCoursesPage() {
                   className={`px-5 py-2.5 rounded-lg text-sm font-bold transition-all min-w-[90px] ${
                     selectedYear === y
                       ? 'bg-cyan-600 text-white shadow-lg'
-                      : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800'
+                      : 'text-gray-400 hover:text-gray-200 hover:card'
                   }`}
                 >
                   {y}. Sınıf
@@ -296,7 +296,7 @@ export default function ProgramCoursesPage() {
             {programCourses.map((pc) => (
               <div
                 key={pc.id}
-                className="flex items-center gap-4 p-4 rounded-xl bg-gray-900/50 border border-gray-800 hover:bg-gray-800/50 transition-colors group"
+                className="flex items-center gap-4 p-4 rounded-xl card border hover:card/50 transition-colors group"
               >
                 <div className="flex-1">
                   <div className="flex items-center gap-3">
@@ -354,7 +354,7 @@ export default function ProgramCoursesPage() {
                   Ders
                 </label>
                 <select
-                  className="w-full bg-gray-900/50 border border-gray-700/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
+                  className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
                   value={form.course_id}
                   onChange={(e) => setForm({ ...form, course_id: e.target.value })}
                 >
@@ -372,7 +372,7 @@ export default function ProgramCoursesPage() {
                   Öğretim Elemanı (Opsiyonel)
                 </label>
                 <select
-                  className="w-full bg-gray-900/50 border border-gray-700/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
+                  className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
                   value={form.instructor_id}
                   onChange={(e) => setForm({ ...form, instructor_id: e.target.value })}
                 >
@@ -391,7 +391,7 @@ export default function ProgramCoursesPage() {
                     Dönem
                   </label>
                   <select
-                    className="w-full bg-gray-900/50 border border-gray-700/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
+                    className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
                     value={form.semester}
                     onChange={(e) => setForm({ ...form, semester: Number(e.target.value) })}
                   >
@@ -405,7 +405,7 @@ export default function ProgramCoursesPage() {
                     Sınıf
                   </label>
                   <select
-                    className="w-full bg-gray-900/50 border border-gray-700/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
+                    className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
                     value={form.year_number}
                     onChange={(e) => setForm({ ...form, year_number: Number(e.target.value) })}
                   >
@@ -419,7 +419,7 @@ export default function ProgramCoursesPage() {
             <div className="flex gap-3 mt-6">
               <button
                 onClick={() => setShowModal(false)}
-                className="flex-1 px-4 py-2.5 rounded-xl font-bold text-sm text-gray-400 bg-gray-800/50 hover:bg-gray-700 transition"
+                className="flex-1 px-4 py-2.5 rounded-xl font-bold text-sm text-gray-400 card/50 hover:bg-gray-700 transition"
               >
                 İptal
               </button>

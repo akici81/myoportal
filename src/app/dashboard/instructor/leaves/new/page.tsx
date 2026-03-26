@@ -82,7 +82,7 @@ export default function NewLeaveRequestPage() {
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6 rounded-2xl border border-white/5 bg-gray-800/30 p-6">
+      <form onSubmit={handleSubmit} className="space-y-6 rounded-2xl border border-white/5 card/30 p-6">
         {error && (
           <div className="rounded-lg bg-rose-500/10 p-4 border border-rose-500/20 flex gap-3 text-rose-400">
              <AlertTriangle className="h-5 w-5 flex-shrink-0" />
@@ -97,7 +97,7 @@ export default function NewLeaveRequestPage() {
             value={leaveType}
             onChange={(e) => setLeaveType(e.target.value)}
             required
-            className="w-full rounded-xl border border-white/10 bg-gray-900/50 px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
+            className="w-full rounded-xl border border-white/10 card px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
           >
             <option value="annual">Yıllık İzin</option>
             <option value="sick">Hastalık / Sağlık Raporu</option>
@@ -116,7 +116,7 @@ export default function NewLeaveRequestPage() {
                 type="date"
                 name="hourly_date"
                 required
-                className="w-full rounded-xl border border-white/10 bg-gray-900/50 px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
+                className="w-full rounded-xl border border-white/10 card px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
               />
             </div>
             <div className="space-y-2">
@@ -125,7 +125,7 @@ export default function NewLeaveRequestPage() {
                 type="time"
                 name="start_time"
                 required
-                className="w-full rounded-xl border border-white/10 bg-gray-900/50 px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
+                className="w-full rounded-xl border border-white/10 card px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
               />
             </div>
             <div className="space-y-2">
@@ -134,7 +134,7 @@ export default function NewLeaveRequestPage() {
                 type="time"
                 name="end_time"
                 required
-                className="w-full rounded-xl border border-white/10 bg-gray-900/50 px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
+                className="w-full rounded-xl border border-white/10 card px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
               />
             </div>
             <div className="space-y-2">
@@ -153,7 +153,7 @@ export default function NewLeaveRequestPage() {
                 type="date"
                 name="start_date"
                 required
-                className="w-full rounded-xl border border-white/10 bg-gray-900/50 px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
+                className="w-full rounded-xl border border-white/10 card px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
               />
             </div>
             <div className="space-y-2">
@@ -162,7 +162,7 @@ export default function NewLeaveRequestPage() {
                 type="date"
                 name="end_date"
                 required
-                className="w-full rounded-xl border border-white/10 bg-gray-900/50 px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
+                className="w-full rounded-xl border border-white/10 card px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
               />
             </div>
           </div>
@@ -175,7 +175,7 @@ export default function NewLeaveRequestPage() {
             rows={4}
             required
             placeholder="İzin talebinizin detaylarını buraya yazabilirsiniz..."
-            className="w-full rounded-xl border border-white/10 bg-gray-900/50 px-4 py-3 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 resize-none"
+            className="w-full rounded-xl border border-white/10 card px-4 py-3 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 resize-none"
           ></textarea>
         </div>
 

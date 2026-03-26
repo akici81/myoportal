@@ -234,7 +234,7 @@ export default function CourseAssignmentsPage() {
       </div>
 
       {loading ? (
-        <div className="card py-24 flex flex-col items-center justify-center rounded-2xl border border-gray-800/60">
+        <div className="card py-24 flex flex-col items-center justify-center rounded-2xl border">
           <div className="w-12 h-12 rounded-full border-4 border-amber-900 border-t-amber-500 animate-spin mb-4" />
           <p className="text-gray-400 font-medium tracking-wide">Ders listesi ve kadro hazırlanıyor...</p>
         </div>
@@ -242,7 +242,7 @@ export default function CourseAssignmentsPage() {
         <>
           {/* STATS */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 relative overflow-hidden group">
+            <div className="card border rounded-xl p-5 flex items-center gap-4 relative overflow-hidden group">
               <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-50 transition-opacity"></div>
               <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20 shrink-0">
                 <BookOpen className="w-6 h-6 text-blue-500" />
@@ -253,7 +253,7 @@ export default function CourseAssignmentsPage() {
               </div>
             </div>
 
-            <div className="card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 relative overflow-hidden group">
+            <div className="card border rounded-xl p-5 flex items-center gap-4 relative overflow-hidden group">
               <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-50 transition-opacity"></div>
               <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 shrink-0">
                 <UserCheck className="w-6 h-6 text-emerald-500" />
@@ -264,7 +264,7 @@ export default function CourseAssignmentsPage() {
               </div>
             </div>
 
-            <div className="card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 relative overflow-hidden group">
+            <div className="card border rounded-xl p-5 flex items-center gap-4 relative overflow-hidden group">
               <div className="absolute inset-0 bg-rose-500/5 opacity-0 group-hover:opacity-50 transition-opacity"></div>
               <div className="w-12 h-12 rounded-xl bg-rose-500/10 flex items-center justify-center border border-rose-500/20 shrink-0">
                 <AlertTriangle className="w-6 h-6 text-rose-500" />
@@ -275,7 +275,7 @@ export default function CourseAssignmentsPage() {
               </div>
             </div>
 
-            <div className="card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 relative overflow-hidden group">
+            <div className="card border rounded-xl p-5 flex items-center gap-4 relative overflow-hidden group">
               <div className="absolute inset-0 bg-purple-500/5 opacity-0 group-hover:opacity-50 transition-opacity"></div>
               <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center border border-purple-500/20 shrink-0">
                 <Users className="w-6 h-6 text-purple-500" />
@@ -297,24 +297,24 @@ export default function CourseAssignmentsPage() {
               </div>
             </div>
 
-            <div className="card p-2 rounded-xl border border-gray-800/60 flex flex-wrap gap-2 lg:w-max">
+            <div className="card p-2 rounded-xl border flex flex-wrap gap-2 lg:w-max">
               <div className="relative flex-1 min-w-[180px]">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
-                <input type="text" placeholder="Ders Ara..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="w-full pl-9 pr-4 py-2 bg-gray-900/50 border border-gray-700/50 rounded-lg text-sm font-semibold text-white focus:outline-none focus:border-amber-500 transition-colors placeholder:text-gray-600" />
+                <input type="text" placeholder="Ders Ara..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} className="w-full pl-9 pr-4 py-2 card border rounded-lg text-sm font-semibold text-white focus:outline-none focus:border-amber-500 transition-colors placeholder:text-gray-600" />
               </div>
               
-              <select value={filterProgram} onChange={e => setFilterProgram(e.target.value)} className="bg-gray-900/50 border border-gray-700/50 rounded-lg px-3 py-2 text-sm font-semibold text-gray-300 focus:outline-none focus:border-amber-500 transition-colors">
+              <select value={filterProgram} onChange={e => setFilterProgram(e.target.value)} className="card border rounded-lg px-3 py-2 text-sm font-semibold text-gray-300 focus:outline-none focus:border-amber-500 transition-colors">
                 <option value="all">Tüm Y.Okul Prog.</option>
                 {uniquePrograms.map(p => <option key={p} value={p}>{p}</option>)}
               </select>
 
-              <select value={filterYear} onChange={e => setFilterYear(e.target.value === 'all' ? 'all' : Number(e.target.value))} className="bg-gray-900/50 border border-gray-700/50 rounded-lg px-3 py-2 text-sm font-semibold text-gray-300 focus:outline-none focus:border-amber-500 transition-colors">
+              <select value={filterYear} onChange={e => setFilterYear(e.target.value === 'all' ? 'all' : Number(e.target.value))} className="card border rounded-lg px-3 py-2 text-sm font-semibold text-gray-300 focus:outline-none focus:border-amber-500 transition-colors">
                 <option value="all">Sınıflar (Hepsi)</option>
                 <option value={1}>1. Sınıflar</option>
                 <option value={2}>2. Sınıflar</option>
               </select>
 
-              <select value={filterAssigned} onChange={e => setFilterAssigned(e.target.value as any)} className="bg-gray-900/50 border border-gray-700/50 rounded-lg px-3 py-2 text-sm font-semibold text-gray-300 focus:outline-none focus:border-amber-500 transition-colors">
+              <select value={filterAssigned} onChange={e => setFilterAssigned(e.target.value as any)} className="card border rounded-lg px-3 py-2 text-sm font-semibold text-gray-300 focus:outline-none focus:border-amber-500 transition-colors">
                 <option value="all">Durum (Tümü)</option>
                 <option value="assigned">Hocası Belli</option>
                 <option value="unassigned">Eksik/Atanmamış</option>
@@ -323,11 +323,11 @@ export default function CourseAssignmentsPage() {
           </div>
 
           {/* MAIN GRID */}
-          <div className="card overflow-hidden rounded-2xl border border-gray-800/60 shadow-xl">
+          <div className="card overflow-hidden rounded-2xl border shadow-xl">
              <div className="overflow-x-auto custom-scrollbar">
                 <table className="w-full text-left border-collapse">
                    <thead>
-                      <tr className="bg-gray-900/80 border-b border-gray-800">
+                      <tr className="card border-b">
                          <th className="py-4 px-5 text-[11px] font-black uppercase tracking-widest text-gray-500">Ders / İçerik</th>
                          <th className="py-4 px-5 text-[11px] font-black uppercase tracking-widest text-gray-500 text-center">Prog / Sınıf</th>
                          <th className="py-4 px-5 text-[11px] font-black uppercase tracking-widest text-gray-500 text-center">Kredi</th>
@@ -343,7 +343,7 @@ export default function CourseAssignmentsPage() {
                         const isEd = editingStudentCount === pc.id
 
                         return (
-                          <tr key={pc.id} className={clsx("transition-colors group", hasChange ? 'bg-amber-500/5' : 'hover:bg-gray-800/30')}>
+                          <tr key={pc.id} className={clsx("transition-colors group", hasChange ? 'bg-amber-500/5' : 'hover:card/30')}>
                             <td className="py-3 px-5">
                                <div className="flex flex-col gap-1">
                                   <div className="flex items-center gap-2">
@@ -359,13 +359,13 @@ export default function CourseAssignmentsPage() {
                             </td>
                             
                             <td className="py-3 px-5 text-center">
-                              <span className="inline-block text-xs font-bold text-gray-300 bg-gray-900/60 px-2 py-1 rounded border border-gray-700/50 whitespace-nowrap">
+                              <span className="inline-block text-xs font-bold text-gray-300 card px-2 py-1 rounded border whitespace-nowrap">
                                 {pc.program.short_code} • {pc.year_number}. Sın
                               </span>
                             </td>
                             
                             <td className="py-3 px-5 text-center">
-                              <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center mx-auto text-xs font-black text-gray-300 border border-gray-700 shadow-inner">
+                              <div className="w-8 h-8 rounded-full card flex items-center justify-center mx-auto text-xs font-black text-gray-300 border shadow-inner">
                                 {pc.course.weekly_hours}
                               </div>
                             </td>
@@ -376,12 +376,12 @@ export default function CourseAssignmentsPage() {
                                   <input type="number" min="0" max="500" value={tempStudentCount}
                                      onChange={e => setTempStudentCount(e.target.value)}
                                      onKeyDown={e => { if (e.key === 'Enter') saveStudentCount(pc.id); if (e.key === 'Escape') cancelEditingStudentCount(); }}
-                                     className="w-20 px-3 py-1.5 bg-gray-900 border border-amber-500 rounded-lg text-sm font-bold text-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-500/30 custom-number-input" autoFocus />
+                                     className="w-20 px-3 py-1.5 card border border-amber-500 rounded-lg text-sm font-bold text-amber-300 focus:outline-none focus:ring-2 focus:ring-amber-500/30 custom-number-input" autoFocus />
                                   <button onClick={() => saveStudentCount(pc.id)} className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center hover:bg-emerald-500 hover:text-white transition-colors border border-emerald-500/30"><Check className="w-4 h-4" /></button>
                                   <button onClick={cancelEditingStudentCount} className="w-8 h-8 rounded-lg bg-rose-500/20 text-rose-400 flex items-center justify-center hover:bg-rose-500 hover:text-white transition-colors border border-rose-500/30"><X className="w-4 h-4" /></button>
                                 </div>
                               ) : (
-                                <button onClick={() => startEditingStudentCount(pc)} className={clsx("flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-bold transition-all border", curCount ? 'bg-amber-500/10 text-amber-400 border-amber-500/30 hover:bg-amber-500/20' : 'bg-gray-800/50 text-gray-500 border-gray-700/50 hover:bg-gray-800 hover:text-gray-300')}>
+                                <button onClick={() => startEditingStudentCount(pc)} className={clsx("flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-bold transition-all border", curCount ? 'bg-amber-500/10 text-amber-400 border-amber-500/30 hover:bg-amber-500/20' : 'card/50 text-gray-500 hover:card hover:text-gray-300')}>
                                   <Users className="w-4 h-4" />
                                   {curCount || 'Sayısı yok'}
                                   <Edit3 className="w-3.5 h-3.5 opacity-60 ml-1" />
@@ -391,12 +391,12 @@ export default function CourseAssignmentsPage() {
 
                             <td className="py-3 px-5">
                                <select value={curInst || ''} onChange={e => handleInstructorChange(pc.id, e.target.value || null)}
-                                   className={clsx("w-full px-4 py-2 bg-gray-900 border rounded-xl text-sm font-semibold focus:outline-none focus:ring-2 transition-all appearance-none",
+                                   className={clsx("w-full px-4 py-2 card border rounded-xl text-sm font-semibold focus:outline-none focus:ring-2 transition-all appearance-none",
                                       curInst ? 'border-emerald-500/40 text-emerald-300 focus:ring-emerald-500/30 focus:border-emerald-500 bg-emerald-950/20' : 'border-rose-500/40 text-rose-400 focus:ring-rose-500/30 focus:border-rose-500 bg-rose-950/20',
                                       hasChange && '!border-amber-500 !text-amber-300 !bg-amber-950/30 ring-2 ring-amber-500/30 shadow-[0_0_15px_rgba(245,158,11,0.1)]'
                                    )}>
-                                  <option value="" className="bg-gray-900 text-gray-500">— Eğitmen Ataması Bekleniyor —</option>
-                                  <optgroup label="Sistemdeki Öğretim Elemanları" className="bg-gray-800 text-gray-300">
+                                  <option value="" className="card text-gray-500">— Eğitmen Ataması Bekleniyor —</option>
+                                  <optgroup label="Sistemdeki Öğretim Elemanları" className="card text-gray-300">
                                      {instructors.map(i => <option key={i.id} value={i.id} className="text-white">{i.title} {i.full_name}</option>)}
                                   </optgroup>
                                </select>

@@ -246,7 +246,7 @@ export default function SharedCoursesPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Stat Cards */}
-        <div className="card p-6 rounded-2xl border border-gray-800 flex items-center gap-4 bg-gradient-to-br from-indigo-900/10 to-transparent">
+        <div className="card p-6 rounded-2xl border flex items-center gap-4 bg-gradient-to-br from-indigo-900/10 to-transparent">
           <div className="w-14 h-14 rounded-full bg-indigo-500/10 flex items-center justify-center border border-indigo-500/20 text-indigo-400 shadow-[0_0_15px_rgba(99,102,241,0.1)]">
             <Layers className="w-7 h-7" />
           </div>
@@ -256,7 +256,7 @@ export default function SharedCoursesPage() {
           </div>
         </div>
 
-        <div className="card p-6 rounded-2xl border border-gray-800 flex items-center gap-4 bg-gradient-to-br from-blue-900/10 to-transparent">
+        <div className="card p-6 rounded-2xl border flex items-center gap-4 bg-gradient-to-br from-blue-900/10 to-transparent">
           <div className="w-14 h-14 rounded-full bg-blue-500/10 flex items-center justify-center border border-blue-500/20 text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
             <Link2 className="w-7 h-7" />
           </div>
@@ -268,7 +268,7 @@ export default function SharedCoursesPage() {
           </div>
         </div>
 
-        <div className="card p-6 rounded-2xl border border-gray-800 flex items-center gap-4 bg-gradient-to-br from-amber-900/10 to-transparent">
+        <div className="card p-6 rounded-2xl border flex items-center gap-4 bg-gradient-to-br from-amber-900/10 to-transparent">
           <div className="w-14 h-14 rounded-full bg-amber-500/10 flex items-center justify-center border border-amber-500/20 text-amber-500 shadow-[0_0_15px_rgba(245,158,11,0.1)] relative overflow-hidden group">
             <Sparkles className="w-7 h-7 relative z-10 animate-pulse" />
           </div>
@@ -290,7 +290,7 @@ export default function SharedCoursesPage() {
             <div className="relative w-full sm:w-72">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
               <input
-                className="w-full bg-gray-900/60 border border-gray-700/80 rounded-full pl-10 pr-4 py-2 text-sm text-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/50 transition-all placeholder:text-gray-600 shadow-inner"
+                className="w-full card border rounded-full pl-10 pr-4 py-2 text-sm text-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/50 transition-all placeholder:text-gray-600 shadow-inner"
                 placeholder="Kod, ad veya program ara..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -300,13 +300,13 @@ export default function SharedCoursesPage() {
 
           <div className="space-y-4">
             {loading ? (
-              <div className="card border border-gray-800 rounded-2xl p-12 flex flex-col items-center justify-center text-gray-500 animate-pulse">
+              <div className="card border rounded-2xl p-12 flex flex-col items-center justify-center text-gray-500 animate-pulse">
                 <Link2 className="w-12 h-12 mb-4 opacity-50" />
                 <p>Veriler işleniyor...</p>
               </div>
             ) : filteredGroups.length === 0 ? (
-              <div className="card border border-dashed border-gray-700 bg-gray-900/30 rounded-2xl p-16 flex flex-col items-center justify-center text-center">
-                <div className="w-20 h-20 bg-gray-800/80 rounded-full flex items-center justify-center mb-6 shadow-inner">
+              <div className="card border border-dashed card rounded-2xl p-16 flex flex-col items-center justify-center text-center">
+                <div className="w-20 h-20 card/80 rounded-full flex items-center justify-center mb-6 shadow-inner">
                   <Link2 className="w-10 h-10 text-gray-500" />
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">
@@ -328,7 +328,7 @@ export default function SharedCoursesPage() {
                 return (
                   <div 
                     key={group.shared_group_id} 
-                    className="card rounded-2xl border border-gray-800 overflow-hidden transition-all duration-300 group hover:border-indigo-500/30"
+                    className="card rounded-2xl border overflow-hidden transition-all duration-300 group hover:border-indigo-500/30"
                   >
                     <div 
                       onClick={() => setExpandedGroups((p) =>
@@ -338,14 +338,14 @@ export default function SharedCoursesPage() {
                       )}
                       className={clsx(
                         "w-full p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4 cursor-pointer transition-colors",
-                        isExpanded ? "bg-gray-800/20" : "hover:bg-gray-800/10"
+                        isExpanded ? "card/20" : "hover:card/10"
                       )}
                     >
                       <div className="flex items-center gap-4">
                         <div className="shrink-0 flex items-center justify-center">
                           <div className={clsx(
                             "w-8 h-8 rounded-full flex items-center justify-center transition-transform duration-300",
-                            isExpanded ? "bg-indigo-500/20 text-indigo-400 rotate-180" : "bg-gray-800 text-gray-500 group-hover:bg-gray-700"
+                            isExpanded ? "bg-indigo-500/20 text-indigo-400 rotate-180" : "card text-gray-500 group-hover:bg-gray-700"
                           )}>
                             <ChevronDown className="w-5 h-5" />
                           </div>
@@ -360,14 +360,14 @@ export default function SharedCoursesPage() {
                             {group.course.name}
                           </p>
                           <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-sm text-gray-400">
-                            <span className="font-mono text-xs px-1.5 py-0.5 rounded bg-gray-800 border border-gray-700 text-gray-300">{group.course.code}</span>
+                            <span className="font-mono text-xs px-1.5 py-0.5 rounded card border text-gray-300">{group.course.code}</span>
                             <span className="flex items-center gap-1.5 before:content-['•'] before:text-gray-600 before:mr-1">{group.course.course_type === 'theoretical' ? 'Teorik' : 'Uygulamalı'} Ders</span>
                             <span className="flex items-center gap-1.5 before:content-['•'] before:text-gray-600 before:mr-1">{group.course.weekly_hours} Saat</span>
                           </div>
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-3 pl-16 sm:pl-0 border-t sm:border-0 border-gray-800 pt-3 sm:pt-0">
+                      <div className="flex items-center gap-3 pl-16 sm:pl-0 border-t sm:border-0 pt-3 sm:pt-0">
                         <span className="flex items-center gap-2 bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1.5 rounded-lg text-xs font-bold shrink-0">
                           <Users className="w-3.5 h-3.5" /> {group.programs.length} Program
                         </span>
@@ -391,7 +391,7 @@ export default function SharedCoursesPage() {
                       isExpanded ? "grid-rows-[1fr] opacity-50" : "opacity-0"
                     )}>
                       <div className="overflow-hidden">
-                        <div className="p-5 border-t border-gray-800/80 bg-gray-900/40">
+                        <div className="p-5 border-t card">
                           <p className="text-xs font-medium text-gray-500 mb-3 flex items-center gap-2">
                             <Link2 className="w-3 h-3" /> Eşleşen Program Bağlantıları
                           </p>
@@ -399,10 +399,10 @@ export default function SharedCoursesPage() {
                             {group.programs.map(({ program, programCourseId }) => (
                               <div
                                 key={programCourseId}
-                                className="flex items-center justify-between p-3 rounded-xl border border-gray-800 bg-gray-900 shadow-inner group/item hover:border-blue-500/30 transition-colors"
+                                className="flex items-center justify-between p-3 rounded-xl border card shadow-inner group/item hover:border-blue-500/30 transition-colors"
                               >
                                 <div className="flex items-center gap-3">
-                                  <div className="w-9 h-9 rounded-lg bg-gray-800 flex items-center justify-center border border-gray-700 text-xs font-bold text-gray-300 group-hover/item:text-blue-400 group-hover/item:bg-blue-500/10 transition-colors">
+                                  <div className="w-9 h-9 rounded-lg card flex items-center justify-center border text-xs font-bold text-gray-300 group-hover/item:text-blue-400 group-hover/item:bg-blue-500/10 transition-colors">
                                     {program.short_code}
                                   </div>
                                   <p className="text-sm font-medium text-gray-200 line-clamp-1" title={program.name}>{program.name}</p>
@@ -446,7 +446,7 @@ export default function SharedCoursesPage() {
 
             <div className="mt-6 space-y-3">
               {!loading && nonSharedCourses.length === 0 ? (
-                <div className="p-4 rounded-xl bg-gray-900/50 border border-gray-800 text-center text-sm text-gray-500 flex flex-col items-center">
+                <div className="p-4 rounded-xl card border text-center text-sm text-gray-500 flex flex-col items-center">
                   <Check className="w-6 h-6 text-emerald-500/50 mb-2" />
                   Harika! Sistem tertemiz. Eşleşmemiş ortak ders potansiyeli bulamadık.
                 </div>
@@ -464,7 +464,7 @@ export default function SharedCoursesPage() {
                         setSelectedPrograms([])
                         setShowModal(true)
                       }}
-                      className="w-full relative overflow-hidden flex items-center justify-between p-3 rounded-xl border border-indigo-500/10 bg-gray-900/40 hover:bg-indigo-500/10 hover:border-indigo-500/30 transition-all group/btn text-left"
+                      className="w-full relative overflow-hidden flex items-center justify-between p-3 rounded-xl border border-indigo-500/10 card hover:bg-indigo-500/10 hover:border-indigo-500/30 transition-all group/btn text-left"
                     >
                       <div className="flex flex-col">
                         <span className="text-sm font-bold text-gray-200 group-hover/btn:text-white transition-colors">{c.code}</span>
@@ -488,7 +488,7 @@ export default function SharedCoursesPage() {
             </div>
           </div>
           
-          <div className="card p-5 rounded-2xl border border-gray-800 bg-gray-900/60">
+          <div className="card p-5 rounded-2xl border card">
              <div className="flex gap-3">
                <Info className="w-5 h-5 text-gray-400 shrink-0 mt-0.5" />
                <p className="text-xs text-gray-400 leading-relaxed">
@@ -504,8 +504,8 @@ export default function SharedCoursesPage() {
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/60" onClick={() => !saving && setShowModal(false)}></div>
           
-          <div className="card w-full max-w-lg bg-gray-900 rounded-2xl border border-gray-700 shadow-2xl overflow-hidden relative z-10 animate-in zoom-in-95 duration-200 flex flex-col max-h-[90vh]">
-            <div className="p-6 border-b border-gray-800 bg-gray-900/50 flex items-center justify-between shrink-0">
+          <div className="card w-full max-w-lg card rounded-2xl border shadow-2xl overflow-hidden relative z-10 animate-in zoom-in-95 duration-200 flex flex-col max-h-[90vh]">
+            <div className="p-6 border-b card flex items-center justify-between shrink-0">
               <h3 className="font-bold text-white text-lg flex items-center gap-2">
                 <div className="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center border border-indigo-500/30">
                   <Link2 className="w-4 h-4 text-indigo-400" />
@@ -515,7 +515,7 @@ export default function SharedCoursesPage() {
               <button 
                 onClick={() => setShowModal(false)}
                 disabled={saving}
-                className="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:text-white hover:bg-gray-800 transition-colors"
+                className="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:text-white hover:card transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -528,7 +528,7 @@ export default function SharedCoursesPage() {
                 <div className="relative">
                   <BookOpen className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
                   <select
-                    className="w-full bg-gray-950/50 border border-gray-700/80 rounded-xl pl-10 pr-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/50 transition-colors appearance-none cursor-pointer"
+                    className="w-full bg-gray-950/50 border rounded-xl pl-10 pr-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/50 transition-colors appearance-none cursor-pointer"
                     value={selectedCourse?.id || ''}
                     disabled={saving}
                     onChange={(e) => {
@@ -559,7 +559,7 @@ export default function SharedCoursesPage() {
 
               {/* Program Checklist */}
               {selectedCourse && availablePrograms.length >= 2 && (
-                <div className="space-y-2 border-t border-gray-800 pt-6">
+                <div className="space-y-2 border-t pt-6">
                   <div className="flex items-center justify-between mb-3 px-1">
                     <label className="text-xs font-bold uppercase tracking-wider text-gray-400">
                       Havuza Eklenecek Programlar <span className="lowercase font-medium text-gray-500">(En az 2)</span>
@@ -593,7 +593,7 @@ export default function SharedCoursesPage() {
                             'w-full p-3 rounded-xl border flex items-center justify-between transition-all group',
                             selected
                               ? 'border-indigo-500/50 bg-indigo-500/10 shadow-[0_0_10px_rgba(79,70,229,0.1)]'
-                              : 'border-gray-800 bg-gray-900/50 hover:border-gray-600'
+                              : 'border-gray-800 card hover:border-gray-600'
                           )}
                         >
                           <div className="flex items-center gap-3">
@@ -602,7 +602,7 @@ export default function SharedCoursesPage() {
                                 "w-9 h-9 rounded-lg flex items-center justify-center text-xs font-bold border transition-colors",
                                 selected 
                                   ? "bg-indigo-500/20 text-indigo-400 border-indigo-500/30" 
-                                  : "bg-gray-800 text-gray-400 border-gray-700 group-hover:bg-gray-700"
+                                  : "card text-gray-400 group-hover:bg-gray-700"
                               )}
                             >
                               {p.short_code}
@@ -623,7 +623,7 @@ export default function SharedCoursesPage() {
                   </div>
                   
                   {/* Selection Status */}
-                  <div className="flex items-center justify-between mt-3 text-xs bg-gray-900/80 px-4 py-2 rounded-lg border border-gray-800">
+                  <div className="flex items-center justify-between mt-3 text-xs card px-4 py-2 rounded-lg border">
                      <span className="text-gray-400">Şu ana kadar seçilen:</span>
                      <span className={clsx(
                        "font-bold",
@@ -636,11 +636,11 @@ export default function SharedCoursesPage() {
               )}
             </div>
 
-            <div className="p-5 border-t border-gray-800 bg-gray-900/50 flex gap-3 shrink-0">
+            <div className="p-5 border-t card flex gap-3 shrink-0">
               <button
                 onClick={() => setShowModal(false)}
                 disabled={saving}
-                className="flex-1 py-3 px-4 rounded-xl text-sm font-bold text-gray-300 bg-gray-800 hover:bg-gray-700 transition-colors"
+                className="flex-1 py-3 px-4 rounded-xl text-sm font-bold text-gray-300 card hover:bg-gray-700 transition-colors"
               >
                 Vazgeç
               </button>

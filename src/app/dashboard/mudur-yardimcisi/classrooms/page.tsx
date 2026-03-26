@@ -34,7 +34,7 @@ export default async function MYClassroomsPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {classrooms?.map(c => (
-          <div key={c.id} className="card p-5 rounded-xl border border-gray-700/50">
+          <div key={c.id} className="card p-5 rounded-xl border">
             <div className="flex items-center gap-3 mb-3">
               <div className="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center text-teal-400 border border-teal-500/20">
                 <Building2 className="w-5 h-5" />

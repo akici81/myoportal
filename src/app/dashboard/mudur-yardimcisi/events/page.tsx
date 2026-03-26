@@ -136,17 +136,17 @@ export default function EventsPage() {
       </div>
 
       {/* Controls */}
-      <div className="card p-4 rounded-xl border border-gray-800/60 flex flex-wrap items-center gap-3">
+      <div className="card p-4 rounded-xl border flex flex-wrap items-center gap-3">
         <div className="flex items-center gap-1">
           <button onClick={() => setCurrent(d => new Date(d.getFullYear(), d.getMonth()-1, 1))}
-            className="p-2 rounded-lg hover:bg-gray-800 text-gray-500 hover:text-white transition"><ChevronLeft className="w-4 h-4" /></button>
+            className="p-2 rounded-lg hover:card text-gray-500 hover:text-white transition"><ChevronLeft className="w-4 h-4" /></button>
           <span className="text-base font-bold text-white px-3 min-w-[150px] text-center">
             {MONTHS_TR[currentDate.getMonth()]} {currentDate.getFullYear()}
           </span>
           <button onClick={() => setCurrent(d => new Date(d.getFullYear(), d.getMonth()+1, 1))}
-            className="p-2 rounded-lg hover:bg-gray-800 text-gray-500 hover:text-white transition"><ChevronRight className="w-4 h-4" /></button>
+            className="p-2 rounded-lg hover:card text-gray-500 hover:text-white transition"><ChevronRight className="w-4 h-4" /></button>
           <button onClick={() => setCurrent(new Date())}
-            className="ml-1 px-3 py-1.5 text-xs rounded-lg border border-gray-700 text-gray-400 hover:text-white hover:border-gray-500 transition">Bugün</button>
+            className="ml-1 px-3 py-1.5 text-xs rounded-lg border text-gray-400 hover:text-white hover:border-gray-500 transition">Bugün</button>
         </div>
 
         <div className="flex gap-1.5 flex-wrap">
@@ -161,13 +161,13 @@ export default function EventsPage() {
           ))}
         </div>
 
-        <div className="ml-auto flex rounded-lg overflow-hidden border border-gray-700">
+        <div className="ml-auto flex rounded-lg overflow-hidden border">
           <button onClick={() => setView('month')}
-            className={`px-3 py-2 text-xs flex items-center gap-1.5 transition ${view === 'month' ? 'bg-gray-800 text-white' : 'text-gray-500 hover:text-white'}`}>
+            className={`px-3 py-2 text-xs flex items-center gap-1.5 transition ${view === 'month' ? 'card text-white' : 'text-gray-500 hover:text-white'}`}>
             <Grid3X3 className="w-3.5 h-3.5" /> Aylık
           </button>
           <button onClick={() => setView('list')}
-            className={`px-3 py-2 text-xs flex items-center gap-1.5 transition ${view === 'list' ? 'bg-gray-800 text-white' : 'text-gray-500 hover:text-white'}`}>
+            className={`px-3 py-2 text-xs flex items-center gap-1.5 transition ${view === 'list' ? 'card text-white' : 'text-gray-500 hover:text-white'}`}>
             <List className="w-3.5 h-3.5" /> Liste
           </button>
         </div>
@@ -175,8 +175,8 @@ export default function EventsPage() {
 
       {/* MONTH VIEW */}
       {view === 'month' && (
-        <div className="card overflow-hidden rounded-xl border border-gray-800/60">
-          <div className="grid grid-cols-7 border-b border-gray-800" style={{ background: 'rgba(0,0,0,0.3)' }}>
+        <div className="card overflow-hidden rounded-xl border">
+          <div className="grid grid-cols-7 border-b" style={{ background: 'rgba(0,0,0,0.3)' }}>
             {DAYS_SHORT.map(d => (
               <div key={d} className="py-2.5 text-center text-xs font-semibold text-gray-500">{d}</div>
             ))}
@@ -188,7 +188,7 @@ export default function EventsPage() {
               const dayEvents = date ? eventsOnDate(date) : []
               return (
                 <div key={idx}
-                  className={`min-h-[100px] p-1.5 border-b border-r border-gray-800/40 transition ${date ? '' : 'opacity-0 pointer-events-none'} ${isToday ? 'bg-violet-500/5' : ''}`}>
+                  className={`min-h-[100px] p-1.5 border-b border-r transition ${date ? '' : 'opacity-0 pointer-events-none'} ${isToday ? 'bg-violet-500/5' : ''}`}>
                   {date && (<>
                     <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold mb-1 ${isToday ? 'bg-violet-500 text-white' : 'text-gray-400'}`}>
                       {date.getDate()}
@@ -220,7 +220,7 @@ export default function EventsPage() {
       {view === 'list' && (
         <div className="space-y-3">
           {upcomingEvents.length === 0 ? (
-            <div className="card py-16 text-center rounded-xl border border-gray-800/60">
+            <div className="card py-16 text-center rounded-xl border">
               <CalendarDays className="w-10 h-10 mx-auto mb-3 text-gray-600" />
               <p className="font-medium text-white">Yaklaşan etkinlik yok</p>
             </div>
@@ -229,7 +229,7 @@ export default function EventsPage() {
               const d = new Date(ev.date)
               const cat = CATEGORY_MAP[ev.category] ?? CATEGORY_MAP.diger
               return (
-                <div key={ev.id} className="card p-4 rounded-xl border border-gray-700/50 cursor-pointer hover:border-gray-600 transition flex items-start gap-4"
+                <div key={ev.id} className="card p-4 rounded-xl border cursor-pointer hover:border-gray-600 transition flex items-start gap-4"
                   onClick={() => setSelected(ev)}>
                   <div className="w-12 text-center flex-shrink-0">
                     <div className="text-xl font-bold text-white">{d.getDate()}</div>
@@ -258,8 +258,8 @@ export default function EventsPage() {
       {/* Event Detail Modal */}
       {selected && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in">
-          <div className="card w-full max-w-md p-6 rounded-2xl border border-gray-700/50 shadow-2xl relative">
-            <button onClick={() => setSelected(null)} className="absolute right-4 top-4 p-2 text-gray-400 hover:text-white rounded-lg hover:bg-gray-800 transition">
+          <div className="card w-full max-w-md p-6 rounded-2xl border shadow-2xl relative">
+            <button onClick={() => setSelected(null)} className="absolute right-4 top-4 p-2 text-gray-400 hover:text-white rounded-lg hover:card transition">
               <X className="w-5 h-5" />
             </button>
             <span className="text-xs font-semibold px-2 py-0.5 rounded-full"
@@ -271,7 +271,7 @@ export default function EventsPage() {
               <div className="flex items-center gap-2"><CalendarDays className="w-4 h-4" />{new Date(selected.date).toLocaleDateString('tr-TR', { weekday:'long', day:'numeric', month:'long', year:'numeric' })}</div>
               <div className="flex items-center gap-2"><Clock className="w-4 h-4" />{selected.start_time}{selected.end_time && ` – ${selected.end_time}`}</div>
               {selected.location && <div className="flex items-center gap-2"><MapPin className="w-4 h-4" />{selected.location}</div>}
-              {selected.description && <p className="pt-2 border-t border-gray-800">{selected.description}</p>}
+              {selected.description && <p className="pt-2 border-t">{selected.description}</p>}
             </div>
             {isAdmin && (
               <button onClick={() => deleteEvent(selected.id)}
@@ -286,43 +286,43 @@ export default function EventsPage() {
       {/* Add Event Modal */}
       {showForm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in">
-          <div className="card w-full max-w-lg p-6 rounded-2xl border border-gray-700/50 shadow-2xl relative">
-            <button onClick={() => { setShowForm(false); setForm(EMPTY_FORM) }} className="absolute right-4 top-4 p-2 text-gray-400 hover:text-white rounded-lg hover:bg-gray-800 transition">
+          <div className="card w-full max-w-lg p-6 rounded-2xl border shadow-2xl relative">
+            <button onClick={() => { setShowForm(false); setForm(EMPTY_FORM) }} className="absolute right-4 top-4 p-2 text-gray-400 hover:text-white rounded-lg hover:card transition">
               <X className="w-5 h-5" />
             </button>
             <h3 className="text-xl font-bold text-white mb-5 flex items-center gap-2"><CalendarDays className="w-5 h-5 text-violet-400" /> Yeni Etkinlik</h3>
             <div className="space-y-4">
               <div>
                 <label className="text-xs font-medium text-gray-400 mb-1.5 block">Başlık</label>
-                <input className="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-3 py-2.5 text-sm text-white focus:border-violet-500" placeholder="Etkinlik adı" value={form.title} onChange={e => setForm(f=>({...f, title: e.target.value}))} />
+                <input className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-violet-500" placeholder="Etkinlik adı" value={form.title} onChange={e => setForm(f=>({...f, title: e.target.value}))} />
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="text-xs font-medium text-gray-400 mb-1.5 block">Kategori</label>
-                  <select className="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-3 py-2.5 text-sm text-white focus:border-violet-500" value={form.category} onChange={e => setForm(f=>({...f, category: e.target.value}))}>
+                  <select className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-violet-500" value={form.category} onChange={e => setForm(f=>({...f, category: e.target.value}))}>
                     {Object.entries(CATEGORY_MAP).map(([k,v]) => <option key={k} value={k}>{v.label}</option>)}
                   </select>
                 </div>
                 <div>
                   <label className="text-xs font-medium text-gray-400 mb-1.5 block">Tarih</label>
-                  <input type="date" className="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-3 py-2.5 text-sm text-white focus:border-violet-500" value={form.date} onChange={e => setForm(f=>({...f, date: e.target.value}))} />
+                  <input type="date" className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-violet-500" value={form.date} onChange={e => setForm(f=>({...f, date: e.target.value}))} />
                 </div>
                 <div>
                   <label className="text-xs font-medium text-gray-400 mb-1.5 block">Başlangıç</label>
-                  <input type="time" className="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-3 py-2.5 text-sm text-white focus:border-violet-500" value={form.start_time} onChange={e => setForm(f=>({...f, start_time: e.target.value}))} />
+                  <input type="time" className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-violet-500" value={form.start_time} onChange={e => setForm(f=>({...f, start_time: e.target.value}))} />
                 </div>
                 <div>
                   <label className="text-xs font-medium text-gray-400 mb-1.5 block">Bitiş</label>
-                  <input type="time" className="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-3 py-2.5 text-sm text-white focus:border-violet-500" value={form.end_time} onChange={e => setForm(f=>({...f, end_time: e.target.value}))} />
+                  <input type="time" className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-violet-500" value={form.end_time} onChange={e => setForm(f=>({...f, end_time: e.target.value}))} />
                 </div>
               </div>
               <div>
                 <label className="text-xs font-medium text-gray-400 mb-1.5 block">Konum / Sınıf</label>
-                <input className="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-3 py-2.5 text-sm text-white focus:border-violet-500" placeholder="B122, Amfi vb." value={form.location} onChange={e => setForm(f=>({...f, location: e.target.value}))} />
+                <input className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-violet-500" placeholder="B122, Amfi vb." value={form.location} onChange={e => setForm(f=>({...f, location: e.target.value}))} />
               </div>
               <div>
                 <label className="text-xs font-medium text-gray-400 mb-1.5 block">Açıklama</label>
-                <textarea className="w-full bg-gray-900/50 border border-gray-700 rounded-lg px-3 py-2.5 text-sm text-white focus:border-violet-500 resize-none" rows={3} placeholder="Detay..." value={form.description} onChange={e => setForm(f=>({...f, description: e.target.value}))} />
+                <textarea className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-violet-500 resize-none" rows={3} placeholder="Detay..." value={form.description} onChange={e => setForm(f=>({...f, description: e.target.value}))} />
               </div>
               <label className="flex items-center gap-2 cursor-pointer">
                 <input type="checkbox" checked={form.is_public} onChange={e => setForm(f=>({...f, is_public: e.target.checked}))} className="rounded" />
@@ -330,7 +330,7 @@ export default function EventsPage() {
               </label>
             </div>
             <div className="flex gap-3 mt-5">
-              <button onClick={() => { setShowForm(false); setForm(EMPTY_FORM) }} className="flex-1 px-4 py-2.5 rounded-lg text-sm bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white">İptal</button>
+              <button onClick={() => { setShowForm(false); setForm(EMPTY_FORM) }} className="flex-1 px-4 py-2.5 rounded-lg text-sm card text-gray-400 hover:bg-gray-700 hover:text-white">İptal</button>
               <button onClick={saveEvent} disabled={saving || !form.title || !form.date}
                 className="flex-1 px-4 py-2.5 rounded-lg text-sm bg-violet-600 text-white hover:bg-violet-500 disabled:opacity-50">
                 {saving ? 'Kaydediliyor...' : 'Etkinlik Ekle'}

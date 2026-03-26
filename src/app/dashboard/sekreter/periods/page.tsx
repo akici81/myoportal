@@ -117,7 +117,7 @@ export default function PeriodsPage() {
                     <CalendarDays className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-teal-500/50" />
                     <input 
                       type="text"
-                      className="w-full bg-gray-900/80 border border-gray-700/80 rounded-lg pl-10 pr-4 py-3 text-sm font-medium text-white focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/50 transition-colors placeholder:text-gray-600" 
+                      className="w-full card border rounded-lg pl-10 pr-4 py-3 text-sm font-medium text-white focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/50 transition-colors placeholder:text-gray-600" 
                       placeholder="Örn: 2024-2025" 
                       value={form.academic_year}
                       onChange={e => setForm(f => ({ ...f, academic_year: e.target.value }))}
@@ -133,7 +133,7 @@ export default function PeriodsPage() {
                   <div className="relative">
                     <Clock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-teal-500/50" />
                     <select 
-                      className="w-full bg-gray-900/80 border border-gray-700/80 rounded-lg pl-10 pr-4 py-3 text-sm font-medium text-white focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/50 transition-colors appearance-none cursor-pointer"
+                      className="w-full card border rounded-lg pl-10 pr-4 py-3 text-sm font-medium text-white focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/50 transition-colors appearance-none cursor-pointer"
                       value={form.semester} 
                       onChange={e => setForm(f => ({ ...f, semester: +e.target.value }))}
                       required
@@ -164,7 +164,7 @@ export default function PeriodsPage() {
             </div>
           </div>
 
-          <div className="card rounded-2xl border border-gray-800/60 p-5 bg-gray-900/40">
+          <div className="card rounded-2xl border p-5 card">
             <h4 className="text-sm font-bold text-gray-300 flex items-center gap-2 mb-2">
               <Settings className="w-4 h-4 text-gray-500" /> Uyarılar & Bilgilendirme
             </h4>
@@ -178,11 +178,11 @@ export default function PeriodsPage() {
 
         {/* Right Side: Periods List */}
         <div className="xl:col-span-2">
-          <div className="card rounded-2xl border border-gray-800/60 overflow-hidden h-full flex flex-col">
-            <div className="px-6 py-5 border-b border-gray-800/60 bg-gray-900/60 flex items-center justify-between">
+          <div className="card rounded-2xl border overflow-hidden h-full flex flex-col">
+            <div className="px-6 py-5 border-b card flex items-center justify-between">
               <h3 className="font-bold text-white text-lg flex items-center gap-2">
                 Tanımlı Dönemler 
-                <span className="bg-gray-800 text-gray-400 text-xs px-2 py-0.5 rounded-full border border-gray-700">{periods.length} Adet</span>
+                <span className="card text-gray-400 text-xs px-2 py-0.5 rounded-full border">{periods.length} Adet</span>
               </h3>
             </div>
 
@@ -193,7 +193,7 @@ export default function PeriodsPage() {
                   <p className="font-medium">Dönemler yükleniyor...</p>
                 </div>
               ) : periods.length === 0 ? (
-                <div className="flex flex-col items-center justify-center h-48 text-gray-500 bg-gray-900/30 rounded-xl border border-dashed border-gray-800">
+                <div className="flex flex-col items-center justify-center h-48 text-gray-500 card rounded-xl border border-dashed">
                   <CalendarDays className="w-10 h-10 mb-3 opacity-50" />
                   <p className="font-medium text-gray-400">Henüz hiç dönem eklenmemiş</p>
                   <p className="text-xs mt-1">Sol taraftaki paneli kullanarak yeni bir akademik dönem başlatın.</p>
@@ -210,7 +210,7 @@ export default function PeriodsPage() {
                           'relative p-5 rounded-2xl border transition-all duration-300 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 group',
                           p.is_active 
                             ? 'bg-cyan-600 border-teal-500/50 shadow-[0_0_20px_rgba(20,184,166,0.1)]' 
-                            : 'bg-gray-900/40 border-gray-800/80 hover:border-gray-600/60'
+                            : 'card hover:border-gray-600/60'
                         )}
                         style={{ animationDelay: `${index * 0.1}s` }}
                       >
@@ -225,7 +225,7 @@ export default function PeriodsPage() {
                         <div className="flex items-center gap-4">
                           <div className={clsx(
                             'w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border shadow-inner transition-colors',
-                            p.is_active ? 'bg-teal-500/20 border-teal-500/40 text-teal-400' : 'bg-gray-800 border-gray-700 text-gray-500 group-hover:bg-gray-700/80'
+                            p.is_active ? 'bg-teal-500/20 border-teal-500/40 text-teal-400' : 'card text-gray-500 group-hover:bg-gray-700/80'
                           )}>
                             <CalendarDays className="w-6 h-6" />
                           </div>
@@ -260,7 +260,7 @@ export default function PeriodsPage() {
                             <button 
                               onClick={() => setActive(p.id)}
                               disabled={activatingId === p.id}
-                              className="w-full sm:w-auto px-4 py-2.5 bg-gray-800 hover:bg-teal-600 hover:text-white text-gray-400 rounded-xl text-sm font-bold transition-all border border-gray-700 hover:border-teal-500 hover:shadow-[0_0_15px_rgba(20,184,166,0.3)] flex items-center justify-center gap-2"
+                              className="w-full sm:w-auto px-4 py-2.5 card hover:bg-teal-600 hover:text-white text-gray-400 rounded-xl text-sm font-bold transition-all border hover:border-teal-500 hover:shadow-[0_0_15px_rgba(20,184,166,0.3)] flex items-center justify-center gap-2"
                             >
                               {activatingId === p.id ? (
                                 <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
@@ -270,7 +270,7 @@ export default function PeriodsPage() {
                               {activatingId === p.id ? 'Aktivasyon...' : 'Bu Dönemi Aktif Yap'}
                             </button>
                           ) : (
-                            <div className="px-5 py-2.5 bg-gray-900/50 border border-gray-800/80 rounded-xl text-sm font-medium text-gray-400 flex items-center justify-center gap-2 cursor-default">
+                            <div className="px-5 py-2.5 card border rounded-xl text-sm font-medium text-gray-400 flex items-center justify-center gap-2 cursor-default">
                               Şu Anki Dönem <ArrowRight className="w-4 h-4 opacity-50" />
                             </div>
                           )}

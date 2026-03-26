@@ -30,7 +30,7 @@ export default function EvaluationPage() {
         </p>
         <Link 
           href="/dashboard/instructor" 
-          className="inline-flex items-center justify-center rounded-xl bg-gray-800 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-gray-700"
+          className="inline-flex items-center justify-center rounded-xl card px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-gray-700"
         >
           <ArrowLeft className="mr-2 h-4 w-4" /> Dashboard'a Dön
         </Link>
@@ -56,7 +56,7 @@ export default function EvaluationPage() {
       <form onSubmit={handleSubmit} className="space-y-8">
         
         {/* Bölüm 1 */}
-        <div className="rounded-2xl border border-white/5 bg-gray-800/30 overflow-hidden">
+        <div className="rounded-2xl border border-white/5 card/30 overflow-hidden">
            <div className="bg-cyan-600 px-6 py-4 border-b border-white/5 flex items-center gap-3">
               <Target className="h-5 w-5 text-cyan-400" />
               <h2 className="font-semibold text-white">Akademik Süreçler & Fiziksel Şartlar</h2>
@@ -64,7 +64,7 @@ export default function EvaluationPage() {
            <div className="p-6 space-y-6">
               <div className="space-y-3">
                  <label className="text-sm font-medium text-gray-300">1. Sınıf ve laboratuvarların fiziksel koşulları ders işlemeye ne derece uygundur?</label>
-                 <select required className="w-full rounded-xl border border-white/10 bg-gray-900/50 px-4 py-3 text-sm text-white focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 outline-none">
+                 <select required className="w-full rounded-xl border border-white/10 card px-4 py-3 text-sm text-white focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 outline-none">
                     <option value="">Lütfen seçiniz...</option>
                     <option value="5">Çok Uygun</option>
                     <option value="4">Kısmen Uygun</option>
@@ -76,7 +76,7 @@ export default function EvaluationPage() {
 
               <div className="space-y-3">
                  <label className="text-sm font-medium text-gray-300">2. İdari birimlerle olan iletişim ve süreç yönetiminden memnuniyet dereceniz nedir?</label>
-                 <select required className="w-full rounded-xl border border-white/10 bg-gray-900/50 px-4 py-3 text-sm text-white focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 outline-none">
+                 <select required className="w-full rounded-xl border border-white/10 card px-4 py-3 text-sm text-white focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 outline-none">
                     <option value="">Lütfen seçiniz...</option>
                     <option value="5">Çok Memnunum</option>
                     <option value="4">Memnunum</option>
@@ -89,7 +89,7 @@ export default function EvaluationPage() {
         </div>
 
         {/* Bölüm 2 */}
-        <div className="rounded-2xl border border-white/5 bg-gray-800/30 overflow-hidden">
+        <div className="rounded-2xl border border-white/5 card/30 overflow-hidden">
            <div className="bg-cyan-600 px-6 py-4 border-b border-white/5 flex items-center gap-3">
               <Lightbulb className="h-5 w-5 text-amber-400" />
               <h2 className="font-semibold text-white">Açık Uçlu Değerlendirmeler</h2>
@@ -99,7 +99,7 @@ export default function EvaluationPage() {
                  <label className="text-sm font-medium text-gray-300">Derslerin işleyişi ve öğrenci katılımı hakkında eklemek/önermek istedikleriniz:</label>
                  <textarea 
                     rows={4} 
-                    className="w-full rounded-xl border border-white/10 bg-gray-900/50 px-4 py-3 text-sm text-white focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/20 outline-none resize-none"
+                    className="w-full rounded-xl border border-white/10 card px-4 py-3 text-sm text-white focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/20 outline-none resize-none"
                     placeholder="Deneyimlerinizi ve önerilerinizi yazabilirsiniz..."
                  />
               </div>
@@ -110,7 +110,7 @@ export default function EvaluationPage() {
                    <MessageSquare className="absolute left-4 top-4 h-5 w-5 text-gray-500" />
                    <textarea 
                       rows={3} 
-                      className="w-full rounded-xl border border-white/10 bg-gray-900/50 pl-12 pr-4 py-3 text-sm text-white focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/20 outline-none resize-none"
+                      className="w-full rounded-xl border border-white/10 card pl-12 pr-4 py-3 text-sm text-white focus:border-amber-500/50 focus:ring-2 focus:ring-amber-500/20 outline-none resize-none"
                       placeholder="Görüşleriniz..."
                    />
                  </div>

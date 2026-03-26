@@ -355,8 +355,8 @@ export default function ConstraintsPage() {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="card p-6 rounded-2xl border border-gray-800 flex items-center gap-4 bg-gradient-to-br from-gray-800/20 to-transparent">
-          <div className="w-14 h-14 rounded-full bg-gray-800 flex items-center justify-center border border-gray-700 text-gray-400 shadow-[0_0_15px_rgba(0,0,0,0.2)]">
+        <div className="card p-6 rounded-2xl border flex items-center gap-4 bg-gradient-to-br from-gray-800/20 to-transparent">
+          <div className="w-14 h-14 rounded-full card flex items-center justify-center border text-gray-400 shadow-[0_0_15px_rgba(0,0,0,0.2)]">
             <ClipboardList className="w-7 h-7" />
           </div>
           <div>
@@ -389,11 +389,11 @@ export default function ConstraintsPage() {
       <div className="flex flex-col lg:flex-row gap-8">
         {/* Left Column: Data view */}
         <div className="lg:w-2/3 space-y-6">
-          <div className="card p-4 rounded-2xl border border-gray-800 bg-gray-900/40 flex flex-wrap gap-4 items-center justify-between">
+          <div className="card p-4 rounded-2xl border card flex flex-wrap gap-4 items-center justify-between">
              <div className="relative flex-1 min-w-[200px]">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
                 <input
-                  className="w-full bg-gray-950/50 border border-gray-700/80 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/50 transition-colors shadow-inner placeholder:text-gray-600"
+                  className="w-full bg-gray-950/50 border rounded-xl pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/50 transition-colors shadow-inner placeholder:text-gray-600"
                   placeholder="Eğitmen adına göre hızla ara..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
@@ -404,7 +404,7 @@ export default function ConstraintsPage() {
                <div className="relative">
                  <Filter className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
                  <select
-                    className="w-48 bg-gray-950/50 border border-gray-700/80 rounded-xl pl-10 pr-8 py-2.5 text-sm text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/50 transition-colors shadow-inner appearance-none cursor-pointer"
+                    className="w-48 bg-gray-950/50 border rounded-xl pl-10 pr-8 py-2.5 text-sm text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/50 transition-colors shadow-inner appearance-none cursor-pointer"
                     value={filterType}
                     onChange={(e) => setFilterType(e.target.value)}
                   >
@@ -415,7 +415,7 @@ export default function ConstraintsPage() {
                   </select>
                </div>
                <select
-                  className="w-48 bg-gray-950/50 border border-gray-700/80 rounded-xl pl-4 pr-8 py-2.5 text-sm text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/50 transition-colors shadow-inner appearance-none cursor-pointer"
+                  className="w-48 bg-gray-950/50 border rounded-xl pl-4 pr-8 py-2.5 text-sm text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/50 transition-colors shadow-inner appearance-none cursor-pointer"
                   value={filterInstructor}
                   onChange={(e) => setFilterInstructor(e.target.value)}
                 >
@@ -429,13 +429,13 @@ export default function ConstraintsPage() {
 
           <div className="space-y-4">
             {loading ? (
-               <div className="card border border-gray-800 rounded-2xl p-16 flex flex-col items-center justify-center text-gray-500 animate-pulse">
+               <div className="card border rounded-2xl p-16 flex flex-col items-center justify-center text-gray-500 animate-pulse">
                  <ClipboardList className="w-12 h-12 mb-4 opacity-50" />
                  <p>Kısıtlar veritabanından getiriliyor...</p>
                </div>
             ) : grouped.length === 0 ? (
-               <div className="card border border-dashed border-gray-700 bg-gray-900/30 rounded-2xl p-16 flex flex-col items-center justify-center text-center">
-                 <div className="w-20 h-20 bg-gray-800/80 rounded-full flex items-center justify-center mb-6 shadow-inner">
+               <div className="card border border-dashed card rounded-2xl p-16 flex flex-col items-center justify-center text-center">
+                 <div className="w-20 h-20 card/80 rounded-full flex items-center justify-center mb-6 shadow-inner">
                    <CalendarOff className="w-10 h-10 text-gray-500" />
                  </div>
                  <h3 className="text-xl font-bold text-white mb-2">
@@ -459,21 +459,21 @@ export default function ConstraintsPage() {
                    const hardCount = items.filter((c) => c.is_hard).length
                    
                    return (
-                     <div key={instructor.id} className="card rounded-2xl border border-gray-800 overflow-hidden transition-all duration-300 group hover:border-violet-500/30">
+                     <div key={instructor.id} className="card rounded-2xl border overflow-hidden transition-all duration-300 group hover:border-violet-500/30">
                        <div 
                          onClick={() => setExpandedInstructors((p) =>
                            p.includes(instructor.id) ? p.filter((x) => x !== instructor.id) : [...p, instructor.id]
                          )}
                          className={clsx(
                            "w-full p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4 cursor-pointer transition-colors",
-                           open ? "bg-gray-800/20" : "hover:bg-gray-800/10"
+                           open ? "card/20" : "hover:card/10"
                          )}
                        >
                          <div className="flex items-center gap-4">
                            <div className="shrink-0 flex items-center justify-center">
                               <div className={clsx(
                                 "w-8 h-8 rounded-full flex items-center justify-center transition-transform duration-300",
-                                open ? "bg-violet-500/20 text-violet-400 rotate-180" : "bg-gray-800 text-gray-500 group-hover:bg-gray-700"
+                                open ? "bg-violet-500/20 text-violet-400 rotate-180" : "card text-gray-500 group-hover:bg-gray-700"
                               )}>
                                 <ChevronDown className="w-5 h-5" />
                               </div>
@@ -493,13 +493,13 @@ export default function ConstraintsPage() {
                            </div>
                          </div>
                          
-                         <div className="flex items-center gap-3 pl-16 sm:pl-0 border-t sm:border-0 border-gray-800 pt-3 sm:pt-0">
+                         <div className="flex items-center gap-3 pl-16 sm:pl-0 border-t sm:border-0 pt-3 sm:pt-0">
                             {hardCount > 0 && (
                                <span className="flex items-center gap-1.5 text-xs font-bold px-2 py-1 rounded bg-red-500/10 border border-red-500/20 text-red-400">
                                  <ShieldAlert className="w-3.5 h-3.5" /> {hardCount} Zorunlu
                                </span>
                             )}
-                            <span className="flex items-center gap-1.5 text-xs font-bold px-2 py-1 rounded bg-gray-800 border border-gray-700 text-gray-300">
+                            <span className="flex items-center gap-1.5 text-xs font-bold px-2 py-1 rounded card border text-gray-300">
                                {items.length} Kural
                             </span>
                             
@@ -522,14 +522,14 @@ export default function ConstraintsPage() {
                          open ? "grid-rows-[1fr] opacity-50" : "opacity-0"
                        )}>
                           <div className="overflow-hidden">
-                             <div className="p-4 border-t border-gray-800/80 bg-gray-900/40 space-y-2">
+                             <div className="p-4 border-t card space-y-2">
                                {items.map((c) => {
                                  const t = getType(c.constraint_type)
                                  const Icon = t.icon
                                  return (
                                    <div
                                      key={c.id}
-                                     className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl border border-gray-800 bg-gray-900 shadow-inner hover:border-gray-700 transition-colors gap-4"
+                                     className="flex flex-col sm:flex-row sm:items-center justify-between p-4 rounded-xl border card shadow-inner hover:border-gray-700 transition-colors gap-4"
                                    >
                                      <div className="flex items-start sm:items-center gap-4">
                                        <div 
@@ -596,7 +596,7 @@ export default function ConstraintsPage() {
 
             <div className="mt-6 space-y-2">
               {!loading && noConstraints.length === 0 ? (
-                <div className="p-4 rounded-xl bg-gray-900/50 border border-gray-800 text-center text-sm text-gray-500">
+                <div className="p-4 rounded-xl card border text-center text-sm text-gray-500">
                   Şu anda sistemdeki tüm eğitmenlerin en az 1 kısıtı var.
                 </div>
               ) : (
@@ -604,7 +604,7 @@ export default function ConstraintsPage() {
                   <button
                     key={i.id}
                     onClick={() => openModal(i.id)}
-                    className="w-full text-left relative overflow-hidden flex items-center justify-between p-3 rounded-xl border border-gray-800 bg-gray-900/40 hover:bg-violet-500/10 hover:border-violet-500/30 transition-all group/btn"
+                    className="w-full text-left relative overflow-hidden flex items-center justify-between p-3 rounded-xl border card hover:bg-violet-500/10 hover:border-violet-500/30 transition-all group/btn"
                   >
                     <div className="flex flex-col">
                       <span className="text-sm font-medium text-gray-300 group-hover/btn:text-white transition-colors">
@@ -630,8 +630,8 @@ export default function ConstraintsPage() {
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/60" onClick={() => !saving && setShowModal(false)}></div>
           
-          <div className="card w-full max-w-2xl bg-gray-900 rounded-2xl border border-gray-700 shadow-2xl overflow-hidden relative z-10 animate-in zoom-in-95 duration-200 flex flex-col max-h-[90vh]">
-            <div className="p-6 border-b border-gray-800 bg-gray-900/50 flex items-center justify-between shrink-0">
+          <div className="card w-full max-w-2xl card rounded-2xl border shadow-2xl overflow-hidden relative z-10 animate-in zoom-in-95 duration-200 flex flex-col max-h-[90vh]">
+            <div className="p-6 border-b card flex items-center justify-between shrink-0">
               <h3 className="font-bold text-white text-lg flex items-center gap-2">
                 <div className="w-8 h-8 rounded-lg bg-violet-500/20 flex items-center justify-center border border-violet-500/30">
                   <ShieldCheck className="w-4 h-4 text-violet-400" />
@@ -641,7 +641,7 @@ export default function ConstraintsPage() {
               <button 
                 onClick={() => setShowModal(false)}
                 disabled={saving}
-                className="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:text-white hover:bg-gray-800 transition-colors"
+                className="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:text-white hover:card transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -652,7 +652,7 @@ export default function ConstraintsPage() {
               <div className="space-y-2">
                 <label className="text-xs font-bold uppercase tracking-wider text-gray-400 ml-1">Kural Kimin İçin Eğitmen Seçin</label>
                 <select
-                  className="w-full bg-gray-950/50 border border-gray-700/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/50 transition-colors appearance-none cursor-pointer"
+                  className="w-full bg-gray-950/50 border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/50 transition-colors appearance-none cursor-pointer"
                   value={editForm.instructor_id}
                   disabled={saving}
                   onChange={(e) =>
@@ -669,7 +669,7 @@ export default function ConstraintsPage() {
               </div>
 
               {/* Constraint Type */}
-              <div className="space-y-2 border-t border-gray-800 pt-6">
+              <div className="space-y-2 border-t pt-6">
                 <label className="text-xs font-bold uppercase tracking-wider text-gray-400 ml-1">Uygulanacak Kısıt/Kural Türü</label>
                 <div className="grid grid-cols-2 gap-3">
                   {CONSTRAINT_TYPES.map((t) => {
@@ -689,7 +689,7 @@ export default function ConstraintsPage() {
                           'p-3 rounded-xl border flex flex-col items-start gap-2 transition-all h-20 justify-center group',
                           isSelected
                             ? 'bg-violet-500/10 border-violet-500/50 shadow-[0_0_15px_rgba(139,92,246,0.1)]'
-                            : 'bg-gray-900/50 border-gray-800 hover:border-gray-600'
+                            : 'card hover:border-gray-600'
                         )}
                       >
                         <Icon className="w-5 h-5" style={{ color: isSelected ? t.color : '#64748b' }} />
@@ -702,7 +702,7 @@ export default function ConstraintsPage() {
 
               {/* Dynamic Day/Slot Selection */}
               {(editForm.constraint_type === 'unavailable_day' || editForm.constraint_type === 'unavailable_slot') && (
-                <div className="space-y-2 border-t border-gray-800 pt-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                <div className="space-y-2 border-t pt-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
                   <div className="flex items-center justify-between mb-3 px-1">
                     <label className="text-xs font-bold uppercase tracking-wider text-gray-400">
                       Hangi Günler Uygulanacak?
@@ -729,7 +729,7 @@ export default function ConstraintsPage() {
                             'flex-1 min-w-[60px] py-2.5 rounded-xl border text-sm font-medium transition-all relative',
                             selected
                               ? 'border-violet-500 bg-violet-500/20 text-white shadow-inner'
-                              : 'border-gray-800 bg-gray-900/50 text-gray-400 hover:border-gray-600 hover:bg-gray-800'
+                              : 'border-gray-800 card text-gray-400 hover:border-gray-600 hover:card'
                           )}
                         >
                           {d.label}
@@ -747,7 +747,7 @@ export default function ConstraintsPage() {
               )}
 
               {editForm.constraint_type === 'unavailable_slot' && (
-                <div className="space-y-2 border-t border-gray-800 pt-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                <div className="space-y-2 border-t pt-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
                   <div className="flex items-center justify-between mb-3 px-1">
                     <label className="text-xs font-bold uppercase tracking-wider text-gray-400">
                       Hangi Saat Dilimleri (Seçili Günlerde) Bloklu?
@@ -774,7 +774,7 @@ export default function ConstraintsPage() {
                             'p-3 rounded-xl border text-sm font-medium transition-all flex items-center justify-between group',
                             selected
                               ? 'border-amber-500/50 bg-amber-500/10 shadow-[0_0_10px_rgba(245,158,11,0.1)]'
-                              : 'border-gray-800 bg-gray-900/50 hover:border-gray-600 hover:bg-gray-800'
+                              : 'border-gray-800 card hover:border-gray-600 hover:card'
                           )}
                         >
                           <span className={selected ? "text-amber-400" : "text-gray-400"}>
@@ -794,11 +794,11 @@ export default function ConstraintsPage() {
               )}
 
               {editForm.constraint_type === 'max_daily_hours' && (
-                <div className="space-y-2 border-t border-gray-800 pt-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                <div className="space-y-2 border-t pt-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
                   <label className="text-xs font-bold uppercase tracking-wider text-gray-400 ml-1">Günlük En Çok Girilebilecek Toplam Saat</label>
                   <input
                     type="number"
-                    className="w-full bg-gray-950/50 border border-gray-700/80 rounded-xl px-4 py-3 text-lg font-bold text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/50 transition-colors shadow-inner w-[120px]"
+                    className="w-full bg-gray-950/50 border rounded-xl px-4 py-3 text-lg font-bold text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/50 transition-colors shadow-inner w-[120px]"
                     min={1}
                     max={10}
                     disabled={saving}
@@ -811,7 +811,7 @@ export default function ConstraintsPage() {
               )}
 
               {/* Constraint Nature (Hard/Soft) & Reason */}
-              <div className="space-y-2 border-t border-gray-800 pt-6">
+              <div className="space-y-2 border-t pt-6">
                 <label className="text-xs font-bold uppercase tracking-wider text-gray-400 ml-1">Zorunluluk Seviyesi</label>
                 <div className="flex gap-3">
                   <button
@@ -822,7 +822,7 @@ export default function ConstraintsPage() {
                       'flex-1 py-3 px-4 rounded-xl border flex items-center justify-center gap-2 text-sm font-bold transition-all',
                       editForm.is_hard
                         ? 'border-red-500 bg-red-500/20 text-red-400 shadow-[0_0_15px_rgba(239,68,68,0.2)]'
-                        : 'border-gray-800 bg-gray-900/50 text-gray-400 hover:border-gray-600'
+                        : 'border-gray-800 card text-gray-400 hover:border-gray-600'
                     )}
                   >
                     <ShieldAlert className="w-4 h-4" /> Mutlaka Uyulmalı (Kesin Blok)
@@ -835,7 +835,7 @@ export default function ConstraintsPage() {
                       'flex-1 py-3 px-4 rounded-xl border flex items-center justify-center gap-2 text-sm font-bold transition-all',
                       !editForm.is_hard
                         ? 'border-emerald-500 bg-emerald-500/20 text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.2)]'
-                        : 'border-gray-800 bg-gray-900/50 text-gray-400 hover:border-gray-600'
+                        : 'border-gray-800 card text-gray-400 hover:border-gray-600'
                     )}
                   >
                      <ShieldCheck className="w-4 h-4" /> Yumuşak Kural (Tercih)
@@ -846,7 +846,7 @@ export default function ConstraintsPage() {
               <div className="space-y-2 pt-2">
                 <label className="text-xs font-bold uppercase tracking-wider text-gray-400 ml-1">Kısa Açıklama <span className="text-gray-600 normal-case">(Opsiyonel, sadece gösterim)</span></label>
                 <input
-                  className="w-full bg-gray-950/50 border border-gray-700/80 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/50 transition-colors shadow-inner"
+                  className="w-full bg-gray-950/50 border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/50 transition-colors shadow-inner"
                   placeholder="Yönetim Kurulu Üyeliği Sebebiyle..."
                   value={editForm.reason}
                   disabled={saving}
@@ -858,11 +858,11 @@ export default function ConstraintsPage() {
 
             </div>
 
-            <div className="p-5 border-t border-gray-800 bg-gray-900/80 flex gap-3 shrink-0">
+            <div className="p-5 border-t card flex gap-3 shrink-0">
               <button
                 onClick={() => setShowModal(false)}
                 disabled={saving}
-                className="flex-1 py-3 px-4 rounded-xl text-sm font-bold text-gray-300 bg-gray-800 hover:bg-gray-700 transition-colors"
+                className="flex-1 py-3 px-4 rounded-xl text-sm font-bold text-gray-300 card hover:bg-gray-700 transition-colors"
               >
                 İptal Et
               </button>

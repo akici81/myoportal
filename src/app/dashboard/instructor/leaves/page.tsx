@@ -80,10 +80,10 @@ export default async function InstructorLeavesPage() {
         </Link>
       </div>
 
-      <div className="rounded-2xl border border-white/5 bg-gray-800/30 overflow-hidden">
+      <div className="rounded-2xl border border-white/5 card/30 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm text-gray-300">
-            <thead className="bg-gray-900/50 text-xs uppercase text-gray-500">
+            <thead className="card text-xs uppercase text-gray-500">
               <tr>
                 <th className="px-6 py-4 font-medium">İzin Türü</th>
                 <th className="px-6 py-4 font-medium">Tarih Aralığı</th>

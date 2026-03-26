@@ -83,65 +83,65 @@ export default function EventsReadOnlyPage() {
       </div>
 
       {/* Toolbar & Filters */}
-      <div className="card p-4 rounded-xl flex flex-col lg:flex-row gap-5 items-center justify-between border border-gray-800/60 shadow-xl">
-        <div className="flex items-center gap-1.5 bg-gray-900/50 p-1.5 rounded-xl border border-gray-700/50">
-          <button onClick={() => setCurrent(d => new Date(d.getFullYear(), d.getMonth()-1, 1))} className="p-2 rounded-lg hover:bg-gray-800 text-gray-400 hover:text-white transition-colors">
+      <div className="card p-4 rounded-xl flex flex-col lg:flex-row gap-5 items-center justify-between border shadow-xl">
+        <div className="flex items-center gap-1.5 card p-1.5 rounded-xl border">
+          <button onClick={() => setCurrent(d => new Date(d.getFullYear(), d.getMonth()-1, 1))} className="p-2 rounded-lg hover:card text-gray-400 hover:text-white transition-colors">
             <ChevronLeft className="w-5 h-5" />
           </button>
           <div className="text-sm font-black text-white px-2 min-w-[140px] text-center uppercase tracking-widest">
             <span className="text-rose-400">{MONTHS_TR[currentDate.getMonth()]}</span> {currentDate.getFullYear()}
           </div>
-          <button onClick={() => setCurrent(d => new Date(d.getFullYear(), d.getMonth()+1, 1))} className="p-2 rounded-lg hover:bg-gray-800 text-gray-400 hover:text-white transition-colors">
+          <button onClick={() => setCurrent(d => new Date(d.getFullYear(), d.getMonth()+1, 1))} className="p-2 rounded-lg hover:card text-gray-400 hover:text-white transition-colors">
             <ChevronRight className="w-5 h-5" />
           </button>
           <div className="w-px h-6 bg-gray-700 mx-1"></div>
-          <button onClick={() => setCurrent(new Date())} className="px-4 py-1.5 text-xs font-bold rounded-lg bg-gray-800 text-gray-300 hover:text-white hover:bg-gray-700 transition-all uppercase tracking-wider">
+          <button onClick={() => setCurrent(new Date())} className="px-4 py-1.5 text-xs font-bold rounded-lg card text-gray-300 hover:text-white hover:bg-gray-700 transition-all uppercase tracking-wider">
             Bugün
           </button>
         </div>
 
         <div className="flex gap-2 flex-wrap justify-center flex-1">
-          <button onClick={() => setFilterCat('all')} className={clsx('px-3.5 py-2 text-[11px] font-bold uppercase tracking-wider rounded-lg transition-all border', filterCat === 'all' ? 'border-rose-500/50 bg-rose-500/15 text-rose-300 shadow-[0_0_10px_rgba(225,29,72,0.2)]' : 'border-gray-700/50 bg-gray-900/50 text-gray-400 hover:text-white hover:border-gray-600')}>
+          <button onClick={() => setFilterCat('all')} className={clsx('px-3.5 py-2 text-[11px] font-bold uppercase tracking-wider rounded-lg transition-all border', filterCat === 'all' ? 'border-rose-500/50 bg-rose-500/15 text-rose-300 shadow-[0_0_10px_rgba(225,29,72,0.2)]' : 'border-gray-700/50 card text-gray-400 hover:text-white hover:border-gray-600')}>
             Tümü
           </button>
           {Object.entries(CATEGORY_MAP).map(([k, v]) => (
-            <button key={k} onClick={() => setFilterCat(k)} className={clsx('px-3.5 py-2 text-[11px] font-bold uppercase tracking-wider rounded-lg transition-all border flex items-center gap-1.5', filterCat === k ? '' : 'opacity-60 hover:opacity-50 hover:border-gray-600 bg-gray-900/50')} style={filterCat === k ? { background: v.bg, color: v.color, borderColor: v.border, boxShadow: `0 0 10px ${v.bg}` } : { color: v.color, borderColor: 'transparent' }}>
+            <button key={k} onClick={() => setFilterCat(k)} className={clsx('px-3.5 py-2 text-[11px] font-bold uppercase tracking-wider rounded-lg transition-all border flex items-center gap-1.5', filterCat === k ? '' : 'opacity-60 hover:opacity-50 hover:border-gray-600 card')} style={filterCat === k ? { background: v.bg, color: v.color, borderColor: v.border, boxShadow: `0 0 10px ${v.bg}` } : { color: v.color, borderColor: 'transparent' }}>
               <div className="w-2 h-2 rounded-full" style={{ backgroundColor: v.color }}></div>{v.label}
             </button>
           ))}
         </div>
 
-        <div className="flex rounded-xl overflow-hidden border border-gray-700/80 bg-gray-900/80 p-1">
-          <button onClick={() => setView('month')} className={clsx('px-4 py-2 text-xs font-bold flex items-center gap-2 transition-colors rounded-lg uppercase tracking-wider', view === 'month' ? 'bg-gray-800 text-white shadow-sm' : 'text-gray-500 hover:text-gray-300')}>
+        <div className="flex rounded-xl overflow-hidden border card p-1">
+          <button onClick={() => setView('month')} className={clsx('px-4 py-2 text-xs font-bold flex items-center gap-2 transition-colors rounded-lg uppercase tracking-wider', view === 'month' ? 'card text-white shadow-sm' : 'text-gray-500 hover:text-gray-300')}>
             <Grid3X3 className="w-4 h-4" /> Takvim
           </button>
-          <button onClick={() => setView('list')} className={clsx('px-4 py-2 text-xs font-bold flex items-center gap-2 transition-colors rounded-lg uppercase tracking-wider', view === 'list' ? 'bg-gray-800 text-white shadow-sm' : 'text-gray-500 hover:text-gray-300')}>
+          <button onClick={() => setView('list')} className={clsx('px-4 py-2 text-xs font-bold flex items-center gap-2 transition-colors rounded-lg uppercase tracking-wider', view === 'list' ? 'card text-white shadow-sm' : 'text-gray-500 hover:text-gray-300')}>
             <List className="w-4 h-4" /> Liste
           </button>
         </div>
       </div>
 
       {loading ? (
-        <div className="card py-20 flex flex-col items-center justify-center rounded-2xl border border-gray-800/60">
+        <div className="card py-20 flex flex-col items-center justify-center rounded-2xl border">
           <div className="w-12 h-12 rounded-full border-4 border-rose-900 border-t-rose-500 animate-spin mb-4" />
           <p className="text-gray-400 font-medium tracking-wide">Takvim verileri yükleniyor...</p>
         </div>
       ) : (
         <>
           {view === 'month' && (
-            <div className="card rounded-2xl border border-gray-800/60 shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-300">
-              <div className="grid grid-cols-7 border-b border-gray-800/80 bg-gray-900/90">
+            <div className="card rounded-2xl border shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-300">
+              <div className="grid grid-cols-7 border-b card">
                 {DAYS_SHORT.map(d => (
                   <div key={d} className="py-3.5 text-center text-xs font-black uppercase tracking-widest text-gray-500">{d}</div>
                 ))}
               </div>
-              <div className="grid grid-cols-7 bg-gray-900/40">
+              <div className="grid grid-cols-7 card">
                 {calendarDays.map((date, idx) => {
                   const iso = date?.toISOString().split('T')[0]
                   const isToday = iso === today
                   const dayEvents = date ? eventsOnDate(date) : []
                   return (
-                    <div key={idx} className={clsx('min-h-[120px] p-2 border-b border-r border-gray-800/40 transition-colors group', date ? 'hover:bg-gray-800/30' : 'bg-gray-900/20 opacity-40', isToday && 'bg-rose-900/10')}>
+                    <div key={idx} className={clsx('min-h-[120px] p-2 border-b border-r transition-colors group', date ? 'hover:card/30' : 'card opacity-40', isToday && 'bg-rose-900/10')}>
                       {date && (
                         <div className="flex flex-col h-full">
                           <div className="flex justify-between items-start mb-2">
@@ -172,8 +172,8 @@ export default function EventsReadOnlyPage() {
           {view === 'list' && (
             <div className="max-w-4xl mx-auto space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-300">
               {upcomingEvents.length === 0 ? (
-                <div className="card py-20 text-center rounded-2xl border border-gray-800/60 border-dashed bg-gray-900/20">
-                  <div className="w-20 h-20 bg-gray-800/50 rounded-full flex items-center justify-center mx-auto mb-6 ring-8 ring-gray-900/50"><CalendarHeart className="w-10 h-10 text-gray-600" /></div>
+                <div className="card py-20 text-center rounded-2xl border border-dashed card">
+                  <div className="w-20 h-20 card/50 rounded-full flex items-center justify-center mx-auto mb-6 ring-8 ring-gray-900/50"><CalendarHeart className="w-10 h-10 text-gray-600" /></div>
                   <h3 className="text-2xl font-black text-gray-200 tracking-tight">Etkinlik Yok</h3>
                   <p className="text-gray-500 mt-2">Geçerli döneme ait bir etkinlik bulunmuyor.</p>
                 </div>
@@ -200,7 +200,7 @@ export default function EventsReadOnlyPage() {
                           <div className="flex-1 min-w-0">
                             <div className="flex flex-wrap items-center gap-2 mb-1">
                               <span className="text-[9px] px-2 py-0.5 rounded-full font-bold uppercase tracking-widest border" style={{ background: cat.bg, color: cat.color, borderColor: cat.border }}>{cat.label}</span>
-                              {ev.is_public && <span className="text-[9px] px-2 py-0.5 rounded-full font-bold uppercase tracking-widest bg-gray-800 text-gray-400 border border-gray-700">Herkese Açık</span>}
+                              {ev.is_public && <span className="text-[9px] px-2 py-0.5 rounded-full font-bold uppercase tracking-widest card text-gray-400 border">Herkese Açık</span>}
                             </div>
                             <h4 className="text-lg font-bold text-white truncate group-hover:text-rose-100 transition-colors mb-2">{ev.title}</h4>
                             <div className="flex flex-wrap gap-4 text-xs font-medium text-gray-400">
@@ -208,7 +208,7 @@ export default function EventsReadOnlyPage() {
                               {ev.location && <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-gray-500" />{ev.location}</span>}
                             </div>
                           </div>
-                          <div className="hidden sm:flex w-10 h-10 rounded-full border border-gray-700 bg-gray-800/50 items-center justify-center text-gray-500 group-hover:text-white group-hover:border-gray-500 transition-all"><ChevronRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" /></div>
+                          <div className="hidden sm:flex w-10 h-10 rounded-full border card/50 items-center justify-center text-gray-500 group-hover:text-white group-hover:border-gray-500 transition-all"><ChevronRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" /></div>
                         </div>
                       </div>
                     )
@@ -222,25 +222,25 @@ export default function EventsReadOnlyPage() {
 
       {selected && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in fade-in zoom-in-95 duration-200">
-          <div className="card w-full max-w-lg p-0 rounded-3xl border border-gray-700/50 shadow-2xl overflow-hidden relative">
+          <div className="card w-full max-w-lg p-0 rounded-3xl border shadow-2xl overflow-hidden relative">
             <div className="h-32 w-full absolute top-0 left-0 opacity-10 pointer-events-none" style={{ background: `linear-gradient(to bottom, ${CATEGORY_MAP[selected.category]?.color ?? '#64748b'}, transparent)` }}></div>
             <div className="p-8 relative z-10 text-center">
-              <button onClick={() => setSelected(null)} className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-800 text-gray-400 hover:text-white transition-colors bg-gray-900/50"><X className="w-5 h-5" /></button>
+              <button onClick={() => setSelected(null)} className="absolute top-4 right-4 p-2 rounded-full hover:card text-gray-400 hover:text-white transition-colors card"><X className="w-5 h-5" /></button>
               <div className="w-16 h-16 rounded-2xl mx-auto mb-4 flex items-center justify-center border-2 border-dashed shadow-2xl rotate-3" style={{ background: CATEGORY_MAP[selected.category]?.bg ?? '#64748b15', borderColor: CATEGORY_MAP[selected.category]?.color ?? '#64748b' }}><Tag className="w-8 h-8" style={{ color: CATEGORY_MAP[selected.category]?.color ?? '#64748b' }} /></div>
               <span className="inline-block text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border mb-3 shadow-inner" style={{ background: CATEGORY_MAP[selected.category]?.bg ?? '#64748b15', color: CATEGORY_MAP[selected.category]?.color ?? '#64748b', borderColor: CATEGORY_MAP[selected.category]?.border ?? '#64748b30' }}>{CATEGORY_MAP[selected.category]?.label ?? 'Diğer'}</span>
               <h3 className="text-2xl font-black text-white px-4 leading-tight mb-6">{selected.title}</h3>
-              <div className="grid grid-cols-2 gap-3 text-left bg-gray-900/60 p-4 rounded-2xl border border-gray-800">
+              <div className="grid grid-cols-2 gap-3 text-left card p-4 rounded-2xl border">
                 <div className="space-y-1"><div className="text-[10px] uppercase font-bold text-gray-500 tracking-wider flex items-center gap-1"><CalendarDays className="w-3 h-3" /> Tarih</div><div className="text-sm font-semibold text-gray-200">{new Date(selected.date).toLocaleDateString('tr-TR', { day:'numeric', month:'long', year:'numeric' })}</div></div>
                 <div className="space-y-1"><div className="text-[10px] uppercase font-bold text-gray-500 tracking-wider flex items-center gap-1"><Clock className="w-3 h-3" /> Zaman</div><div className="text-sm font-semibold text-gray-200">{selected.start_time} - {selected.end_time}</div></div>
                 {selected.location && (
-                  <div className="col-span-2 space-y-1 pt-2 border-t border-gray-800/60 mt-2">
+                  <div className="col-span-2 space-y-1 pt-2 border-t mt-2">
                     <div className="text-[10px] uppercase font-bold text-gray-500 tracking-wider flex items-center gap-1"><MapPin className="w-3 h-3" /> Konum / Adres</div>
                     <div className="text-sm font-semibold text-gray-200">{selected.location}</div>
                     {selected.address && <div className="text-xs text-gray-500 font-medium mt-0.5">{selected.address}</div>}
                   </div>
                 )}
               </div>
-              {selected.description && <div className="text-left mt-4 p-4 rounded-2xl bg-gray-900/40 border border-gray-800/40 text-sm text-gray-300 leading-relaxed font-medium">{selected.description}</div>}
+              {selected.description && <div className="text-left mt-4 p-4 rounded-2xl card border text-sm text-gray-300 leading-relaxed font-medium">{selected.description}</div>}
             </div>
           </div>
         </div>

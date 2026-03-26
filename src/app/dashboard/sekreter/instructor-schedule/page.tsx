@@ -165,7 +165,7 @@ export default function InstructorSchedulePage() {
 
       <div className="max-w-screen-2xl mx-auto space-y-6">
         {loading ? (
-           <div className="card flex flex-col items-center justify-center py-32 text-center rounded-2xl border border-gray-800/60">
+           <div className="card flex flex-col items-center justify-center py-32 text-center rounded-2xl border">
              <div className="w-12 h-12 rounded-full border-4 border-violet-800 border-t-violet-500 animate-spin mb-4" />
              <h3 className="text-xl font-bold text-white tracking-tight">Veriler Yükleniyor</h3>
            </div>
@@ -173,18 +173,18 @@ export default function InstructorSchedulePage() {
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-6">
             
             {/* Instructor Selection & Filters */}
-            <div className="card p-6 rounded-2xl border border-gray-800/60 shadow-xl flex flex-wrap items-center justify-between gap-6">
+            <div className="card p-6 rounded-2xl border shadow-xl flex flex-wrap items-center justify-between gap-6">
               <div className="flex-1 min-w-[300px] relative text-gray-400 focus-within:text-violet-500 transition-colors">
                 <Search className="w-5 h-5 absolute left-4 top-[38px]" />
                 <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block pl-1">Kadrolu Eğitmen Seçimi</label>
                 <select
-                  className="w-full bg-gray-900/50 border border-gray-700/80 rounded-xl pl-11 pr-4 py-3.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-violet-500/50 transition-colors font-bold shadow-inner"
+                  className="w-full card border rounded-xl pl-11 pr-4 py-3.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-violet-500/50 transition-colors font-bold shadow-inner"
                   value={selectedInstructor}
                   onChange={(e) => setSelectedInstructor(e.target.value)}
                 >
                   <option value="">— Akademik Personel Seçin —</option>
                   {instructors.map((inst) => (
-                    <option key={inst.id} value={inst.id} className="bg-gray-900">
+                    <option key={inst.id} value={inst.id} className="card">
                       {inst.title} {inst.full_name} — ({inst.departments?.name || 'Bölüm Yok'})
                     </option>
                   ))}
@@ -256,7 +256,7 @@ export default function InstructorSchedulePage() {
                       return (
                         <div key={d} className="w-full flex flex-col items-center gap-1 group relative">
                           {h > 0 && <span className="absolute -top-4 text-[9px] font-bold text-white opacity-0 group-hover:opacity-50 transition-opacity">{h}s</span>}
-                          <div className={clsx("w-full rounded-sm transition-all duration-500", h > 0 ? "bg-violet-500" : "bg-gray-800")} style={{ height: `${height}%` }}></div>
+                          <div className={clsx("w-full rounded-sm transition-all duration-500", h > 0 ? "bg-violet-500" : "card")} style={{ height: `${height}%` }}></div>
                         </div>
                       )
                     })}
@@ -272,16 +272,16 @@ export default function InstructorSchedulePage() {
 
             {/* Schedule Grid Table */}
             {selectedInstructor ? (
-              <div className="card overflow-hidden rounded-2xl border border-gray-800/60 shadow-2xl">
+              <div className="card overflow-hidden rounded-2xl border shadow-2xl">
                 <div className="overflow-x-auto w-full custom-scrollbar">
                   <table className="w-full text-sm border-collapse min-w-[900px]">
                     <thead>
-                      <tr className="bg-gray-900/80 border-b border-gray-800/60">
-                        <th className="py-4 px-5 text-left font-black text-gray-400 uppercase tracking-wider border-r border-gray-800/60 w-28 bg-gray-950/50">
+                      <tr className="card border-b">
+                        <th className="py-4 px-5 text-left font-black text-gray-400 uppercase tracking-wider border-r w-28 bg-gray-950/50">
                           Zaman
                         </th>
                         {[1, 2, 3, 4, 5].map((d) => (
-                          <th key={d} className={clsx("py-4 px-4 text-center font-black uppercase tracking-wider border-r border-gray-800/60 w-[calc((100%-7rem)/5)]", stats.dayHours[d] > 0 ? "text-violet-300" : "text-gray-500")}>
+                          <th key={d} className={clsx("py-4 px-4 text-center font-black uppercase tracking-wider border-r w-[calc((100%-7rem)/5)]", stats.dayHours[d] > 0 ? "text-violet-300" : "text-gray-500")}>
                             {DAYS[d]}
                             {stats.dayHours[d] > 0 && <span className="ml-1.5 text-[10px] bg-violet-500/20 text-violet-400 px-1.5 py-0.5 rounded-full">{stats.dayHours[d]}s</span>}
                           </th>
@@ -290,15 +290,15 @@ export default function InstructorSchedulePage() {
                     </thead>
                     <tbody className="bg-[#050505]">
                       {timeSlots.filter((s) => parseInt(s.start_time) < 18).map((slot, idx) => (
-                        <tr key={slot.id} className={clsx("transition-colors hover:bg-gray-900/30", idx % 2 === 0 ? "bg-transparent" : "bg-gray-900/20")}>
-                          <td className="py-2.5 px-4 text-center border-b border-r border-gray-800/60 font-mono text-gray-500 font-bold bg-gray-950/20 text-[13px]">
+                        <tr key={slot.id} className={clsx("transition-colors hover:card", idx % 2 === 0 ? "bg-transparent" : "card")}>
+                          <td className="py-2.5 px-4 text-center border-b border-r font-mono text-gray-500 font-bold bg-gray-950/20 text-[13px]">
                             {slot.start_time.slice(0, 5)}
                           </td>
                           {[1, 2, 3, 4, 5].map((day) => {
                             const entry = grid[`${day}_${slot.id}`]
                             const colorClass = entry ? COLORS[day % COLORS.length] : '';
                             return (
-                              <td key={day} className="p-1.5 border-b border-r border-gray-800/60 align-top relative group">
+                              <td key={day} className="p-1.5 border-b border-r align-top relative group">
                                 {entry ? (
                                   <div className={clsx("h-full min-h-[76px] p-2.5 rounded-xl border relative flex flex-col justify-center transition-all bg-opacity-5 hover:bg-opacity-10 shadow-lg", colorClass)}>
                                     <p className="font-black text-sm leading-tight mb-1 truncate drop-shadow-sm flex items-center gap-1.5">
@@ -318,7 +318,7 @@ export default function InstructorSchedulePage() {
                                     </div>
                                   </div>
                                 ) : (
-                                  <div className="h-full min-h-[76px] rounded-xl flex items-center justify-center group-hover:bg-gray-800/20 transition-colors border border-dashed border-transparent group-hover:border-gray-700/50">
+                                  <div className="h-full min-h-[76px] rounded-xl flex items-center justify-center group-hover:card/20 transition-colors border border-dashed border-transparent group-hover:border-gray-700/50">
                                     <span className="text-xs font-semibold text-gray-700/50 group-hover:text-gray-600 transition-colors tracking-widest uppercase">—</span>
                                   </div>
                                 )}

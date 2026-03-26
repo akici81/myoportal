@@ -29,7 +29,7 @@ export default function GeneralRequestsForm() {
         </p>
         <button 
           onClick={() => setSubmitted(false)}
-          className="inline-flex items-center justify-center rounded-xl bg-gray-800 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-gray-700"
+          className="inline-flex items-center justify-center rounded-xl card px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-gray-700"
         >
           Yeni Bir Dilekçe Daha Oluştur
         </button>
@@ -50,7 +50,7 @@ export default function GeneralRequestsForm() {
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6 rounded-2xl border border-white/5 bg-gray-800/30 p-8">
+      <form onSubmit={handleSubmit} className="space-y-6 rounded-2xl border border-white/5 card/30 p-8">
         
         <div className="space-y-2">
             <label className="text-sm font-medium text-gray-300">Talep Konusu / Başlık</label>
@@ -58,14 +58,14 @@ export default function GeneralRequestsForm() {
               type="text" 
               required
               placeholder="Örn: Konferans Görevlendirme Evrakı Hakkında"
-              className="w-full rounded-xl border border-white/10 bg-gray-900/50 px-4 py-3 text-sm text-white focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 outline-none" 
+              className="w-full rounded-xl border border-white/10 card px-4 py-3 text-sm text-white focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 outline-none" 
             />
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2">
           <div className="space-y-2">
             <label className="text-sm font-medium text-gray-300">Talep Türü</label>
-            <select required className="w-full rounded-xl border border-white/10 bg-gray-900/50 px-4 py-3 text-sm text-white focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 outline-none">
+            <select required className="w-full rounded-xl border border-white/10 card px-4 py-3 text-sm text-white focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 outline-none">
               <option value="belge">Belge Talebi (Katılım, Görev vs.)</option>
               <option value="muafiyet">Muafiyet / İntibak Kararı Önerisi</option>
               <option value="diger">Diğer Resmi Dilekçeler</option>
@@ -76,7 +76,7 @@ export default function GeneralRequestsForm() {
             <input 
               type="text" 
               placeholder="Google Drive veya Dosya Linki"
-              className="w-full rounded-xl border border-white/10 bg-gray-900/50 px-4 py-3 text-sm text-white focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 outline-none" 
+              className="w-full rounded-xl border border-white/10 card px-4 py-3 text-sm text-white focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 outline-none" 
             />
           </div>
         </div>
@@ -86,7 +86,7 @@ export default function GeneralRequestsForm() {
             <textarea 
                rows={6} 
                required
-               className="w-full rounded-xl border border-white/10 bg-gray-900/50 px-4 py-3 text-sm text-white focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 outline-none resize-y"
+               className="w-full rounded-xl border border-white/10 card px-4 py-3 text-sm text-white focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 outline-none resize-y"
                placeholder="Makamınıza iletmek istediğim konunun detayları şunlardır..."
             />
         </div>

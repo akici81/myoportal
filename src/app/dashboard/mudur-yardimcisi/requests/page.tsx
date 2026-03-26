@@ -48,10 +48,10 @@ export default async function AdminRequestsPage() {
         </div>
       </div>
 
-      <div className="rounded-2xl border border-white/5 bg-gray-800/30 overflow-hidden">
+      <div className="rounded-2xl border border-white/5 card/30 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm text-gray-300">
-            <thead className="bg-gray-900/50 text-xs uppercase text-gray-500">
+            <thead className="card text-xs uppercase text-gray-500">
               <tr>
                 <th className="px-6 py-4 font-medium">Talep Eden (Profil)</th>
                 <th className="px-6 py-4 font-medium">Kategori</th>
@@ -90,7 +90,7 @@ export default async function AdminRequestsPage() {
                       {getStatusBadge(req.status)}
                     </td>
                     <td className="px-6 py-4 text-right">
-                       <button className="inline-flex items-center justify-center rounded-lg bg-gray-900/50 px-3 py-1.5 text-xs font-medium text-gray-300 hover:text-white hover:bg-gray-800 border border-white/5 shadow-sm">
+                       <button className="inline-flex items-center justify-center rounded-lg card px-3 py-1.5 text-xs font-medium text-gray-300 hover:text-white hover:card border border-white/5 shadow-sm">
                          Detayı İncele
                        </button>
                     </td>

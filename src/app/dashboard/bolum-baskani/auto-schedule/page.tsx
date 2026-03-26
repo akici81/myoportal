@@ -208,7 +208,7 @@ export default function AutoSchedulePage() {
       </div>
 
       {loading ? (
-        <div className="card py-24 flex flex-col items-center justify-center rounded-2xl border border-gray-800/60">
+        <div className="card py-24 flex flex-col items-center justify-center rounded-2xl border">
           <div className="w-12 h-12 rounded-full border-4 border-blue-900 border-t-blue-500 animate-spin mb-4" />
           <p className="text-gray-400 font-medium tracking-wide">Analiz yapılıyor, Lütfen bekleyin...</p>
         </div>
@@ -216,19 +216,19 @@ export default function AutoSchedulePage() {
         <>
           {/* Dashboard Stats */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 group hover:border-blue-500/50 transition-colors">
+            <div className="card border rounded-xl p-5 flex items-center gap-4 group hover:border-blue-500/50 transition-colors">
               <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20 shrink-0"><BookOpen className="w-6 h-6 text-blue-500" /></div>
               <div><p className="text-2xl font-black text-white leading-none mb-1">{stats.totalCourses}</p><p className="text-xs font-bold text-gray-500 uppercase tracking-wider">Hedef Ders</p></div>
             </div>
-            <div className="card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 group hover:border-emerald-500/50 transition-colors">
+            <div className="card border rounded-xl p-5 flex items-center gap-4 group hover:border-emerald-500/50 transition-colors">
               <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 shrink-0"><Clock className="w-6 h-6 text-emerald-500" /></div>
               <div><p className="text-2xl font-black text-white leading-none mb-1">{stats.totalHours}</p><p className="text-xs font-bold text-gray-500 uppercase tracking-wider">Toplam Saat</p></div>
             </div>
-            <div className="card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 group hover:border-fuchsia-500/50 transition-colors">
+            <div className="card border rounded-xl p-5 flex items-center gap-4 group hover:border-fuchsia-500/50 transition-colors">
               <div className="w-12 h-12 rounded-xl bg-fuchsia-500/10 flex items-center justify-center border border-fuchsia-500/20 shrink-0"><Users className="w-6 h-6 text-fuchsia-500" /></div>
               <div><p className="text-2xl font-black text-white leading-none mb-1">{stats.withInstructor}</p><p className="text-xs font-bold text-gray-500 uppercase tracking-wider">Hocası Hazır</p></div>
             </div>
-            <div className="card border border-gray-800/60 rounded-xl p-5 flex items-center gap-4 group hover:border-amber-500/50 transition-colors">
+            <div className="card border rounded-xl p-5 flex items-center gap-4 group hover:border-amber-500/50 transition-colors">
               <div className="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20 shrink-0"><AlertTriangle className="w-6 h-6 text-amber-500" /></div>
               <div><p className="text-2xl font-black text-white leading-none mb-1">{stats.withConstraints}</p><p className="text-xs font-bold text-gray-500 uppercase tracking-wider">Kısıtlı Eğitmen</p></div>
             </div>
@@ -236,7 +236,7 @@ export default function AutoSchedulePage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Konfigürasyon Panel */}
-            <div className="card rounded-2xl border border-gray-800/60 p-6 flex flex-col h-full">
+            <div className="card rounded-2xl border p-6 flex flex-col h-full">
                <h3 className="font-black text-white mb-6 flex items-center gap-2.5 text-lg">
                   <Settings className="w-5 h-5 text-blue-500" /> Yerleştirme Algoritması Ayarları
                </h3>
@@ -244,7 +244,7 @@ export default function AutoSchedulePage() {
                <div className="space-y-6 flex-1">
                   <div>
                      <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block">Hedef Program</label>
-                     <select value={selectedProgram} onChange={e => setSelectedProgram(e.target.value)} className="w-full bg-gray-900/50 border border-gray-700/80 rounded-xl px-4 py-3 text-sm font-bold text-white focus:outline-none focus:border-blue-500 transition-colors shadow-inner">
+                     <select value={selectedProgram} onChange={e => setSelectedProgram(e.target.value)} className="w-full card border rounded-xl px-4 py-3 text-sm font-bold text-white focus:outline-none focus:border-blue-500 transition-colors shadow-inner">
                         <option value="">— Lütfen Bir Program Seçin —</option>
                         {programs.map(p => <option key={p.id} value={p.id}>{p.short_code} — {p.name}</option>)}
                      </select>
@@ -252,7 +252,7 @@ export default function AutoSchedulePage() {
 
                   <div>
                      <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block">Dahil Edilecek Sınıf Düzeyi</label>
-                     <select value={selectedYear} onChange={e => setSelectedYear(parseInt(e.target.value))} className="w-full bg-gray-900/50 border border-gray-700/80 rounded-xl px-4 py-3 text-sm font-bold text-white focus:outline-none focus:border-blue-500 transition-colors shadow-inner">
+                     <select value={selectedYear} onChange={e => setSelectedYear(parseInt(e.target.value))} className="w-full card border rounded-xl px-4 py-3 text-sm font-bold text-white focus:outline-none focus:border-blue-500 transition-colors shadow-inner">
                         {YEAR_OPTIONS.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
                      </select>
                   </div>
@@ -260,8 +260,8 @@ export default function AutoSchedulePage() {
                   <div>
                      <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3 block">Motor Davranış Kuralları</label>
                      <div className="space-y-3">
-                        <label className={clsx("flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-all", respectConstraints ? 'bg-blue-500/10 border-blue-500/40 hover:bg-blue-500/20' : 'bg-gray-900/30 border-gray-800 hover:border-gray-700')}>
-                           <div className="flex items-center justify-center w-5 h-5 rounded mt-0.5 border border-blue-500/50 bg-gray-900">
+                        <label className={clsx("flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-all", respectConstraints ? 'bg-blue-500/10 border-blue-500/40 hover:bg-blue-500/20' : 'card hover:border-gray-700')}>
+                           <div className="flex items-center justify-center w-5 h-5 rounded mt-0.5 border border-blue-500/50 card">
                              {respectConstraints && <Check className="w-3.5 h-3.5 text-blue-400" />}
                            </div>
                            <input type="checkbox" checked={respectConstraints} onChange={e => setRespectConstraints(e.target.checked)} className="hidden" />
@@ -271,8 +271,8 @@ export default function AutoSchedulePage() {
                            </div>
                         </label>
                         
-                        <label className={clsx("flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-all", clearExisting ? 'bg-rose-500/10 border-rose-500/40 hover:bg-rose-500/20' : 'bg-gray-900/30 border-gray-800 hover:border-gray-700')}>
-                           <div className="flex items-center justify-center w-5 h-5 rounded mt-0.5 border border-rose-500/50 bg-gray-900">
+                        <label className={clsx("flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-all", clearExisting ? 'bg-rose-500/10 border-rose-500/40 hover:bg-rose-500/20' : 'card hover:border-gray-700')}>
+                           <div className="flex items-center justify-center w-5 h-5 rounded mt-0.5 border border-rose-500/50 card">
                              {clearExisting && <Check className="w-3.5 h-3.5 text-rose-400" />}
                            </div>
                            <input type="checkbox" checked={clearExisting} onChange={e => setClearExisting(e.target.checked)} className="hidden" />
@@ -287,7 +287,7 @@ export default function AutoSchedulePage() {
             </div>
 
             {/* Öncelikli Derslikler Paneil */}
-            <div className="card rounded-2xl border border-gray-800/60 p-6 flex flex-col h-full">
+            <div className="card rounded-2xl border p-6 flex flex-col h-full">
                <div className="flex items-center justify-between mb-6">
                   <h3 className="font-black text-white flex items-center gap-2.5 text-lg">
                      <Layers className="w-5 h-5 text-indigo-500" /> Konum / Derslik Önceliği
@@ -307,7 +307,7 @@ export default function AutoSchedulePage() {
 
                <div className="flex-1">
                   {priorityClassrooms.length === 0 ? (
-                     <div className="flex flex-col items-center justify-center h-48 border-2 border-dashed border-gray-800 rounded-xl text-center">
+                     <div className="flex flex-col items-center justify-center h-48 border-2 border-dashed rounded-xl text-center">
                         <Building2 className="w-12 h-12 text-gray-700 mb-3" />
                         <p className="text-sm font-bold text-gray-400">Herhangi bir derslik önceliği yok.</p>
                         <p className="text-xs text-gray-600 mt-1 max-w-[200px]">Program tüm kampüs dersliklerini eşit olarak tarayacaktır.</p>
@@ -318,7 +318,7 @@ export default function AutoSchedulePage() {
                            const c = classrooms.find((x) => x.id === classroomId)
                            if (!c) return null
                            return (
-                              <div key={classroomId} className="flex items-center gap-3 p-3 rounded-xl bg-gray-900 border border-gray-800 hover:border-gray-700 transition-colors group">
+                              <div key={classroomId} className="flex items-center gap-3 p-3 rounded-xl card border hover:border-gray-700 transition-colors group">
                                  <div className="flex flex-col gap-0.5 opacity-50 group-hover:opacity-50 transition-opacity">
                                     <button onClick={() => movePriority(index, 'up')} disabled={index===0} className="hover:text-white disabled:opacity-10"><ChevronUp className="w-4 h-4" /></button>
                                     <button onClick={() => movePriority(index, 'down')} disabled={index===priorityClassrooms.length-1} className="hover:text-white disabled:opacity-10"><ChevronDown className="w-4 h-4" /></button>
@@ -344,7 +344,7 @@ export default function AutoSchedulePage() {
 
           {/* Results Modal/Card */}
           {result && (
-             <div className="card overflow-hidden rounded-2xl border border-gray-800/60 shadow-xl mt-6 animate-in slide-in-from-bottom-8 duration-500 bg-gray-900/50">
+             <div className="card overflow-hidden rounded-2xl border shadow-xl mt-6 animate-in slide-in-from-bottom-8 duration-500 card">
                 <div className="p-6 lg:p-8">
                    <div className="flex items-center gap-3 mb-6">
                       <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center border border-emerald-500/30"><CheckCircle className="w-5 h-5 text-emerald-400" /></div>
@@ -352,7 +352,7 @@ export default function AutoSchedulePage() {
                    </div>
 
                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                      <div className="bg-gray-900 border border-gray-800 rounded-xl p-4">
+                      <div className="card border rounded-xl p-4">
                          <p className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-1">Toplam İşlenen Ders</p>
                          <p className="text-2xl font-black text-white">{result.stats.totalCourses}</p>
                       </div>
@@ -375,7 +375,7 @@ export default function AutoSchedulePage() {
                          <span className="text-sm font-bold text-gray-300">Algoritma Başarı Oranı</span>
                          <span className="text-sm font-black text-emerald-400">{result.stats.totalCourses > 0 ? Math.round((result.stats.placedCourses / result.stats.totalCourses) * 100) : 0}%</span>
                       </div>
-                      <div className="h-3 bg-gray-900 rounded-full overflow-hidden border border-gray-800 shadow-inner">
+                      <div className="h-3 card rounded-full overflow-hidden border shadow-inner">
                          <div className="h-full bg-cyan-600 transition-all duration-1000 ease-out" style={{ width: `${result.stats.totalCourses > 0 ? (result.stats.placedCourses / result.stats.totalCourses) * 100 : 0}%` }} />
                       </div>
                    </div>
@@ -383,7 +383,7 @@ export default function AutoSchedulePage() {
                    {/* Distribution */}
                    {dayDistribution && (
                      <div>
-                        <h4 className="text-sm font-bold text-gray-400 mb-4 uppercase tracking-widest border-b border-gray-800 pb-2">Haftalık Gün Dağılım Grafiği (Saatler)</h4>
+                        <h4 className="text-sm font-bold text-gray-400 mb-4 uppercase tracking-widest border-b pb-2">Haftalık Gün Dağılım Grafiği (Saatler)</h4>
                         <div className="grid grid-cols-5 gap-3 max-w-2xl">
                            {['Pzt', 'Sal', 'Çar', 'Per', 'Cum'].map((day, idx) => {
                              const count = dayDistribution[(idx + 1).toString()] || 0
@@ -391,7 +391,7 @@ export default function AutoSchedulePage() {
                              const percentage = maxCount > 0 ? (count / maxCount) * 100 : 0
                              return (
                                <div key={day} className="flex flex-col items-center">
-                                 <div className="w-full h-24 bg-gray-900 rounded-lg border border-gray-800 flex items-end justify-center p-1 mb-2">
+                                 <div className="w-full h-24 card rounded-lg border flex items-end justify-center p-1 mb-2">
                                    <div className="w-full rounded bg-cyan-600 transition-all duration-1000 delay-300 ease-out" style={{ height: `${percentage}%`, minHeight: count > 0 ? '4px' : '0' }} />
                                  </div>
                                  <p className="text-sm font-black text-white">{count}</p>
@@ -405,7 +405,7 @@ export default function AutoSchedulePage() {
 
                    {/* Failures */}
                    {result.failed.length > 0 && (
-                      <div className="mt-8 pt-6 border-t border-gray-800 border-dashed">
+                      <div className="mt-8 pt-6 border-t border-dashed">
                          <div className="flex items-center gap-2 mb-4">
                             <AlertTriangle className="w-5 h-5 text-amber-500" />
                             <h4 className="text-base font-bold text-amber-500">Çakışan veya Yerleşemeyen Dersler ({result.failed.length})</h4>
@@ -433,25 +433,25 @@ export default function AutoSchedulePage() {
       {/* Classroom Picker Dialog */}
       {showClassroomPicker && (
          <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4 animate-in fade-in duration-200">
-            <div className="card w-full max-w-3xl rounded-2xl border border-gray-800 shadow-2xl p-0 overflow-hidden flex flex-col max-h-[85vh]">
-               <div className="p-6 border-b border-gray-800 flex items-center justify-between bg-gray-900/50">
+            <div className="card w-full max-w-3xl rounded-2xl border shadow-2xl p-0 overflow-hidden flex flex-col max-h-[85vh]">
+               <div className="p-6 border-b flex items-center justify-between card">
                   <div>
                      <h2 className="text-xl font-black text-white">Derslik Arşivinden Seçim Yapın</h2>
                      <p className="text-xs text-gray-500 mt-1 font-medium">Bu programda algoritmanın öncelikle hedeflemesi gereken laboratuvar/sınıflar.</p>
                   </div>
-                  <button onClick={() => setShowClassroomPicker(false)} className="p-2 hover:bg-gray-800 rounded-xl transition-colors"><X className="w-5 h-5 text-gray-400" /></button>
+                  <button onClick={() => setShowClassroomPicker(false)} className="p-2 hover:card rounded-xl transition-colors"><X className="w-5 h-5 text-gray-400" /></button>
                </div>
                
                <div className="p-6 overflow-y-auto custom-scrollbar flex-1 bg-gray-950/30">
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                      {classrooms.filter(c => !priorityClassrooms.includes(c.id)).map(c => (
-                        <button key={c.id} onClick={() => { togglePriorityClassroom(c.id); setShowClassroomPicker(false) }} className="p-4 rounded-xl border border-gray-800 bg-gray-900/50 hover:bg-indigo-500/10 hover:border-indigo-500/50 transition-all text-left group">
+                        <button key={c.id} onClick={() => { togglePriorityClassroom(c.id); setShowClassroomPicker(false) }} className="p-4 rounded-xl border card hover:bg-indigo-500/10 hover:border-indigo-500/50 transition-all text-left group">
                            <div className="flex items-center gap-2 mb-2">
                               <Building2 className="w-4 h-4 text-indigo-400 group-hover:scale-110 transition-transform" />
                               <span className="font-bold text-white text-sm">{c.name}</span>
                            </div>
                            <div className="flex flex-wrap items-center gap-2">
-                              <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400 bg-gray-800 px-2 py-0.5 rounded">{c.capacity} Kişi</span>
+                              <span className="text-[10px] font-bold uppercase tracking-wider text-gray-400 card px-2 py-0.5 rounded">{c.capacity} Kişi</span>
                               <span className="text-[10px] font-bold uppercase tracking-wider text-gray-500">{c.building} Blok</span>
                            </div>
                         </button>

@@ -134,7 +134,7 @@ export default function TimeSlotsPage() {
             {slots.map((slot) => (
               <div
                 key={slot.id}
-                className="flex items-center gap-4 p-4 rounded-xl bg-gray-900/50 border border-gray-800 hover:bg-gray-800/50 transition-colors"
+                className="flex items-center gap-4 p-4 rounded-xl card border hover:card/50 transition-colors"
               >
                 <div className="flex items-center justify-center w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30">
                   <span className="text-lg font-black text-cyan-400">{slot.slot_number}</span>

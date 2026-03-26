@@ -166,24 +166,24 @@ export default function EventsPage() {
       </div>
 
       {/* Toolbar & Filters */}
-      <div className="card p-4 rounded-xl flex flex-col lg:flex-row gap-5 items-center justify-between border border-gray-800/60 shadow-xl">
+      <div className="card p-4 rounded-xl flex flex-col lg:flex-row gap-5 items-center justify-between border shadow-xl">
         
         {/* Month Navigation */}
-        <div className="flex items-center gap-1.5 bg-gray-900/50 p-1.5 rounded-xl border border-gray-700/50">
+        <div className="flex items-center gap-1.5 card p-1.5 rounded-xl border">
           <button onClick={() => setCurrent(d => new Date(d.getFullYear(), d.getMonth()-1, 1))}
-                  className="p-2 rounded-lg hover:bg-gray-800 text-gray-400 hover:text-white transition-colors">
+                  className="p-2 rounded-lg hover:card text-gray-400 hover:text-white transition-colors">
             <ChevronLeft className="w-5 h-5" />
           </button>
           <div className="text-sm font-black text-white px-2 min-w-[140px] text-center uppercase tracking-widest">
             <span className="text-rose-400">{MONTHS_TR[currentDate.getMonth()]}</span> {currentDate.getFullYear()}
           </div>
           <button onClick={() => setCurrent(d => new Date(d.getFullYear(), d.getMonth()+1, 1))}
-                  className="p-2 rounded-lg hover:bg-gray-800 text-gray-400 hover:text-white transition-colors">
+                  className="p-2 rounded-lg hover:card text-gray-400 hover:text-white transition-colors">
             <ChevronRight className="w-5 h-5" />
           </button>
           <div className="w-px h-6 bg-gray-700 mx-1"></div>
           <button onClick={() => setCurrent(new Date())}
-                  className="px-4 py-1.5 text-xs font-bold rounded-lg bg-gray-800 text-gray-300 hover:text-white hover:bg-gray-700 transition-all uppercase tracking-wider">
+                  className="px-4 py-1.5 text-xs font-bold rounded-lg card text-gray-300 hover:text-white hover:bg-gray-700 transition-all uppercase tracking-wider">
             Bugün
           </button>
         </div>
@@ -191,12 +191,12 @@ export default function EventsPage() {
         {/* Categories */}
         <div className="flex gap-2 flex-wrap justify-center flex-1">
           <button onClick={() => setFilterCat('all')}
-                  className={clsx('px-3.5 py-2 text-[11px] font-bold uppercase tracking-wider rounded-lg transition-all border', filterCat === 'all' ? 'border-rose-500/50 bg-rose-500/15 text-rose-300 shadow-[0_0_10px_rgba(225,29,72,0.2)]' : 'border-gray-700/50 bg-gray-900/50 text-gray-400 hover:text-white hover:border-gray-600')}>
+                  className={clsx('px-3.5 py-2 text-[11px] font-bold uppercase tracking-wider rounded-lg transition-all border', filterCat === 'all' ? 'border-rose-500/50 bg-rose-500/15 text-rose-300 shadow-[0_0_10px_rgba(225,29,72,0.2)]' : 'border-gray-700/50 card text-gray-400 hover:text-white hover:border-gray-600')}>
             Tümü
           </button>
           {Object.entries(CATEGORY_MAP).map(([k, v]) => (
             <button key={k} onClick={() => setFilterCat(k)}
-                    className={clsx('px-3.5 py-2 text-[11px] font-bold uppercase tracking-wider rounded-lg transition-all border flex items-center gap-1.5', filterCat === k ? '' : 'opacity-60 hover:opacity-50 hover:border-gray-600 bg-gray-900/50')}
+                    className={clsx('px-3.5 py-2 text-[11px] font-bold uppercase tracking-wider rounded-lg transition-all border flex items-center gap-1.5', filterCat === k ? '' : 'opacity-60 hover:opacity-50 hover:border-gray-600 card')}
                     style={filterCat === k ? { background: v.bg, color: v.color, borderColor: v.border, boxShadow: `0 0 10px ${v.bg}` } : { color: v.color, borderColor: 'transparent' }}>
               <div className="w-2 h-2 rounded-full" style={{ backgroundColor: v.color }}></div>
               {v.label}
@@ -205,20 +205,20 @@ export default function EventsPage() {
         </div>
 
         {/* View Toggle */}
-        <div className="flex rounded-xl overflow-hidden border border-gray-700/80 bg-gray-900/80 p-1">
+        <div className="flex rounded-xl overflow-hidden border card p-1">
           <button onClick={() => setView('month')}
-                  className={clsx('px-4 py-2 text-xs font-bold flex items-center gap-2 transition-colors rounded-lg uppercase tracking-wider', view === 'month' ? 'bg-gray-800 text-white shadow-sm' : 'text-gray-500 hover:text-gray-300')}>
+                  className={clsx('px-4 py-2 text-xs font-bold flex items-center gap-2 transition-colors rounded-lg uppercase tracking-wider', view === 'month' ? 'card text-white shadow-sm' : 'text-gray-500 hover:text-gray-300')}>
             <Grid3X3 className="w-4 h-4" /> Takvim
           </button>
           <button onClick={() => setView('list')}
-                  className={clsx('px-4 py-2 text-xs font-bold flex items-center gap-2 transition-colors rounded-lg uppercase tracking-wider', view === 'list' ? 'bg-gray-800 text-white shadow-sm' : 'text-gray-500 hover:text-gray-300')}>
+                  className={clsx('px-4 py-2 text-xs font-bold flex items-center gap-2 transition-colors rounded-lg uppercase tracking-wider', view === 'list' ? 'card text-white shadow-sm' : 'text-gray-500 hover:text-gray-300')}>
             <List className="w-4 h-4" /> Liste
           </button>
         </div>
       </div>
 
       {loading ? (
-        <div className="card py-20 flex flex-col items-center justify-center rounded-2xl border border-gray-800/60">
+        <div className="card py-20 flex flex-col items-center justify-center rounded-2xl border">
           <div className="w-12 h-12 rounded-full border-4 border-rose-900 border-t-rose-500 animate-spin mb-4" />
           <p className="text-gray-400 font-medium tracking-wide">Takvim verileri yükleniyor...</p>
         </div>
@@ -226,9 +226,9 @@ export default function EventsPage() {
         <>
           {/* ── MONTH VIEW ── */}
           {view === 'month' && (
-            <div className="card rounded-2xl border border-gray-800/60 shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-300">
+            <div className="card rounded-2xl border shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-300">
               {/* Day Headers */}
-              <div className="grid grid-cols-7 border-b border-gray-800/80 bg-gray-900/90">
+              <div className="grid grid-cols-7 border-b card">
                 {DAYS_SHORT.map(d => (
                   <div key={d} className="py-3.5 text-center text-xs font-black uppercase tracking-widest text-gray-500">
                     {d}
@@ -237,7 +237,7 @@ export default function EventsPage() {
               </div>
               
               {/* Days Grid */}
-              <div className="grid grid-cols-7 bg-gray-900/40">
+              <div className="grid grid-cols-7 card">
                 {calendarDays.map((date, idx) => {
                   const iso = date?.toISOString().split('T')[0]
                   const isToday = iso === today
@@ -246,8 +246,8 @@ export default function EventsPage() {
                   return (
                     <div key={idx}
                          className={clsx(
-                           'min-h-[120px] p-2 border-b border-r border-gray-800/40 transition-colors group',
-                           date ? 'hover:bg-gray-800/30' : 'bg-gray-900/20 opacity-40',
+                           'min-h-[120px] p-2 border-b border-r transition-colors group',
+                           date ? 'hover:card/30' : 'card opacity-40',
                            isToday && 'bg-rose-900/10'
                          )}>
                       {date && (
@@ -298,8 +298,8 @@ export default function EventsPage() {
           {view === 'list' && (
             <div className="max-w-4xl mx-auto space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-300">
               {upcomingEvents.length === 0 ? (
-                <div className="card py-20 text-center rounded-2xl border border-gray-800/60 border-dashed bg-gray-900/20">
-                  <div className="w-20 h-20 bg-gray-800/50 rounded-full flex items-center justify-center mx-auto mb-6 ring-8 ring-gray-900/50">
+                <div className="card py-20 text-center rounded-2xl border border-dashed card">
+                  <div className="w-20 h-20 card/50 rounded-full flex items-center justify-center mx-auto mb-6 ring-8 ring-gray-900/50">
                     <CalendarHeart className="w-10 h-10 text-gray-600" />
                   </div>
                   <h3 className="text-2xl font-black text-gray-200 tracking-tight">Yaklaşan Etkinlik Yok</h3>
@@ -346,7 +346,7 @@ export default function EventsPage() {
                                 {cat.label}
                               </span>
                               {ev.is_public && (
-                                <span className="text-[9px] px-2 py-0.5 rounded-full font-bold uppercase tracking-widest bg-gray-800 text-gray-400 border border-gray-700">Herkese Açık</span>
+                                <span className="text-[9px] px-2 py-0.5 rounded-full font-bold uppercase tracking-widest card text-gray-400 border">Herkese Açık</span>
                               )}
                             </div>
                             
@@ -360,7 +360,7 @@ export default function EventsPage() {
                             </div>
                           </div>
                           
-                          <div className="hidden sm:flex w-10 h-10 rounded-full border border-gray-700 bg-gray-800/50 items-center justify-center text-gray-500 group-hover:text-white group-hover:border-gray-500 transition-all">
+                          <div className="hidden sm:flex w-10 h-10 rounded-full border card/50 items-center justify-center text-gray-500 group-hover:text-white group-hover:border-gray-500 transition-all">
                             <ChevronRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
                           </div>
                         </div>
@@ -377,13 +377,13 @@ export default function EventsPage() {
       {/* EVENT DETAIL MODAL */}
       {selected && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in fade-in zoom-in-95 duration-200">
-          <div className="card w-full max-w-lg p-0 rounded-3xl border border-gray-700/50 shadow-2xl overflow-hidden relative">
+          <div className="card w-full max-w-lg p-0 rounded-3xl border shadow-2xl overflow-hidden relative">
             
             {/* Modal Header Gradient */}
             <div className="h-32 w-full absolute top-0 left-0 opacity-10 pointer-events-none" style={{ background: `linear-gradient(to bottom, ${CATEGORY_MAP[selected.category]?.color ?? '#64748b'}, transparent)` }}></div>
             
             <div className="p-8 relative z-10 text-center">
-              <button onClick={() => setSelected(null)} className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-800 text-gray-400 hover:text-white transition-colors bg-gray-900/50">
+              <button onClick={() => setSelected(null)} className="absolute top-4 right-4 p-2 rounded-full hover:card text-gray-400 hover:text-white transition-colors card">
                 <X className="w-5 h-5" />
               </button>
               
@@ -397,7 +397,7 @@ export default function EventsPage() {
               
               <h3 className="text-2xl font-black text-white px-4 leading-tight mb-6">{selected.title}</h3>
               
-              <div className="grid grid-cols-2 gap-3 text-left bg-gray-900/60 p-4 rounded-2xl border border-gray-800">
+              <div className="grid grid-cols-2 gap-3 text-left card p-4 rounded-2xl border">
                 <div className="space-y-1">
                   <div className="text-[10px] uppercase font-bold text-gray-500 tracking-wider flex items-center gap-1"><CalendarDays className="w-3 h-3" /> Tarih</div>
                   <div className="text-sm font-semibold text-gray-200">{new Date(selected.date).toLocaleDateString('tr-TR', { day:'numeric', month:'long', year:'numeric' })}</div>
@@ -407,7 +407,7 @@ export default function EventsPage() {
                   <div className="text-sm font-semibold text-gray-200">{selected.start_time} - {selected.end_time}</div>
                 </div>
                 {selected.location && (
-                  <div className="col-span-2 space-y-1 pt-2 border-t border-gray-800/60 mt-2">
+                  <div className="col-span-2 space-y-1 pt-2 border-t mt-2">
                     <div className="text-[10px] uppercase font-bold text-gray-500 tracking-wider flex items-center gap-1"><MapPin className="w-3 h-3" /> Konum / Adres</div>
                     <div className="text-sm font-semibold text-gray-200">{selected.location}</div>
                     {selected.address && <div className="text-xs text-gray-500 font-medium mt-0.5">{selected.address}</div>}
@@ -416,14 +416,14 @@ export default function EventsPage() {
               </div>
               
               {selected.description && (
-                <div className="text-left mt-4 p-4 rounded-2xl bg-gray-900/40 border border-gray-800/40 text-sm text-gray-300 leading-relaxed font-medium">
+                <div className="text-left mt-4 p-4 rounded-2xl card border text-sm text-gray-300 leading-relaxed font-medium">
                   {selected.description}
                 </div>
               )}
             </div>
             
             {isAdmin && (
-              <div className="p-4 bg-gray-900/80 border-t border-gray-800">
+              <div className="p-4 card border-t">
                 <button onClick={() => deleteEvent(selected.id)} className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-500 font-bold transition-colors border border-rose-500/20">
                   <Trash2 className="w-4 h-4" /> Etkinliği İptal Et / Sil
                 </button>
@@ -436,7 +436,7 @@ export default function EventsPage() {
       {/* EVENT ADD MODAL */}
       {showForm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in fade-in zoom-in-95 duration-200">
-          <div className="card w-full max-w-2xl p-0 rounded-3xl border border-gray-700/50 shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+          <div className="card w-full max-w-2xl p-0 rounded-3xl border shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
             <div className="px-8 py-6 border-b border-rose-900/30 bg-cyan-600 flex justify-between items-center">
               <h3 className="text-xl font-black text-white flex items-center gap-3 tracking-tight">
                 <div className="w-10 h-10 rounded-xl bg-cyan-600 flex items-center justify-center shadow-lg">
@@ -444,7 +444,7 @@ export default function EventsPage() {
                 </div>
                 Yeni Etkinlik Oluştur
               </h3>
-              <button type="button" onClick={() => { setShowForm(false); setForm(EMPTY_FORM); }} className="text-gray-400 hover:text-white bg-gray-800/50 hover:bg-gray-700 rounded-xl p-2.5 transition">
+              <button type="button" onClick={() => { setShowForm(false); setForm(EMPTY_FORM); }} className="text-gray-400 hover:text-white card/50 hover:bg-gray-700 rounded-xl p-2.5 transition">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -452,51 +452,51 @@ export default function EventsPage() {
             <form onSubmit={saveEvent} className="p-8 overflow-y-auto custom-scrollbar space-y-6">
               <div>
                 <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block pl-1">Etkinlik Başlığı <span className="text-rose-500">*</span></label>
-                <input required className="w-full bg-gray-900/70 border border-gray-700/80 rounded-xl px-4 py-3 text-base font-bold text-white focus:outline-none focus:border-rose-500 focus:ring-1 focus:ring-rose-500/50 transition-colors placeholder:font-medium placeholder:text-gray-600" placeholder="Örn: 2026 Bahar Şenliği" value={form.title} onChange={e => setForm(f=>({...f, title: e.target.value}))} />
+                <input required className="w-full card border rounded-xl px-4 py-3 text-base font-bold text-white focus:outline-none focus:border-rose-500 focus:ring-1 focus:ring-rose-500/50 transition-colors placeholder:font-medium placeholder:text-gray-600" placeholder="Örn: 2026 Bahar Şenliği" value={form.title} onChange={e => setForm(f=>({...f, title: e.target.value}))} />
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
                   <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block pl-1">Kategori</label>
-                  <select className="w-full bg-gray-900/50 border border-gray-700/80 rounded-xl px-4 py-3 text-sm font-semibold text-white focus:outline-none focus:border-rose-500 transition-colors form-select appearance-none" value={form.category} onChange={e => setForm(f=>({...f, category: e.target.value}))}>
+                  <select className="w-full card border rounded-xl px-4 py-3 text-sm font-semibold text-white focus:outline-none focus:border-rose-500 transition-colors form-select appearance-none" value={form.category} onChange={e => setForm(f=>({...f, category: e.target.value}))}>
                     {Object.entries(CATEGORY_MAP).map(([k,v]) => <option key={k} value={k}>{v.label}</option>)}
                   </select>
                 </div>
                 
                 <div>
                   <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block pl-1">Tarih <span className="text-rose-500">*</span></label>
-                  <input required type="date" className="w-full bg-gray-900/50 border border-gray-700/80 rounded-xl px-4 py-3 text-sm font-semibold text-white focus:outline-none focus:border-rose-500 transition-colors" value={form.date} onChange={e => setForm(f=>({...f, date: e.target.value}))} />
+                  <input required type="date" className="w-full card border rounded-xl px-4 py-3 text-sm font-semibold text-white focus:outline-none focus:border-rose-500 transition-colors" value={form.date} onChange={e => setForm(f=>({...f, date: e.target.value}))} />
                 </div>
                 
                 <div>
                   <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block pl-1">Başlangıç Saati <span className="text-rose-500">*</span></label>
-                  <input required type="time" className="w-full bg-gray-900/50 border border-gray-700/80 rounded-xl px-4 py-3 text-sm font-semibold text-white focus:outline-none focus:border-rose-500 transition-colors" value={form.start_time} onChange={e => setForm(f=>({...f, start_time: e.target.value}))} />
+                  <input required type="time" className="w-full card border rounded-xl px-4 py-3 text-sm font-semibold text-white focus:outline-none focus:border-rose-500 transition-colors" value={form.start_time} onChange={e => setForm(f=>({...f, start_time: e.target.value}))} />
                 </div>
                 
                 <div>
                   <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block pl-1">Bitiş Saati <span className="text-rose-500">*</span></label>
-                  <input required type="time" className="w-full bg-gray-900/50 border border-gray-700/80 rounded-xl px-4 py-3 text-sm font-semibold text-white focus:outline-none focus:border-rose-500 transition-colors" value={form.end_time} onChange={e => setForm(f=>({...f, end_time: e.target.value}))} />
+                  <input required type="time" className="w-full card border rounded-xl px-4 py-3 text-sm font-semibold text-white focus:outline-none focus:border-rose-500 transition-colors" value={form.end_time} onChange={e => setForm(f=>({...f, end_time: e.target.value}))} />
                 </div>
               </div>
 
-              <div className="bg-gray-900/40 border border-gray-800 rounded-2xl p-5 space-y-4">
+              <div className="card border rounded-2xl p-5 space-y-4">
                 <div className="flex items-center gap-2 mb-2">
                   <MapPin className="w-4 h-4 text-rose-500" />
                   <h4 className="text-sm font-bold text-gray-300">Konum Bilgileri</h4>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <input className="w-full bg-gray-900/50 border border-gray-700/80 rounded-xl px-4 py-2.5 text-sm text-gray-200 focus:outline-none focus:border-rose-500 transition-colors placeholder:text-gray-600" placeholder="Kısa Konum (Örn: A-102 Amfi)" value={form.location} onChange={e => setForm(f=>({...f, location: e.target.value}))} />
+                    <input className="w-full card border rounded-xl px-4 py-2.5 text-sm text-gray-200 focus:outline-none focus:border-rose-500 transition-colors placeholder:text-gray-600" placeholder="Kısa Konum (Örn: A-102 Amfi)" value={form.location} onChange={e => setForm(f=>({...f, location: e.target.value}))} />
                   </div>
                   <div>
-                    <input className="w-full bg-gray-900/50 border border-gray-700/80 rounded-xl px-4 py-2.5 text-sm text-gray-200 focus:outline-none focus:border-rose-500 transition-colors placeholder:text-gray-600" placeholder="Açık Adres (Opsiyonel)" value={form.address} onChange={e => setForm(f=>({...f, address: e.target.value}))} />
+                    <input className="w-full card border rounded-xl px-4 py-2.5 text-sm text-gray-200 focus:outline-none focus:border-rose-500 transition-colors placeholder:text-gray-600" placeholder="Açık Adres (Opsiyonel)" value={form.address} onChange={e => setForm(f=>({...f, address: e.target.value}))} />
                   </div>
                 </div>
               </div>
 
               <div>
                 <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block pl-1">Etkinlik Açıklaması</label>
-                <textarea className="w-full bg-gray-900/50 border border-gray-700/80 rounded-xl px-4 py-3 text-sm text-gray-300 focus:outline-none focus:border-rose-500 transition-colors resize-none placeholder:text-gray-600" rows={3} placeholder="Etkinlik hakkında detaylı bilgi, katılımcı şartları, önemli notlar..." value={form.description} onChange={e => setForm(f=>({...f, description: e.target.value}))}></textarea>
+                <textarea className="w-full card border rounded-xl px-4 py-3 text-sm text-gray-300 focus:outline-none focus:border-rose-500 transition-colors resize-none placeholder:text-gray-600" rows={3} placeholder="Etkinlik hakkında detaylı bilgi, katılımcı şartları, önemli notlar..." value={form.description} onChange={e => setForm(f=>({...f, description: e.target.value}))}></textarea>
               </div>
 
               <div className="pt-2 px-1">
@@ -507,8 +507,8 @@ export default function EventsPage() {
                 </label>
               </div>
 
-              <div className="flex gap-3 pt-6 border-t border-gray-800">
-                <button type="button" onClick={() => { setShowForm(false); setForm(EMPTY_FORM); }} className="px-4 py-3 rounded-xl font-bold text-sm text-gray-400 bg-gray-800/50 hover:bg-gray-700 hover:text-white transition flex-1">İptal</button>
+              <div className="flex gap-3 pt-6 border-t">
+                <button type="button" onClick={() => { setShowForm(false); setForm(EMPTY_FORM); }} className="px-4 py-3 rounded-xl font-bold text-sm text-gray-400 card/50 hover:bg-gray-700 hover:text-white transition flex-1">İptal</button>
                 <button type="submit" disabled={saving || !form.title || !form.date || !form.start_time || !form.end_time} className="px-4 py-3 rounded-xl text-sm font-black text-white flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all bg-cyan-600 hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed">
                   {saving ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div> : <Info className="w-4 h-4" /> }
                   {saving ? 'Kaydediliyor...' : 'Etkinliği Takvime Ekle'}

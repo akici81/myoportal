@@ -35,7 +35,7 @@ export default async function SekreterDepartmentsPage() {
         {departments?.map(d => {
           const deptProgs = programs?.filter(p => p.department_id === d.id) || []
           return (
-            <div key={d.id} className="card p-5 rounded-xl border border-gray-700/50 flex flex-col">
+            <div key={d.id} className="card p-5 rounded-xl border flex flex-col">
               <div className="flex items-start gap-4 mb-4">
                 <div className="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 font-bold text-lg flex items-center justify-center border border-blue-500/20 flex-shrink-0">{d.short_code}</div>
                 <div>
@@ -45,10 +45,10 @@ export default async function SekreterDepartmentsPage() {
               </div>
               {deptProgs.length > 0 && (
                 <div className="flex flex-wrap gap-1.5 mb-3">
-                  {deptProgs.map(p => (<span key={p.id} className="text-[11px] px-2 py-0.5 rounded bg-gray-800/60 text-gray-300 border border-gray-700/50 flex items-center gap-1"><BookOpen className="w-3 h-3 text-cyan-500" /> {p.name}</span>))}
+                  {deptProgs.map(p => (<span key={p.id} className="text-[11px] px-2 py-0.5 rounded card/60 text-gray-300 border flex items-center gap-1"><BookOpen className="w-3 h-3 text-cyan-500" /> {p.name}</span>))}
                 </div>
               )}
-              <div className="mt-auto pt-3 border-t border-gray-800/60 flex items-center gap-4 text-xs text-gray-400">
+              <div className="mt-auto pt-3 border-t flex items-center gap-4 text-xs text-gray-400">
                 <span className="flex items-center gap-1"><Users className="w-3.5 h-3.5" /> {instrCounts[d.id] ?? 0} Eğitmen</span>
                 <span className="flex items-center gap-1"><BookOpen className="w-3.5 h-3.5" /> {deptProgs.length} Program</span>
               </div>

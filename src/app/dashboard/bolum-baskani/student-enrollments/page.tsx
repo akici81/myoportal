@@ -259,9 +259,9 @@ export default function StudentEnrollmentsPage() {
           </div>
         </div>
 
-        <div className="card border border-gray-700/60 rounded-xl p-5 flex flex-col justify-center gap-4">
+        <div className="card border rounded-xl p-5 flex flex-col justify-center gap-4">
           <div className="flex items-center gap-3">
-             <div className="w-8 h-8 rounded-lg bg-gray-800 flex items-center justify-center border border-gray-700">
+             <div className="w-8 h-8 rounded-lg card flex items-center justify-center border">
                <Calendar className="w-4 h-4 text-rose-400" />
              </div>
              <p className="text-sm font-medium text-gray-300">Aktif Dönem</p>
@@ -270,7 +270,7 @@ export default function StudentEnrollmentsPage() {
           <select
             value={selectedPeriod}
             onChange={(e) => setSelectedPeriod(e.target.value)}
-            className="w-full bg-gray-900/80 border border-gray-700/80 rounded-lg px-3 py-2.5 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-rose-500/30 focus:border-rose-500/50 transition-all appearance-none cursor-pointer shadow-inner"
+            className="w-full card border rounded-lg px-3 py-2.5 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-rose-500/30 focus:border-rose-500/50 transition-all appearance-none cursor-pointer shadow-inner"
           >
             {periods.map((p) => (
               <option key={p.id} value={p.id}>
@@ -281,7 +281,7 @@ export default function StudentEnrollmentsPage() {
           </select>
 
           {/* Stats quick view */}
-          <div className="pt-2 mt-auto border-t border-gray-800/80 flex items-center justify-between">
+          <div className="pt-2 mt-auto border-t flex items-center justify-between">
             <span className="text-xs text-gray-500 font-medium">Toplam Kapasite:</span>
             <div className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-rose-500/10 border border-rose-500/20">
               <Users className="w-3.5 h-3.5 text-rose-400" />
@@ -306,7 +306,7 @@ export default function StudentEnrollmentsPage() {
           const total = count1 + count2
 
           return (
-            <div key={program.id} className="card group hover:-translate-y-1 hover:shadow-2xl hover:shadow-rose-900/20 transition-all duration-300 border border-gray-800/60 hover:border-rose-500/30 rounded-2xl overflow-hidden flex flex-col relative">
+            <div key={program.id} className="card group hover:-translate-y-1 hover:shadow-2xl hover:shadow-rose-900/20 transition-all duration-300 border hover:border-rose-500/30 rounded-2xl overflow-hidden flex flex-col relative">
               
               {/* Top Gradient Ribbon */}
               <div className="bg-cyan-600 h-1.5 w-full opacity-80 group-hover:opacity-50 transition-opacity"></div>
@@ -315,7 +315,7 @@ export default function StudentEnrollmentsPage() {
                 {/* Header */}
                 <div className="flex items-start justify-between mb-5">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-gray-800/80 border border-gray-700/50 flex items-center justify-center shadow-inner group-hover:bg-rose-500/10 group-hover:border-rose-500/30 transition-colors">
+                    <div className="w-10 h-10 rounded-xl card/80 border flex items-center justify-center shadow-inner group-hover:bg-rose-500/10 group-hover:border-rose-500/30 transition-colors">
                       <GraduationCap className="w-5 h-5 text-gray-400 group-hover:text-rose-400 transition-colors" />
                     </div>
                     <div>
@@ -332,11 +332,11 @@ export default function StudentEnrollmentsPage() {
                 </p>
 
                 {/* Inputs Base */}
-                <div className="space-y-3 mt-auto bg-gray-900/40 p-3 rounded-xl border border-gray-800/40">
+                <div className="space-y-3 mt-auto card p-3 rounded-xl border">
                   
                   {/* Sınıf 1 */}
                   <div className="flex items-center gap-2">
-                    <div className="bg-gray-800/80 text-gray-400 text-xs font-bold px-2 py-1.5 rounded border border-gray-700/50 w-16 text-center shadow-inner">
+                    <div className="card/80 text-gray-400 text-xs font-bold px-2 py-1.5 rounded border w-16 text-center shadow-inner">
                       1. Sınıf
                     </div>
                     <div className="relative flex-1">
@@ -349,10 +349,10 @@ export default function StudentEnrollmentsPage() {
                         placeholder="Örn: 45"
                         onChange={(e) => handleCountChange(program.id, 1, e.target.value)}
                         className={clsx(
-                          'w-full pl-9 pr-3 py-1.5 bg-gray-900/80 rounded-md text-white font-medium text-sm transition-all focus:outline-none focus:ring-1 focus:ring-rose-500/50 placeholder:text-gray-600',
+                          'w-full pl-9 pr-3 py-1.5 card rounded-md text-white font-medium text-sm transition-all focus:outline-none focus:ring-1 focus:ring-rose-500/50 placeholder:text-gray-600',
                           hasChange1
                             ? 'border-rose-500/50 border bg-rose-500/5'
-                            : 'border border-gray-700/50 hover:border-gray-600'
+                            : 'border hover:border-gray-600'
                         )}
                       />
                     </div>
@@ -361,7 +361,7 @@ export default function StudentEnrollmentsPage() {
 
                   {/* Sınıf 2 */}
                   <div className="flex items-center gap-2">
-                    <div className="bg-gray-800/80 text-gray-400 text-xs font-bold px-2 py-1.5 rounded border border-gray-700/50 w-16 text-center shadow-inner">
+                    <div className="card/80 text-gray-400 text-xs font-bold px-2 py-1.5 rounded border w-16 text-center shadow-inner">
                       2. Sınıf
                     </div>
                     <div className="relative flex-1">
@@ -374,10 +374,10 @@ export default function StudentEnrollmentsPage() {
                         placeholder="Örn: 60"
                         onChange={(e) => handleCountChange(program.id, 2, e.target.value)}
                         className={clsx(
-                          'w-full pl-9 pr-3 py-1.5 bg-gray-900/80 rounded-md text-white font-medium text-sm transition-all focus:outline-none focus:ring-1 focus:ring-rose-500/50 placeholder:text-gray-600',
+                          'w-full pl-9 pr-3 py-1.5 card rounded-md text-white font-medium text-sm transition-all focus:outline-none focus:ring-1 focus:ring-rose-500/50 placeholder:text-gray-600',
                           hasChange2
                             ? 'border-rose-500/50 border bg-rose-500/5'
-                            : 'border border-gray-700/50 hover:border-gray-600'
+                            : 'border hover:border-gray-600'
                         )}
                       />
                     </div>
@@ -392,8 +392,8 @@ export default function StudentEnrollmentsPage() {
       </div>
 
       {programs.length === 0 && !loading && (
-        <div className="card border border-gray-800/60 rounded-2xl py-24 px-6 text-center flex flex-col items-center">
-          <div className="w-20 h-20 bg-gray-800/60 rounded-full flex items-center justify-center mb-6 shadow-inner ring-1 ring-white/5">
+        <div className="card border rounded-2xl py-24 px-6 text-center flex flex-col items-center">
+          <div className="w-20 h-20 card/60 rounded-full flex items-center justify-center mb-6 shadow-inner ring-1 ring-white/5">
             <GraduationCap className="w-10 h-10 text-gray-500" />
           </div>
           <h3 className="text-xl font-bold text-white mb-2">Program Bulunamadı</h3>
@@ -406,7 +406,7 @@ export default function StudentEnrollmentsPage() {
       {/* Floating Action Button (Sticky Bottom) - modern implementation */}
       {totalChanges > 0 && (
         <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 animate-in fade-in slide-in-from-bottom flex justify-center w-full max-w-md pointer-events-none">
-          <div className="card bg-gray-900/95 border border-rose-500/30 rounded-full p-2 pr-6 shadow-2xl flex items-center gap-4 pointer-events-auto">
+          <div className="card card border border-rose-500/30 rounded-full p-2 pr-6 shadow-2xl flex items-center gap-4 pointer-events-auto">
             <div className="w-10 h-10 rounded-full bg-rose-500/20 flex items-center justify-center border border-rose-500/30 shadow-[0_0_15px_rgba(225,29,72,0.3)]">
               <span className="font-bold text-rose-400">{totalChanges}</span>
             </div>

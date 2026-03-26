@@ -53,7 +53,7 @@ export default async function AdminCommissionsPage() {
            </h2>
            <div className="space-y-3">
              {pendingMeetings.map((meeting: any) => (
-                <div key={meeting.id} className="flex flex-wrap items-center justify-between gap-4 rounded-xl bg-gray-900/50 p-4 border border-white/5">
+                <div key={meeting.id} className="flex flex-wrap items-center justify-between gap-4 rounded-xl card p-4 border border-white/5">
                    <div>
                      <h3 className="font-medium text-white">{meeting.title}</h3>
                      <p className="text-sm text-gray-400 mt-1">{meeting.commission.name} | İsteyen: {meeting.requester.full_name}</p>
@@ -71,9 +71,9 @@ export default async function AdminCommissionsPage() {
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {commissions?.map((com) => (
-          <div key={com.id} className="relative rounded-2xl border border-white/5 bg-gray-800/30 p-6 group hover:border-cyan-500/30 transition-all cursor-pointer">
+          <div key={com.id} className="relative rounded-2xl border border-white/5 card/30 p-6 group hover:border-cyan-500/30 transition-all cursor-pointer">
             <div className="flex items-start justify-between">
-              <div className="rounded-xl bg-gray-900/50 p-3 ring-1 ring-inset ring-white/5 group-hover:ring-cyan-500/30">
+              <div className="rounded-xl card p-3 ring-1 ring-inset ring-white/5 group-hover:ring-cyan-500/30">
                 <Target className="h-6 w-6 text-cyan-400" />
               </div>
               <span className="inline-flex items-center rounded-full bg-cyan-500/10 px-2.5 py-0.5 text-xs font-semibold text-cyan-400 border border-cyan-500/20">
@@ -85,10 +85,10 @@ export default async function AdminCommissionsPage() {
               <p className="mt-1 text-sm text-gray-500 capitalize">Komisyon Türü: {com.type.replace('_',' ')}</p>
             </div>
             <div className="mt-6 flex gap-2">
-               <button className="flex-1 inline-flex justify-center items-center rounded-lg bg-gray-900/50 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-800">
+               <button className="flex-1 inline-flex justify-center items-center rounded-lg card py-2 text-sm text-gray-300 hover:text-white hover:card">
                  <Users className="mr-2 h-4 w-4" /> Üyeler
                </button>
-               <button className="flex-1 inline-flex justify-center items-center rounded-lg bg-gray-900/50 py-2 text-sm text-gray-300 hover:text-white hover:bg-gray-800">
+               <button className="flex-1 inline-flex justify-center items-center rounded-lg card py-2 text-sm text-gray-300 hover:text-white hover:card">
                  <Settings className="mr-2 h-4 w-4" /> Ayarlar
                </button>
             </div>

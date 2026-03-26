@@ -46,7 +46,7 @@ export default function AdminInternshipActions({ internshipId, currentStatus }: 
       {isOpen && (
         <>
           <div className="fixed inset-0 z-10" onClick={() => setIsOpen(false)}></div>
-          <div className="absolute right-0 mt-2 w-48 rounded-xl bg-gray-800 border border-white/10 shadow-xl z-20 py-1 flex flex-col">
+          <div className="absolute right-0 mt-2 w-48 rounded-xl card border border-white/10 shadow-xl z-20 py-1 flex flex-col">
             {currentStatus !== 'approved' && currentStatus !== 'published' && (
               <button onClick={() => handleStatusChange('approved')} className="px-4 py-2 text-xs text-left text-emerald-400 hover:bg-white/5 flex items-center gap-2">
                 <CheckCircle className="h-3 w-3" /> Onayla
