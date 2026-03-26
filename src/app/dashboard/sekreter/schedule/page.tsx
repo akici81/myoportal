@@ -429,14 +429,14 @@ export default function SchedulePage() {
               <>
                 <button
                   onClick={handleOpenAddModal}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-white bg-cyan-600 hover:brightness-110 shadow-lg transition-all"
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-default bg-cyan-600 hover:brightness-110 shadow-lg transition-all" style={{ color: 'var(--text)' }}
                 >
                   <Plus className="w-4 h-4" />
                   Ders Ekle
                 </button>
                 <button
                   onClick={handleOpenRangeMode}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-white bg-cyan-600 hover:brightness-110 shadow-lg transition-all"
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-default bg-cyan-600 hover:brightness-110 shadow-lg transition-all" style={{ color: 'var(--text)' }}
                 >
                   <TimerIcon className="w-4 h-4" />
                   Saat Aralığı ile Ekle
@@ -462,7 +462,7 @@ export default function SchedulePage() {
             <div className="flex-1 min-w-[200px] max-w-[250px]">
               <label className="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1 block pl-1">Akademik Dönem</label>
               <select
-                className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all font-semibold"
+                className="w-full card border rounded-xl px-4 py-3 text-sm text-default focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all font-semibold" style={{ color: 'var(--text)' }}
                 value={selectedPeriod?.id ?? ''}
                 onChange={(e) => setSelectedPeriod(periods.find((x) => x.id === e.target.value) ?? null)}
               >
@@ -478,7 +478,7 @@ export default function SchedulePage() {
             <div className="flex-1 min-w-[200px]">
               <label className="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1 block pl-1">Bölüm</label>
               <select
-                className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all font-semibold"
+                className="w-full card border rounded-xl px-4 py-3 text-sm text-default focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all font-semibold" style={{ color: 'var(--text)' }}
                 value={selectedDept}
                 onChange={(e) => setSelectedDept(e.target.value)}
               >
@@ -498,7 +498,7 @@ export default function SchedulePage() {
                   onChange={(e) => setSelectedProgram(e.target.value)}
                 >
                   {programs.map((p) => (
-                    <option key={p.id} value={p.id} className="card text-white">{p.name}</option>
+                    <option key={p.id} value={p.id} className="card text-default">{p.name}</option>
                   ))}
                 </select>
               </div>
@@ -516,7 +516,7 @@ export default function SchedulePage() {
                         'px-5 py-2.5 rounded-lg text-sm font-bold transition-all min-w-[90px]',
                         selectedYear === y
                           ? 'bg-cyan-600 text-white shadow-lg'
-                          : 'text-gray-400 hover:text-gray-200 hover:card'
+                          : 'text-muted hover:text-muted hover:card'
                       )}
                     >
                       {y}. Sınıf
@@ -579,7 +579,7 @@ export default function SchedulePage() {
                   </div>
                 )}
               </div>
-              <button type="button" onClick={() => setShowAddModal(false)} className="text-gray-400 hover:text-white card/50 hover:bg-gray-700 rounded-lg p-2 transition">
+              <button type="button" onClick={() => setShowAddModal(false)} className="text-muted hover:text-default card/50 hover:bg-gray-700 rounded-lg p-2 transition">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -596,7 +596,7 @@ export default function SchedulePage() {
                       'flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold border transition-all',
                       sharedCourseMode
                         ? 'bg-amber-500/20 border-amber-500/50 text-amber-400'
-                        : 'card/50 text-gray-400 hover:text-gray-200'
+                        : 'card/50 text-muted hover:text-muted'
                     )}
                   >
                     <Link2 className="w-3.5 h-3.5" />
@@ -607,7 +607,7 @@ export default function SchedulePage() {
                   <button
                     type="button"
                     onClick={() => setRangeMode(true)}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold border text-gray-400 hover:text-white card/50 transition-all"
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold border text-muted hover:text-default card/50 transition-all" style={{ color: 'var(--text)' }}
                   >
                     <TimerIcon className="w-3.5 h-3.5" />
                     Saat Aralığı Modu
@@ -623,7 +623,7 @@ export default function SchedulePage() {
                     <span className="text-sm font-bold text-red-300">Saat Aralığı Ayarları</span>
                   </div>
                   <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5 block pl-1">Gün</label>
+                    <label className="text-xs font-bold uppercase tracking-wider text-muted mb-1.5 block pl-1">Gün</label>
                     <div className="flex flex-wrap gap-1.5">
                       {[1, 2, 3, 4, 5].map(d => (
                         <button
@@ -634,7 +634,7 @@ export default function SchedulePage() {
                             'px-3 py-1.5 rounded-lg text-xs font-bold transition-all border',
                             form.range_day === d
                               ? 'bg-red-700 border-red-600 text-white'
-                              : 'border-gray-700 card/50 text-gray-400 hover:text-white'
+                              : 'border-gray-700 card/50 text-muted hover:text-white'
                           )}
                         >
                           {DAYS[d]}
@@ -644,21 +644,21 @@ export default function SchedulePage() {
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5 block pl-1">Başlangıç</label>
+                      <label className="text-xs font-bold uppercase tracking-wider text-muted mb-1.5 block pl-1">Başlangıç</label>
                       <input
                         type="time"
                         value={form.range_start}
                         onChange={e => setForm(f => ({ ...f, range_start: e.target.value }))}
-                        className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50"
+                        className="w-full card border rounded-xl px-4 py-3 text-sm text-default focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50" style={{ color: 'var(--text)' }}
                       />
                     </div>
                     <div>
-                      <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5 block pl-1">Bitiş</label>
+                      <label className="text-xs font-bold uppercase tracking-wider text-muted mb-1.5 block pl-1">Bitiş</label>
                       <input
                         type="time"
                         value={form.range_end}
                         onChange={e => setForm(f => ({ ...f, range_end: e.target.value }))}
-                        className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50"
+                        className="w-full card border rounded-xl px-4 py-3 text-sm text-default focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50" style={{ color: 'var(--text)' }}
                       />
                     </div>
                   </div>
@@ -673,9 +673,9 @@ export default function SchedulePage() {
               {/* ── Course Selection ── */}
               {!sharedCourseMode ? (
                 <div>
-                  <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5 block pl-1">İlgili Ders</label>
+                  <label className="text-xs font-bold uppercase tracking-wider text-muted mb-1.5 block pl-1">İlgili Ders</label>
                   <select
-                    className="w-full card border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-colors form-select appearance-none font-semibold"
+                    className="w-full card border rounded-xl px-4 py-3.5 text-sm text-default focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-colors form-select appearance-none font-semibold" style={{ color: 'var(--text)' }}
                     value={form.program_course_id}
                     onChange={(e) => {
                       const pc = programCourses.find((x) => x.id === e.target.value)
@@ -709,17 +709,17 @@ export default function SchedulePage() {
                             'w-full text-left px-3 py-2 rounded-lg text-sm flex items-center gap-3 transition-all border',
                             checked
                               ? 'bg-amber-500/20 border-amber-500/40 text-amber-100'
-                              : 'card/40 text-gray-300 hover:bg-gray-700/50'
+                              : 'card/40 text-muted hover:bg-gray-700/50'
                           )}
                         >
                           <div className={clsx(
                             'w-4 h-4 rounded border flex-shrink-0 flex items-center justify-center',
                             checked ? 'bg-amber-500 border-amber-400' : 'border-gray-600'
                           )}>
-                            {checked && <span className="text-white text-[10px] font-black">✓</span>}
+                            {checked && <span className="text-default text-[10px] font-black">✓</span>}
                           </div>
                           <span className="font-semibold">{pc.courses?.code}</span>
-                          <span className="text-gray-400">/ {pc.courses?.name}</span>
+                          <span className="text-muted">/ {pc.courses?.name}</span>
                           <span className="ml-auto text-[10px] text-gray-500 shrink-0">{pc.programs?.name}</span>
                         </button>
                       )
@@ -735,9 +735,9 @@ export default function SchedulePage() {
 
               {/* ── Instructor ── */}
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5 block pl-1">Atanan Öğretim Elemanı</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-muted mb-1.5 block pl-1">Atanan Öğretim Elemanı</label>
                 <select
-                  className="w-full card border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-colors form-select appearance-none"
+                  className="w-full card border rounded-xl px-4 py-3.5 text-sm text-default focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-colors form-select appearance-none" style={{ color: 'var(--text)' }}
                   value={form.instructor_id}
                   onChange={(e) => setForm(f => ({ ...f, instructor_id: e.target.value }))}
                 >
@@ -753,7 +753,7 @@ export default function SchedulePage() {
               {/* ── Classroom with Availability ── */}
               <div>
                 <div className="flex items-center justify-between mb-1.5 pl-1">
-                  <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Verilecek Derslik</label>
+                  <label className="text-xs font-bold uppercase tracking-wider text-muted">Verilecek Derslik</label>
                   <div className="flex items-center gap-2 text-[10px] font-bold">
                     <span className="flex items-center gap-1 text-emerald-400">
                       <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block" />
@@ -766,7 +766,7 @@ export default function SchedulePage() {
                   </div>
                 </div>
                 <select
-                  className="w-full card border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-colors form-select appearance-none"
+                  className="w-full card border rounded-xl px-4 py-3.5 text-sm text-default focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-colors form-select appearance-none" style={{ color: 'var(--text)' }}
                   value={form.classroom_id}
                   onChange={(e) => setForm(f => ({ ...f, classroom_id: e.target.value }))}
                 >
@@ -774,7 +774,7 @@ export default function SchedulePage() {
                   {availableClassrooms.length > 0 && (
                     <optgroup label="✓ Bu Saatte Boş Derslikler" className="card text-emerald-400">
                       {availableClassrooms.map((c) => (
-                        <option key={c.id} value={c.id} className="text-white">
+                        <option key={c.id} value={c.id} className="text-default">
                           🟢 {c.name} — {c.capacity} Kişilik
                           {c.has_projector ? ' · Proj.' : ''}
                           {c.has_smartboard ? ' · Akıllı Tahta' : ''}
@@ -786,7 +786,7 @@ export default function SchedulePage() {
                   {busyClassrooms.length > 0 && (
                     <optgroup label="✗ Bu Saatte Dolu Derslikler" className="card text-rose-400">
                       {busyClassrooms.map((c) => (
-                        <option key={c.id} value={c.id} className="text-white">
+                        <option key={c.id} value={c.id} className="text-default">
                           🔴 {c.name} — {c.capacity} Kişilik (DOLU)
                         </option>
                       ))}
@@ -827,7 +827,7 @@ export default function SchedulePage() {
             <div className="px-6 py-4 card border-t mt-auto flex gap-3">
               <button
                 onClick={() => { setShowAddModal(false); setConflicts([]); }}
-                className="px-4 py-2.5 rounded-xl font-bold text-sm text-gray-400 card/50 hover:bg-gray-700 hover:text-white transition flex-1"
+                className="px-4 py-2.5 rounded-xl font-bold text-sm text-muted card/50 hover:bg-gray-700 hover:text-default transition flex-1" style={{ color: 'var(--text)' }}
               >
                 İptal Et
               </button>
@@ -839,7 +839,7 @@ export default function SchedulePage() {
                   || !form.instructor_id
                   || (rangeMode && (!form.range_start || !form.range_end))
                 }
-                className="px-4 py-2.5 rounded-xl text-sm font-bold text-white flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all bg-cyan-600 hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-4 py-2.5 rounded-xl text-sm font-bold text-default flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all bg-cyan-600 hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed" style={{ color: 'var(--text)' }}
               >
                 {saving
                   ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />

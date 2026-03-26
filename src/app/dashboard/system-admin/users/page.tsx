@@ -127,7 +127,7 @@ export default function UsersPage() {
             <h1 className="text-3xl font-bold text-transparent bg-clip-text bg-cyan-600">
               Kullanıcı Yönetimi
             </h1>
-            <p className="mt-2 text-gray-400 max-w-xl">
+            <p className="mt-2 text-muted max-w-xl">
               MYO Portal altyapısındaki tüm kullanıcıları görüntüleyin, yetkilendirin ve yeni kullanıcılar atayın.
             </p>
           </div>
@@ -135,7 +135,7 @@ export default function UsersPage() {
             <button 
               onClick={syncInstructors}
               disabled={syncing}
-              className="px-4 py-3 rounded-xl card border text-gray-300 hover:text-white hover:bg-gray-700 transition flex items-center justify-center gap-2"
+              className="px-4 py-3 rounded-xl card border text-muted hover:text-default hover:bg-gray-700 transition flex items-center justify-center gap-2" style={{ color: 'var(--text)' }}
             >
               <RefreshCw className={`w-5 h-5 ${syncing ? 'animate-spin' : ''}`} />
               <span>Hocaları Senkronize Et</span>
@@ -166,7 +166,7 @@ export default function UsersPage() {
                 <div className="text-3xl font-bold" style={{ color: meta.color }}>
                   {loading ? '...' : count}
                 </div>
-                <div className="text-xs font-medium text-gray-400 mt-1">
+                <div className="text-xs font-medium text-muted mt-1">
                   {meta.label}
                 </div>
               </div>
@@ -182,7 +182,7 @@ export default function UsersPage() {
           <div className="relative w-full max-w-sm">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
             <input 
-              className="w-full card/50 border rounded-lg pl-10 pr-4 py-2 text-sm text-gray-200 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/30 focus:border-cyan-500/50 transition-all font-medium" 
+              className="w-full card/50 border rounded-lg pl-10 pr-4 py-2 text-sm text-muted placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/30 focus:border-cyan-500/50 transition-all font-medium" 
               placeholder="Ad, Soyad, e-posta veya @kullanici_adi..." 
               value={search} 
               onChange={e => setSearch(e.target.value)} 
@@ -196,7 +196,7 @@ export default function UsersPage() {
         {/* Table */}
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm whitespace-nowrap">
-            <thead className="card/40 text-xs uppercase text-gray-400 border-b">
+            <thead className="card/40 text-xs uppercase text-muted border-b">
               <tr>
                 <th className="px-6 py-4 font-medium tracking-wider">Kullanıcı</th>
                 <th className="px-6 py-4 font-medium tracking-wider">Yetki Rolü</th>
@@ -222,7 +222,7 @@ export default function UsersPage() {
                     <div className="inline-flex items-center justify-center p-4 card/30 rounded-full mb-3">
                       <Search className="h-6 w-6 text-gray-500" />
                     </div>
-                    <p className="text-gray-400 font-medium">Böyle bir kullanıcı bulunamadı</p>
+                    <p className="text-muted font-medium">Böyle bir kullanıcı bulunamadı</p>
                     <p className="text-xs text-gray-500 mt-1">Arama kriterlerinizi değiştirerek tekrar deneyin</p>
                   </td>
                 </tr>
@@ -240,7 +240,7 @@ export default function UsersPage() {
                             {u.full_name?.charAt(0)?.toUpperCase() ?? '?'}
                           </div>
                           <div>
-                            <div className="font-medium text-gray-200">
+                            <div className="font-medium text-muted">
                               {u.title && <span className="text-gray-500 mr-1">{u.title}</span>}
                               {u.full_name || 'İsimsiz'}
                             </div>
@@ -261,7 +261,7 @@ export default function UsersPage() {
                         </span>
                       </td>
                       <td className="px-6 py-4">
-                        <div className="flex items-center gap-2 text-sm text-gray-400">
+                        <div className="flex items-center gap-2 text-sm text-muted">
                           <Building className="w-4 h-4 text-gray-500" />
                           <span className="truncate max-w-[200px]">{u.departments?.name || '—'}</span>
                         </div>
@@ -275,7 +275,7 @@ export default function UsersPage() {
                       <td className="px-6 py-4 text-right">
                         <button 
                           onClick={() => setEditUser(u)} 
-                          className="p-2 rounded-lg card text-gray-400 hover:text-cyan-400 hover:bg-gray-700 transition duration-200 opacity-0 group-hover:opacity-50"
+                          className="p-2 rounded-lg card text-muted hover:text-cyan-400 hover:bg-gray-700 transition duration-200 opacity-0 group-hover:opacity-50"
                           title="Düzenle"
                         >
                           <Edit className="w-4 h-4" />
@@ -294,54 +294,54 @@ export default function UsersPage() {
       {showNew && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in">
           <div className="card w-full max-w-lg p-6 rounded-2xl border shadow-2xl relative">
-            <button onClick={() => setShowNew(false)} className="absolute right-4 top-4 p-2 text-gray-400 hover:text-white rounded-lg hover:card transition">
+            <button onClick={() => setShowNew(false)} className="absolute right-4 top-4 p-2 text-muted hover:text-default rounded-lg hover:card transition">
               <X className="w-5 h-5" />
             </button>
-            <h3 className="text-xl font-bold text-white mb-1 flex items-center gap-2">
+            <h3 className="text-xl font-bold text-default mb-1 flex items-center gap-2" style={{ color: 'var(--text)' }}>
               <div className="p-2 bg-cyan-600 rounded-lg">
-                <Plus className="w-5 h-5 text-white" />
+                <Plus className="w-5 h-5 text-default" />
               </div>
               Yeni Kullanıcı
             </h3>
-            <p className="text-sm text-gray-400 mb-6 font-medium">Sisteme yeni bir yetkili veya personel tanımlayın.</p>
+            <p className="text-sm text-muted mb-6 font-medium">Sisteme yeni bir yetkili veya personel tanımlayın.</p>
             
             <form onSubmit={createUser} className="space-y-4">
               <div className="grid grid-cols-12 gap-4">
                 <div className="col-span-4">
-                  <label className="text-xs font-medium text-gray-400 mb-1.5 block">Unvan</label>
-                  <input className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-500 transition-colors" placeholder="Dr., Prof." value={newUser.title} onChange={e => setNewUser(u => ({...u, title: e.target.value}))} />
+                  <label className="text-xs font-medium text-muted mb-1.5 block">Unvan</label>
+                  <input className="w-full card border rounded-lg px-3 py-2.5 text-sm text-default focus:outline-none focus:border-cyan-500 transition-colors" placeholder="Dr., Prof." value={newUser.title} onChange={e => setNewUser(u => ({...u, title: e.target.value}))} />
                 </div>
                 <div className="col-span-8">
-                  <label className="text-xs font-medium text-gray-400 mb-1.5 block">Ad Soyad <span className="text-cyan-400">*</span></label>
-                  <input className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-500 transition-colors" placeholder="Ahmet Yılmaz" required value={newUser.full_name} onChange={e => setNewUser(u => ({...u, full_name: e.target.value}))} />
+                  <label className="text-xs font-medium text-muted mb-1.5 block">Ad Soyad <span className="text-cyan-400">*</span></label>
+                  <input className="w-full card border rounded-lg px-3 py-2.5 text-sm text-default focus:outline-none focus:border-cyan-500 transition-colors" placeholder="Ahmet Yılmaz" required value={newUser.full_name} onChange={e => setNewUser(u => ({...u, full_name: e.target.value}))} />
                 </div>
               </div>
               
               <div>
-                <label className="text-xs font-medium text-gray-400 mb-1.5 block">Kurumsal E-posta <span className="text-cyan-400">*</span></label>
+                <label className="text-xs font-medium text-muted mb-1.5 block">Kurumsal E-posta <span className="text-cyan-400">*</span></label>
                 <div className="relative">
                   <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
-                  <input type="email" required className="w-full card border rounded-lg pl-9 pr-3 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-500 transition-colors" placeholder="ahmet@rumeli.edu.tr" value={newUser.email} onChange={e => setNewUser(u => ({...u, email: e.target.value}))} />
+                  <input type="email" required className="w-full card border rounded-lg pl-9 pr-3 py-2.5 text-sm text-default focus:outline-none focus:border-cyan-500 transition-colors" placeholder="ahmet@rumeli.edu.tr" value={newUser.email} onChange={e => setNewUser(u => ({...u, email: e.target.value}))} />
                 </div>
               </div>
               
               <div>
-                <label className="text-xs font-medium text-gray-400 mb-1.5 block">Geçici Şifre <span className="text-cyan-400">*</span></label>
-                <input type="password" required className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-500 transition-colors" placeholder="En az 8 karakter" value={newUser.password} onChange={e => setNewUser(u => ({...u, password: e.target.value}))} />
+                <label className="text-xs font-medium text-muted mb-1.5 block">Geçici Şifre <span className="text-cyan-400">*</span></label>
+                <input type="password" required className="w-full card border rounded-lg px-3 py-2.5 text-sm text-default focus:outline-none focus:border-cyan-500 transition-colors" placeholder="En az 8 karakter" value={newUser.password} onChange={e => setNewUser(u => ({...u, password: e.target.value}))} />
               </div>
               
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="text-xs font-medium text-gray-400 mb-1.5 block">Yetki Rolü <span className="text-cyan-400">*</span></label>
-                  <select className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-500 transition-colors form-select appearance-none" value={newUser.role} onChange={e => setNewUser(u => ({...u, role: e.target.value as UserRole}))}>
+                  <label className="text-xs font-medium text-muted mb-1.5 block">Yetki Rolü <span className="text-cyan-400">*</span></label>
+                  <select className="w-full card border rounded-lg px-3 py-2.5 text-sm text-default focus:outline-none focus:border-cyan-500 transition-colors form-select appearance-none" value={newUser.role} onChange={e => setNewUser(u => ({...u, role: e.target.value as UserRole}))}>
                     {(Object.keys(ROLE_META) as UserRole[]).map(r => (
                       <option key={r} value={r}>{ROLE_META[r].label}</option>
                     ))}
                   </select>
                 </div>
                 <div>
-                  <label className="text-xs font-medium text-gray-400 mb-1.5 block">Bağlı Bölüm</label>
-                  <select className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-500 transition-colors form-select appearance-none" value={newUser.department_id} onChange={e => setNewUser(u => ({...u, department_id: e.target.value}))}>
+                  <label className="text-xs font-medium text-muted mb-1.5 block">Bağlı Bölüm</label>
+                  <select className="w-full card border rounded-lg px-3 py-2.5 text-sm text-default focus:outline-none focus:border-cyan-500 transition-colors form-select appearance-none" value={newUser.department_id} onChange={e => setNewUser(u => ({...u, department_id: e.target.value}))}>
                     <option value="">— Genel Merkez / Yok —</option>
                     {depts.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
                   </select>
@@ -349,7 +349,7 @@ export default function UsersPage() {
               </div>
               
               <div className="pt-4 flex gap-3">
-                <button type="button" onClick={() => setShowNew(false)} className="px-4 py-2.5 rounded-lg font-medium text-sm text-gray-400 card hover:bg-gray-700 hover:text-white transition flex-1">İptal</button>
+                <button type="button" onClick={() => setShowNew(false)} className="px-4 py-2.5 rounded-lg font-medium text-sm text-muted card hover:bg-gray-700 hover:text-default transition flex-1">İptal</button>
                 <button type="submit" disabled={saving} className="btn-glow px-4 py-2.5 text-sm font-medium flex-1 flex items-center justify-center gap-2">
                   {saving ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div> : <Save className="w-4 h-4" /> }
                   {saving ? 'Kaydediliyor...' : 'Oluştur'}
@@ -364,55 +364,55 @@ export default function UsersPage() {
       {editUser && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in">
           <div className="card w-full max-w-lg p-6 rounded-2xl border shadow-2xl relative">
-            <button onClick={() => setEditUser(null)} className="absolute right-4 top-4 p-2 text-gray-400 hover:text-white rounded-lg hover:card transition">
+            <button onClick={() => setEditUser(null)} className="absolute right-4 top-4 p-2 text-muted hover:text-default rounded-lg hover:card transition">
               <X className="w-5 h-5" />
             </button>
-            <h3 className="text-xl font-bold text-white mb-1 flex items-center gap-2">
+            <h3 className="text-xl font-bold text-default mb-1 flex items-center gap-2" style={{ color: 'var(--text)' }}>
               <div className="p-2 bg-red-700 rounded-lg">
-                <Shield className="w-5 h-5 text-white" />
+                <Shield className="w-5 h-5 text-default" />
               </div>
               Kullanıcıyı Düzenle
             </h3>
-            <p className="text-sm text-gray-400 mb-6 font-medium">@{editUser.username || ''} hesabının ayarlarını güncelleyin.</p>
+            <p className="text-sm text-muted mb-6 font-medium">@{editUser.username || ''} hesabının ayarlarını güncelleyin.</p>
             
             <form onSubmit={saveEdit} className="space-y-4">
               <div className="grid grid-cols-12 gap-4">
                 <div className="col-span-4">
-                  <label className="text-xs font-medium text-gray-400 mb-1.5 block">Unvan</label>
-                  <input className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-500 transition-colors" value={editUser.title ?? ''} onChange={e=>setEditUser((u:any)=>({...u,title:e.target.value}))} />
+                  <label className="text-xs font-medium text-muted mb-1.5 block">Unvan</label>
+                  <input className="w-full card border rounded-lg px-3 py-2.5 text-sm text-default focus:outline-none focus:border-cyan-500 transition-colors" value={editUser.title ?? ''} onChange={e=>setEditUser((u:any)=>({...u,title:e.target.value}))} />
                 </div>
                 <div className="col-span-8">
-                  <label className="text-xs font-medium text-gray-400 mb-1.5 block">Ad Soyad <span className="text-cyan-400">*</span></label>
-                  <input className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-500 transition-colors" required value={editUser.full_name ?? ''} onChange={e=>setEditUser((u:any)=>({...u,full_name:e.target.value}))} />
+                  <label className="text-xs font-medium text-muted mb-1.5 block">Ad Soyad <span className="text-cyan-400">*</span></label>
+                  <input className="w-full card border rounded-lg px-3 py-2.5 text-sm text-default focus:outline-none focus:border-cyan-500 transition-colors" required value={editUser.full_name ?? ''} onChange={e=>setEditUser((u:any)=>({...u,full_name:e.target.value}))} />
                 </div>
               </div>
               
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="text-xs font-medium text-gray-400 mb-1.5 block">Kullanıcı Adı</label>
-                  <input className="w-full font-mono card border rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-500 transition-colors" value={editUser.username ?? ''} onChange={e=>setEditUser((u:any)=>({...u,username:e.target.value.toLowerCase()}))} />
+                  <label className="text-xs font-medium text-muted mb-1.5 block">Kullanıcı Adı</label>
+                  <input className="w-full font-mono card border rounded-lg px-3 py-2.5 text-sm text-default focus:outline-none focus:border-cyan-500 transition-colors" value={editUser.username ?? ''} onChange={e=>setEditUser((u:any)=>({...u,username:e.target.value.toLowerCase()}))} />
                 </div>
                 <div>
-                  <label className="text-xs font-medium text-gray-400 mb-1.5 block">Telefon</label>
+                  <label className="text-xs font-medium text-muted mb-1.5 block">Telefon</label>
                   <div className="relative">
                     <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
-                    <input className="w-full card border rounded-lg pl-9 pr-3 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-500 transition-colors" value={editUser.phone ?? ''} onChange={e=>setEditUser((u:any)=>({...u,phone:e.target.value}))} />
+                    <input className="w-full card border rounded-lg pl-9 pr-3 py-2.5 text-sm text-default focus:outline-none focus:border-cyan-500 transition-colors" value={editUser.phone ?? ''} onChange={e=>setEditUser((u:any)=>({...u,phone:e.target.value}))} />
                   </div>
                 </div>
               </div>
               
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="text-xs font-medium text-gray-400 mb-1.5 block">Yetki Rolü</label>
-                  <select className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-500 transition-colors form-select appearance-none" value={editUser.role ?? 'instructor'} onChange={e=>setEditUser((u:any)=>({...u,role:e.target.value}))}>
+                  <label className="text-xs font-medium text-muted mb-1.5 block">Yetki Rolü</label>
+                  <select className="w-full card border rounded-lg px-3 py-2.5 text-sm text-default focus:outline-none focus:border-cyan-500 transition-colors form-select appearance-none" value={editUser.role ?? 'instructor'} onChange={e=>setEditUser((u:any)=>({...u,role:e.target.value}))}>
                     {(Object.keys(ROLE_META) as UserRole[]).map(r => (
                       <option key={r} value={r}>{ROLE_META[r].label}</option>
                     ))}
                   </select>
                 </div>
                 <div>
-                  <label className="text-xs font-medium text-gray-400 mb-1.5 block">Bölüm</label>
-                  <select className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-500 transition-colors form-select appearance-none" value={editUser.department_id ?? ''} onChange={e=>setEditUser((u:any)=>({...u,department_id:e.target.value||null}))}>
+                  <label className="text-xs font-medium text-muted mb-1.5 block">Bölüm</label>
+                  <select className="w-full card border rounded-lg px-3 py-2.5 text-sm text-default focus:outline-none focus:border-cyan-500 transition-colors form-select appearance-none" value={editUser.department_id ?? ''} onChange={e=>setEditUser((u:any)=>({...u,department_id:e.target.value||null}))}>
                     <option value="">— Genel Merkez / Yok —</option>
                     {depts.map(d=><option key={d.id} value={d.id}>{d.name}</option>)}
                   </select>
@@ -423,13 +423,13 @@ export default function UsersPage() {
                 <label className="inline-flex items-center cursor-pointer">
                   <input type="checkbox" className="sr-only peer" checked={editUser.is_active ?? true} onChange={e=>setEditUser((u:any)=>({...u,is_active:e.target.checked}))} />
                   <div className="relative w-11 h-6 bg-gray-700 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
-                  <span className="ms-3 text-sm font-medium text-gray-300">Bu hesap aktif mi? ({editUser.is_active ? 'Evet' : 'Hayır, Pasif'})</span>
+                  <span className="ms-3 text-sm font-medium text-muted">Bu hesap aktif mi? ({editUser.is_active ? 'Evet' : 'Hayır, Pasif'})</span>
                 </label>
               </div>
               
               <div className="pt-4 flex gap-3">
-                <button type="button" onClick={() => setEditUser(null)} className="px-4 py-2.5 rounded-lg font-medium text-sm text-gray-400 card hover:bg-gray-700 hover:text-white transition flex-1">İptal</button>
-                <button type="submit" disabled={saving} className="px-4 py-2.5 rounded-lg text-sm font-medium text-white flex-1 flex items-center justify-center gap-2 bg-red-700 hover:brightness-110 shadow-lg transition-all">
+                <button type="button" onClick={() => setEditUser(null)} className="px-4 py-2.5 rounded-lg font-medium text-sm text-muted card hover:bg-gray-700 hover:text-default transition flex-1">İptal</button>
+                <button type="submit" disabled={saving} className="px-4 py-2.5 rounded-lg text-sm font-medium text-default flex-1 flex items-center justify-center gap-2 bg-red-700 hover:brightness-110 shadow-lg transition-all">
                   {saving ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div> : <Save className="w-4 h-4" /> }
                   {saving ? 'Kaydediliyor...' : 'Değişiklikleri Kaydet'}
                 </button>

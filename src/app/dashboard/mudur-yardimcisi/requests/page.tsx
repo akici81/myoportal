@@ -41,7 +41,7 @@ export default async function AdminRequestsPage() {
     <div className="space-y-6 animate-in">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white flex items-center gap-3">
+          <h1 className="text-2xl font-bold text-default flex items-center gap-3" style={{ color: 'var(--text)' }}>
             Genel Talepler ve Dilekçe Yönetimi
           </h1>
           <p className="mt-1 text-sm text-gray-500">Personelden gelen dijital dilekçeleri, belge isteklerini ve görüşleri yönetin.</p>
@@ -50,7 +50,7 @@ export default async function AdminRequestsPage() {
 
       <div className="rounded-2xl border border-white/5 card/30 overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm text-gray-300">
+          <table className="w-full text-left text-sm text-muted">
             <thead className="card text-xs uppercase text-gray-500">
               <tr>
                 <th className="px-6 py-4 font-medium">Talep Eden (Profil)</th>
@@ -73,24 +73,24 @@ export default async function AdminRequestsPage() {
                 requests.map((req) => (
                   <tr key={req.id} className="transition-colors hover:bg-white/[0.02]">
                     <td className="px-6 py-4">
-                      <div className="font-medium text-white">{req.requester?.full_name}</div>
+                      <div className="font-medium text-default">{req.requester?.full_name}</div>
                       <div className="text-xs text-gray-500">{req.requester?.role.replace('_', ' ').toUpperCase()}</div>
                     </td>
                     <td className="px-6 py-4 text-cyan-400 font-medium">
                        {getCategoryStr(req.category)}
                     </td>
                     <td className="px-6 py-4 max-w-sm">
-                      <div className="font-medium text-white mb-1 truncate">{req.title}</div>
+                      <div className="font-medium text-default mb-1 truncate">{req.title}</div>
                       <div className="text-xs text-gray-500 line-clamp-2" title={req.description}>{req.description}</div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-gray-400">
+                    <td className="px-6 py-4 whitespace-nowrap text-muted">
                       {new Date(req.created_at).toLocaleDateString('tr-TR')}
                     </td>
                     <td className="px-6 py-4">
                       {getStatusBadge(req.status)}
                     </td>
                     <td className="px-6 py-4 text-right">
-                       <button className="inline-flex items-center justify-center rounded-lg card px-3 py-1.5 text-xs font-medium text-gray-300 hover:text-white hover:card border border-white/5 shadow-sm">
+                       <button className="inline-flex items-center justify-center rounded-lg card px-3 py-1.5 text-xs font-medium text-muted hover:text-default hover:card border border-white/5 shadow-sm">
                          Detayı İncele
                        </button>
                     </td>

@@ -94,10 +94,10 @@ export default function ScheduleReadOnlyPage() {
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-black text-white flex items-center gap-3 tracking-tight">
+            <h1 className="text-3xl font-black text-default flex items-center gap-3 tracking-tight" style={{ color: 'var(--text)' }}>
               Kurum Ders Programları
             </h1>
-            <p className="mt-2 text-gray-400 max-w-2xl font-medium">
+            <p className="mt-2 text-muted max-w-2xl font-medium">
               Tüm programların haftalık ders akışlarını inceleyin ve dışa aktarın.
             </p>
           </div>
@@ -111,14 +111,14 @@ export default function ScheduleReadOnlyPage() {
         <div className="card p-5 rounded-2xl border shadow-xl relative z-20">
           <div className="flex items-center gap-2 mb-4">
             <MousePointerClick className="w-4 h-4 text-cyan-500" />
-            <h3 className="text-sm font-bold text-gray-200 uppercase tracking-wider">Hedef Program Filtresi</h3>
+            <h3 className="text-sm font-bold text-muted uppercase tracking-wider">Hedef Program Filtresi</h3>
           </div>
           
           <div className="flex flex-wrap gap-4 items-end">
             <div className="flex-1 min-w-[200px] max-w-[250px]">
               <label className="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1 block pl-1">Akademik Dönem</label>
               <select
-                className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all font-semibold"
+                className="w-full card border rounded-xl px-4 py-3 text-sm text-default focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all font-semibold" style={{ color: 'var(--text)' }}
                 value={selectedPeriod?.id ?? ''}
                 onChange={(e) => setSelectedPeriod(periods.find((x) => x.id === e.target.value) ?? null)}
               >
@@ -134,7 +134,7 @@ export default function ScheduleReadOnlyPage() {
             <div className="flex-1 min-w-[200px]">
               <label className="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1 block pl-1">Kategori / Bölüm</label>
               <select
-                className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all font-semibold"
+                className="w-full card border rounded-xl px-4 py-3 text-sm text-default focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all font-semibold" style={{ color: 'var(--text)' }}
                 value={selectedDept}
                 onChange={(e) => setSelectedDept(e.target.value)}
               >
@@ -154,7 +154,7 @@ export default function ScheduleReadOnlyPage() {
                   onChange={(e) => setSelectedProgram(e.target.value)}
                 >
                   {programs.map((p) => (
-                    <option key={p.id} value={p.id} className="card text-white">{p.name}</option>
+                    <option key={p.id} value={p.id} className="card text-default">{p.name}</option>
                   ))}
                 </select>
               </div>
@@ -172,7 +172,7 @@ export default function ScheduleReadOnlyPage() {
                         'px-5 py-2.5 rounded-lg text-sm font-bold transition-all flex items-center justify-center min-w-[90px]',
                         selectedYear === y
                           ? 'bg-cyan-600 text-white shadow-lg shadow-inner'
-                          : 'bg-transparent text-gray-400 hover:text-gray-200 hover:card'
+                          : 'bg-transparent text-muted hover:text-muted hover:card'
                       )}
                     >
                       {y}. Sınıf
@@ -196,7 +196,7 @@ export default function ScheduleReadOnlyPage() {
             loading ? (
               <div className="card flex flex-col items-center justify-center py-32 text-center rounded-2xl border">
                 <div className="w-12 h-12 rounded-full border-4 border-cyan-800 border-t-cyan-500 animate-spin mb-4" />
-                <h3 className="text-xl font-bold text-white tracking-tight">Program Yükleniyor</h3>
+                <h3 className="text-xl font-bold text-default tracking-tight" style={{ color: 'var(--text)' }}>Program Yükleniyor</h3>
                 <p className="text-gray-500 mt-2">Ders blokları analiz ediliyor, lütfen bekleyin...</p>
               </div>
             ) : (
@@ -212,7 +212,7 @@ export default function ScheduleReadOnlyPage() {
               <div className="w-20 h-20 card/50 rounded-full flex items-center justify-center mb-6 ring-8 ring-gray-900/50">
                 <CalendarDays className="w-10 h-10 text-gray-600" />
               </div>
-              <h3 className="text-2xl font-black text-gray-200 tracking-tight">Henüz Program Seçilmedi</h3>
+              <h3 className="text-2xl font-black text-muted tracking-tight">Henüz Program Seçilmedi</h3>
               <p className="text-gray-500 mt-3 max-w-md mx-auto leading-relaxed">
                 Tabloyu görüntülemek için yukarıdaki menüden ilgili departmanı ve programı seçmeniz gerekmektedir.
               </p>

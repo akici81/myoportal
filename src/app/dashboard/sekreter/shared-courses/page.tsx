@@ -227,16 +227,16 @@ export default function SharedCoursesPage() {
         
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="max-w-xl">
-            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+            <h1 className="text-3xl font-bold text-default flex items-center gap-3" style={{ color: 'var(--text)' }}>
               Yönetimsel Ortak Dersler
             </h1>
-            <p className="mt-2 text-gray-400 leading-relaxed">
+            <p className="mt-2 text-muted leading-relaxed">
               Birden fazla programda aynı anda verilen (Örn: ATA, TRD, ING) dersleri birleştirin. Ortak ders havuzları ders programı yerleşiminde <strong className="text-red-300">tek bir paket</strong> gibi yönetilir.
             </p>
           </div>
           <button
             onClick={openCreateModal}
-            className="btn-glow inline-flex items-center justify-center gap-2 rounded-xl bg-cyan-600 px-6 py-3 font-semibold text-white transition-all hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(79,70,229,0.4)] disabled:opacity-50 shrink-0"
+            className="btn-glow inline-flex items-center justify-center gap-2 rounded-xl bg-cyan-600 px-6 py-3 font-semibold text-default transition-all hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(79,70,229,0.4)] disabled:opacity-50 shrink-0"
           >
             <Plus className="w-5 h-5 flex-shrink-0" />
             <span>Yeni Havuz Oluştur</span>
@@ -251,8 +251,8 @@ export default function SharedCoursesPage() {
             <Layers className="w-7 h-7" />
           </div>
           <div>
-            <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">Aktif Havuzlar</p>
-            <p className="text-3xl font-black text-white mt-1">{sharedGroups.length}</p>
+            <p className="text-muted text-xs font-semibold uppercase tracking-wider">Aktif Havuzlar</p>
+            <p className="text-3xl font-black text-default mt-1" style={{ color: 'var(--text)' }}>{sharedGroups.length}</p>
           </div>
         </div>
 
@@ -261,8 +261,8 @@ export default function SharedCoursesPage() {
             <Link2 className="w-7 h-7" />
           </div>
           <div>
-            <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">Bağlanmış Sınıf</p>
-            <p className="text-3xl font-black text-white mt-1">
+            <p className="text-muted text-xs font-semibold uppercase tracking-wider">Bağlanmış Sınıf</p>
+            <p className="text-3xl font-black text-default mt-1" style={{ color: 'var(--text)' }}>
               {programCourses.filter((pc) => pc.is_shared).length}
             </p>
           </div>
@@ -273,8 +273,8 @@ export default function SharedCoursesPage() {
             <Sparkles className="w-7 h-7 relative z-10 animate-pulse" />
           </div>
           <div>
-            <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">Olası Ortak Ders</p>
-            <p className="text-3xl font-black text-white mt-1">{nonSharedCourses.length}</p>
+            <p className="text-muted text-xs font-semibold uppercase tracking-wider">Olası Ortak Ders</p>
+            <p className="text-3xl font-black text-default mt-1" style={{ color: 'var(--text)' }}>{nonSharedCourses.length}</p>
           </div>
         </div>
       </div>
@@ -283,14 +283,14 @@ export default function SharedCoursesPage() {
         {/* Left Column: Data view */}
         <div className="lg:w-2/3 space-y-6">
           <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
-            <h3 className="text-xl font-bold text-white flex items-center gap-2">
+            <h3 className="text-xl font-bold text-default flex items-center gap-2" style={{ color: 'var(--text)' }}>
               <Layers className="w-5 h-5 text-red-400" /> Havuz Kataloğu
             </h3>
             
             <div className="relative w-full sm:w-72">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
               <input
-                className="w-full card border rounded-full pl-10 pr-4 py-2 text-sm text-white focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-all placeholder:text-gray-600 shadow-inner"
+                className="w-full card border rounded-full pl-10 pr-4 py-2 text-sm text-default focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-all placeholder:text-gray-600 shadow-inner"
                 placeholder="Kod, ad veya program ara..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -309,10 +309,10 @@ export default function SharedCoursesPage() {
                 <div className="w-20 h-20 card/80 rounded-full flex items-center justify-center mb-6 shadow-inner">
                   <Link2 className="w-10 h-10 text-gray-500" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">
+                <h3 className="text-xl font-bold text-default mb-2" style={{ color: 'var(--text)' }}>
                   {search ? 'Sonuç Bulunamadı' : 'Havuz Tertemiz'}
                 </h3>
-                <p className="text-gray-400 max-w-sm mb-6">
+                <p className="text-muted max-w-sm mb-6">
                   {search ? 'Arama kriterlerinize uygun hiçbir ortak ders grubu sistemde kayıtlı değil.' : 'Henüz iki veya daha fazla birleştirilmiş dersten oluşan bir eşleştirme havuzu yapmadınız.'}
                 </p>
                 {!search && (
@@ -356,11 +356,11 @@ export default function SharedCoursesPage() {
                         </div>
                         
                         <div>
-                          <p className="text-base sm:text-lg font-bold text-white group-hover:text-red-200 transition-colors leading-tight">
+                          <p className="text-base sm:text-lg font-bold text-default group-hover:text-red-200 transition-colors leading-tight" style={{ color: 'var(--text)' }}>
                             {group.course.name}
                           </p>
-                          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-sm text-gray-400">
-                            <span className="font-mono text-xs px-1.5 py-0.5 rounded card border text-gray-300">{group.course.code}</span>
+                          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-sm text-muted">
+                            <span className="font-mono text-xs px-1.5 py-0.5 rounded card border text-muted">{group.course.code}</span>
                             <span className="flex items-center gap-1.5 before:content-['•'] before:text-gray-600 before:mr-1">{group.course.course_type === 'theoretical' ? 'Teorik' : 'Uygulamalı'} Ders</span>
                             <span className="flex items-center gap-1.5 before:content-['•'] before:text-gray-600 before:mr-1">{group.course.weekly_hours} Saat</span>
                           </div>
@@ -402,10 +402,10 @@ export default function SharedCoursesPage() {
                                 className="flex items-center justify-between p-3 rounded-xl border card shadow-inner group/item hover:border-red-600/30 transition-colors"
                               >
                                 <div className="flex items-center gap-3">
-                                  <div className="w-9 h-9 rounded-lg card flex items-center justify-center border text-xs font-bold text-gray-300 group-hover/item:text-red-400 group-hover/item:bg-red-600/10 transition-colors">
+                                  <div className="w-9 h-9 rounded-lg card flex items-center justify-center border text-xs font-bold text-muted group-hover/item:text-red-400 group-hover/item:bg-red-600/10 transition-colors">
                                     {program.short_code}
                                   </div>
-                                  <p className="text-sm font-medium text-gray-200 line-clamp-1" title={program.name}>{program.name}</p>
+                                  <p className="text-sm font-medium text-muted line-clamp-1" title={program.name}>{program.name}</p>
                                 </div>
                                 <button
                                   onClick={() => removeFromGroup(programCourseId)}
@@ -437,8 +437,8 @@ export default function SharedCoursesPage() {
                 <Sparkles className="w-6 h-6 text-red-400" />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white leading-tight">Potansiyel Eşleşmeler</h3>
-                <p className="text-sm text-gray-400 mt-2">
+                <h3 className="text-lg font-bold text-default leading-tight" style={{ color: 'var(--text)' }}>Potansiyel Eşleşmeler</h3>
+                <p className="text-sm text-muted mt-2">
                   Birden fazla programda aynı koda sahip olan ancak henüz havuza atılmamış (ortaklaştırılmamış) potansiyel dersleri otomatik taradık.
                 </p>
               </div>
@@ -467,7 +467,7 @@ export default function SharedCoursesPage() {
                       className="w-full relative overflow-hidden flex items-center justify-between p-3 rounded-xl border border-red-600/10 card hover:bg-red-600/10 hover:border-red-600/30 transition-all group/btn text-left"
                     >
                       <div className="flex flex-col">
-                        <span className="text-sm font-bold text-gray-200 group-hover/btn:text-white transition-colors">{c.code}</span>
+                        <span className="text-sm font-bold text-muted group-hover/btn:text-default transition-colors" style={{ color: 'var(--text)' }}>{c.code}</span>
                         <span className="text-xs text-gray-500 line-clamp-1">{c.name}</span>
                       </div>
                       <div className="flex items-center gap-2">
@@ -490,8 +490,8 @@ export default function SharedCoursesPage() {
           
           <div className="card p-5 rounded-2xl border card">
              <div className="flex gap-3">
-               <Info className="w-5 h-5 text-gray-400 shrink-0 mt-0.5" />
-               <p className="text-xs text-gray-400 leading-relaxed">
+               <Info className="w-5 h-5 text-muted shrink-0 mt-0.5" />
+               <p className="text-xs text-muted leading-relaxed">
                  Ortak ders grubuna eklenen programların hepsine, ders ataması panelinde ("Otomatik Seçeneklerde") <strong>hepsi için geçerli olacak şekilde</strong> atanır. Eğer sadece bir programı özel bir durumda yönetmek istiyorsanız havuzdan çıkarınız.
                </p>
              </div>
@@ -506,7 +506,7 @@ export default function SharedCoursesPage() {
           
           <div className="card w-full max-w-lg card rounded-2xl border shadow-2xl overflow-hidden relative z-10 animate-in zoom-in-95 duration-200 flex flex-col max-h-[90vh]">
             <div className="p-6 border-b card flex items-center justify-between shrink-0">
-              <h3 className="font-bold text-white text-lg flex items-center gap-2">
+              <h3 className="font-bold text-default text-lg flex items-center gap-2">
                 <div className="w-8 h-8 rounded-lg bg-red-600/20 flex items-center justify-center border border-red-600/30">
                   <Link2 className="w-4 h-4 text-red-400" />
                 </div>
@@ -515,7 +515,7 @@ export default function SharedCoursesPage() {
               <button 
                 onClick={() => setShowModal(false)}
                 disabled={saving}
-                className="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:text-white hover:card transition-colors"
+                className="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:text-default hover:card transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -524,11 +524,11 @@ export default function SharedCoursesPage() {
             <div className="p-6 overflow-y-auto space-y-6">
               {/* Course Select */}
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-wider text-gray-400 ml-1">Kataloğdan Ders Seçin</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-muted ml-1">Kataloğdan Ders Seçin</label>
                 <div className="relative">
                   <BookOpen className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
                   <select
-                    className="w-full bg-gray-950/50 border rounded-xl pl-10 pr-4 py-3 text-sm text-white focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-colors appearance-none cursor-pointer"
+                    className="w-full bg-gray-950/50 border rounded-xl pl-10 pr-4 py-3 text-sm text-default focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-colors appearance-none cursor-pointer" style={{ color: 'var(--text)' }}
                     value={selectedCourse?.id || ''}
                     disabled={saving}
                     onChange={(e) => {
@@ -561,7 +561,7 @@ export default function SharedCoursesPage() {
               {selectedCourse && availablePrograms.length >= 2 && (
                 <div className="space-y-2 border-t pt-6">
                   <div className="flex items-center justify-between mb-3 px-1">
-                    <label className="text-xs font-bold uppercase tracking-wider text-gray-400">
+                    <label className="text-xs font-bold uppercase tracking-wider text-muted">
                       Havuza Eklenecek Programlar <span className="lowercase font-medium text-gray-500">(En az 2)</span>
                     </label>
                     <button
@@ -602,12 +602,12 @@ export default function SharedCoursesPage() {
                                 "w-9 h-9 rounded-lg flex items-center justify-center text-xs font-bold border transition-colors",
                                 selected 
                                   ? "bg-red-600/20 text-red-400 border-red-600/30" 
-                                  : "card text-gray-400 group-hover:bg-gray-700"
+                                  : "card text-muted group-hover:bg-gray-700"
                               )}
                             >
                               {p.short_code}
                             </div>
-                            <span className={clsx("text-sm font-medium transition-colors", selected ? "text-white" : "text-gray-300")}>
+                            <span className={clsx("text-sm font-medium transition-colors", selected ? "text-white" : "text-muted")}>
                               {p.name}
                             </span>
                           </div>
@@ -624,7 +624,7 @@ export default function SharedCoursesPage() {
                   
                   {/* Selection Status */}
                   <div className="flex items-center justify-between mt-3 text-xs card px-4 py-2 rounded-lg border">
-                     <span className="text-gray-400">Şu ana kadar seçilen:</span>
+                     <span className="text-muted">Şu ana kadar seçilen:</span>
                      <span className={clsx(
                        "font-bold",
                        selectedPrograms.length >= 2 ? "text-emerald-400" : "text-orange-400"
@@ -640,14 +640,14 @@ export default function SharedCoursesPage() {
               <button
                 onClick={() => setShowModal(false)}
                 disabled={saving}
-                className="flex-1 py-3 px-4 rounded-xl text-sm font-bold text-gray-300 card hover:bg-gray-700 transition-colors"
+                className="flex-1 py-3 px-4 rounded-xl text-sm font-bold text-muted card hover:bg-gray-700 transition-colors"
               >
                 Vazgeç
               </button>
               <button
                 onClick={createSharedGroup}
                 disabled={saving || !selectedCourse || selectedPrograms.length < 2}
-                className="flex-1 btn-glow py-3 px-4 rounded-xl text-sm font-bold text-white bg-cyan-600 hover:brightness-110 transition-all shadow-lg disabled:opacity-50 disabled:shadow-none flex items-center justify-center gap-2"
+                className="flex-1 btn-glow py-3 px-4 rounded-xl text-sm font-bold text-default bg-cyan-600 hover:brightness-110 transition-all shadow-lg disabled:opacity-50 disabled:shadow-none flex items-center justify-center gap-2" style={{ color: 'var(--text)' }}
               >
                 {saving ? (
                   <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>

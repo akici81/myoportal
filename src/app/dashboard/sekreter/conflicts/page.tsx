@@ -355,9 +355,9 @@ export default function ConflictsPage() {
             )}>
               Çakışma ve İhlal Raporu
             </h1>
-            <p className="mt-2 text-gray-400 leading-relaxed">
+            <p className="mt-2 text-muted leading-relaxed">
               Ders programındaki hoca, derslik, program çakışmaları ve kapasite aşımları listelenir. Program onaylanmadan önce <strong className={clsx(
-                  stats.errors > 0 ? "text-red-400" : "text-gray-300"
+                  stats.errors > 0 ? "text-red-400" : "text-muted"
                 )}>kritik hataların (KIRMIZI)</strong> mutlaka çözülmesi gerekmektedir.
             </p>
           </div>
@@ -380,12 +380,12 @@ export default function ConflictsPage() {
       {/* Summary Scoreboard */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="card p-6 rounded-2xl border flex items-center gap-4 bg-gradient-to-br from-gray-800/20 to-transparent">
-          <div className="w-14 h-14 rounded-full card flex items-center justify-center border text-gray-400 shadow-inner">
+          <div className="w-14 h-14 rounded-full card flex items-center justify-center border text-muted shadow-inner">
             <Layers className="w-7 h-7" />
           </div>
           <div>
             <p className="text-gray-500 text-xs font-semibold uppercase tracking-wider">Bulgu Toplamı</p>
-            <p className="text-3xl font-black text-white mt-1">{stats.total}</p>
+            <p className="text-3xl font-black text-default mt-1" style={{ color: 'var(--text)' }}>{stats.total}</p>
           </div>
         </div>
 
@@ -407,7 +407,7 @@ export default function ConflictsPage() {
               "text-xs font-semibold uppercase tracking-wider",
               stats.errors > 0 ? "text-red-400/80" : "text-gray-500"
             )}>Kritik Çakışmalar</p>
-            <p className={clsx("text-3xl font-black mt-1", stats.errors > 0 ? "text-red-400" : "text-gray-400")}>{stats.errors}</p>
+            <p className={clsx("text-3xl font-black mt-1", stats.errors > 0 ? "text-red-400" : "text-muted")}>{stats.errors}</p>
           </div>
         </div>
 
@@ -428,7 +428,7 @@ export default function ConflictsPage() {
               "text-xs font-semibold uppercase tracking-wider",
               stats.warnings > 0 ? "text-amber-400/80" : "text-gray-500"
             )}>Kapasite Uyarıları</p>
-            <p className={clsx("text-3xl font-black mt-1", stats.warnings > 0 ? "text-amber-400" : "text-gray-400")}>{stats.warnings}</p>
+            <p className={clsx("text-3xl font-black mt-1", stats.warnings > 0 ? "text-amber-400" : "text-muted")}>{stats.warnings}</p>
           </div>
         </div>
       </div>
@@ -436,14 +436,14 @@ export default function ConflictsPage() {
       {/* Main Content */}
       <div className="card rounded-2xl border overflow-hidden card">
         <div className="p-6 border-b flex flex-col sm:flex-row items-center justify-between gap-4 card">
-           <h3 className="font-bold text-white text-lg flex items-center gap-2">
-             <ShieldAlert className="w-5 h-5 text-gray-400" />
+           <h3 className="font-bold text-default text-lg flex items-center gap-2">
+             <ShieldAlert className="w-5 h-5 text-muted" />
              Ayrıntılı Bulgu Listesi
            </h3>
            <div className="relative w-full sm:w-80">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
               <input
-                className="w-full bg-gray-950/50 border rounded-full pl-10 pr-4 py-2 text-sm text-white focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-colors shadow-inner placeholder:text-gray-600"
+                className="w-full bg-gray-950/50 border rounded-full pl-10 pr-4 py-2 text-sm text-default focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-colors shadow-inner placeholder:text-gray-600"
                 placeholder="Kod, gün veya hoca ara..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -465,15 +465,15 @@ export default function ConflictsPage() {
                 <div className="w-24 h-24 bg-emerald-500/10 rounded-full flex items-center justify-center border-4 border-emerald-500/20 mb-6 shadow-[0_0_30px_rgba(16,185,129,0.2)]">
                   <CheckCircle2 className="w-12 h-12 text-emerald-400" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-2">Tertemiz Ders Programı!</h3>
-                <p className="text-gray-400 max-w-md mx-auto">
+                <h3 className="text-2xl font-bold text-default mb-2" style={{ color: 'var(--text)' }}>Tertemiz Ders Programı!</h3>
+                <p className="text-muted max-w-md mx-auto">
                   Sistem herhangi bir derslik, hoca, program çakışması veya kapasite sorunu bulamadı. Ders programınız yayınlanmaya hazır.
                 </p>
              </div>
           ) : filteredConflicts.length === 0 ? (
              <div className="p-16 flex flex-col items-center justify-center text-center">
                 <Search className="w-12 h-12 text-gray-600 mb-4" />
-                <p className="text-gray-400">Aramanıza uygun bir bulgu bulunamadı.</p>
+                <p className="text-muted">Aramanıza uygun bir bulgu bulunamadı.</p>
              </div>
           ) : (
              <div className="divide-y divide-gray-800/60">
@@ -504,17 +504,17 @@ export default function ConflictsPage() {
                          )}>
                            {isError ? 'KRİTİK HATA' : 'UYARI'}
                          </span>
-                         <h4 className="text-base font-bold text-white group-hover:text-gray-200 transition-colors">
+                         <h4 className="text-base font-bold text-default group-hover:text-muted transition-colors" style={{ color: 'var(--text)' }}>
                            {conflict.message}
                          </h4>
                        </div>
                        
-                       <p className="text-sm text-gray-400 leading-relaxed mb-4">
+                       <p className="text-sm text-muted leading-relaxed mb-4">
                          {conflict.details}
                        </p>
                        
                        <div className="flex flex-wrap items-center gap-2">
-                         <span className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg bg-gray-950/60 border text-gray-300">
+                         <span className="flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg bg-gray-950/60 border text-muted">
                            <Clock className="w-3.5 h-3.5 text-gray-500" />
                            {DAYS[conflict.day]} · {conflict.time}
                          </span>

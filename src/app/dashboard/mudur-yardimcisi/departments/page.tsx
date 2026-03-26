@@ -26,10 +26,10 @@ export default async function MYDepartmentsPage() {
           <GraduationCap className="w-48 h-48 text-rose-400" />
         </div>
         <div className="relative z-10">
-          <h1 className="text-3xl font-bold text-white">
+          <h1 className="text-3xl font-bold text-default" style={{ color: 'var(--text)' }}>
             Akademik Bölümler
           </h1>
-          <p className="mt-2 text-gray-400">MYO bünyesindeki tüm bölümler, bölüm başkanları ve program dağılımları</p>
+          <p className="mt-2 text-muted">MYO bünyesindeki tüm bölümler, bölüm başkanları ve program dağılımları</p>
         </div>
       </div>
 
@@ -43,7 +43,7 @@ export default async function MYDepartmentsPage() {
                   {d.short_code}
                 </div>
                 <div>
-                  <h3 className="font-bold text-white">{d.name}</h3>
+                  <h3 className="font-bold text-default">{d.name}</h3>
                   <p className="text-xs text-gray-500 flex items-center gap-1 mt-1">
                     <GraduationCap className="w-3 h-3" /> Başkan: {(d.head as any)?.full_name || <span className="text-red-400/80 italic">Atanmamış</span>}
                   </p>
@@ -52,13 +52,13 @@ export default async function MYDepartmentsPage() {
               {deptProgs.length > 0 && (
                 <div className="flex flex-wrap gap-1.5 mb-3">
                   {deptProgs.map(p => (
-                    <span key={p.id} className="text-[11px] px-2 py-0.5 rounded card/60 text-gray-300 border flex items-center gap-1">
+                    <span key={p.id} className="text-[11px] px-2 py-0.5 rounded card/60 text-muted border flex items-center gap-1">
                       <BookOpen className="w-3 h-3 text-cyan-500" /> {p.name}
                     </span>
                   ))}
                 </div>
               )}
-              <div className="mt-auto pt-3 border-t flex items-center gap-4 text-xs text-gray-400">
+              <div className="mt-auto pt-3 border-t flex items-center gap-4 text-xs text-muted">
                 <span className="flex items-center gap-1"><Users className="w-3.5 h-3.5" /> {instrCounts[d.id] ?? 0} Eğitmen</span>
                 <span className="flex items-center gap-1"><BookOpen className="w-3.5 h-3.5" /> {deptProgs.length} Program</span>
               </div>

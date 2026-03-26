@@ -45,10 +45,10 @@ export default function DepartmentsReadOnlyPage() {
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+            <h1 className="text-3xl font-bold text-default flex items-center gap-3" style={{ color: 'var(--text)' }}>
               Bölümler Kataloğu
             </h1>
-            <p className="mt-2 text-gray-400 max-w-xl">
+            <p className="mt-2 text-muted max-w-xl">
               Üniversitedeki akademik bölümleri, aktif programları ve öğretim görevlisi yüklerini görüntüleyin.
             </p>
           </div>
@@ -59,7 +59,7 @@ export default function DepartmentsReadOnlyPage() {
         <div className="relative w-full sm:w-80">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
           <input 
-            className="w-full card border rounded-lg pl-10 pr-4 py-2.5 text-sm text-gray-200 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500/30 focus:border-red-500/50 transition-all font-medium" 
+            className="w-full card border rounded-lg pl-10 pr-4 py-2.5 text-sm text-muted placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500/30 focus:border-red-500/50 transition-all font-medium" 
             placeholder="Bölüm adı veya kısa kod ara..." 
             value={search} 
             onChange={e => setSearch(e.target.value)} 
@@ -70,10 +70,10 @@ export default function DepartmentsReadOnlyPage() {
             <div className={`w-10 h-5 flex items-center rounded-full p-1 transition-colors ${showInactive ? 'bg-red-500/50' : 'bg-gray-700'}`}>
               <div className={`bg-white w-3 h-3 rounded-full shadow-md transform duration-300 ease-in-out ${showInactive ? 'translate-x-5' : ''}`}></div>
             </div>
-            <span className="text-gray-400 font-medium group-hover:text-gray-300 transition-colors">Pasifleri Göster</span>
+            <span className="text-muted font-medium group-hover:text-muted transition-colors">Pasifleri Göster</span>
           </label>
           <div className="hidden sm:block w-px h-6 card"></div>
-          <div className="text-gray-400 font-medium">Toplam <span className="text-white">{filtered.length}</span> Bölüm</div>
+          <div className="text-muted font-medium">Toplam <span className="text-default">{filtered.length}</span> Bölüm</div>
         </div>
       </div>
 
@@ -96,7 +96,7 @@ export default function DepartmentsReadOnlyPage() {
           <div className="w-16 h-16 card/50 rounded-full flex items-center justify-center mb-4">
             <Building2 className="w-8 h-8 text-gray-500" />
           </div>
-          <h3 className="text-lg font-medium text-white mb-1">Bölüm Bulunamadı</h3>
+          <h3 className="text-lg font-medium text-default mb-1">Bölüm Bulunamadı</h3>
           <p className="text-gray-500 text-sm">Arama kriterlerinize uyan kayıt yok.</p>
         </div>
       ) : (
@@ -117,7 +117,7 @@ export default function DepartmentsReadOnlyPage() {
                     {d.short_code}
                   </div>
                   <div className="flex-1 min-w-0 pt-1">
-                    <h3 className="font-bold text-gray-100 text-base leading-tight truncate group-hover:text-white transition-colors" title={d.name}>
+                    <h3 className="font-bold text-muted text-base leading-tight truncate group-hover:text-default transition-colors" style={{ color: 'var(--text)' }} title={d.name}>
                       {d.name}
                     </h3>
                     <div className="text-xs font-medium text-gray-500 mt-1.5 flex items-center gap-1.5">
@@ -132,7 +132,7 @@ export default function DepartmentsReadOnlyPage() {
                   {deptPrograms.length > 0 ? (
                     <div className="flex flex-wrap gap-2 mb-4">
                       {deptPrograms.slice(0, 3).map(p => (
-                        <span key={p.id} className="inline-flex items-center gap-1.5 text-[11px] px-2.5 py-1 rounded card/60 text-gray-300 border">
+                        <span key={p.id} className="inline-flex items-center gap-1.5 text-[11px] px-2.5 py-1 rounded card/60 text-muted border">
                           <BookOpen className="w-3 h-3 text-cyan-500" />
                           {p.name}
                         </span>
@@ -151,7 +151,7 @@ export default function DepartmentsReadOnlyPage() {
                 {/* Footer Stats */}
                 <div className="pt-4 mt-auto border-t flex items-center justify-between">
                   <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-1.5 text-xs font-medium text-gray-400" title="Öğretim Elemanları">
+                    <div className="flex items-center gap-1.5 text-xs font-medium text-muted" title="Öğretim Elemanları">
                       <Users className="w-4 h-4 text-gray-500" />
                       {instrCounts[d.id] ?? 0} Eğitmen
                     </div>

@@ -99,10 +99,10 @@ export default function InstructorSchedulePage() {
         
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="max-w-2xl">
-            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+            <h1 className="text-3xl font-bold text-default flex items-center gap-3" style={{ color: 'var(--text)' }}>
               Ders Programım
             </h1>
-            <p className="mt-2 text-gray-400 leading-relaxed text-lg">
+            <p className="mt-2 text-muted leading-relaxed text-lg">
               {name}
             </p>
             <div className="flex items-center gap-3 mt-4">
@@ -147,7 +147,7 @@ export default function InstructorSchedulePage() {
         ) : entries.length === 0 ? (
           <div className="card border card rounded-2xl p-16 flex flex-col items-center justify-center text-center">
             <BookOpen className="w-16 h-16 mx-auto mb-4 text-gray-700" />
-            <p className="text-xl font-bold text-white mb-2">Atanmış Dersiniz Bulunmuyor</p>
+            <p className="text-xl font-bold text-default mb-2" style={{ color: 'var(--text)' }}>Atanmış Dersiniz Bulunmuyor</p>
             <p className="text-gray-500 max-w-md">
               {periodLabel} için üzerinize kayıtlı herhangi bir ders tablosu ataması bulunamadı. Bölüm başkanınız ders dağılımını tamamladığında burada görüntülenecektir.
             </p>
@@ -158,8 +158,8 @@ export default function InstructorSchedulePage() {
             {programSet.size > 0 && (
               <div className="card p-6 rounded-2xl border bg-cyan-600">
                 <div className="flex items-center gap-2 mb-4">
-                  <GraduationCap className="w-5 h-5 text-gray-400" />
-                  <p className="text-sm font-bold uppercase tracking-widest text-gray-300">
+                  <GraduationCap className="w-5 h-5 text-muted" />
+                  <p className="text-sm font-bold uppercase tracking-widest text-muted">
                     Ders Verilen Programlar
                   </p>
                 </div>

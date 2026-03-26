@@ -203,7 +203,7 @@ export default function StudentEnrollmentsPage() {
           <div className="absolute -inset-4 bg-rose-500/20 rounded-full blur-xl animate-pulse"></div>
           <GraduationCap className="w-16 h-16 text-rose-400 relative drop-shadow-[0_0_15px_rgba(244,63,94,0.3)] animate-bounce" />
         </div>
-        <p className="mt-6 text-gray-400 font-medium">Öğrenci kapasiteleri yükleniyor...</p>
+        <p className="mt-6 text-muted font-medium">Öğrenci kapasiteleri yükleniyor...</p>
       </div>
     )
   }
@@ -217,10 +217,10 @@ export default function StudentEnrollmentsPage() {
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+            <h1 className="text-3xl font-bold text-default flex items-center gap-3" style={{ color: 'var(--text)' }}>
               Öğrenci Sayıları
             </h1>
-            <p className="mt-2 text-gray-400 max-w-xl">
+            <p className="mt-2 text-muted max-w-xl">
               Bölümünüzdeki tüm programlar için birinci ve ikinci sınıf düzeyinde öngörülen (tahmini) öğrenci sayılarını belirleyin.
             </p>
           </div>
@@ -264,13 +264,13 @@ export default function StudentEnrollmentsPage() {
              <div className="w-8 h-8 rounded-lg card flex items-center justify-center border">
                <Calendar className="w-4 h-4 text-rose-400" />
              </div>
-             <p className="text-sm font-medium text-gray-300">Aktif Dönem</p>
+             <p className="text-sm font-medium text-muted">Aktif Dönem</p>
           </div>
           
           <select
             value={selectedPeriod}
             onChange={(e) => setSelectedPeriod(e.target.value)}
-            className="w-full card border rounded-lg px-3 py-2.5 text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-rose-500/30 focus:border-rose-500/50 transition-all appearance-none cursor-pointer shadow-inner"
+            className="w-full card border rounded-lg px-3 py-2.5 text-sm text-muted focus:outline-none focus:ring-2 focus:ring-rose-500/30 focus:border-rose-500/50 transition-all appearance-none cursor-pointer shadow-inner"
           >
             {periods.map((p) => (
               <option key={p.id} value={p.id}>
@@ -292,7 +292,7 @@ export default function StudentEnrollmentsPage() {
       </div>
 
       {/* Programs Grid */}
-      <h3 className="text-lg font-bold text-white flex items-center gap-2 px-1">
+      <h3 className="text-lg font-bold text-default flex items-center gap-2 px-1" style={{ color: 'var(--text)' }}>
         <Layers className="w-5 h-5 text-rose-400" />
         Bölüm Programları Kapasiteleri
       </h3>
@@ -316,10 +316,10 @@ export default function StudentEnrollmentsPage() {
                 <div className="flex items-start justify-between mb-5">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 rounded-xl card/80 border flex items-center justify-center shadow-inner group-hover:bg-rose-500/10 group-hover:border-rose-500/30 transition-colors">
-                      <GraduationCap className="w-5 h-5 text-gray-400 group-hover:text-rose-400 transition-colors" />
+                      <GraduationCap className="w-5 h-5 text-muted group-hover:text-rose-400 transition-colors" />
                     </div>
                     <div>
-                      <h4 className="font-bold text-white text-base tracking-tight">{program.short_code}</h4>
+                      <h4 className="font-bold text-default text-base tracking-tight">{program.short_code}</h4>
                       <div className="flex items-center gap-1 mt-0.5 opacity-70">
                         <span className="text-[10px] font-semibold uppercase tracking-wider text-rose-300">Toplam: {total}</span>
                       </div>
@@ -327,7 +327,7 @@ export default function StudentEnrollmentsPage() {
                   </div>
                 </div>
 
-                <p className="text-xs text-gray-400 mb-5 line-clamp-2 leading-relaxed" title={program.name}>
+                <p className="text-xs text-muted mb-5 line-clamp-2 leading-relaxed" title={program.name}>
                   {program.name}
                 </p>
 
@@ -336,7 +336,7 @@ export default function StudentEnrollmentsPage() {
                   
                   {/* Sınıf 1 */}
                   <div className="flex items-center gap-2">
-                    <div className="card/80 text-gray-400 text-xs font-bold px-2 py-1.5 rounded border w-16 text-center shadow-inner">
+                    <div className="card/80 text-muted text-xs font-bold px-2 py-1.5 rounded border w-16 text-center shadow-inner">
                       1. Sınıf
                     </div>
                     <div className="relative flex-1">
@@ -361,7 +361,7 @@ export default function StudentEnrollmentsPage() {
 
                   {/* Sınıf 2 */}
                   <div className="flex items-center gap-2">
-                    <div className="card/80 text-gray-400 text-xs font-bold px-2 py-1.5 rounded border w-16 text-center shadow-inner">
+                    <div className="card/80 text-muted text-xs font-bold px-2 py-1.5 rounded border w-16 text-center shadow-inner">
                       2. Sınıf
                     </div>
                     <div className="relative flex-1">
@@ -396,8 +396,8 @@ export default function StudentEnrollmentsPage() {
           <div className="w-20 h-20 card/60 rounded-full flex items-center justify-center mb-6 shadow-inner ring-1 ring-white/5">
             <GraduationCap className="w-10 h-10 text-gray-500" />
           </div>
-          <h3 className="text-xl font-bold text-white mb-2">Program Bulunamadı</h3>
-          <p className="text-gray-400 max-w-sm">
+          <h3 className="text-xl font-bold text-default mb-2" style={{ color: 'var(--text)' }}>Program Bulunamadı</h3>
+          <p className="text-muted max-w-sm">
             Bu bölüme ait sistemde tanımlı ve aktif durumda herhangi bir program gözükmüyor. Sistem yöneticisiyle iletişime geçebilirsiniz.
           </p>
         </div>
@@ -411,13 +411,13 @@ export default function StudentEnrollmentsPage() {
               <span className="font-bold text-rose-400">{totalChanges}</span>
             </div>
             <div>
-              <p className="text-[13px] font-bold text-white leading-tight">Bekleyen Değişiklik</p>
-              <p className="text-[11px] text-gray-400">Öğrenci kapasiteleri güncellenecek</p>
+              <p className="text-[13px] font-bold text-default leading-tight" style={{ color: 'var(--text)' }}>Bekleyen Değişiklik</p>
+              <p className="text-[11px] text-muted">Öğrenci kapasiteleri güncellenecek</p>
             </div>
             <button
               onClick={saveChanges}
               disabled={saving}
-              className="ml-auto btn-glow bg-cyan-600 py-2 px-5 rounded-full text-xs font-bold text-white shadow-lg flex items-center gap-2 hover:brightness-110 disabled:opacity-50"
+              className="ml-auto btn-glow bg-cyan-600 py-2 px-5 rounded-full text-xs font-bold text-default shadow-lg flex items-center gap-2 hover:brightness-110 disabled:opacity-50" style={{ color: 'var(--text)' }}
             >
               <Save className="w-3.5 h-3.5" />
               {saving ? 'Kayıt...' : 'Uygula'}

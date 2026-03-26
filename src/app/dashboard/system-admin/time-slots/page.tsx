@@ -76,8 +76,8 @@ export default function TimeSlotsPage() {
         <div className="flex items-center gap-3">
           <Clock className="w-5 h-5 text-cyan-400" />
           <div>
-            <h3 className="font-bold text-white">Toplam Slot: {slots.length}</h3>
-            <p className="text-xs text-gray-400">
+            <h3 className="font-bold text-default">Toplam Slot: {slots.length}</h3>
+            <p className="text-xs text-muted">
               {slots.filter(s => s.is_uzem_slot).length} UZEM, {slots.filter(s => !s.is_uzem_slot).length} Normal
             </p>
           </div>
@@ -120,8 +120,8 @@ export default function TimeSlotsPage() {
       {slots.length === 0 && (
         <div className="card-hover border-dashed flex flex-col items-center justify-center py-32 text-center">
           <AlertTriangle className="w-16 h-16 text-amber-500 mb-4" />
-          <h3 className="text-xl font-black text-white mb-2">Ders Saatleri Tanımlanmamış</h3>
-          <p className="text-gray-400 max-w-md mb-6">
+          <h3 className="text-xl font-black text-default mb-2" style={{ color: 'var(--text)' }}>Ders Saatleri Tanımlanmamış</h3>
+          <p className="text-muted max-w-md mb-6">
             Sisteminizde henüz ders saati tanımlanmamış. Otomatik oluştur butonuna basarak standart MYO ders saatlerini (08:00-20:50) ekleyebilirsiniz.
           </p>
         </div>
@@ -142,11 +142,11 @@ export default function TimeSlotsPage() {
 
                 <div className="flex-1">
                   <div className="flex items-center gap-3">
-                    <span className="font-mono text-lg font-bold text-white">
+                    <span className="font-mono text-lg font-bold text-default" style={{ color: 'var(--text)' }}>
                       {slot.start_time.slice(0, 5)}
                     </span>
                     <span className="text-gray-600">→</span>
-                    <span className="font-mono text-lg font-bold text-white">
+                    <span className="font-mono text-lg font-bold text-default" style={{ color: 'var(--text)' }}>
                       {slot.end_time.slice(0, 5)}
                     </span>
 

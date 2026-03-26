@@ -21,8 +21,8 @@ export default async function InstructorLeavesPage() {
     return (
       <div className="flex flex-col items-center justify-center p-8 text-center animate-in">
         <AlertTriangle className="h-12 w-12 text-rose-500/50 mb-4" />
-        <h2 className="text-xl font-semibold text-white">Eğitmen Profili Bulunamadı</h2>
-        <p className="mt-2 text-gray-400">İzin talep edebilmek için sistemde eğitmen olarak kayıtlı olmalısınız.</p>
+        <h2 className="text-xl font-semibold text-default" style={{ color: 'var(--text)' }}>Eğitmen Profili Bulunamadı</h2>
+        <p className="mt-2 text-muted">İzin talep edebilmek için sistemde eğitmen olarak kayıtlı olmalısınız.</p>
         <Link href="/dashboard/instructor" className="mt-6 text-cyan-400 hover:text-cyan-300 flex items-center gap-2">
           <ArrowLeft className="h-4 w-4" /> Ana Sayfaya Dön
         </Link>
@@ -63,10 +63,10 @@ export default async function InstructorLeavesPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <Link href="/dashboard/instructor" className="inline-flex items-center text-sm text-gray-400 hover:text-white mb-2 transition-colors">
+          <Link href="/dashboard/instructor" className="inline-flex items-center text-sm text-muted hover:text-default mb-2 transition-colors">
             <ArrowLeft className="mr-2 h-4 w-4" /> Dashboard'a Dön
           </Link>
-          <h1 className="text-2xl font-bold text-white flex items-center gap-3">
+          <h1 className="text-2xl font-bold text-default flex items-center gap-3" style={{ color: 'var(--text)' }}>
             İzin Taleplerim
           </h1>
           <p className="mt-1 text-sm text-gray-500">Geçmiş izin hareketlerinizi görüntüleyin ve yeni talep oluşturun.</p>
@@ -74,7 +74,7 @@ export default async function InstructorLeavesPage() {
         
         <Link 
           href="/dashboard/instructor/leaves/new"
-          className="inline-flex items-center justify-center rounded-xl bg-cyan-600 px-4 py-2 text-sm font-medium text-white shadow-lg transition-all hover:brightness-110 hover:shadow-cyan-500/30 active:scale-95"
+          className="inline-flex items-center justify-center rounded-xl bg-cyan-600 px-4 py-2 text-sm font-medium text-default shadow-lg transition-all hover:brightness-110 hover:shadow-cyan-500/30 active:scale-95" style={{ color: 'var(--text)' }}
         >
           <Plus className="mr-2 h-4 w-4" /> Yeni İzin Talebi
         </Link>
@@ -82,7 +82,7 @@ export default async function InstructorLeavesPage() {
 
       <div className="rounded-2xl border border-white/5 card/30 overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm text-gray-300">
+          <table className="w-full text-left text-sm text-muted">
             <thead className="card text-xs uppercase text-gray-500">
               <tr>
                 <th className="px-6 py-4 font-medium">İzin Türü</th>
@@ -104,7 +104,7 @@ export default async function InstructorLeavesPage() {
               ) : (
                 leaves.map((leave) => (
                   <tr key={leave.id} className="transition-colors hover:bg-white/[0.02]">
-                    <td className="px-6 py-4 font-medium text-white">
+                    <td className="px-6 py-4 font-medium text-default">
                       {getLeaveTypeStr(leave.leave_type)}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">

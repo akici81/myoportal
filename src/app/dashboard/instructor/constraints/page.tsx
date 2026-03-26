@@ -148,7 +148,7 @@ export default function InstructorConstraintsPage() {
 
   if (loading) {
      return (
-        <div className="flex items-center justify-center p-20 animate-pulse text-gray-400">
+        <div className="flex items-center justify-center p-20 animate-pulse text-muted">
            Veriler yükleniyor...
         </div>
      )
@@ -184,17 +184,17 @@ export default function InstructorConstraintsPage() {
         
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="max-w-2xl">
-            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+            <h1 className="text-3xl font-bold text-default flex items-center gap-3" style={{ color: 'var(--text)' }}>
               Çalışma Saatlerim & Kısıtlarım
             </h1>
-            <p className="mt-2 text-gray-400 leading-relaxed text-sm">
+            <p className="mt-2 text-muted leading-relaxed text-sm">
               Bu panel üzerinden, haftalık ders programınız hazırlanırken algoritmanın ve bölüm idaresinin dikkate alması için görev yapılamayacak zamanları ("kısıtları") sisteme işleyebilirsiniz.
             </p>
             <div className="flex items-center gap-3 mt-4">
                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-bold">
                  {period.academic_year} / {period.semester}. Dönem
                </span>
-               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full card border text-gray-300 text-xs font-bold">
+               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full card border text-muted text-xs font-bold">
                  Talep Edilen: {constraints.length}
                </span>
             </div>
@@ -207,7 +207,7 @@ export default function InstructorConstraintsPage() {
                  setFormReason('')
                  setIsModalOpen(true)
                }}
-               className="btn-glow inline-flex border border-amber-500/50 items-center gap-2 rounded-xl bg-cyan-600 px-6 py-3 font-semibold text-white transition-all hover:scale-105"
+               className="btn-glow inline-flex border border-amber-500/50 items-center gap-2 rounded-xl bg-cyan-600 px-6 py-3 font-semibold text-default transition-all hover:scale-105"
              >
                <Plus className="w-5 h-5" />
                Yeni Kısıt Ekle
@@ -221,7 +221,7 @@ export default function InstructorConstraintsPage() {
         {constraints.length === 0 ? (
            <div className="col-span-full border card border-dashed rounded-2xl flex flex-col items-center justify-center p-16 text-center">
               <ShieldCheck className="w-12 h-12 text-gray-600 mb-3" />
-              <p className="text-lg text-gray-300 font-bold">Kısıtlama Yok</p>
+              <p className="text-lg text-muted font-bold">Kısıtlama Yok</p>
               <p className="text-gray-500 text-sm mt-1 max-w-sm">Haftanın her saati ve gününde ders programı algoritması için müsaitsiniz.</p>
            </div>
         ) : (
@@ -249,7 +249,7 @@ export default function InstructorConstraintsPage() {
                           )}
                           <button
                             onClick={() => handleDelete(c.id, c.is_approved)}
-                            className="p-1.5 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-white transition-colors border border-red-500/20"
+                            className="p-1.5 rounded-lg bg-red-500/10 text-red-400 hover:bg-red-500 hover:text-default transition-colors border border-red-500/20"
                             title="İptal Et"
                           >
                             <Trash2 className="w-4 h-4" />
@@ -257,15 +257,15 @@ export default function InstructorConstraintsPage() {
                         </div>
                      </div>
                      
-                     <h3 className="font-bold text-gray-200 text-sm mb-1">{typeDef?.label || c.constraint_type}</h3>
-                     <p className="text-white font-medium text-lg leading-snug break-words">
+                     <h3 className="font-bold text-muted text-sm mb-1">{typeDef?.label || c.constraint_type}</h3>
+                     <p className="text-default font-medium text-lg leading-snug break-words">
                         {formatValue(c.constraint_type, c.value)}
                      </p>
                      
                      {c.reason && (
                         <div className="mt-4 p-3 rounded-lg bg-gray-950 border">
                            <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-widest mb-1">Açıklama / Sebep</p>
-                           <p className="text-xs text-gray-300">{c.reason}</p>
+                           <p className="text-xs text-muted">{c.reason}</p>
                         </div>
                      )}
                   </div>
@@ -280,17 +280,17 @@ export default function InstructorConstraintsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 animate-in fade-in duration-200">
           <div className="bg-[#0f111a] border rounded-2xl w-full max-w-lg shadow-2xl flex flex-col max-h-[90vh]">
             <div className="p-6 border-b">
-              <h3 className="text-xl font-bold text-white">Yeni Kısıt Talebi</h3>
-              <p className="text-sm text-gray-400">Algoritmanın dikkate almasını istediğiniz özel durumu belirtin.</p>
+              <h3 className="text-xl font-bold text-default" style={{ color: 'var(--text)' }}>Yeni Kısıt Talebi</h3>
+              <p className="text-sm text-muted">Algoritmanın dikkate almasını istediğiniz özel durumu belirtin.</p>
             </div>
             
             <div className="p-6 overflow-y-auto custom-scrollbar flex-1">
               <form id="constraint-form" onSubmit={handleSave} className="space-y-4">
                 
                 <div>
-                  <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 block">Kısıt Tipi</label>
+                  <label className="text-xs font-semibold text-muted uppercase tracking-wider mb-2 block">Kısıt Tipi</label>
                   <select
-                    className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500"
+                    className="w-full card border rounded-xl px-4 py-3 text-sm text-default focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500" style={{ color: 'var(--text)' }}
                     value={formType}
                     onChange={(e) => {
                       setFormType(e.target.value)
@@ -310,7 +310,7 @@ export default function InstructorConstraintsPage() {
                            <div className="md:col-span-2">
                              <label className="text-xs text-gray-500 mb-1 block">Hangi Gün?</label>
                              <select
-                               className="w-full bg-gray-950 border rounded-lg px-3 py-2 text-sm text-white"
+                               className="w-full bg-gray-950 border rounded-lg px-3 py-2 text-sm text-default"
                                value={formValue.day_of_week}
                                onChange={(e) => setFormValue({...formValue, day_of_week: parseInt(e.target.value)})}
                              >
@@ -326,7 +326,7 @@ export default function InstructorConstraintsPage() {
                            <div>
                              <label className="text-xs text-gray-500 mb-1 block">Başlangıç Saati</label>
                              <input type="time" required
-                               className="w-full bg-gray-950 border rounded-lg px-3 py-2 text-sm text-white"
+                               className="w-full bg-gray-950 border rounded-lg px-3 py-2 text-sm text-default"
                                value={formValue.start_time}
                                onChange={(e) => setFormValue({...formValue, start_time: e.target.value})}
                              />
@@ -334,7 +334,7 @@ export default function InstructorConstraintsPage() {
                            <div>
                              <label className="text-xs text-gray-500 mb-1 block">Bitiş Saati</label>
                              <input type="time" required
-                               className="w-full bg-gray-950 border rounded-lg px-3 py-2 text-sm text-white"
+                               className="w-full bg-gray-950 border rounded-lg px-3 py-2 text-sm text-default"
                                value={formValue.end_time}
                                onChange={(e) => setFormValue({...formValue, end_time: e.target.value})}
                              />
@@ -347,7 +347,7 @@ export default function InstructorConstraintsPage() {
                      <div>
                        <label className="text-xs text-gray-500 mb-1 block">Haftalık Maksimum Saat</label>
                        <input type="number" required min="1" max="40"
-                         className="w-full bg-gray-950 border rounded-lg px-3 py-2 text-xl font-bold text-white text-center"
+                         className="w-full bg-gray-950 border rounded-lg px-3 py-2 text-xl font-bold text-default text-center" style={{ color: 'var(--text)' }}
                          value={formValue.max_hours}
                          onChange={(e) => setFormValue({ max_hours: parseInt(e.target.value) })}
                        />
@@ -371,7 +371,7 @@ export default function InstructorConstraintsPage() {
                                }}
                                className={clsx(
                                  "px-3 py-1.5 rounded-lg text-sm transition-colors border",
-                                 isChecked ? "bg-red-500/20 text-red-400 border-red-500/50" : "card text-gray-400 hover:bg-gray-700"
+                                 isChecked ? "bg-red-500/20 text-red-400 border-red-500/50" : "card text-muted hover:bg-gray-700"
                                )}
                              >
                                {days[d]}
@@ -384,13 +384,13 @@ export default function InstructorConstraintsPage() {
                 </div>
 
                 <div>
-                   <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 block flex items-center justify-between">
+                   <label className="text-xs font-semibold text-muted uppercase tracking-wider mb-2 block flex items-center justify-between">
                      Gerekçe (Opsiyonel)
                      <span className="text-[10px] text-gray-600 normal-case tracking-normal">Sekreter görsün</span>
                    </label>
                    <textarea
                      rows={3}
-                     className="w-full custom-scrollbar card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500"
+                     className="w-full custom-scrollbar card border rounded-xl px-4 py-3 text-sm text-default focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500" style={{ color: 'var(--text)' }}
                      placeholder="Belirttiğiniz kısıtlamanın sebebi nedir? (Örn: Fakültede ders, hastalık vb.)"
                      value={formReason}
                      onChange={(e) => setFormReason(e.target.value)}
@@ -403,7 +403,7 @@ export default function InstructorConstraintsPage() {
             <div className="p-6 border-t flex justify-end gap-3 card rounded-b-2xl">
               <button
                 type="button"
-                className="px-5 py-2.5 rounded-xl font-bold text-gray-400 hover:text-white hover:card transition-colors"
+                className="px-5 py-2.5 rounded-xl font-bold text-muted hover:text-default hover:card transition-colors" style={{ color: 'var(--text)' }}
                 onClick={() => setIsModalOpen(false)}
               >
                 İptal
@@ -412,7 +412,7 @@ export default function InstructorConstraintsPage() {
                 type="submit"
                 form="constraint-form"
                 disabled={saving}
-                className="px-5 py-2.5 rounded-xl font-bold text-white bg-amber-500 hover:bg-amber-400 disabled:opacity-50 transition-colors shadow-lg"
+                className="px-5 py-2.5 rounded-xl font-bold text-default bg-amber-500 hover:bg-amber-400 disabled:opacity-50 transition-colors shadow-lg"
               >
                 {saving ? 'Kaydediliyor...' : 'Talebi İlet'}
               </button>

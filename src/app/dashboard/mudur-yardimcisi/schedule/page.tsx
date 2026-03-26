@@ -24,8 +24,8 @@ export default async function MYSchedulePage() {
       <div className="relative overflow-hidden rounded-2xl card p-8 border border-indigo-800/30">
         <div className="absolute -right-10 -top-10 opacity-5 rotate-12"><CalendarDays className="w-48 h-48 text-red-400" /></div>
         <div className="relative z-10">
-          <h1 className="text-3xl font-bold text-white">Tüm Ders Programları</h1>
-          <p className="mt-2 text-gray-400">
+          <h1 className="text-3xl font-bold text-default" style={{ color: 'var(--text)' }}>Tüm Ders Programları</h1>
+          <p className="mt-2 text-muted">
             {period ? `${period.academic_year} · ${period.semester === 1 ? 'Güz' : 'Bahar'} Dönemi` : 'Aktif dönem bulunamadı'}
           </p>
         </div>
@@ -34,8 +34,8 @@ export default async function MYSchedulePage() {
       {!period ? (
         <div className="card py-16 text-center rounded-xl border">
           <CalendarDays className="w-10 h-10 mx-auto mb-3 text-gray-600" />
-          <p className="font-medium text-white">Aktif akademik dönem bulunamadı</p>
-          <p className="text-sm text-gray-400 mt-1">Lütfen Sekreterlikten bir dönem aktif edilmesini isteyin.</p>
+          <p className="font-medium text-default">Aktif akademik dönem bulunamadı</p>
+          <p className="text-sm text-muted mt-1">Lütfen Sekreterlikten bir dönem aktif edilmesini isteyin.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -48,14 +48,14 @@ export default async function MYSchedulePage() {
                     {d.short_code}
                   </div>
                   <div>
-                    <h3 className="font-bold text-white">{d.name}</h3>
+                    <h3 className="font-bold text-default">{d.name}</h3>
                     <p className="text-xs text-gray-500 mt-1">{deptProgs.length} Program</p>
                   </div>
                 </div>
                 <div className="space-y-2 flex-1">
                   {deptProgs.map(p => (
                     <Link key={p.id} href={`/dashboard/sekreter/schedule?program=${p.id}`}
-                      className="flex items-center gap-2 text-sm text-gray-300 hover:text-white p-2 rounded-lg hover:card/50 transition group">
+                      className="flex items-center gap-2 text-sm text-muted hover:text-default p-2 rounded-lg hover:card/50 transition group">
                       <BookOpen className="w-4 h-4 text-gray-500 group-hover:text-red-400 transition" />
                       {p.name}
                     </Link>

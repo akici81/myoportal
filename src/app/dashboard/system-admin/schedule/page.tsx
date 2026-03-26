@@ -232,10 +232,10 @@ export default function SchedulePage() {
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-black text-white flex items-center gap-3 tracking-tight">
+            <h1 className="text-3xl font-black text-default flex items-center gap-3 tracking-tight" style={{ color: 'var(--text)' }}>
               Ders Programı Merkezi
             </h1>
-            <p className="mt-2 text-gray-400 max-w-2xl font-medium">
+            <p className="mt-2 text-muted max-w-2xl font-medium">
               Tüm programların, tüm sınıflarının haftalık ders akışlarını oluşturun, takip edin ve çakışmasız yerleşim yapın.
             </p>
           </div>
@@ -250,14 +250,14 @@ export default function SchedulePage() {
         <div className="card p-5 rounded-2xl border shadow-xl relative z-20">
           <div className="flex items-center gap-2 mb-4">
             <MousePointerClick className="w-4 h-4 text-cyan-500" />
-            <h3 className="text-sm font-bold text-gray-200 uppercase tracking-wider">Hedef Program Seçimi</h3>
+            <h3 className="text-sm font-bold text-muted uppercase tracking-wider">Hedef Program Seçimi</h3>
           </div>
           
           <div className="flex flex-wrap gap-4 items-end">
             <div className="flex-1 min-w-[200px] max-w-[250px]">
               <label className="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1 block pl-1">Akademik Dönem</label>
               <select
-                className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all font-semibold"
+                className="w-full card border rounded-xl px-4 py-3 text-sm text-default focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all font-semibold" style={{ color: 'var(--text)' }}
                 value={selectedPeriod?.id ?? ''}
                 onChange={(e) => setSelectedPeriod(periods.find((x) => x.id === e.target.value) ?? null)}
               >
@@ -273,7 +273,7 @@ export default function SchedulePage() {
             <div className="flex-1 min-w-[200px]">
               <label className="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1 block pl-1">Kategori / Bölüm</label>
               <select
-                className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all font-semibold"
+                className="w-full card border rounded-xl px-4 py-3 text-sm text-default focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all font-semibold" style={{ color: 'var(--text)' }}
                 value={selectedDept}
                 onChange={(e) => setSelectedDept(e.target.value)}
               >
@@ -293,7 +293,7 @@ export default function SchedulePage() {
                   onChange={(e) => setSelectedProgram(e.target.value)}
                 >
                   {programs.map((p) => (
-                    <option key={p.id} value={p.id} className="card text-white">{p.name}</option>
+                    <option key={p.id} value={p.id} className="card text-default">{p.name}</option>
                   ))}
                 </select>
               </div>
@@ -311,7 +311,7 @@ export default function SchedulePage() {
                         'px-5 py-2.5 rounded-lg text-sm font-bold transition-all flex items-center justify-center min-w-[90px]',
                         selectedYear === y
                           ? 'bg-cyan-600 text-white shadow-lg shadow-inner'
-                          : 'bg-transparent text-gray-400 hover:text-gray-200 hover:card'
+                          : 'bg-transparent text-muted hover:text-muted hover:card'
                       )}
                     >
                       {y}. Sınıf
@@ -336,7 +336,7 @@ export default function SchedulePage() {
             loading ? (
               <div className="card flex flex-col items-center justify-center py-32 text-center rounded-2xl border">
                 <div className="w-12 h-12 rounded-full border-4 border-cyan-800 border-t-cyan-500 animate-spin mb-4" />
-                <h3 className="text-xl font-bold text-white tracking-tight">Program Yükleniyor</h3>
+                <h3 className="text-xl font-bold text-default tracking-tight" style={{ color: 'var(--text)' }}>Program Yükleniyor</h3>
                 <p className="text-gray-500 mt-2">Ders blokları analiz ediliyor, lütfen bekleyin...</p>
               </div>
             ) : (
@@ -354,7 +354,7 @@ export default function SchedulePage() {
               <div className="w-20 h-20 card/50 rounded-full flex items-center justify-center mb-6 ring-8 ring-gray-900/50">
                 <CalendarDays className="w-10 h-10 text-gray-600" />
               </div>
-              <h3 className="text-2xl font-black text-gray-200 tracking-tight">Henüz Program Seçilmedi</h3>
+              <h3 className="text-2xl font-black text-muted tracking-tight">Henüz Program Seçilmedi</h3>
               <p className="text-gray-500 mt-3 max-w-md mx-auto leading-relaxed">
                 Tabloyu görüntülemek veya düzenlemek için yukarıdaki menüden ilgili departmanı ve programı seçmeniz gerekmektedir.
               </p>
@@ -369,7 +369,7 @@ export default function SchedulePage() {
           <div className="card w-full max-w-xl p-0 rounded-2xl border shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
             <div className="px-6 py-5 border-b border-cyan-900/30 bg-cyan-600 flex justify-between items-start">
               <div>
-                <h3 className="text-xl font-black text-white flex items-center gap-2 tracking-tight">
+                <h3 className="text-xl font-black text-default flex items-center gap-2 tracking-tight" style={{ color: 'var(--text)' }}>
                   Derse Görevlendirme
                 </h3>
                 <div className="flex items-center gap-1.5 mt-2 card px-2 py-1 rounded inline-flex text-xs font-semibold uppercase tracking-widest text-cyan-400 border border-cyan-900/50">
@@ -377,7 +377,7 @@ export default function SchedulePage() {
                   {DAYS[addSlot.day]} · {selectedSlot?.start_time?.slice(0, 5)} – {selectedSlot?.end_time?.slice(0, 5)}
                 </div>
               </div>
-              <button type="button" onClick={() => setShowAddModal(false)} className="text-gray-400 hover:text-white card/50 hover:bg-gray-700 rounded-lg p-2 transition">
+              <button type="button" onClick={() => setShowAddModal(false)} className="text-muted hover:text-default card/50 hover:bg-gray-700 rounded-lg p-2 transition">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -385,9 +385,9 @@ export default function SchedulePage() {
             <div className="p-6 overflow-y-auto custom-scrollbar space-y-6">
               <div className="space-y-5">
                 <div>
-                  <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5 block pl-1">İlgili Ders</label>
+                  <label className="text-xs font-bold uppercase tracking-wider text-muted mb-1.5 block pl-1">İlgili Ders</label>
                   <select
-                    className="w-full card border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-colors form-select appearance-none font-semibold"
+                    className="w-full card border rounded-xl px-4 py-3.5 text-sm text-default focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-colors form-select appearance-none font-semibold" style={{ color: 'var(--text)' }}
                     value={form.program_course_id}
                     onChange={(e) => {
                       const pc = programCourses.find((x) => x.id === e.target.value)
@@ -404,9 +404,9 @@ export default function SchedulePage() {
                 </div>
 
                 <div>
-                  <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5 block pl-1">Atanan Öğretim Elemanı</label>
+                  <label className="text-xs font-bold uppercase tracking-wider text-muted mb-1.5 block pl-1">Atanan Öğretim Elemanı</label>
                   <select
-                    className="w-full card border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-colors form-select appearance-none"
+                    className="w-full card border rounded-xl px-4 py-3.5 text-sm text-default focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-colors form-select appearance-none" style={{ color: 'var(--text)' }}
                     value={form.instructor_id}
                     onChange={(e) => setForm((f) => ({ ...f, instructor_id: e.target.value }))}
                   >
@@ -421,7 +421,7 @@ export default function SchedulePage() {
 
                 <div>
                   <div className="flex items-center justify-between mb-1.5 pl-1">
-                    <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Verilecek Derslik</label>
+                    <label className="text-xs font-bold uppercase tracking-wider text-muted">Verilecek Derslik</label>
                     {suggestedClassrooms.length > 0 && (
                       <span className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider border border-emerald-500/30 bg-emerald-500/10 text-emerald-400">
                         <Sparkles className="w-3 h-3" /> {suggestedClassrooms.length} Tavsiye
@@ -429,7 +429,7 @@ export default function SchedulePage() {
                     )}
                   </div>
                   <select
-                    className="w-full card border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-colors form-select appearance-none"
+                    className="w-full card border rounded-xl px-4 py-3.5 text-sm text-default focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-colors form-select appearance-none" style={{ color: 'var(--text)' }}
                     value={form.classroom_id}
                     onChange={(e) => setForm((f) => ({ ...f, classroom_id: e.target.value }))}
                   >
@@ -437,7 +437,7 @@ export default function SchedulePage() {
                     {suggestedClassrooms.length > 0 && (
                       <optgroup label="✓ Bu Şartlara ve Saate Uygun Açık Derslikler" className="card text-teal-400">
                         {suggestedClassrooms.map((c) => (
-                          <option key={c.id} value={c.id} className="text-white">
+                          <option key={c.id} value={c.id} className="text-default">
                             {c.name} — {c.capacity} Kişilik Kapasite
                           </option>
                         ))}
@@ -445,7 +445,7 @@ export default function SchedulePage() {
                     )}
                     <optgroup label="Tüm Fiziksel Derslikler" className="card text-gray-500 mt-2">
                       {classrooms.filter((c) => !suggestedClassrooms.find((s) => s.id === c.id)).map((c) => (
-                        <option key={c.id} value={c.id} className="text-white">
+                        <option key={c.id} value={c.id} className="text-default">
                           {c.name} — {c.capacity} Kişilik Kapasite
                         </option>
                       ))}
@@ -486,13 +486,13 @@ export default function SchedulePage() {
 
             {/* Footer Buttons */}
             <div className="px-6 py-4 card border-t mt-auto flex gap-3">
-              <button onClick={() => { setShowAddModal(false); setConflicts([]); }} className="px-4 py-2.5 rounded-xl font-bold text-sm text-gray-400 card/50 hover:bg-gray-700 hover:text-white transition flex-1">
+              <button onClick={() => { setShowAddModal(false); setConflicts([]); }} className="px-4 py-2.5 rounded-xl font-bold text-sm text-muted card/50 hover:bg-gray-700 hover:text-default transition flex-1" style={{ color: 'var(--text)' }}>
                 İptal Et
               </button>
               <button 
                 onClick={handleSave} 
                 disabled={saving || !form.program_course_id || !form.classroom_id || !form.instructor_id} 
-                className="px-4 py-2.5 rounded-xl text-sm font-bold text-white flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all bg-cyan-600 hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-4 py-2.5 rounded-xl text-sm font-bold text-default flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all bg-cyan-600 hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed" style={{ color: 'var(--text)' }}
               >
                 {saving ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div> : <CheckCircle className="w-4 h-4" />}
                 {saving ? 'Sisteme İşleniyor...' : 'Ders Saatini Programa Kaydet'}

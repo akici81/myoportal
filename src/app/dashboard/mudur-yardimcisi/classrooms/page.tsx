@@ -25,10 +25,10 @@ export default async function MYClassroomsPage() {
           <Building2 className="w-48 h-48 text-teal-400" />
         </div>
         <div className="relative z-10">
-          <h1 className="text-3xl font-bold text-white">
+          <h1 className="text-3xl font-bold text-default" style={{ color: 'var(--text)' }}>
             Derslik Envanteri
           </h1>
-          <p className="mt-2 text-gray-400">MYO bünyesindeki tüm fiziksel ve sanal derslikler</p>
+          <p className="mt-2 text-muted">MYO bünyesindeki tüm fiziksel ve sanal derslikler</p>
         </div>
       </div>
 
@@ -40,13 +40,13 @@ export default async function MYClassroomsPage() {
                 <Building2 className="w-5 h-5" />
               </div>
               <div>
-                <h3 className="font-bold text-white">{c.name}</h3>
+                <h3 className="font-bold text-default">{c.name}</h3>
                 <p className="text-xs text-gray-500">{c.building || 'Ana Bina'} {c.floor ? `· Kat ${c.floor}` : ''}</p>
               </div>
             </div>
             <div className="flex flex-wrap gap-2 text-xs">
               <span className="px-2 py-0.5 rounded bg-teal-500/10 text-teal-400 font-medium">{typeLabel[c.type] || c.type}</span>
-              <span className="px-2 py-0.5 rounded bg-gray-700 text-gray-300">Kapasite: {c.capacity || '?'}</span>
+              <span className="px-2 py-0.5 rounded bg-gray-700 text-muted">Kapasite: {c.capacity || '?'}</span>
               {c.has_projector && <span className="px-2 py-0.5 rounded bg-red-600/10 text-red-400">Projeksiyon</span>}
               {c.has_smartboard && <span className="px-2 py-0.5 rounded bg-red-600/10 text-red-400">Akıllı Tahta</span>}
               {c.has_computer && <span className="px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400">PC: {c.computer_count || '?'}</span>}

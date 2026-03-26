@@ -416,7 +416,7 @@ export default function BolumBaskaniSchedulePage() {
       <div className="card flex flex-col items-center justify-center py-32 text-center rounded-2xl border border-red-800/60 border-dashed bg-red-900/10">
         <AlertTriangle className="w-16 h-16 text-red-500 mb-4" />
         <h3 className="text-2xl font-black text-red-400 tracking-tight">Yetkisiz Erişim / Bölüm Ataması Yok</h3>
-        <p className="text-gray-400 mt-3 max-w-md mx-auto leading-relaxed">
+        <p className="text-muted mt-3 max-w-md mx-auto leading-relaxed">
           Kullanıcı hesabınızda tanımlı bir bölüm bulunamadı. Lütfen sekreterlikle iletişime geçin.
         </p>
       </div>
@@ -432,10 +432,10 @@ export default function BolumBaskaniSchedulePage() {
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-black text-white tracking-tight">
+            <h1 className="text-3xl font-black text-default tracking-tight" style={{ color: 'var(--text)' }}>
               Bölüm Ders Programı
             </h1>
-            <p className="mt-2 text-gray-400 max-w-2xl font-medium">
+            <p className="mt-2 text-muted max-w-2xl font-medium">
               {department?.name} — sınıf doluluk durumlarını görerek programınızı hazırlayın.
             </p>
           </div>
@@ -444,22 +444,22 @@ export default function BolumBaskaniSchedulePage() {
               <>
                 <button
                   onClick={handleOpenAddModal}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-white bg-cyan-600 hover:brightness-110 shadow-lg transition-all"
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-default bg-cyan-600 hover:brightness-110 shadow-lg transition-all" style={{ color: 'var(--text)' }}
                 >
                   <Plus className="w-4 h-4" />
                   Ders Ekle
                 </button>
                 <button
                   onClick={handleOpenRangeMode}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-white bg-cyan-600 hover:brightness-110 shadow-lg transition-all"
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-default bg-cyan-600 hover:brightness-110 shadow-lg transition-all" style={{ color: 'var(--text)' }}
                 >
                   <TimerIcon className="w-4 h-4" />
                   Saat Aralığı ile Ekle
                 </button>
                 <button
                   onClick={() => { setBulkDayMode(true); setBulkDay(1); setBulkCourses([{ program_course_id: '', instructor_id: '', classroom_id: '', start_time: '09:00', duration: 2 }]); }}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-white transition-all shadow-lg"
-                  style={{ background: 'var(--primary)' }}
+                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-default transition-all shadow-lg"
+                  style={{ color: 'var(--text)', background: 'var(--primary)' }}
                   onMouseEnter={(e) => e.currentTarget.style.background = 'var(--accent-hover)'}
                   onMouseLeave={(e) => e.currentTarget.style.background = 'var(--primary)'}
                 >
@@ -480,14 +480,14 @@ export default function BolumBaskaniSchedulePage() {
         <div className="card p-5 rounded-2xl border shadow-xl relative z-20">
           <div className="flex items-center gap-2 mb-4">
             <MousePointerClick className="w-4 h-4 text-cyan-500" />
-            <h3 className="text-sm font-bold text-gray-200 uppercase tracking-wider">Planlama Görünümü</h3>
+            <h3 className="text-sm font-bold text-muted uppercase tracking-wider">Planlama Görünümü</h3>
           </div>
 
           <div className="flex flex-wrap gap-4 items-end">
             <div className="flex-1 min-w-[200px] max-w-[250px]">
               <label className="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-1 block pl-1">Akademik Dönem</label>
               <select
-                className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all font-semibold"
+                className="w-full card border rounded-xl px-4 py-3 text-sm text-default focus:outline-none focus:ring-2 focus:ring-cyan-500/50 transition-all font-semibold" style={{ color: 'var(--text)' }}
                 value={selectedPeriod?.id ?? ''}
                 onChange={(e) => setSelectedPeriod(periods.find((x) => x.id === e.target.value) ?? null)}
               >
@@ -509,7 +509,7 @@ export default function BolumBaskaniSchedulePage() {
                   onChange={(e) => setSelectedProgram(e.target.value)}
                 >
                   {programs.map((p) => (
-                    <option key={p.id} value={p.id} className="card text-white">{p.name}</option>
+                    <option key={p.id} value={p.id} className="card text-default">{p.name}</option>
                   ))}
                 </select>
               </div>
@@ -527,7 +527,7 @@ export default function BolumBaskaniSchedulePage() {
                         'px-5 py-2.5 rounded-lg text-sm font-bold transition-all min-w-[90px]',
                         selectedYear === y
                           ? 'bg-cyan-600 text-white shadow-lg'
-                          : 'bg-transparent text-gray-400 hover:text-gray-200 hover:card'
+                          : 'bg-transparent text-muted hover:text-muted hover:card'
                       )}
                     >
                       {y}. Sınıf
@@ -558,7 +558,7 @@ export default function BolumBaskaniSchedulePage() {
                     'flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all',
                     viewMode === 'program'
                       ? 'bg-cyan-600 text-white shadow-lg'
-                      : 'text-gray-400 hover:text-gray-200 hover:card'
+                      : 'text-muted hover:text-muted hover:card'
                   )}
                 >
                   <LayoutGrid className="w-4 h-4" />
@@ -570,7 +570,7 @@ export default function BolumBaskaniSchedulePage() {
                     'flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all',
                     viewMode === 'instructor'
                       ? 'bg-amber-600 text-white shadow-lg'
-                      : 'text-gray-400 hover:text-gray-200 hover:card'
+                      : 'text-muted hover:text-muted hover:card'
                   )}
                 >
                   <User className="w-4 h-4" />
@@ -602,19 +602,19 @@ export default function BolumBaskaniSchedulePage() {
             loading ? (
               <div className="card flex flex-col items-center justify-center py-32 text-center rounded-2xl border">
                 <div className="w-12 h-12 rounded-full border-4 border-cyan-800 border-t-cyan-500 animate-spin mb-4" />
-                <h3 className="text-xl font-bold text-white tracking-tight">Program Yükleniyor</h3>
+                <h3 className="text-xl font-bold text-default tracking-tight" style={{ color: 'var(--text)' }}>Program Yükleniyor</h3>
               </div>
             ) : viewMode === 'instructor' ? (
               <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
                 {!selectedInstructor ? (
                   <div className="card flex flex-col items-center justify-center py-24 text-center rounded-2xl border border-amber-800/30 border-dashed bg-amber-900/5">
                     <User className="w-16 h-16 text-amber-700/50 mb-4" />
-                    <h3 className="text-xl font-bold text-gray-300">Öğretim Elemanı Seçin</h3>
+                    <h3 className="text-xl font-bold text-muted">Öğretim Elemanı Seçin</h3>
                     <p className="text-gray-500 mt-2 text-sm">Yukarıdan bir öğretim elemanı seçerek haftalık programını görüntüleyin.</p>
                   </div>
                 ) : instructorEntries.length === 0 ? (
                   <div className="card flex flex-col items-center justify-center py-24 text-center rounded-2xl border border-dashed">
-                    <h3 className="text-xl font-bold text-gray-300">Bu öğretmen için program bulunamadı.</h3>
+                    <h3 className="text-xl font-bold text-muted">Bu öğretmen için program bulunamadı.</h3>
                   </div>
                 ) : (
                   <>
@@ -650,7 +650,7 @@ export default function BolumBaskaniSchedulePage() {
               <div className="w-20 h-20 card/50 rounded-full flex items-center justify-center mb-6 ring-8 ring-gray-900/50">
                 <CalendarDays className="w-10 h-10 text-gray-600" />
               </div>
-              <h3 className="text-2xl font-black text-gray-200 tracking-tight">Henüz Görüntülenecek Veri Yok</h3>
+              <h3 className="text-2xl font-black text-muted tracking-tight">Henüz Görüntülenecek Veri Yok</h3>
             </div>
           )}
         </div>
@@ -664,7 +664,7 @@ export default function BolumBaskaniSchedulePage() {
             {/* Header */}
             <div className="px-6 py-5 border-b border-cyan-900/30 bg-cyan-600 flex justify-between items-start">
               <div>
-                <h3 className="text-xl font-black text-white tracking-tight">
+                <h3 className="text-xl font-black text-default tracking-tight" style={{ color: 'var(--text)' }}>
                   {rangeMode ? 'Saat Aralığı ile Ders Yerleştir' : 'Derse Görevlendirme'}
                 </h3>
                 {!rangeMode && addSlot && selectedSlot && (
@@ -674,7 +674,7 @@ export default function BolumBaskaniSchedulePage() {
                   </div>
                 )}
               </div>
-              <button type="button" onClick={() => setShowAddModal(false)} className="text-gray-400 hover:text-white card/50 hover:bg-gray-700 rounded-lg p-2 transition">
+              <button type="button" onClick={() => setShowAddModal(false)} className="text-muted hover:text-default card/50 hover:bg-gray-700 rounded-lg p-2 transition">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -689,7 +689,7 @@ export default function BolumBaskaniSchedulePage() {
                     <span className="text-sm font-bold text-red-300">Saat Aralığı Ayarları</span>
                   </div>
                   <div>
-                    <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5 block pl-1">Gün</label>
+                    <label className="text-xs font-bold uppercase tracking-wider text-muted mb-1.5 block pl-1">Gün</label>
                     <div className="flex flex-wrap gap-1.5">
                       {[1, 2, 3, 4, 5].map(d => (
                         <button
@@ -700,7 +700,7 @@ export default function BolumBaskaniSchedulePage() {
                             'px-3 py-1.5 rounded-lg text-xs font-bold transition-all border',
                             form.range_day === d
                               ? 'bg-red-700 border-red-600 text-white'
-                              : 'border-gray-700 card/50 text-gray-400 hover:text-white'
+                              : 'border-gray-700 card/50 text-muted hover:text-white'
                           )}
                         >
                           {DAYS[d]}
@@ -710,21 +710,21 @@ export default function BolumBaskaniSchedulePage() {
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5 block pl-1">Başlangıç</label>
+                      <label className="text-xs font-bold uppercase tracking-wider text-muted mb-1.5 block pl-1">Başlangıç</label>
                       <input
                         type="time"
                         value={form.range_start}
                         onChange={e => setForm(f => ({ ...f, range_start: e.target.value }))}
-                        className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50"
+                        className="w-full card border rounded-xl px-4 py-3 text-sm text-default focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50" style={{ color: 'var(--text)' }}
                       />
                     </div>
                     <div>
-                      <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5 block pl-1">Bitiş</label>
+                      <label className="text-xs font-bold uppercase tracking-wider text-muted mb-1.5 block pl-1">Bitiş</label>
                       <input
                         type="time"
                         value={form.range_end}
                         onChange={e => setForm(f => ({ ...f, range_end: e.target.value }))}
-                        className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50"
+                        className="w-full card border rounded-xl px-4 py-3 text-sm text-default focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50" style={{ color: 'var(--text)' }}
                       />
                     </div>
                   </div>
@@ -738,9 +738,9 @@ export default function BolumBaskaniSchedulePage() {
 
               {/* ── Course ── */}
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5 block pl-1">İlgili Ders</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-muted mb-1.5 block pl-1">İlgili Ders</label>
                 <select
-                  className="w-full card border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-colors form-select appearance-none font-semibold"
+                  className="w-full card border rounded-xl px-4 py-3.5 text-sm text-default focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-colors form-select appearance-none font-semibold" style={{ color: 'var(--text)' }}
                   value={form.program_course_id}
                   onChange={(e) => {
                     const pc = programCourses.find((x) => x.id === e.target.value)
@@ -758,9 +758,9 @@ export default function BolumBaskaniSchedulePage() {
 
               {/* ── Instructor ── */}
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5 block pl-1">Atanan Öğretim Elemanı</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-muted mb-1.5 block pl-1">Atanan Öğretim Elemanı</label>
                 <select
-                  className="w-full card border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-colors form-select appearance-none"
+                  className="w-full card border rounded-xl px-4 py-3.5 text-sm text-default focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-colors form-select appearance-none" style={{ color: 'var(--text)' }}
                   value={form.instructor_id}
                   onChange={(e) => setForm(f => ({ ...f, instructor_id: e.target.value }))}
                 >
@@ -774,7 +774,7 @@ export default function BolumBaskaniSchedulePage() {
               {/* ── Classroom with Availability ── */}
               <div>
                 <div className="flex items-center justify-between mb-1.5 pl-1">
-                  <label className="text-xs font-bold uppercase tracking-wider text-gray-400">Verilecek Derslik</label>
+                  <label className="text-xs font-bold uppercase tracking-wider text-muted">Verilecek Derslik</label>
                   <div className="flex items-center gap-2 text-[10px] font-bold">
                     <span className="flex items-center gap-1 text-emerald-400">
                       <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block" />
@@ -787,7 +787,7 @@ export default function BolumBaskaniSchedulePage() {
                   </div>
                 </div>
                 <select
-                  className="w-full card border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-colors form-select appearance-none"
+                  className="w-full card border rounded-xl px-4 py-3.5 text-sm text-default focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/50 transition-colors form-select appearance-none" style={{ color: 'var(--text)' }}
                   value={form.classroom_id}
                   onChange={(e) => setForm(f => ({ ...f, classroom_id: e.target.value }))}
                 >
@@ -795,7 +795,7 @@ export default function BolumBaskaniSchedulePage() {
                   {availableClassrooms.length > 0 && (
                     <optgroup label="✓ Bu Saatte Boş Derslikler" className="card text-emerald-400">
                       {availableClassrooms.map((c) => (
-                        <option key={c.id} value={c.id} className="text-white">
+                        <option key={c.id} value={c.id} className="text-default">
                           🟢 {c.name} — {c.capacity} Kişilik
                           {c.has_projector ? ' · Proj.' : ''}
                           {c.has_smartboard ? ' · Akıllı Tahta' : ''}
@@ -807,7 +807,7 @@ export default function BolumBaskaniSchedulePage() {
                   {busyClassrooms.length > 0 && (
                     <optgroup label="✗ Bu Saatte Dolu Derslikler" className="card text-rose-400">
                       {busyClassrooms.map((c) => (
-                        <option key={c.id} value={c.id} className="text-white">
+                        <option key={c.id} value={c.id} className="text-default">
                           🔴 {c.name} — {c.capacity} Kişilik (DOLU)
                         </option>
                       ))}
@@ -848,14 +848,14 @@ export default function BolumBaskaniSchedulePage() {
             <div className="px-6 py-4 card border-t mt-auto flex gap-3">
               <button
                 onClick={() => { setShowAddModal(false); setConflicts([]) }}
-                className="px-4 py-2.5 rounded-xl font-bold text-sm text-gray-400 card/50 hover:bg-gray-700 hover:text-white transition flex-1"
+                className="px-4 py-2.5 rounded-xl font-bold text-sm text-muted card/50 hover:bg-gray-700 hover:text-default transition flex-1" style={{ color: 'var(--text)' }}
               >
                 İptal Et
               </button>
               <button
                 onClick={rangeMode ? handleSaveRange : handleSave}
                 disabled={saving || !form.program_course_id || !form.classroom_id || !form.instructor_id || (rangeMode && (!form.range_start || !form.range_end))}
-                className="px-4 py-2.5 rounded-xl text-sm font-bold text-white flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all bg-cyan-600 hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-4 py-2.5 rounded-xl text-sm font-bold text-default flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all bg-cyan-600 hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed" style={{ color: 'var(--text)' }}
               >
                 {saving
                   ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -875,10 +875,10 @@ export default function BolumBaskaniSchedulePage() {
             {/* Header */}
             <div className="px-6 py-5 border-b flex justify-between items-start" style={{ background: 'var(--primary-bg)' }}>
               <div>
-                <h3 className="text-xl font-black text-white tracking-tight">Toplu Gün Girişi</h3>
-                <p className="text-xs text-gray-400 mt-1">Bir günün tüm derslerini tek seferde ekleyin</p>
+                <h3 className="text-xl font-black text-default tracking-tight" style={{ color: 'var(--text)' }}>Toplu Gün Girişi</h3>
+                <p className="text-xs text-muted mt-1">Bir günün tüm derslerini tek seferde ekleyin</p>
               </div>
-              <button onClick={() => setBulkDayMode(false)} className="text-gray-400 hover:text-white card/50 hover:bg-gray-700 rounded-lg p-2 transition">
+              <button onClick={() => setBulkDayMode(false)} className="text-muted hover:text-default card/50 hover:bg-gray-700 rounded-lg p-2 transition">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -886,7 +886,7 @@ export default function BolumBaskaniSchedulePage() {
             <div className="p-6 overflow-y-auto custom-scrollbar space-y-5">
               {/* Gün Seçimi */}
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block">Gün</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-muted mb-2 block">Gün</label>
                 <div className="flex gap-2">
                   {[1, 2, 3, 4, 5].map(d => (
                     <button
@@ -895,7 +895,7 @@ export default function BolumBaskaniSchedulePage() {
                       className={`px-4 py-2 rounded-lg text-sm font-bold transition-all ${
                         bulkDay === d
                           ? 'text-white shadow-sm'
-                          : 'card text-gray-400 hover:bg-gray-700 hover:text-white'
+                          : 'card text-muted hover:bg-gray-700 hover:text-white'
                       }`}
                       style={bulkDay === d ? { background: 'var(--primary)' } : {}}
                     >
@@ -928,7 +928,7 @@ export default function BolumBaskaniSchedulePage() {
                         <select
                           value={course.start_time}
                           onChange={(e) => setBulkCourses(p => p.map((c, i) => i === idx ? { ...c, start_time: e.target.value } : c))}
-                          className="w-full card border rounded-lg px-2 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
+                          className="w-full card border rounded-lg px-2 py-2 text-xs text-default focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
                         >
                           {timeSlots.map(s => (
                             <option key={s.id} value={s.start_time?.slice(0, 5)}>{s.start_time?.slice(0, 5)}</option>
@@ -942,7 +942,7 @@ export default function BolumBaskaniSchedulePage() {
                         <select
                           value={course.duration}
                           onChange={(e) => setBulkCourses(p => p.map((c, i) => i === idx ? { ...c, duration: Number(e.target.value) } : c))}
-                          className="w-full card border rounded-lg px-2 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
+                          className="w-full card border rounded-lg px-2 py-2 text-xs text-default focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
                         >
                           {[1,2,3,4,5,6].map(n => <option key={n} value={n}>{n} saat</option>)}
                         </select>
@@ -954,7 +954,7 @@ export default function BolumBaskaniSchedulePage() {
                         <select
                           value={course.program_course_id}
                           onChange={(e) => setBulkCourses(p => p.map((c, i) => i === idx ? { ...c, program_course_id: e.target.value } : c))}
-                          className="w-full card border rounded-lg px-2 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
+                          className="w-full card border rounded-lg px-2 py-2 text-xs text-default focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
                         >
                           <option value="">— Ders Seçin —</option>
                           {programCourses.map(pc => (
@@ -969,7 +969,7 @@ export default function BolumBaskaniSchedulePage() {
                         <select
                           value={course.instructor_id}
                           onChange={(e) => setBulkCourses(p => p.map((c, i) => i === idx ? { ...c, instructor_id: e.target.value } : c))}
-                          className="w-full card border rounded-lg px-2 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
+                          className="w-full card border rounded-lg px-2 py-2 text-xs text-default focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
                         >
                           <option value="">— Seçin —</option>
                           {instructors.map(i => (
@@ -984,7 +984,7 @@ export default function BolumBaskaniSchedulePage() {
                         <select
                           value={course.classroom_id}
                           onChange={(e) => setBulkCourses(p => p.map((c, i) => i === idx ? { ...c, classroom_id: e.target.value } : c))}
-                          className="w-full card border rounded-lg px-2 py-2 text-xs text-white focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
+                          className="w-full card border rounded-lg px-2 py-2 text-xs text-default focus:outline-none focus:ring-2 focus:ring-cyan-500/50"
                         >
                           <option value="">— Seçin —</option>
                           {classrooms.map(c => (
@@ -1000,7 +1000,7 @@ export default function BolumBaskaniSchedulePage() {
               {/* Ders Ekle Butonu */}
               <button
                 onClick={() => setBulkCourses(p => [...p, { program_course_id: '', instructor_id: '', classroom_id: '', start_time: '09:00', duration: 2 }])}
-                className="w-full border-2 border-dashed text-gray-400 hover:border-gray-600 hover:text-gray-300 text-sm font-medium py-3 rounded-xl transition"
+                className="w-full border-2 border-dashed text-muted hover:border-gray-600 hover:text-muted text-sm font-medium py-3 rounded-xl transition"
               >
                 + Ders Ekle
               </button>
@@ -1010,15 +1010,15 @@ export default function BolumBaskaniSchedulePage() {
             <div className="px-6 py-4 card border-t flex gap-3">
               <button
                 onClick={() => setBulkDayMode(false)}
-                className="flex-1 px-4 py-2.5 rounded-xl font-bold text-sm text-gray-400 card/50 hover:bg-gray-700 hover:text-white transition"
+                className="flex-1 px-4 py-2.5 rounded-xl font-bold text-sm text-muted card/50 hover:bg-gray-700 hover:text-default transition" style={{ color: 'var(--text)' }}
               >
                 İptal
               </button>
               <button
                 onClick={handleBulkDaySave}
                 disabled={saving}
-                className="flex-[2] px-4 py-2.5 rounded-xl text-sm font-bold text-white transition-all shadow-lg disabled:opacity-50"
-                style={{ background: 'var(--primary)' }}
+                className="flex-[2] px-4 py-2.5 rounded-xl text-sm font-bold text-default transition-all shadow-lg disabled:opacity-50"
+                style={{ color: 'var(--text)', background: 'var(--primary)' }}
                 onMouseEnter={(e) => !saving && (e.currentTarget.style.background = 'var(--accent-hover)')}
                 onMouseLeave={(e) => !saving && (e.currentTarget.style.background = 'var(--primary)')}
               >

@@ -23,13 +23,13 @@ export default function GeneralRequestsForm() {
         <div className="rounded-full bg-cyan-500/20 p-4 mb-6 ring-4 ring-cyan-500/10">
            <CheckCircle2 className="h-16 w-16 text-cyan-400" />
         </div>
-        <h2 className="text-2xl font-bold text-white mb-2">Talebiniz Alındı</h2>
-        <p className="max-w-md text-gray-400 mb-8">
+        <h2 className="text-2xl font-bold text-default mb-2" style={{ color: 'var(--text)' }}>Talebiniz Alındı</h2>
+        <p className="max-w-md text-muted mb-8">
           Dilekçeniz kayıt numarası ile MYO Müdür Yardımcısı paneline iletilmiştir. Süreci "Taleplerim" sekmesindeki listeden takip edebilirsiniz. (Bu özellik tam onay mekanizmasına bağlanacaktır.)
         </p>
         <button 
           onClick={() => setSubmitted(false)}
-          className="inline-flex items-center justify-center rounded-xl card px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-gray-700"
+          className="inline-flex items-center justify-center rounded-xl card px-6 py-3 text-sm font-medium text-default transition-colors hover:bg-gray-700" style={{ color: 'var(--text)' }}
         >
           Yeni Bir Dilekçe Daha Oluştur
         </button>
@@ -41,11 +41,11 @@ export default function GeneralRequestsForm() {
     <div className="max-w-3xl mx-auto space-y-8 animate-in">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-white mb-2 tracking-tight flex items-center gap-3">
+        <h1 className="text-3xl font-bold text-default mb-2 tracking-tight flex items-center gap-3" style={{ color: 'var(--text)' }}>
           <FileText className="h-8 w-8 text-cyan-400" />
           Dilekçe & Evrak İstemi
         </h1>
-        <p className="text-gray-400 text-sm leading-relaxed">
+        <p className="text-muted text-sm leading-relaxed">
           Kurum içine iletilmesini istediğiniz fiziki belgelerin dijital eşleniklerini ve resmi taleplerinizi bildirin. Talebiniz anında Sekreterlik ve MYO yönetimine düşecektir.
         </p>
       </div>
@@ -53,40 +53,40 @@ export default function GeneralRequestsForm() {
       <form onSubmit={handleSubmit} className="space-y-6 rounded-2xl border border-white/5 card/30 p-8">
         
         <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-300">Talep Konusu / Başlık</label>
+            <label className="text-sm font-medium text-muted">Talep Konusu / Başlık</label>
             <input 
               type="text" 
               required
               placeholder="Örn: Konferans Görevlendirme Evrakı Hakkında"
-              className="w-full rounded-xl border border-white/10 card px-4 py-3 text-sm text-white focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 outline-none" 
+              className="w-full rounded-xl border border-white/10 card px-4 py-3 text-sm text-default focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 outline-none" style={{ color: 'var(--text)' }} 
             />
         </div>
 
         <div className="grid gap-6 sm:grid-cols-2">
           <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-300">Talep Türü</label>
-            <select required className="w-full rounded-xl border border-white/10 card px-4 py-3 text-sm text-white focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 outline-none">
+            <label className="text-sm font-medium text-muted">Talep Türü</label>
+            <select required className="w-full rounded-xl border border-white/10 card px-4 py-3 text-sm text-default focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 outline-none" style={{ color: 'var(--text)' }}>
               <option value="belge">Belge Talebi (Katılım, Görev vs.)</option>
               <option value="muafiyet">Muafiyet / İntibak Kararı Önerisi</option>
               <option value="diger">Diğer Resmi Dilekçeler</option>
             </select>
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-300">Ek (PDF veya Link) - Opsiyonel</label>
+            <label className="text-sm font-medium text-muted">Ek (PDF veya Link) - Opsiyonel</label>
             <input 
               type="text" 
               placeholder="Google Drive veya Dosya Linki"
-              className="w-full rounded-xl border border-white/10 card px-4 py-3 text-sm text-white focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 outline-none" 
+              className="w-full rounded-xl border border-white/10 card px-4 py-3 text-sm text-default focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 outline-none" style={{ color: 'var(--text)' }} 
             />
           </div>
         </div>
 
         <div className="space-y-2">
-            <label className="text-sm font-medium text-gray-300">Dilekçe İçeriği / Detaylı Talep</label>
+            <label className="text-sm font-medium text-muted">Dilekçe İçeriği / Detaylı Talep</label>
             <textarea 
                rows={6} 
                required
-               className="w-full rounded-xl border border-white/10 card px-4 py-3 text-sm text-white focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 outline-none resize-y"
+               className="w-full rounded-xl border border-white/10 card px-4 py-3 text-sm text-default focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 outline-none resize-y" style={{ color: 'var(--text)' }}
                placeholder="Makamınıza iletmek istediğim konunun detayları şunlardır..."
             />
         </div>
@@ -95,7 +95,7 @@ export default function GeneralRequestsForm() {
            <button
              type="submit"
              disabled={loading}
-             className="inline-flex items-center rounded-xl bg-cyan-600 px-6 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:bg-cyan-400 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed group"
+             className="inline-flex items-center rounded-xl bg-cyan-600 px-6 py-3 text-sm font-semibold text-default shadow-lg transition-all hover:bg-cyan-400 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed group" style={{ color: 'var(--text)' }}
            >
              {loading ? 'Sisteme İletiliyor...' : (
                <>

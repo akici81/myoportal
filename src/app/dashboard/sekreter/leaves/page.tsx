@@ -69,14 +69,14 @@ export default function LeavesManagementPage() {
   }
 
   if (loading) {
-     return <div className="text-gray-400 p-8 text-center animate-pulse">İzin talepleri yükleniyor...</div>
+     return <div className="text-muted p-8 text-center animate-pulse">İzin talepleri yükleniyor...</div>
   }
 
   return (
     <div className="space-y-6 animate-in">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white flex items-center gap-3">
+          <h1 className="text-2xl font-bold text-default flex items-center gap-3" style={{ color: 'var(--text)' }}>
             Personel İzin Yönetimi
           </h1>
           <p className="mt-1 text-sm text-gray-500">Tüm öğretim elemanlarının izin taleplerini onaylayın veya reddedin.</p>
@@ -85,7 +85,7 @@ export default function LeavesManagementPage() {
 
       <div className="rounded-2xl border border-white/5 card/30 overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm text-gray-300">
+          <table className="w-full text-left text-sm text-muted">
             <thead className="card text-xs uppercase text-gray-500">
               <tr>
                 <th className="px-6 py-4 font-medium">Öğretim Elemanı</th>
@@ -108,12 +108,12 @@ export default function LeavesManagementPage() {
                 leaves.map((leave) => (
                   <tr key={leave.id} className="transition-colors hover:bg-white/[0.02]">
                     <td className="px-6 py-4">
-                      <div className="font-medium text-white">
+                      <div className="font-medium text-default">
                         {leave.instructor?.academic_title || ''} {leave.instructor?.first_name} {leave.instructor?.last_name}
                       </div>
                       <div className="text-xs text-gray-500">{leave.instructor?.email}</div>
                     </td>
-                    <td className="px-6 py-4 font-medium text-gray-300">
+                    <td className="px-6 py-4 font-medium text-muted">
                       {getLeaveTypeStr(leave.leave_type)}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">

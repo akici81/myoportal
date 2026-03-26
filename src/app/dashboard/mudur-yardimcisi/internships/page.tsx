@@ -26,7 +26,7 @@ export default async function AdminInternshipsPage() {
       case 'rejected': return <span className="inline-flex items-center rounded-full bg-rose-500/10 px-2.5 py-0.5 text-xs font-semibold text-rose-400 border border-rose-500/20">Reddedildi</span>
       case 'revision': return <span className="inline-flex items-center rounded-full bg-orange-500/10 px-2.5 py-0.5 text-xs font-semibold text-orange-400 border border-orange-500/20">Revizyon Bekliyor</span>
       case 'submitted': return <span className="inline-flex items-center rounded-full bg-red-600/10 px-2.5 py-0.5 text-xs font-semibold text-red-400 border border-red-600/20">Onaya Gönderildi</span>
-      case 'draft': return <span className="inline-flex items-center rounded-full bg-gray-500/10 px-2.5 py-0.5 text-xs font-semibold text-gray-400 border border-gray-500/20">Taslak</span>
+      case 'draft': return <span className="inline-flex items-center rounded-full bg-gray-500/10 px-2.5 py-0.5 text-xs font-semibold text-muted border border-gray-500/20">Taslak</span>
       case 'pending': return <span className="inline-flex items-center rounded-full bg-amber-500/10 px-2.5 py-0.5 text-xs font-semibold text-amber-400 border border-amber-500/20"><Clock className="mr-1 h-3 w-3"/> İnceleniyor</span>
       default: return null
     }
@@ -36,7 +36,7 @@ export default async function AdminInternshipsPage() {
     <div className="space-y-6 animate-in">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white flex items-center gap-3">
+          <h1 className="text-2xl font-bold text-default flex items-center gap-3" style={{ color: 'var(--text)' }}>
             Öğrenci Staj İşlemleri (Tümü)
           </h1>
           <p className="mt-1 text-sm text-gray-500">Tüm programlardaki staj başvurularını, firma kabullerini ve danışman değerlendirmelerini izleyin.</p>
@@ -45,7 +45,7 @@ export default async function AdminInternshipsPage() {
 
       <div className="rounded-2xl border border-white/5 card/30 overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm text-gray-300">
+          <table className="w-full text-left text-sm text-muted">
             <thead className="card text-xs uppercase text-gray-500">
               <tr>
                 <th className="px-6 py-4 font-medium">Öğrenci Bilgisi</th>
@@ -69,10 +69,10 @@ export default async function AdminInternshipsPage() {
                 internships.map((intern) => (
                   <tr key={intern.id} className="transition-colors hover:bg-white/[0.02]">
                     <td className="px-6 py-4">
-                      <div className="font-medium text-white">{intern.student_name}</div>
+                      <div className="font-medium text-default">{intern.student_name}</div>
                       <div className="text-xs text-gray-500">No: {intern.student_number}</div>
                     </td>
-                    <td className="px-6 py-4 font-medium text-gray-300">
+                    <td className="px-6 py-4 font-medium text-muted">
                        {intern.supervisor ? `${intern.supervisor.academic_title} ${intern.supervisor.first_name} ${intern.supervisor.last_name}` : 'Atanmamış'}
                     </td>
                     <td className="px-6 py-4">
@@ -81,7 +81,7 @@ export default async function AdminInternshipsPage() {
                         {intern.company_name}
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-gray-400">
+                    <td className="px-6 py-4 whitespace-nowrap text-muted">
                       {intern.total_days} İş Günü
                     </td>
                     <td className="px-6 py-4">

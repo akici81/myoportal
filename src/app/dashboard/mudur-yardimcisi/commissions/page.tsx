@@ -35,12 +35,12 @@ export default async function AdminCommissionsPage() {
     <div className="space-y-8 animate-in">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white flex items-center gap-3">
+          <h1 className="text-2xl font-bold text-default flex items-center gap-3" style={{ color: 'var(--text)' }}>
             Akademik Komisyon Yönetimi
           </h1>
           <p className="mt-1 text-sm text-gray-500">MYO bünyesindeki tüm komisyonları, üye dağılımlarını ve toplantı taleplerini denetleyin.</p>
         </div>
-        <button className="inline-flex items-center justify-center rounded-xl bg-cyan-600 px-4 py-2 text-sm font-medium text-white shadow-lg hover:brightness-110 active:scale-95 transition-all">
+        <button className="inline-flex items-center justify-center rounded-xl bg-cyan-600 px-4 py-2 text-sm font-medium text-default shadow-lg hover:brightness-110 active:scale-95 transition-all" style={{ color: 'var(--text)' }}>
           <Plus className="mr-2 h-4 w-4" /> Yeni Komisyon Kur
         </button>
       </div>
@@ -55,8 +55,8 @@ export default async function AdminCommissionsPage() {
              {pendingMeetings.map((meeting: any) => (
                 <div key={meeting.id} className="flex flex-wrap items-center justify-between gap-4 rounded-xl card p-4 border border-white/5">
                    <div>
-                     <h3 className="font-medium text-white">{meeting.title}</h3>
-                     <p className="text-sm text-gray-400 mt-1">{meeting.commission.name} | İsteyen: {meeting.requester.full_name}</p>
+                     <h3 className="font-medium text-default">{meeting.title}</h3>
+                     <p className="text-sm text-muted mt-1">{meeting.commission.name} | İsteyen: {meeting.requester.full_name}</p>
                      <p className="text-xs text-gray-500 mt-0.5">Tarih: {new Date(meeting.proposed_date).toLocaleDateString('tr-TR')} - {meeting.proposed_time}</p>
                    </div>
                    <div className="flex gap-2">
@@ -81,14 +81,14 @@ export default async function AdminCommissionsPage() {
               </span>
             </div>
             <div className="mt-4">
-              <h3 className="text-lg font-semibold text-white">{com.name}</h3>
+              <h3 className="text-lg font-semibold text-default">{com.name}</h3>
               <p className="mt-1 text-sm text-gray-500 capitalize">Komisyon Türü: {com.type.replace('_',' ')}</p>
             </div>
             <div className="mt-6 flex gap-2">
-               <button className="flex-1 inline-flex justify-center items-center rounded-lg card py-2 text-sm text-gray-300 hover:text-white hover:card">
+               <button className="flex-1 inline-flex justify-center items-center rounded-lg card py-2 text-sm text-muted hover:text-default hover:card">
                  <Users className="mr-2 h-4 w-4" /> Üyeler
                </button>
-               <button className="flex-1 inline-flex justify-center items-center rounded-lg card py-2 text-sm text-gray-300 hover:text-white hover:card">
+               <button className="flex-1 inline-flex justify-center items-center rounded-lg card py-2 text-sm text-muted hover:text-default hover:card">
                  <Settings className="mr-2 h-4 w-4" /> Ayarlar
                </button>
             </div>

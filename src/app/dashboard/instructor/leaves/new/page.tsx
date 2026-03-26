@@ -72,10 +72,10 @@ export default function NewLeaveRequestPage() {
     <div className="max-w-2xl mx-auto space-y-6 animate-in">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <Link href="/dashboard/instructor/leaves" className="inline-flex items-center text-sm text-gray-400 hover:text-white mb-2 transition-colors">
+          <Link href="/dashboard/instructor/leaves" className="inline-flex items-center text-sm text-muted hover:text-default mb-2 transition-colors">
             <ArrowLeft className="mr-2 h-4 w-4" /> İzin Listesine Dön
           </Link>
-          <h1 className="text-2xl font-bold text-white flex items-center gap-3">
+          <h1 className="text-2xl font-bold text-default flex items-center gap-3" style={{ color: 'var(--text)' }}>
             Yeni İzin Talebi
           </h1>
           <p className="mt-1 text-sm text-gray-500">Sistem yöneticisi ve bölüm sekreterine iletilmek üzere izin formu oluşturun.</p>
@@ -91,13 +91,13 @@ export default function NewLeaveRequestPage() {
         )}
 
         <div className="space-y-2">
-          <label className="text-sm font-medium text-gray-300">İzin Türü</label>
+          <label className="text-sm font-medium text-muted">İzin Türü</label>
           <select
             name="leave_type"
             value={leaveType}
             onChange={(e) => setLeaveType(e.target.value)}
             required
-            className="w-full rounded-xl border border-white/10 card px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
+            className="w-full rounded-xl border border-white/10 card px-4 py-2.5 text-default outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
           >
             <option value="annual">Yıllık İzin</option>
             <option value="sick">Hastalık / Sağlık Raporu</option>
@@ -111,34 +111,34 @@ export default function NewLeaveRequestPage() {
           /* Saatlik İzin Formu */
           <div className="grid gap-6 sm:grid-cols-3">
             <div className="space-y-2 sm:col-span-3">
-              <label className="text-sm font-medium text-gray-300">Tarih</label>
+              <label className="text-sm font-medium text-muted">Tarih</label>
               <input
                 type="date"
                 name="hourly_date"
                 required
-                className="w-full rounded-xl border border-white/10 card px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
+                className="w-full rounded-xl border border-white/10 card px-4 py-2.5 text-default outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
               />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-300">Başlangıç Saati</label>
+              <label className="text-sm font-medium text-muted">Başlangıç Saati</label>
               <input
                 type="time"
                 name="start_time"
                 required
-                className="w-full rounded-xl border border-white/10 card px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
+                className="w-full rounded-xl border border-white/10 card px-4 py-2.5 text-default outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
               />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-300">Bitiş Saati</label>
+              <label className="text-sm font-medium text-muted">Bitiş Saati</label>
               <input
                 type="time"
                 name="end_time"
                 required
-                className="w-full rounded-xl border border-white/10 card px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
+                className="w-full rounded-xl border border-white/10 card px-4 py-2.5 text-default outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
               />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-400">Süre</label>
+              <label className="text-sm font-medium text-muted">Süre</label>
               <div className="text-sm text-gray-500 px-4 py-2.5">
                 Başlangıç ve bitiş saatini seçin
               </div>
@@ -148,34 +148,34 @@ export default function NewLeaveRequestPage() {
           /* Günlük İzin Formu */
           <div className="grid gap-6 sm:grid-cols-2">
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-300">Başlangıç Tarihi</label>
+              <label className="text-sm font-medium text-muted">Başlangıç Tarihi</label>
               <input
                 type="date"
                 name="start_date"
                 required
-                className="w-full rounded-xl border border-white/10 card px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
+                className="w-full rounded-xl border border-white/10 card px-4 py-2.5 text-default outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
               />
             </div>
             <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-300">Bitiş Tarihi</label>
+              <label className="text-sm font-medium text-muted">Bitiş Tarihi</label>
               <input
                 type="date"
                 name="end_date"
                 required
-                className="w-full rounded-xl border border-white/10 card px-4 py-2.5 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
+                className="w-full rounded-xl border border-white/10 card px-4 py-2.5 text-default outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20"
               />
             </div>
           </div>
         )}
 
         <div className="space-y-2">
-          <label className="text-sm font-medium text-gray-300">Açıklama / Mazeret</label>
+          <label className="text-sm font-medium text-muted">Açıklama / Mazeret</label>
           <textarea 
             name="reason" 
             rows={4}
             required
             placeholder="İzin talebinizin detaylarını buraya yazabilirsiniz..."
-            className="w-full rounded-xl border border-white/10 card px-4 py-3 text-white outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 resize-none"
+            className="w-full rounded-xl border border-white/10 card px-4 py-3 text-default outline-none focus:border-cyan-500/50 focus:ring-2 focus:ring-cyan-500/20 resize-none"
           ></textarea>
         </div>
 
@@ -183,7 +183,7 @@ export default function NewLeaveRequestPage() {
            <button
              type="submit"
              disabled={loading}
-             className="inline-flex items-center justify-center rounded-xl bg-cyan-600 px-6 py-2.5 text-sm font-medium text-white shadow-lg transition-all hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed"
+             className="inline-flex items-center justify-center rounded-xl bg-cyan-600 px-6 py-2.5 text-sm font-medium text-default shadow-lg transition-all hover:brightness-110 disabled:opacity-50 disabled:cursor-not-allowed" style={{ color: 'var(--text)' }}
            >
              {loading ? 'Gönderiliyor...' : (
                 <>

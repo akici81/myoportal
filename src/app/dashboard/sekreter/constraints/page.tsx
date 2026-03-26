@@ -336,16 +336,16 @@ export default function ConstraintsPage() {
         
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="max-w-xl">
-            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+            <h1 className="text-3xl font-bold text-default flex items-center gap-3" style={{ color: 'var(--text)' }}>
               Öğretim Elemanı Kısıtları Özeti
             </h1>
-            <p className="mt-2 text-gray-400 leading-relaxed">
+            <p className="mt-2 text-muted leading-relaxed">
               Tüm bölümlerdeki öğretim görevlilerinin ders verebilme (kapalı gün/saat, maksimum saat vd.) kuralları buradan incelenip yönetilebilir. Yalnızca kısıt tanımlanan hocalar analiz motoru tarafından dikkate alınır.
             </p>
           </div>
           <button
             onClick={() => openModal()}
-            className="btn-glow inline-flex items-center justify-center gap-2 rounded-xl bg-cyan-600 px-6 py-3 font-semibold text-white transition-all hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] disabled:opacity-50 shrink-0"
+            className="btn-glow inline-flex items-center justify-center gap-2 rounded-xl bg-cyan-600 px-6 py-3 font-semibold text-default transition-all hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] disabled:opacity-50 shrink-0"
           >
             <Plus className="w-5 h-5 flex-shrink-0" />
             <span>Merkezi Kısıt Ekle</span>
@@ -356,12 +356,12 @@ export default function ConstraintsPage() {
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div className="card p-6 rounded-2xl border flex items-center gap-4 bg-gradient-to-br from-gray-800/20 to-transparent">
-          <div className="w-14 h-14 rounded-full card flex items-center justify-center border text-gray-400 shadow-[0_0_15px_rgba(0,0,0,0.2)]">
+          <div className="w-14 h-14 rounded-full card flex items-center justify-center border text-muted shadow-[0_0_15px_rgba(0,0,0,0.2)]">
             <ClipboardList className="w-7 h-7" />
           </div>
           <div>
-            <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">Aktif Kural Sayısı</p>
-            <p className="text-3xl font-black text-white mt-1">{stats.total}</p>
+            <p className="text-muted text-xs font-semibold uppercase tracking-wider">Aktif Kural Sayısı</p>
+            <p className="text-3xl font-black text-default mt-1" style={{ color: 'var(--text)' }}>{stats.total}</p>
           </div>
         </div>
 
@@ -371,7 +371,7 @@ export default function ConstraintsPage() {
           </div>
           <div>
             <p className="text-red-400/80 text-xs font-semibold uppercase tracking-wider">Zorunlu Kurallar</p>
-            <p className="text-3xl font-black text-white mt-1">{stats.hard}</p>
+            <p className="text-3xl font-black text-default mt-1" style={{ color: 'var(--text)' }}>{stats.hard}</p>
           </div>
         </div>
 
@@ -381,7 +381,7 @@ export default function ConstraintsPage() {
           </div>
           <div>
             <p className="text-red-400/80 text-xs font-semibold uppercase tracking-wider">Kısıtlı Eğitmen</p>
-            <p className="text-3xl font-black text-white mt-1">{stats.instructors}</p>
+            <p className="text-3xl font-black text-default mt-1" style={{ color: 'var(--text)' }}>{stats.instructors}</p>
           </div>
         </div>
       </div>
@@ -393,7 +393,7 @@ export default function ConstraintsPage() {
              <div className="relative flex-1 min-w-[200px]">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
                 <input
-                  className="w-full bg-gray-950/50 border rounded-xl pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-colors shadow-inner placeholder:text-gray-600"
+                  className="w-full bg-gray-950/50 border rounded-xl pl-10 pr-4 py-2.5 text-sm text-default focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-colors shadow-inner placeholder:text-gray-600" style={{ color: 'var(--text)' }}
                   placeholder="Eğitmen adına göre hızla ara..."
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
@@ -404,7 +404,7 @@ export default function ConstraintsPage() {
                <div className="relative">
                  <Filter className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
                  <select
-                    className="w-48 bg-gray-950/50 border rounded-xl pl-10 pr-8 py-2.5 text-sm text-white focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-colors shadow-inner appearance-none cursor-pointer"
+                    className="w-48 bg-gray-950/50 border rounded-xl pl-10 pr-8 py-2.5 text-sm text-default focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-colors shadow-inner appearance-none cursor-pointer" style={{ color: 'var(--text)' }}
                     value={filterType}
                     onChange={(e) => setFilterType(e.target.value)}
                   >
@@ -415,7 +415,7 @@ export default function ConstraintsPage() {
                   </select>
                </div>
                <select
-                  className="w-48 bg-gray-950/50 border rounded-xl pl-4 pr-8 py-2.5 text-sm text-white focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-colors shadow-inner appearance-none cursor-pointer"
+                  className="w-48 bg-gray-950/50 border rounded-xl pl-4 pr-8 py-2.5 text-sm text-default focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-colors shadow-inner appearance-none cursor-pointer" style={{ color: 'var(--text)' }}
                   value={filterInstructor}
                   onChange={(e) => setFilterInstructor(e.target.value)}
                 >
@@ -438,10 +438,10 @@ export default function ConstraintsPage() {
                  <div className="w-20 h-20 card/80 rounded-full flex items-center justify-center mb-6 shadow-inner">
                    <CalendarOff className="w-10 h-10 text-gray-500" />
                  </div>
-                 <h3 className="text-xl font-bold text-white mb-2">
+                 <h3 className="text-xl font-bold text-default mb-2" style={{ color: 'var(--text)' }}>
                    {search || filterInstructor || filterType ? 'Bulgu Yok' : 'Henüz Kısıt Bulunmuyor'}
                  </h3>
-                 <p className="text-gray-400 max-w-sm mb-6">
+                 <p className="text-muted max-w-sm mb-6">
                    {search || filterInstructor || filterType 
                      ? 'Arama / filtreleme kriterlerinize uygun hiçbir sonuç bulunamadı.' 
                      : 'Veritabanında herhangi bir eğitmene ait öğretim kısıtı veya ajanda tanımlı değil.'}
@@ -486,10 +486,10 @@ export default function ConstraintsPage() {
                            </div>
                            
                            <div>
-                             <p className="text-base font-bold text-white group-hover:text-red-200 transition-colors">
+                             <p className="text-base font-bold text-default group-hover:text-red-200 transition-colors" style={{ color: 'var(--text)' }}>
                                {instructor.title} {instructor.full_name}
                              </p>
-                             <p className="text-xs text-gray-400 mt-0.5">{instructor.department_name}</p>
+                             <p className="text-xs text-muted mt-0.5">{instructor.department_name}</p>
                            </div>
                          </div>
                          
@@ -499,7 +499,7 @@ export default function ConstraintsPage() {
                                  <ShieldAlert className="w-3.5 h-3.5" /> {hardCount} Zorunlu
                                </span>
                             )}
-                            <span className="flex items-center gap-1.5 text-xs font-bold px-2 py-1 rounded card border text-gray-300">
+                            <span className="flex items-center gap-1.5 text-xs font-bold px-2 py-1 rounded card border text-muted">
                                {items.length} Kural
                             </span>
                             
@@ -539,7 +539,7 @@ export default function ConstraintsPage() {
                                          <Icon className="w-5 h-5 flex-shrink-0" style={{ color: t.color }} />
                                        </div>
                                        <div>
-                                         <h4 className="text-sm font-semibold text-gray-200">{getLabel(c)}</h4>
+                                         <h4 className="text-sm font-semibold text-muted">{getLabel(c)}</h4>
                                          {c.reason && (
                                             <p className="text-xs text-gray-500 mt-0.5">{c.reason}</p>
                                          )}
@@ -587,8 +587,8 @@ export default function ConstraintsPage() {
                 <CheckCircle className="w-6 h-6 text-red-400" />
               </div>
               <div>
-                <h3 className="text-lg font-bold text-white leading-tight">Müsait Hocalar</h3>
-                <p className="text-sm text-gray-400 mt-2">
+                <h3 className="text-lg font-bold text-default leading-tight" style={{ color: 'var(--text)' }}>Müsait Hocalar</h3>
+                <p className="text-sm text-muted mt-2">
                   Zaman çizelgesine veya gün planlamasına dair sisteme herhangi bir kısıt veya tercih bildirmemiş, tamamen müsait görünen hocalar.
                 </p>
               </div>
@@ -607,7 +607,7 @@ export default function ConstraintsPage() {
                     className="w-full text-left relative overflow-hidden flex items-center justify-between p-3 rounded-xl border card hover:bg-red-600/10 hover:border-red-600/30 transition-all group/btn"
                   >
                     <div className="flex flex-col">
-                      <span className="text-sm font-medium text-gray-300 group-hover/btn:text-white transition-colors">
+                      <span className="text-sm font-medium text-muted group-hover/btn:text-default transition-colors">
                         {i.title} {i.full_name}
                       </span>
                     </div>
@@ -632,7 +632,7 @@ export default function ConstraintsPage() {
           
           <div className="card w-full max-w-2xl card rounded-2xl border shadow-2xl overflow-hidden relative z-10 animate-in zoom-in-95 duration-200 flex flex-col max-h-[90vh]">
             <div className="p-6 border-b card flex items-center justify-between shrink-0">
-              <h3 className="font-bold text-white text-lg flex items-center gap-2">
+              <h3 className="font-bold text-default text-lg flex items-center gap-2">
                 <div className="w-8 h-8 rounded-lg bg-red-600/20 flex items-center justify-center border border-red-600/30">
                   <ShieldCheck className="w-4 h-4 text-red-400" />
                 </div>
@@ -641,7 +641,7 @@ export default function ConstraintsPage() {
               <button 
                 onClick={() => setShowModal(false)}
                 disabled={saving}
-                className="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:text-white hover:card transition-colors"
+                className="w-8 h-8 flex items-center justify-center rounded-lg text-gray-500 hover:text-default hover:card transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -650,9 +650,9 @@ export default function ConstraintsPage() {
             <div className="p-6 overflow-y-auto space-y-6">
               {/* Instructor Select */}
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-wider text-gray-400 ml-1">Kural Kimin İçin Eğitmen Seçin</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-muted ml-1">Kural Kimin İçin Eğitmen Seçin</label>
                 <select
-                  className="w-full bg-gray-950/50 border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-colors appearance-none cursor-pointer"
+                  className="w-full bg-gray-950/50 border rounded-xl px-4 py-3 text-sm text-default focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-colors appearance-none cursor-pointer" style={{ color: 'var(--text)' }}
                   value={editForm.instructor_id}
                   disabled={saving}
                   onChange={(e) =>
@@ -670,7 +670,7 @@ export default function ConstraintsPage() {
 
               {/* Constraint Type */}
               <div className="space-y-2 border-t pt-6">
-                <label className="text-xs font-bold uppercase tracking-wider text-gray-400 ml-1">Uygulanacak Kısıt/Kural Türü</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-muted ml-1">Uygulanacak Kısıt/Kural Türü</label>
                 <div className="grid grid-cols-2 gap-3">
                   {CONSTRAINT_TYPES.map((t) => {
                     const Icon = t.icon
@@ -693,7 +693,7 @@ export default function ConstraintsPage() {
                         )}
                       >
                         <Icon className="w-5 h-5" style={{ color: isSelected ? t.color : '#64748b' }} />
-                        <span className={clsx("text-sm font-semibold", isSelected ? "text-white" : "text-gray-400 group-hover:text-gray-300")}>{t.label}</span>
+                        <span className={clsx("text-sm font-semibold", isSelected ? "text-white" : "text-muted group-hover:text-muted")}>{t.label}</span>
                       </button>
                     )
                   })}
@@ -704,7 +704,7 @@ export default function ConstraintsPage() {
               {(editForm.constraint_type === 'unavailable_day' || editForm.constraint_type === 'unavailable_slot') && (
                 <div className="space-y-2 border-t pt-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
                   <div className="flex items-center justify-between mb-3 px-1">
-                    <label className="text-xs font-bold uppercase tracking-wider text-gray-400">
+                    <label className="text-xs font-bold uppercase tracking-wider text-muted">
                       Hangi Günler Uygulanacak?
                     </label>
                     <button
@@ -729,7 +729,7 @@ export default function ConstraintsPage() {
                             'flex-1 min-w-[60px] py-2.5 rounded-xl border text-sm font-medium transition-all relative',
                             selected
                               ? 'border-red-600 bg-red-600/20 text-white shadow-inner'
-                              : 'border-gray-800 card text-gray-400 hover:border-gray-600 hover:card'
+                              : 'border-gray-800 card text-muted hover:border-gray-600 hover:card'
                           )}
                         >
                           {d.label}
@@ -749,7 +749,7 @@ export default function ConstraintsPage() {
               {editForm.constraint_type === 'unavailable_slot' && (
                 <div className="space-y-2 border-t pt-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
                   <div className="flex items-center justify-between mb-3 px-1">
-                    <label className="text-xs font-bold uppercase tracking-wider text-gray-400">
+                    <label className="text-xs font-bold uppercase tracking-wider text-muted">
                       Hangi Saat Dilimleri (Seçili Günlerde) Bloklu?
                     </label>
                     <button
@@ -777,7 +777,7 @@ export default function ConstraintsPage() {
                               : 'border-gray-800 card hover:border-gray-600 hover:card'
                           )}
                         >
-                          <span className={selected ? "text-amber-400" : "text-gray-400"}>
+                          <span className={selected ? "text-amber-400" : "text-muted"}>
                             {s.slot_number}. Blok <span className="opacity-60 text-xs ml-1">({s.start_time?.slice(0, 5)}-{s.end_time?.slice(0, 5)})</span>
                           </span>
                           <div className={clsx(
@@ -795,10 +795,10 @@ export default function ConstraintsPage() {
 
               {editForm.constraint_type === 'max_daily_hours' && (
                 <div className="space-y-2 border-t pt-6 animate-in fade-in slide-in-from-bottom-2 duration-300">
-                  <label className="text-xs font-bold uppercase tracking-wider text-gray-400 ml-1">Günlük En Çok Girilebilecek Toplam Saat</label>
+                  <label className="text-xs font-bold uppercase tracking-wider text-muted ml-1">Günlük En Çok Girilebilecek Toplam Saat</label>
                   <input
                     type="number"
-                    className="w-full bg-gray-950/50 border rounded-xl px-4 py-3 text-lg font-bold text-white focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-colors shadow-inner w-[120px]"
+                    className="w-full bg-gray-950/50 border rounded-xl px-4 py-3 text-lg font-bold text-default focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-colors shadow-inner w-[120px]" style={{ color: 'var(--text)' }}
                     min={1}
                     max={10}
                     disabled={saving}
@@ -812,7 +812,7 @@ export default function ConstraintsPage() {
 
               {/* Constraint Nature (Hard/Soft) & Reason */}
               <div className="space-y-2 border-t pt-6">
-                <label className="text-xs font-bold uppercase tracking-wider text-gray-400 ml-1">Zorunluluk Seviyesi</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-muted ml-1">Zorunluluk Seviyesi</label>
                 <div className="flex gap-3">
                   <button
                     type="button"
@@ -822,7 +822,7 @@ export default function ConstraintsPage() {
                       'flex-1 py-3 px-4 rounded-xl border flex items-center justify-center gap-2 text-sm font-bold transition-all',
                       editForm.is_hard
                         ? 'border-red-500 bg-red-500/20 text-red-400 shadow-[0_0_15px_rgba(239,68,68,0.2)]'
-                        : 'border-gray-800 card text-gray-400 hover:border-gray-600'
+                        : 'border-gray-800 card text-muted hover:border-gray-600'
                     )}
                   >
                     <ShieldAlert className="w-4 h-4" /> Mutlaka Uyulmalı (Kesin Blok)
@@ -835,7 +835,7 @@ export default function ConstraintsPage() {
                       'flex-1 py-3 px-4 rounded-xl border flex items-center justify-center gap-2 text-sm font-bold transition-all',
                       !editForm.is_hard
                         ? 'border-emerald-500 bg-emerald-500/20 text-emerald-400 shadow-[0_0_15px_rgba(16,185,129,0.2)]'
-                        : 'border-gray-800 card text-gray-400 hover:border-gray-600'
+                        : 'border-gray-800 card text-muted hover:border-gray-600'
                     )}
                   >
                      <ShieldCheck className="w-4 h-4" /> Yumuşak Kural (Tercih)
@@ -844,9 +844,9 @@ export default function ConstraintsPage() {
               </div>
 
               <div className="space-y-2 pt-2">
-                <label className="text-xs font-bold uppercase tracking-wider text-gray-400 ml-1">Kısa Açıklama <span className="text-gray-600 normal-case">(Opsiyonel, sadece gösterim)</span></label>
+                <label className="text-xs font-bold uppercase tracking-wider text-muted ml-1">Kısa Açıklama <span className="text-gray-600 normal-case">(Opsiyonel, sadece gösterim)</span></label>
                 <input
-                  className="w-full bg-gray-950/50 border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-colors shadow-inner"
+                  className="w-full bg-gray-950/50 border rounded-xl px-4 py-3 text-sm text-default focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-colors shadow-inner" style={{ color: 'var(--text)' }}
                   placeholder="Yönetim Kurulu Üyeliği Sebebiyle..."
                   value={editForm.reason}
                   disabled={saving}
@@ -862,14 +862,14 @@ export default function ConstraintsPage() {
               <button
                 onClick={() => setShowModal(false)}
                 disabled={saving}
-                className="flex-1 py-3 px-4 rounded-xl text-sm font-bold text-gray-300 card hover:bg-gray-700 transition-colors"
+                className="flex-1 py-3 px-4 rounded-xl text-sm font-bold text-muted card hover:bg-gray-700 transition-colors"
               >
                 İptal Et
               </button>
               <button
                 onClick={save}
                 disabled={saving || getRecordCount() === 0 || !editForm.instructor_id}
-                className="flex-1 btn-glow py-3 px-4 rounded-xl text-sm font-bold text-white bg-cyan-600 hover:brightness-110 transition-all shadow-lg disabled:opacity-50 disabled:shadow-none flex items-center justify-center gap-2"
+                className="flex-1 btn-glow py-3 px-4 rounded-xl text-sm font-bold text-default bg-cyan-600 hover:brightness-110 transition-all shadow-lg disabled:opacity-50 disabled:shadow-none flex items-center justify-center gap-2" style={{ color: 'var(--text)' }}
               >
                 {saving ? (
                   <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>

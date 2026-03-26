@@ -179,10 +179,10 @@ export default function AutoSchedulePage() {
         
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="max-w-2xl">
-            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+            <h1 className="text-3xl font-bold text-default flex items-center gap-3" style={{ color: 'var(--text)' }}>
               Yapay Zeka Destekli Merkezi Program Oluşturucu
             </h1>
-            <p className="mt-2 text-gray-400 leading-relaxed">
+            <p className="mt-2 text-muted leading-relaxed">
               Tüm okulu kapsayan akademik ders programını; bölüm bazlı ortak dersler, eğitmenlerin kısıtlamaları ve derslik/öğrenci kapasite dengesini baz alan zeki bir algoritma (heuristics) yardımıyla saniyeler içinde taslaklandırın.
             </p>
           </div>
@@ -201,43 +201,43 @@ export default function AutoSchedulePage() {
                    <BookOpen className="w-5 h-5" />
                  </div>
                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Havuzdaki Ders</p>
-                 <p className="text-2xl font-black text-white mt-1">{stats.totalCourses}</p>
+                 <p className="text-2xl font-black text-default mt-1" style={{ color: 'var(--text)' }}>{stats.totalCourses}</p>
               </div>
               <div className="card p-4 rounded-xl border border-red-600/20 bg-red-600/5">
                  <div className="w-10 h-10 rounded-lg bg-red-600/20 flex items-center justify-center text-red-400 mb-3 border border-red-600/30">
                    <Blocks className="w-5 h-5" />
                  </div>
                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Eğitmen Kısıtı</p>
-                 <p className="text-2xl font-black text-white mt-1">{stats.totalConstraints}</p>
+                 <p className="text-2xl font-black text-default mt-1" style={{ color: 'var(--text)' }}>{stats.totalConstraints}</p>
               </div>
               <div className="card p-4 rounded-xl border border-emerald-500/20 bg-emerald-500/5">
                  <div className="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400 mb-3 border border-emerald-500/30">
                    <Link2 className="w-5 h-5" />
                  </div>
                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Ortak Grup</p>
-                 <p className="text-2xl font-black text-white mt-1">{stats.sharedGroups}</p>
+                 <p className="text-2xl font-black text-default mt-1" style={{ color: 'var(--text)' }}>{stats.sharedGroups}</p>
               </div>
               <div className="card p-4 rounded-xl border border-amber-500/20 bg-amber-500/5">
                  <div className="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center text-amber-400 mb-3 border border-amber-500/30">
                    <Calendar className="w-5 h-5" />
                  </div>
                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Mevcut Kayıt</p>
-                 <p className="text-2xl font-black text-white mt-1">{stats.existingEntries}</p>
+                 <p className="text-2xl font-black text-default mt-1" style={{ color: 'var(--text)' }}>{stats.existingEntries}</p>
               </div>
            </div>
 
            {/* Settings Card */}
            <div className="card p-6 rounded-2xl border card">
-             <h3 className="font-bold text-white mb-5 flex items-center gap-2">
+             <h3 className="font-bold text-default mb-5 flex items-center gap-2">
                <Wand2 className="w-5 h-5 text-red-400" />
                Motor Çalıştırma Parametreleri
              </h3>
 
              <div className="space-y-5">
                 <div>
-                  <label className="text-xs font-bold uppercase tracking-wider text-gray-400 ml-1">Hedef Akademik Dönem</label>
+                  <label className="text-xs font-bold uppercase tracking-wider text-muted ml-1">Hedef Akademik Dönem</label>
                   <select
-                    className="w-full mt-1.5 bg-gray-950/50 border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-colors shadow-inner appearance-none cursor-pointer"
+                    className="w-full mt-1.5 bg-gray-950/50 border rounded-xl px-4 py-3 text-sm text-default focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-colors shadow-inner appearance-none cursor-pointer" style={{ color: 'var(--text)' }}
                     value={selectedPeriod}
                     disabled={generating}
                     onChange={(e) => setSelectedPeriod(e.target.value)}
@@ -266,7 +266,7 @@ export default function AutoSchedulePage() {
                       </div>
                     </div>
                     <div>
-                      <p className="text-sm font-bold text-gray-200 group-hover:text-white transition-colors">Hard Reset (Sıfırdan Başla)</p>
+                      <p className="text-sm font-bold text-muted group-hover:text-default transition-colors" style={{ color: 'var(--text)' }}>Hard Reset (Sıfırdan Başla)</p>
                       <p className="text-xs text-gray-500 mt-1 leading-relaxed">
                         Seçili dönemdeki tüm mevcut ders programını komple temize çeker, sadece sıfır kayıtlarla algoritmayı çalıştırır. Kapalıysa üstüne ekler.
                       </p>
@@ -291,7 +291,7 @@ export default function AutoSchedulePage() {
              <button
                onClick={generateSchedule}
                disabled={generating || !selectedPeriod}
-               className="w-full mt-6 btn-glow inline-flex border border-red-600/50 items-center justify-center gap-3 rounded-xl bg-cyan-600 px-6 py-3.5 font-bold text-white transition-all hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(79,70,229,0.4)] disabled:opacity-50 disabled:scale-100 disabled:shadow-none"
+               className="w-full mt-6 btn-glow inline-flex border border-red-600/50 items-center justify-center gap-3 rounded-xl bg-cyan-600 px-6 py-3.5 font-bold text-default transition-all hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(79,70,229,0.4)] disabled:opacity-50 disabled:scale-100 disabled:shadow-none"
              >
                {generating ? (
                  <>
@@ -317,29 +317,29 @@ export default function AutoSchedulePage() {
                     <div className="absolute inset-0 bg-red-600/20 rounded-full animate-ping opacity-50"></div>
                     <Cpu className="w-12 h-12 text-red-400" />
                  </div>
-                 <h2 className="text-2xl font-bold text-white mb-3">Motor Beklemede</h2>
-                 <p className="text-gray-400 max-w-md mx-auto leading-relaxed mb-8">
+                 <h2 className="text-2xl font-bold text-default mb-3" style={{ color: 'var(--text)' }}>Motor Beklemede</h2>
+                 <p className="text-muted max-w-md mx-auto leading-relaxed mb-8">
                    Sol taraftaki panelden ayarlarınızı yapılandırıp butona tıkladığınızda otomasyon devreye girecektir.
                  </p>
                  
                  <div className="text-left w-full max-w-lg card border p-6 rounded-2xl relative overflow-hidden">
                     <div className="absolute top-0 left-0 w-1 h-full bg-red-600"></div>
-                    <h4 className="font-bold text-gray-200 mb-4 flex items-center gap-2">
+                    <h4 className="font-bold text-muted mb-4 flex items-center gap-2">
                        <Info className="w-4 h-4 text-red-400" />
                        Yapay Zeka Çalışma Sırası
                     </h4>
                     <ul className="space-y-4 relative z-10">
                       <li className="flex gap-3 items-start">
                         <span className="w-6 h-6 shrink-0 rounded bg-red-600/20 text-red-400 flex items-center justify-center text-xs font-black border border-red-600/30">1</span>
-                        <p className="text-sm text-gray-400 leading-snug"><span className="text-gray-200 font-semibold">Ortak Havuz Dersleri</span> en kısıtlı birimler olarak algılanır ve önce onlar bloklanır.</p>
+                        <p className="text-sm text-muted leading-snug"><span className="text-muted font-semibold">Ortak Havuz Dersleri</span> en kısıtlı birimler olarak algılanır ve önce onlar bloklanır.</p>
                       </li>
                       <li className="flex gap-3 items-start">
                         <span className="w-6 h-6 shrink-0 rounded bg-red-600/20 text-red-400 flex items-center justify-center text-xs font-black border border-red-600/30">2</span>
-                        <p className="text-sm text-gray-400 leading-snug"><span className="text-gray-200 font-semibold">Hoca Kısıtları (Constraints)</span> incelenir ve kapalı saat/gün/saat limitleri harici zaman blokları işaretlenir.</p>
+                        <p className="text-sm text-muted leading-snug"><span className="text-muted font-semibold">Hoca Kısıtları (Constraints)</span> incelenir ve kapalı saat/gün/saat limitleri harici zaman blokları işaretlenir.</p>
                       </li>
                       <li className="flex gap-3 items-start">
                         <span className="w-6 h-6 shrink-0 rounded bg-red-600/20 text-red-400 flex items-center justify-center text-xs font-black border border-red-600/30">3</span>
-                        <p className="text-sm text-gray-400 leading-snug"><span className="text-gray-200 font-semibold">Aktif Çakışma Önleme</span> ile Derslik Kapasiteleri ve program öğrenci sayıları eşleşerek slotlara dizilir.</p>
+                        <p className="text-sm text-muted leading-snug"><span className="text-muted font-semibold">Aktif Çakışma Önleme</span> ile Derslik Kapasiteleri ve program öğrenci sayıları eşleşerek slotlara dizilir.</p>
                       </li>
                     </ul>
                  </div>
@@ -358,10 +358,10 @@ export default function AutoSchedulePage() {
                        <Cpu className="w-10 h-10 text-red-400 animate-pulse" />
                     </div>
                  </div>
-                 <h2 className="text-xl font-bold text-white mb-2 inline-flex items-center gap-2">
+                 <h2 className="text-xl font-bold text-default mb-2 inline-flex items-center gap-2" style={{ color: 'var(--text)' }}>
                    Makine Öğrenimi Modeli İşleniyor <span className="flex gap-1"><span className="animate-bounce">.</span><span className="animate-bounce delay-75">.</span><span className="animate-bounce delay-150">.</span></span>
                  </h2>
-                 <p className="text-gray-400 max-w-sm mx-auto">
+                 <p className="text-muted max-w-sm mx-auto">
                    Binlerce ihtimal taranıyor, çakışmalar optimize ediliyor ve en uygun program şablonu çiziliyor. Bu işlem birkaç dakika sürebilir.
                  </p>
               </div>
@@ -375,7 +375,7 @@ export default function AutoSchedulePage() {
                    </div>
                    
                    <div className="relative z-10">
-                     <h3 className="text-2xl font-bold text-white mb-8 flex items-center gap-3">
+                     <h3 className="text-2xl font-bold text-default mb-8 flex items-center gap-3" style={{ color: 'var(--text)' }}>
                        <div className="w-10 h-10 rounded-full bg-emerald-500/20 flex items-center justify-center border border-emerald-500/30">
                          <CheckCircle className="w-5 h-5 text-emerald-400" />
                        </div>
@@ -385,7 +385,7 @@ export default function AutoSchedulePage() {
                      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                        <div className="p-4 rounded-xl border card shadow-inner text-center">
                          <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">Hedef Ders Modülü</p>
-                         <p className="text-3xl font-black text-white mt-1">{result.stats.totalCourses}</p>
+                         <p className="text-3xl font-black text-default mt-1" style={{ color: 'var(--text)' }}>{result.stats.totalCourses}</p>
                        </div>
                        <div className="p-4 rounded-xl border border-emerald-500/20 bg-emerald-500/10 shadow-inner text-center">
                          <p className="text-xs font-semibold uppercase tracking-wider text-emerald-400/80">Tamamlanan</p>
@@ -404,7 +404,7 @@ export default function AutoSchedulePage() {
                      {/* Success Bar */}
                      <div className="mb-8">
                         <div className="flex items-center justify-between mb-2">
-                           <span className="text-sm font-bold text-gray-300">Yerleştirme Başarı Oranı</span>
+                           <span className="text-sm font-bold text-muted">Yerleştirme Başarı Oranı</span>
                            <span className="text-sm font-black text-emerald-400">
                              {result.stats.totalCourses > 0 ? Math.round((result.stats.placedCourses / result.stats.totalCourses) * 100) : 0}%
                            </span>
@@ -424,7 +424,7 @@ export default function AutoSchedulePage() {
                      {/* Distribution Histogram */}
                      {dayDistribution && (
                        <div className="pt-6 border-t">
-                         <h4 className="text-sm font-bold text-gray-300 mb-6 flex items-center gap-2">
+                         <h4 className="text-sm font-bold text-muted mb-6 flex items-center gap-2">
                            <Calendar className="w-4 h-4 text-gray-500" />
                            Haftalık Dağılım Yoğunluğu
                          </h4>
@@ -435,13 +435,13 @@ export default function AutoSchedulePage() {
                              const percentage = (count / maxCount) * 100
                              return (
                                <div key={day} className="flex flex-col items-center justify-end h-full relative group">
-                                 <div className="opacity-0 group-hover:opacity-50 transition-opacity absolute -top-8 card text-white text-xs font-bold px-2 py-1 rounded shadow-lg pointer-events-none">
+                                 <div className="opacity-0 group-hover:opacity-50 transition-opacity absolute -top-8 card text-default text-xs font-bold px-2 py-1 rounded shadow-lg pointer-events-none">
                                    {count} Saat
                                  </div>
                                  <div className="w-full max-w-[40px] bg-cyan-600 hover:brightness-110 transition-colors rounded-t-lg relative overflow-hidden shadow-[0_0_10px_rgba(99,102,241,0.2)]"
                                       style={{ height: `${percentage}%`, minHeight: count > 0 ? '12px' : '4px' }}>
                                  </div>
-                                 <p className="text-xs font-bold text-gray-400 mt-2">{day}</p>
+                                 <p className="text-xs font-bold text-muted mt-2">{day}</p>
                                </div>
                              )
                            })}
@@ -454,11 +454,11 @@ export default function AutoSchedulePage() {
                 {/* Failed Placements */}
                 {result.failed.length > 0 && (
                   <div className="card p-6 rounded-2xl border border-amber-500/30 bg-cyan-600">
-                    <h3 className="font-bold text-white mb-6 flex items-center gap-2">
+                    <h3 className="font-bold text-default mb-6 flex items-center gap-2">
                       <AlertTriangle className="w-5 h-5 text-amber-400" />
                       Yerleşemeyen & Açıkta Kalan Dersler ({result.failed.length})
                     </h3>
-                    <p className="text-sm text-gray-400 mb-4 card p-3 rounded-lg border">
+                    <p className="text-sm text-muted mb-4 card p-3 rounded-lg border">
                       Aşağıdaki dersler, mevcut sınıf veya hoca kısıtlamaları (boş saat eksikliği vb.) sebebiyle sisteme otomatik <strong>yerleştirilememiştir</strong>. Lütfen bunları manuel yerleştirin.
                     </p>
 
@@ -469,7 +469,7 @@ export default function AutoSchedulePage() {
                           className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl border card shadow-inner group hover:border-gray-700 transition-colors"
                         >
                           <div>
-                            <p className="text-sm font-bold text-gray-200 group-hover:text-white transition-colors">{f.course}</p>
+                            <p className="text-sm font-bold text-muted group-hover:text-default transition-colors" style={{ color: 'var(--text)' }}>{f.course}</p>
                             <p className="text-xs text-gray-500 mt-0.5">{f.program}</p>
                           </div>
                           <span className="text-xs font-semibold px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400">

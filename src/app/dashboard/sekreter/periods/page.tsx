@@ -81,10 +81,10 @@ export default function PeriodsPage() {
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+            <h1 className="text-3xl font-bold text-default flex items-center gap-3" style={{ color: 'var(--text)' }}>
               Akademik Dönemler
             </h1>
-            <p className="mt-2 text-gray-400 max-w-xl">
+            <p className="mt-2 text-muted max-w-xl">
               Sistemin üzerinde çalıştığı mevcut aktif dönemi belirleyin ve yeni eğitim-öğretim dönemleri için takvimi yönetin.
             </p>
           </div>
@@ -103,21 +103,21 @@ export default function PeriodsPage() {
                   <Plus className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg text-white">Yeni Dönem Ekle</h3>
-                  <p className="text-xs text-gray-400">Gelecek öğretim yılı için kayıt</p>
+                  <h3 className="font-bold text-lg text-default" style={{ color: 'var(--text)' }}>Yeni Dönem Ekle</h3>
+                  <p className="text-xs text-muted">Gelecek öğretim yılı için kayıt</p>
                 </div>
               </div>
 
               <form onSubmit={create} className="space-y-4">
                 <div>
-                  <label className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1.5 block">
+                  <label className="text-xs font-semibold uppercase tracking-wider text-muted mb-1.5 block">
                     Akademik Yıl
                   </label>
                   <div className="relative">
                     <CalendarDays className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-teal-500/50" />
                     <input 
                       type="text"
-                      className="w-full card border rounded-lg pl-10 pr-4 py-3 text-sm font-medium text-white focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/50 transition-colors placeholder:text-gray-600" 
+                      className="w-full card border rounded-lg pl-10 pr-4 py-3 text-sm font-medium text-default focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/50 transition-colors placeholder:text-gray-600" 
                       placeholder="Örn: 2024-2025" 
                       value={form.academic_year}
                       onChange={e => setForm(f => ({ ...f, academic_year: e.target.value }))}
@@ -127,13 +127,13 @@ export default function PeriodsPage() {
                 </div>
 
                 <div>
-                  <label className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1.5 block">
+                  <label className="text-xs font-semibold uppercase tracking-wider text-muted mb-1.5 block">
                     Dönem / Yarıyıl
                   </label>
                   <div className="relative">
                     <Clock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-teal-500/50" />
                     <select 
-                      className="w-full card border rounded-lg pl-10 pr-4 py-3 text-sm font-medium text-white focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/50 transition-colors appearance-none cursor-pointer"
+                      className="w-full card border rounded-lg pl-10 pr-4 py-3 text-sm font-medium text-default focus:outline-none focus:border-teal-500 focus:ring-1 focus:ring-teal-500/50 transition-colors appearance-none cursor-pointer"
                       value={form.semester} 
                       onChange={e => setForm(f => ({ ...f, semester: +e.target.value }))}
                       required
@@ -148,7 +148,7 @@ export default function PeriodsPage() {
                   <button 
                     type="submit" 
                     disabled={saving} 
-                    className="w-full btn-glow bg-cyan-600 hover:brightness-110 text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_15px_rgba(20,184,166,0.3)]"
+                    className="w-full btn-glow bg-cyan-600 hover:brightness-110 text-default font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_15px_rgba(20,184,166,0.3)]"
                   >
                     {saving ? (
                       <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
@@ -165,7 +165,7 @@ export default function PeriodsPage() {
           </div>
 
           <div className="card rounded-2xl border p-5 card">
-            <h4 className="text-sm font-bold text-gray-300 flex items-center gap-2 mb-2">
+            <h4 className="text-sm font-bold text-muted flex items-center gap-2 mb-2">
               <Settings className="w-4 h-4 text-gray-500" /> Uyarılar & Bilgilendirme
             </h4>
             <ul className="text-xs text-gray-500 space-y-2 mt-3 list-disc pl-4 marker:text-teal-700">
@@ -180,9 +180,9 @@ export default function PeriodsPage() {
         <div className="xl:col-span-2">
           <div className="card rounded-2xl border overflow-hidden h-full flex flex-col">
             <div className="px-6 py-5 border-b card flex items-center justify-between">
-              <h3 className="font-bold text-white text-lg flex items-center gap-2">
+              <h3 className="font-bold text-default text-lg flex items-center gap-2">
                 Tanımlı Dönemler 
-                <span className="card text-gray-400 text-xs px-2 py-0.5 rounded-full border">{periods.length} Adet</span>
+                <span className="card text-muted text-xs px-2 py-0.5 rounded-full border">{periods.length} Adet</span>
               </h3>
             </div>
 
@@ -195,7 +195,7 @@ export default function PeriodsPage() {
               ) : periods.length === 0 ? (
                 <div className="flex flex-col items-center justify-center h-48 text-gray-500 card rounded-xl border border-dashed">
                   <CalendarDays className="w-10 h-10 mb-3 opacity-50" />
-                  <p className="font-medium text-gray-400">Henüz hiç dönem eklenmemiş</p>
+                  <p className="font-medium text-muted">Henüz hiç dönem eklenmemiş</p>
                   <p className="text-xs mt-1">Sol taraftaki paneli kullanarak yeni bir akademik dönem başlatın.</p>
                 </div>
               ) : (
@@ -234,7 +234,7 @@ export default function PeriodsPage() {
                             <div className="flex items-center gap-2">
                               <h4 className={clsx(
                                 "text-lg font-bold tracking-tight transition-colors",
-                                p.is_active ? 'text-white' : 'text-gray-300 group-hover:text-white'
+                                p.is_active ? 'text-white' : 'text-muted group-hover:text-white'
                               )}>
                                 {p.academic_year}
                               </h4>
@@ -260,7 +260,7 @@ export default function PeriodsPage() {
                             <button 
                               onClick={() => setActive(p.id)}
                               disabled={activatingId === p.id}
-                              className="w-full sm:w-auto px-4 py-2.5 card hover:bg-teal-600 hover:text-white text-gray-400 rounded-xl text-sm font-bold transition-all border hover:border-teal-500 hover:shadow-[0_0_15px_rgba(20,184,166,0.3)] flex items-center justify-center gap-2"
+                              className="w-full sm:w-auto px-4 py-2.5 card hover:bg-teal-600 hover:text-default text-muted rounded-xl text-sm font-bold transition-all border hover:border-teal-500 hover:shadow-[0_0_15px_rgba(20,184,166,0.3)] flex items-center justify-center gap-2"
                             >
                               {activatingId === p.id ? (
                                 <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
@@ -270,7 +270,7 @@ export default function PeriodsPage() {
                               {activatingId === p.id ? 'Aktivasyon...' : 'Bu Dönemi Aktif Yap'}
                             </button>
                           ) : (
-                            <div className="px-5 py-2.5 card border rounded-xl text-sm font-medium text-gray-400 flex items-center justify-center gap-2 cursor-default">
+                            <div className="px-5 py-2.5 card border rounded-xl text-sm font-medium text-muted flex items-center justify-center gap-2 cursor-default">
                               Şu Anki Dönem <ArrowRight className="w-4 h-4 opacity-50" />
                             </div>
                           )}

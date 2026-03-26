@@ -91,10 +91,10 @@ export default function DepartmentsPage() {
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+            <h1 className="text-3xl font-bold text-default flex items-center gap-3" style={{ color: 'var(--text)' }}>
               Bölüm Yönetimi
             </h1>
-            <p className="mt-2 text-gray-400 max-w-xl">
+            <p className="mt-2 text-muted max-w-xl">
               Üniversitedeki akademik bölümleri tanımlayın, başkan atayın ve bölüm bazlı istatistikleri takip edin.
             </p>
           </div>
@@ -114,7 +114,7 @@ export default function DepartmentsPage() {
         <div className="relative w-full sm:w-80">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
           <input 
-            className="w-full card border rounded-lg pl-10 pr-4 py-2.5 text-sm text-gray-200 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500/30 focus:border-red-500/50 transition-all font-medium" 
+            className="w-full card border rounded-lg pl-10 pr-4 py-2.5 text-sm text-muted placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-red-500/30 focus:border-red-500/50 transition-all font-medium" 
             placeholder="Bölüm adı veya kısa kod ara..." 
             value={search} 
             onChange={e => setSearch(e.target.value)} 
@@ -125,10 +125,10 @@ export default function DepartmentsPage() {
             <div className={`w-10 h-5 flex items-center rounded-full p-1 transition-colors ${showInactive ? 'bg-red-500/50' : 'bg-gray-700'}`}>
               <div className={`bg-white w-3 h-3 rounded-full shadow-md transform duration-300 ease-in-out ${showInactive ? 'translate-x-5' : ''}`}></div>
             </div>
-            <span className="text-gray-400 font-medium group-hover:text-gray-300 transition-colors">Pasifleri Göster</span>
+            <span className="text-muted font-medium group-hover:text-muted transition-colors">Pasifleri Göster</span>
           </label>
           <div className="hidden sm:block w-px h-6 card"></div>
-          <div className="text-gray-400 font-medium">Toplam <span className="text-white">{filtered.length}</span> Bölüm</div>
+          <div className="text-muted font-medium">Toplam <span className="text-default">{filtered.length}</span> Bölüm</div>
         </div>
       </div>
 
@@ -159,7 +159,7 @@ export default function DepartmentsPage() {
           <div className="w-16 h-16 card/50 rounded-full flex items-center justify-center mb-4">
             <Building2 className="w-8 h-8 text-gray-500" />
           </div>
-          <h3 className="text-lg font-medium text-white mb-1">Bölüm Bulunamadı</h3>
+          <h3 className="text-lg font-medium text-default mb-1">Bölüm Bulunamadı</h3>
           <p className="text-gray-500 text-sm max-w-sm mx-auto">
             Arama kriterlerinize uyan bir bölüm bulunamadı veya henüz hiç bölüm eklenmemiş.
           </p>
@@ -182,7 +182,7 @@ export default function DepartmentsPage() {
                     {d.short_code}
                   </div>
                   <div className="flex-1 min-w-0 pt-1">
-                    <h3 className="font-bold text-gray-100 text-base leading-tight truncate group-hover:text-white transition-colors" title={d.name}>
+                    <h3 className="font-bold text-muted text-base leading-tight truncate group-hover:text-default transition-colors" style={{ color: 'var(--text)' }} title={d.name}>
                       {d.name}
                     </h3>
                     <div className="text-xs font-medium text-gray-500 mt-1.5 flex items-center gap-1.5">
@@ -197,7 +197,7 @@ export default function DepartmentsPage() {
                   {deptPrograms.length > 0 ? (
                     <div className="flex flex-wrap gap-2 mb-4">
                       {deptPrograms.slice(0, 3).map(p => (
-                        <span key={p.id} className="inline-flex items-center gap-1.5 text-[11px] px-2.5 py-1 rounded card/60 text-gray-300 border">
+                        <span key={p.id} className="inline-flex items-center gap-1.5 text-[11px] px-2.5 py-1 rounded card/60 text-muted border">
                           <BookOpen className="w-3 h-3 text-cyan-500" />
                           {p.name}
                         </span>
@@ -216,7 +216,7 @@ export default function DepartmentsPage() {
                 {/* Footer Stats & Actions */}
                 <div className="pt-4 mt-auto border-t flex items-center justify-between">
                   <div className="flex items-center gap-4">
-                    <div className="flex items-center gap-1.5 text-xs font-medium text-gray-400" title="Öğretim Elemanları">
+                    <div className="flex items-center gap-1.5 text-xs font-medium text-muted" title="Öğretim Elemanları">
                       <Users className="w-4 h-4 text-gray-500" />
                       {instrCounts[d.id] ?? 0}
                     </div>
@@ -227,14 +227,14 @@ export default function DepartmentsPage() {
                   <div className="flex items-center gap-1 card rounded-lg p-1 border translate-x-2 opacity-0 group-hover:opacity-50 group-hover:translate-x-0 transition-all">
                     <button 
                       onClick={() => setEditItem(d)} 
-                      className="p-1.5 rounded-md hover:bg-gray-700 text-gray-400 hover:text-white transition-colors"
+                      className="p-1.5 rounded-md hover:bg-gray-700 text-muted hover:text-default transition-colors"
                       title="Bölümü Düzenle"
                     >
                       <Edit className="w-4 h-4" />
                     </button>
                     <button 
                       onClick={() => toggle(d.id, d.is_active)} 
-                      className={`p-1.5 rounded-md transition-colors ${d.is_active ? 'hover:bg-amber-900/30 text-gray-400 hover:text-amber-400' : 'hover:bg-emerald-900/30 text-gray-400 hover:text-emerald-400'}`}
+                      className={`p-1.5 rounded-md transition-colors ${d.is_active ? 'hover:bg-amber-900/30 text-muted hover:text-amber-400' : 'hover:bg-emerald-900/30 text-muted hover:text-emerald-400'}`}
                       title={d.is_active ? "Bölümü Pasife Al" : "Bölümü Aktif Et"}
                     >
                       {d.is_active ? <ToggleLeft className="w-4 h-4" /> : <ToggleRight className="w-4 h-4" />}
@@ -251,22 +251,22 @@ export default function DepartmentsPage() {
       {editItem && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in">
           <div className="card w-full max-w-md p-6 rounded-2xl border shadow-2xl relative">
-            <button onClick={() => setEditItem(null)} className="absolute right-4 top-4 p-2 text-gray-400 hover:text-white rounded-lg hover:card transition">
+            <button onClick={() => setEditItem(null)} className="absolute right-4 top-4 p-2 text-muted hover:text-default rounded-lg hover:card transition">
               <X className="w-5 h-5" />
             </button>
-            <h3 className="text-xl font-bold text-white mb-2 flex items-center gap-3">
+            <h3 className="text-xl font-bold text-default mb-2 flex items-center gap-3" style={{ color: 'var(--text)' }}>
               <div className={`p-2 rounded-lg ${editItem.id ? 'bg-cyan-600' : 'bg-cyan-600'}`}>
-                {editItem.id ? <Edit className="w-5 h-5 text-white" /> : <Building2 className="w-5 h-5 text-white" />}
+                {editItem.id ? <Edit className="w-5 h-5 text-default" /> : <Building2 className="w-5 h-5 text-default" />}
               </div>
               {editItem.id ? 'Bölümü Düzenle' : 'Yeni Bölüm'}
             </h3>
-            <p className="text-sm text-gray-400 mb-6">{editItem.id ? 'Mevcut bölüm ayarlarını güncelleyin.' : 'Üniversiteye yeni bir akademik bölüm tanımlayın.'}</p>
+            <p className="text-sm text-muted mb-6">{editItem.id ? 'Mevcut bölüm ayarlarını güncelleyin.' : 'Üniversiteye yeni bir akademik bölüm tanımlayın.'}</p>
             
             <form onSubmit={save} className="space-y-4">
               <div>
-                <label className="text-xs font-medium text-gray-400 mb-1.5 block">Bölüm Adı <span className="text-red-400">*</span></label>
+                <label className="text-xs font-medium text-muted mb-1.5 block">Bölüm Adı <span className="text-red-400">*</span></label>
                 <input 
-                  className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus:border-red-500 transition-colors" 
+                  className="w-full card border rounded-lg px-3 py-2.5 text-sm text-default focus:outline-none focus:border-red-500 transition-colors" 
                   placeholder="Bilgisayar Teknolojileri" 
                   required
                   value={editItem.name ?? ''} 
@@ -274,9 +274,9 @@ export default function DepartmentsPage() {
                 />
               </div>
               <div>
-                <label className="text-xs font-medium text-gray-400 mb-1.5 block">Kısa Kod <span className="text-red-400">*</span></label>
+                <label className="text-xs font-medium text-muted mb-1.5 block">Kısa Kod <span className="text-red-400">*</span></label>
                 <input 
-                  className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white font-mono uppercase focus:outline-none focus:border-red-500 transition-colors" 
+                  className="w-full card border rounded-lg px-3 py-2.5 text-sm text-default font-mono uppercase focus:outline-none focus:border-red-500 transition-colors" 
                   placeholder="BLG" 
                   required
                   maxLength={5} 
@@ -285,9 +285,9 @@ export default function DepartmentsPage() {
                 />
               </div>
               <div>
-                <label className="text-xs font-medium text-gray-400 mb-1.5 block">Bölüm Başkanı</label>
+                <label className="text-xs font-medium text-muted mb-1.5 block">Bölüm Başkanı</label>
                 <select 
-                  className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus:border-red-500 transition-colors form-select appearance-none" 
+                  className="w-full card border rounded-lg px-3 py-2.5 text-sm text-default focus:outline-none focus:border-red-500 transition-colors form-select appearance-none" 
                   value={editItem.head_id ?? ''} 
                   onChange={e => setEditItem((i: any) => ({ ...i, head_id: e.target.value || null }))}
                 >
@@ -300,12 +300,12 @@ export default function DepartmentsPage() {
                 <label className="inline-flex items-center cursor-pointer">
                   <input type="checkbox" className="sr-only peer" checked={editItem.is_active ?? true} onChange={e=>setEditItem((i:any)=>({...i,is_active:e.target.checked}))} />
                   <div className="relative w-11 h-6 bg-gray-700 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-red-500"></div>
-                  <span className="ms-3 text-sm font-medium text-gray-300">Bölüm aktif kayıt alıyor mu?</span>
+                  <span className="ms-3 text-sm font-medium text-muted">Bölüm aktif kayıt alıyor mu?</span>
                 </label>
               </div>
               
               <div className="pt-4 flex gap-3">
-                <button type="button" onClick={() => setEditItem(null)} className="px-4 py-2.5 rounded-lg font-medium text-sm text-gray-400 card hover:bg-gray-700 hover:text-white transition flex-1">İptal</button>
+                <button type="button" onClick={() => setEditItem(null)} className="px-4 py-2.5 rounded-lg font-medium text-sm text-muted card hover:bg-gray-700 hover:text-default transition flex-1">İptal</button>
                 <button type="submit" disabled={saving} className={`px-4 py-2.5 rounded-lg text-sm font-medium text-white flex-1 flex items-center justify-center gap-2 shadow-lg transition-all ${editItem.id ? 'bg-cyan-600 hover:brightness-110' : 'bg-cyan-600 hover:brightness-110'}`}>
                   {saving ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div> : <Save className="w-4 h-4" /> }
                   {saving ? 'Kaydediliyor...' : 'Kaydet'}

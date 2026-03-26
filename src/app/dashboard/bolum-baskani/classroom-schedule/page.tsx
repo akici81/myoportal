@@ -136,10 +136,10 @@ export default function ClassroomSchedulePage() {
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-black text-white flex items-center gap-3 tracking-tight">
+            <h1 className="text-3xl font-black text-default flex items-center gap-3 tracking-tight" style={{ color: 'var(--text)' }}>
               Derslik İzleme Merkezi
             </h1>
-            <p className="mt-2 text-gray-400 max-w-2xl font-medium">
+            <p className="mt-2 text-muted max-w-2xl font-medium">
               Fiziksel alanların kapasite optimizasyonu, doluluk oranları ve haftalık program takibi.
             </p>
           </div>
@@ -152,7 +152,7 @@ export default function ClassroomSchedulePage() {
                 'flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold transition-all',
                 viewMode === 'overview'
                   ? 'bg-red-600/20 text-red-400 border border-red-600/30'
-                  : 'text-gray-400 hover:text-gray-200 hover:card/50 transparent border border-transparent'
+                  : 'text-muted hover:text-muted hover:card/50 transparent border border-transparent'
               )}
             >
               <LayoutGrid className="w-4 h-4" />
@@ -167,7 +167,7 @@ export default function ClassroomSchedulePage() {
                 'flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold transition-all',
                 viewMode === 'single'
                   ? 'bg-red-600/20 text-red-400 border border-red-600/30'
-                  : 'text-gray-400 hover:text-gray-200 hover:card/50 transparent border border-transparent'
+                  : 'text-muted hover:text-muted hover:card/50 transparent border border-transparent'
               )}
             >
               <Maximize2 className="w-4 h-4" />
@@ -181,14 +181,14 @@ export default function ClassroomSchedulePage() {
         {loading ? (
            <div className="card flex flex-col items-center justify-center py-32 text-center rounded-2xl border">
              <div className="w-12 h-12 rounded-full border-4 border-blue-800 border-t-red-600 animate-spin mb-4" />
-             <h3 className="text-xl font-bold text-white tracking-tight">Derslik Verileri Yükleniyor</h3>
+             <h3 className="text-xl font-bold text-default tracking-tight" style={{ color: 'var(--text)' }}>Derslik Verileri Yükleniyor</h3>
            </div>
         ) : viewMode === 'overview' ? (
           /* Overview - All Classrooms */
           <div className="card overflow-hidden rounded-2xl border shadow-xl">
             <div className="px-6 py-5 border-b card flex items-center justify-between">
               <div>
-                <h3 className="text-xl font-black text-white flex items-center gap-2">
+                <h3 className="text-xl font-black text-default flex items-center gap-2" style={{ color: 'var(--text)' }}>
                   <Sparkles className="w-5 h-5 text-red-400" />
                   Kapasite ve Doluluk Haritası
                 </h3>
@@ -216,13 +216,13 @@ export default function ClassroomSchedulePage() {
                     <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-white/5 to-transparent rounded-bl-full opacity-50 group-hover:opacity-50 transition-opacity" />
                     
                     <div className="flex items-start justify-between mb-4 relative z-10">
-                      <h4 className="font-black text-gray-100 text-lg group-hover:text-red-400 transition-colors dropdown-title truncate pr-2">{room.name}</h4>
+                      <h4 className="font-black text-muted text-lg group-hover:text-red-400 transition-colors dropdown-title truncate pr-2">{room.name}</h4>
                       <span className={clsx('text-[10px] px-2 py-1 rounded-md font-bold uppercase tracking-wider border', styling.bg, styling.text, styling.border)}>
                         {room.type}
                       </span>
                     </div>
                     
-                    <div className="flex items-center gap-2 mb-5 relative z-10 text-gray-400 group-hover:text-gray-300 transition-colors">
+                    <div className="flex items-center gap-2 mb-5 relative z-10 text-muted group-hover:text-muted transition-colors">
                       <Users className="w-4 h-4" />
                       <span className="text-sm font-semibold">
                         {room.capacity} Öğrenci Kapasitesi
@@ -261,9 +261,9 @@ export default function ClassroomSchedulePage() {
             {/* Classroom Selection Glass Card */}
             <div className="card p-6 rounded-2xl border shadow-xl flex items-center justify-between gap-6 flex-wrap">
               <div className="flex-1 min-w-[300px]">
-                <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block pl-1">İncelenen Derslik</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-muted mb-2 block pl-1">İncelenen Derslik</label>
                 <select
-                  className="w-full card border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-red-600/50 transition-colors font-bold shadow-inner"
+                  className="w-full card border rounded-xl px-4 py-3.5 text-sm text-default focus:outline-none focus:ring-2 focus:ring-red-600/50 transition-colors font-bold shadow-inner" style={{ color: 'var(--text)' }}
                   value={selectedClassroom}
                   onChange={(e) => setSelectedClassroom(e.target.value)}
                 >
@@ -280,7 +280,7 @@ export default function ClassroomSchedulePage() {
                 <div className="flex gap-4 p-4 rounded-xl card border shadow-inner">
                    <div className="text-center px-4 border-r">
                      <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Bina</p>
-                     <p className="font-bold text-gray-200">{selectedClassroomInfo.building}</p>
+                     <p className="font-bold text-muted">{selectedClassroomInfo.building}</p>
                    </div>
                    <div className="text-center px-4 border-r">
                      <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Kapasite</p>
@@ -288,7 +288,7 @@ export default function ClassroomSchedulePage() {
                    </div>
                    <div className="text-center px-4">
                      <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Tür</p>
-                     <p className="font-bold text-white capitalize">{selectedClassroomInfo.type}</p>
+                     <p className="font-bold text-default capitalize">{selectedClassroomInfo.type}</p>
                    </div>
                 </div>
               )}
@@ -304,7 +304,7 @@ export default function ClassroomSchedulePage() {
                     </div>
                     <div>
                       <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-0.5">Haftalık Ders</p>
-                      <p className="text-2xl font-black text-white">{stats.usedSlots} <span className="text-sm font-medium text-gray-500">Saat</span></p>
+                      <p className="text-2xl font-black text-default" style={{ color: 'var(--text)' }}>{stats.usedSlots} <span className="text-sm font-medium text-gray-500">Saat</span></p>
                     </div>
                   </div>
                 </div>
@@ -316,7 +316,7 @@ export default function ClassroomSchedulePage() {
                     </div>
                     <div>
                       <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-0.5">Kullanılabilir</p>
-                      <p className="text-2xl font-black text-white">{stats.freeSlots} <span className="text-sm font-medium text-gray-500">Saat</span></p>
+                      <p className="text-2xl font-black text-default" style={{ color: 'var(--text)' }}>{stats.freeSlots} <span className="text-sm font-medium text-gray-500">Saat</span></p>
                     </div>
                   </div>
                 </div>
@@ -328,7 +328,7 @@ export default function ClassroomSchedulePage() {
                     </div>
                     <div>
                       <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-0.5">Boş Olmayan</p>
-                      <p className="text-2xl font-black text-white">{stats.usedSlots} <span className="text-sm font-medium text-gray-500">Saat</span></p>
+                      <p className="text-2xl font-black text-default" style={{ color: 'var(--text)' }}>{stats.usedSlots} <span className="text-sm font-medium text-gray-500">Saat</span></p>
                     </div>
                   </div>
                 </div>
@@ -340,7 +340,7 @@ export default function ClassroomSchedulePage() {
                     </div>
                     <div>
                       <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-0.5">Doluluk Oranı</p>
-                      <p className="text-2xl font-black text-white">%{stats.utilizationRate}</p>
+                      <p className="text-2xl font-black text-default" style={{ color: 'var(--text)' }}>%{stats.utilizationRate}</p>
                     </div>
                   </div>
                 </div>
@@ -354,11 +354,11 @@ export default function ClassroomSchedulePage() {
                   <table className="w-full text-sm border-collapse min-w-[900px]">
                     <thead>
                       <tr className="card border-b">
-                        <th className="py-4 px-5 text-left font-black text-gray-400 uppercase tracking-wider border-r w-28 bg-gray-950/50">
+                        <th className="py-4 px-5 text-left font-black text-muted uppercase tracking-wider border-r w-28 bg-gray-950/50">
                           Zaman
                         </th>
                         {[1, 2, 3, 4, 5].map((d) => (
-                          <th key={d} className="py-4 px-4 text-center font-black text-gray-300 uppercase tracking-wider border-r w-[calc((100%-7rem)/5)]">
+                          <th key={d} className="py-4 px-4 text-center font-black text-muted uppercase tracking-wider border-r w-[calc((100%-7rem)/5)]">
                             {DAYS[d]}
                           </th>
                         ))}
@@ -380,7 +380,7 @@ export default function ClassroomSchedulePage() {
                                     <p className="font-black text-red-400 text-sm leading-tight mb-1 truncate">
                                       {entry.program_courses?.courses?.code}
                                     </p>
-                                    <p className="text-[11px] text-gray-300 font-medium leading-tight truncate mb-1">
+                                    <p className="text-[11px] text-muted font-medium leading-tight truncate mb-1">
                                       {entry.program_courses?.courses?.name}
                                     </p>
                                     <div className="flex items-center justify-between mt-auto pt-1">

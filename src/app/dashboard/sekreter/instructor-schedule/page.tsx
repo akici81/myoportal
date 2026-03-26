@@ -153,10 +153,10 @@ export default function InstructorSchedulePage() {
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-black text-white flex items-center gap-3 tracking-tight">
+            <h1 className="text-3xl font-black text-default flex items-center gap-3 tracking-tight" style={{ color: 'var(--text)' }}>
               Eğitmen Programları
             </h1>
-            <p className="mt-2 text-gray-400 max-w-2xl font-medium">
+            <p className="mt-2 text-muted max-w-2xl font-medium">
               Öğretim elemanlarının haftalık ders yükünü, program dağılımlarını ve boş zamanlarını inceleyin.
             </p>
           </div>
@@ -167,18 +167,18 @@ export default function InstructorSchedulePage() {
         {loading ? (
            <div className="card flex flex-col items-center justify-center py-32 text-center rounded-2xl border">
              <div className="w-12 h-12 rounded-full border-4 border-violet-800 border-t-red-600 animate-spin mb-4" />
-             <h3 className="text-xl font-bold text-white tracking-tight">Veriler Yükleniyor</h3>
+             <h3 className="text-xl font-bold text-default tracking-tight" style={{ color: 'var(--text)' }}>Veriler Yükleniyor</h3>
            </div>
         ) : (
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-6">
             
             {/* Instructor Selection & Filters */}
             <div className="card p-6 rounded-2xl border shadow-xl flex flex-wrap items-center justify-between gap-6">
-              <div className="flex-1 min-w-[300px] relative text-gray-400 focus-within:text-red-600 transition-colors">
+              <div className="flex-1 min-w-[300px] relative text-muted focus-within:text-red-600 transition-colors">
                 <Search className="w-5 h-5 absolute left-4 top-[38px]" />
-                <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block pl-1">Kadrolu Eğitmen Seçimi</label>
+                <label className="text-xs font-bold uppercase tracking-wider text-muted mb-2 block pl-1">Kadrolu Eğitmen Seçimi</label>
                 <select
-                  className="w-full card border rounded-xl pl-11 pr-4 py-3.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-red-600/50 transition-colors font-bold shadow-inner"
+                  className="w-full card border rounded-xl pl-11 pr-4 py-3.5 text-sm text-default focus:outline-none focus:ring-2 focus:ring-red-600/50 transition-colors font-bold shadow-inner" style={{ color: 'var(--text)' }}
                   value={selectedInstructor}
                   onChange={(e) => setSelectedInstructor(e.target.value)}
                 >
@@ -197,7 +197,7 @@ export default function InstructorSchedulePage() {
                     <User className="w-5 h-5 text-red-400" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-black text-white">{selectedInstructorInfo.title} {selectedInstructorInfo.full_name}</h4>
+                    <h4 className="text-sm font-black text-default">{selectedInstructorInfo.title} {selectedInstructorInfo.full_name}</h4>
                     <p className="text-[11px] font-bold text-red-300/80 uppercase tracking-widest mt-0.5">
                       {selectedInstructorInfo.departments?.short_code || 'Bölüm Tanımsız'}
                     </p>
@@ -216,7 +216,7 @@ export default function InstructorSchedulePage() {
                     </div>
                     <div>
                       <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-0.5">Haftalık Yük</p>
-                      <p className="text-2xl font-black text-white">{stats.totalHours} <span className="text-sm font-medium text-gray-500">Saat</span></p>
+                      <p className="text-2xl font-black text-default" style={{ color: 'var(--text)' }}>{stats.totalHours} <span className="text-sm font-medium text-gray-500">Saat</span></p>
                     </div>
                   </div>
                 </div>
@@ -228,7 +228,7 @@ export default function InstructorSchedulePage() {
                     </div>
                     <div>
                       <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-0.5">Çalışma Günü</p>
-                      <p className="text-2xl font-black text-white">{stats.workDays} <span className="text-sm font-medium text-gray-500">Gün</span></p>
+                      <p className="text-2xl font-black text-default" style={{ color: 'var(--text)' }}>{stats.workDays} <span className="text-sm font-medium text-gray-500">Gün</span></p>
                     </div>
                   </div>
                 </div>
@@ -240,7 +240,7 @@ export default function InstructorSchedulePage() {
                     </div>
                     <div>
                       <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-0.5">Farklı Program</p>
-                      <p className="text-2xl font-black text-white">{stats.programCount} <span className="text-sm font-medium text-gray-500">Adet</span></p>
+                      <p className="text-2xl font-black text-default" style={{ color: 'var(--text)' }}>{stats.programCount} <span className="text-sm font-medium text-gray-500">Adet</span></p>
                     </div>
                   </div>
                 </div>
@@ -255,7 +255,7 @@ export default function InstructorSchedulePage() {
                       const height = Math.max((h / max) * 100, 10);
                       return (
                         <div key={d} className="w-full flex flex-col items-center gap-1 group relative">
-                          {h > 0 && <span className="absolute -top-4 text-[9px] font-bold text-white opacity-0 group-hover:opacity-50 transition-opacity">{h}s</span>}
+                          {h > 0 && <span className="absolute -top-4 text-[9px] font-bold text-default opacity-0 group-hover:opacity-50 transition-opacity" style={{ color: 'var(--text)' }}>{h}s</span>}
                           <div className={clsx("w-full rounded-sm transition-all duration-500", h > 0 ? "bg-red-600" : "card")} style={{ height: `${height}%` }}></div>
                         </div>
                       )
@@ -277,7 +277,7 @@ export default function InstructorSchedulePage() {
                   <table className="w-full text-sm border-collapse min-w-[900px]">
                     <thead>
                       <tr className="card border-b">
-                        <th className="py-4 px-5 text-left font-black text-gray-400 uppercase tracking-wider border-r w-28 bg-gray-950/50">
+                        <th className="py-4 px-5 text-left font-black text-muted uppercase tracking-wider border-r w-28 bg-gray-950/50">
                           Zaman
                         </th>
                         {[1, 2, 3, 4, 5].map((d) => (

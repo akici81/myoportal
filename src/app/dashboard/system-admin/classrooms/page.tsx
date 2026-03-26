@@ -102,10 +102,10 @@ export default function ClassroomsPage() {
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-white flex items-center gap-3">
+            <h1 className="text-3xl font-bold text-default flex items-center gap-3" style={{ color: 'var(--text)' }}>
               Derslik Yönetimi
             </h1>
-            <p className="mt-2 text-gray-400 max-w-xl">
+            <p className="mt-2 text-muted max-w-xl">
               Yerleşke genelindeki tüm derslikleri, laboratuvarları ve atölyeleri donanım envanterleriyle birlikte yönetin.
             </p>
           </div>
@@ -138,7 +138,7 @@ export default function ClassroomsPage() {
               <div className="text-2xl font-bold" style={{ color: info.color }}>
                 {loading ? '...' : count}
               </div>
-              <div className="text-xs font-semibold text-gray-300 mt-1 flex items-center gap-1.5">
+              <div className="text-xs font-semibold text-muted mt-1 flex items-center gap-1.5">
                 <IconObj className="w-3 h-3 truncate" style={{ color: info.color }} />
                 {info.label}
               </div>
@@ -156,7 +156,7 @@ export default function ClassroomsPage() {
         <div className="relative w-full sm:w-80">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-600/50" />
           <input 
-            className="w-full card border rounded-lg pl-10 pr-4 py-2.5 text-sm text-gray-200 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500/50 transition-all font-medium" 
+            className="w-full card border rounded-lg pl-10 pr-4 py-2.5 text-sm text-muted placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/30 focus:border-emerald-500/50 transition-all font-medium" 
             placeholder="Derslik ID veya Bina adı ara..." 
             value={search} 
             onChange={(e) => setSearch(e.target.value)} 
@@ -167,7 +167,7 @@ export default function ClassroomsPage() {
             <div className={`w-10 h-5 flex items-center rounded-full p-1 transition-colors ${showInactive ? 'bg-emerald-500/50' : 'bg-gray-700'}`}>
               <div className={`bg-white w-3 h-3 rounded-full shadow-md transform duration-300 ease-in-out ${showInactive ? 'translate-x-5' : ''}`}></div>
             </div>
-            <span className="text-gray-400 font-medium group-hover:text-gray-300 transition-colors">Pasifleri Göster</span>
+            <span className="text-muted font-medium group-hover:text-muted transition-colors">Pasifleri Göster</span>
           </label>
         </div>
       </div>
@@ -182,7 +182,7 @@ export default function ClassroomsPage() {
           <div className="w-16 h-16 card/50 rounded-full flex items-center justify-center mx-auto mb-4">
             <Search className="w-8 h-8 text-gray-500" />
           </div>
-          <h3 className="text-lg font-medium text-white mb-1">Derslik Bulunamadı</h3>
+          <h3 className="text-lg font-medium text-default mb-1">Derslik Bulunamadı</h3>
           <p className="text-gray-500 text-sm">Kriterlerinize uygun bir derslik kaydı yok.</p>
         </div>
       ) : (
@@ -197,7 +197,7 @@ export default function ClassroomsPage() {
                   <div className="w-8 h-8 rounded-lg flex items-center justify-center shadow-inner" style={{ background: `linear-gradient(135deg, ${bldgColor}20, ${bldgColor}10)`, border: `1px solid ${bldgColor}30` }}>
                     <Building2 className="w-4 h-4" style={{ color: bldgColor }} />
                   </div>
-                  <h3 className="text-xl font-bold text-white tracking-tight">
+                  <h3 className="text-xl font-bold text-default tracking-tight" style={{ color: 'var(--text)' }}>
                     {bldg} <span className="text-gray-500 font-normal text-sm ml-2">({bldgRooms.length} Kayıt)</span>
                   </h3>
                   <div className="h-px card/60 flex-1 ml-4 shadow-[0_1px_0_0_rgba(255,255,255,0.02)]"></div>
@@ -218,7 +218,7 @@ export default function ClassroomsPage() {
                           <div className="flex justify-between items-start mb-3">
                             <div>
                               <div className="flex items-center gap-2">
-                                <h4 className="font-bold text-lg text-white group-hover:text-cyan-100 transition-colors uppercase tracking-wider">{c.name}</h4>
+                                <h4 className="font-bold text-lg text-default group-hover:text-cyan-100 transition-colors uppercase tracking-wider" style={{ color: 'var(--text)' }}>{c.name}</h4>
                               </div>
                               <span className="inline-flex items-center gap-1.5 mt-1.5 px-2 py-0.5 rounded text-[10px] font-semibold uppercase tracking-wider border" style={{ background: typeInfo.color + '10', color: typeInfo.color, borderColor: typeInfo.color + '30' }}>
                                 <IconObj className="w-3 h-3" />
@@ -227,7 +227,7 @@ export default function ClassroomsPage() {
                             </div>
                             {c.capacity && (
                               <div className="text-center card rounded-lg px-2 py-1 border shadow-inner">
-                                <div className="text-xs font-bold text-white">{c.capacity}</div>
+                                <div className="text-xs font-bold text-default" style={{ color: 'var(--text)' }}>{c.capacity}</div>
                                 <div className="text-[9px] text-gray-500 uppercase tracking-widest font-semibold">Kapasite</div>
                               </div>
                             )}
@@ -263,13 +263,13 @@ export default function ClassroomsPage() {
                             </span>
                             
                             <div className="flex gap-1.5 opacity-0 group-hover:opacity-50 transition-opacity">
-                              <button onClick={() => setEditItem(c)} className="p-1.5 rounded-md hover:card text-gray-400 hover:text-white transition-colors" title="Düzenle">
+                              <button onClick={() => setEditItem(c)} className="p-1.5 rounded-md hover:card text-muted hover:text-default transition-colors" title="Düzenle">
                                 <Edit className="w-3.5 h-3.5" />
                               </button>
-                              <button onClick={() => toggle(c.id, c.is_active)} className="p-1.5 rounded-md hover:card text-gray-400 hover:text-white transition-colors" title="Durumu Değiştir">
+                              <button onClick={() => toggle(c.id, c.is_active)} className="p-1.5 rounded-md hover:card text-muted hover:text-default transition-colors" title="Durumu Değiştir">
                                 {c.is_active ? <ToggleLeft className="w-3.5 h-3.5 text-amber-500" /> : <ToggleRight className="w-3.5 h-3.5 text-emerald-500" />}
                               </button>
-                              <button onClick={() => remove(c.id)} className="p-1.5 rounded-md hover:bg-red-500/20 text-gray-400 hover:text-red-400 transition-colors" title="Sil">
+                              <button onClick={() => remove(c.id)} className="p-1.5 rounded-md hover:bg-red-500/20 text-muted hover:text-red-400 transition-colors" title="Sil">
                                 <Trash2 className="w-3.5 h-3.5" />
                               </button>
                             </div>
@@ -289,11 +289,11 @@ export default function ClassroomsPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 animate-in">
           <div className="card w-full max-w-lg p-0 rounded-2xl border shadow-2xl overflow-hidden">
             <div className={`px-6 py-4 border-b flex justify-between items-center ${editItem.id ? 'bg-cyan-600' : 'bg-cyan-600'}`}>
-              <h3 className="text-lg font-bold text-white flex items-center gap-2">
+              <h3 className="text-lg font-bold text-default flex items-center gap-2" style={{ color: 'var(--text)' }}>
                 {editItem.id ? <Edit className="w-5 h-5 text-red-400" /> : <Plus className="w-5 h-5 text-emerald-400" />}
                 {editItem.id ? 'Derslik Düzenle' : 'Yeni Derslik Ekle'}
               </h3>
-              <button type="button" onClick={() => setEditItem(null)} className="text-gray-400 hover:text-white card hover:card rounded-lg p-1.5 transition">
+              <button type="button" onClick={() => setEditItem(null)} className="text-muted hover:text-default card hover:card rounded-lg p-1.5 transition">
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -302,19 +302,19 @@ export default function ClassroomsPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="col-span-2">
                   <label className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1.5 block">Derslik ID / İsim <span className="text-emerald-500">*</span></label>
-                  <input className="w-full card border rounded-lg px-4 py-2.5 text-sm font-bold text-white focus:outline-none focus:border-emerald-500 transition-colors uppercase tracking-widest placeholder:normal-case placeholder:font-normal placeholder:tracking-normal" placeholder="Örn: B122-123" required value={editItem.name || ''} onChange={(e) => setEditItem({ ...editItem, name: e.target.value.toUpperCase() })} />
+                  <input className="w-full card border rounded-lg px-4 py-2.5 text-sm font-bold text-default focus:outline-none focus:border-emerald-500 transition-colors uppercase tracking-widest placeholder:normal-case placeholder:font-normal placeholder:tracking-normal" style={{ color: 'var(--text)' }} placeholder="Örn: B122-123" required value={editItem.name || ''} onChange={(e) => setEditItem({ ...editItem, name: e.target.value.toUpperCase() })} />
                 </div>
                 <div>
                   <label className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1.5 block">Blok / Bina</label>
-                  <input className="w-full card border rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 transition-colors" placeholder="D Blok" value={editItem.building || ''} onChange={(e) => setEditItem({ ...editItem, building: e.target.value })} />
+                  <input className="w-full card border rounded-lg px-3 py-2 text-sm text-default focus:outline-none focus:border-emerald-500 transition-colors" placeholder="D Blok" value={editItem.building || ''} onChange={(e) => setEditItem({ ...editItem, building: e.target.value })} />
                 </div>
                 <div>
                   <label className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1.5 block">Kapasite</label>
-                  <input className="w-full card border rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 transition-colors" type="number" min="1" max="1000" placeholder="Örn: 40" value={editItem.capacity || ''} onChange={(e) => setEditItem({ ...editItem, capacity: parseInt(e.target.value) || undefined })} />
+                  <input className="w-full card border rounded-lg px-3 py-2 text-sm text-default focus:outline-none focus:border-emerald-500 transition-colors" type="number" min="1" max="1000" placeholder="Örn: 40" value={editItem.capacity || ''} onChange={(e) => setEditItem({ ...editItem, capacity: parseInt(e.target.value) || undefined })} />
                 </div>
                 <div>
                   <label className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1.5 block">Kullanım Türü</label>
-                  <select className="w-full card border rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 transition-colors form-select appearance-none" value={editItem.type || 'classroom'} onChange={(e) => setEditItem({ ...editItem, type: e.target.value })}>
+                  <select className="w-full card border rounded-lg px-3 py-2 text-sm text-default focus:outline-none focus:border-emerald-500 transition-colors form-select appearance-none" value={editItem.type || 'classroom'} onChange={(e) => setEditItem({ ...editItem, type: e.target.value })}>
                     {Object.entries(TYPE_MAP).map(([k, v]) => k !== 'normal' && (
                       <option key={k} value={k}>{v.label}</option>
                     ))}
@@ -322,7 +322,7 @@ export default function ClassroomsPage() {
                 </div>
                 <div>
                   <label className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1.5 block">Bulunduğu Kat</label>
-                  <input className="w-full card border rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500 transition-colors" placeholder="1. Kat" value={editItem.floor || ''} onChange={(e) => setEditItem({ ...editItem, floor: e.target.value })} />
+                  <input className="w-full card border rounded-lg px-3 py-2 text-sm text-default focus:outline-none focus:border-emerald-500 transition-colors" placeholder="1. Kat" value={editItem.floor || ''} onChange={(e) => setEditItem({ ...editItem, floor: e.target.value })} />
                 </div>
               </div>
 
@@ -332,21 +332,21 @@ export default function ClassroomsPage() {
                   <label className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all ${editItem.has_projector ? 'bg-blue-900/20 border-red-600/50 shadow-[0_0_15px_rgba(59,130,246,0.1)]' : 'card hover:border-gray-600'}`}>
                     <input type="checkbox" checked={editItem.has_projector || false} onChange={(e) => setEditItem({ ...editItem, has_projector: e.target.checked })} className="w-4 h-4 rounded text-red-600 focus:ring-red-600 card border-gray-600" />
                     <Projector className={`w-5 h-5 ${editItem.has_projector ? 'text-red-400' : 'text-gray-500'}`} />
-                    <span className={`text-sm font-medium ${editItem.has_projector ? 'text-blue-100' : 'text-gray-400'}`}>Projeksiyon</span>
+                    <span className={`text-sm font-medium ${editItem.has_projector ? 'text-blue-100' : 'text-muted'}`}>Projeksiyon</span>
                   </label>
                   
                   <label className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all ${editItem.has_smartboard ? 'bg-purple-900/20 border-red-600/50 shadow-[0_0_15px_rgba(168,85,247,0.1)]' : 'card hover:border-gray-600'}`}>
                     <input type="checkbox" checked={editItem.has_smartboard || false} onChange={(e) => setEditItem({ ...editItem, has_smartboard: e.target.checked })} className="w-4 h-4 rounded text-red-600 focus:ring-red-600 card border-gray-600" />
                     <Monitor className={`w-5 h-5 ${editItem.has_smartboard ? 'text-red-400' : 'text-gray-500'}`} />
-                    <span className={`text-sm font-medium ${editItem.has_smartboard ? 'text-red-100' : 'text-gray-400'}`}>Akıllı Tahta</span>
+                    <span className={`text-sm font-medium ${editItem.has_smartboard ? 'text-red-100' : 'text-muted'}`}>Akıllı Tahta</span>
                   </label>
                   
                   <label className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all col-span-2 ${editItem.has_computer ? 'bg-emerald-900/20 border-emerald-500/50 shadow-[0_0_15px_rgba(16,185,129,0.1)]' : 'card hover:border-gray-600'}`}>
                     <input type="checkbox" checked={editItem.has_computer || false} onChange={(e) => setEditItem({ ...editItem, has_computer: e.target.checked })} className="w-4 h-4 rounded text-emerald-500 focus:ring-emerald-500 card border-gray-600" />
                     <Laptop className={`w-5 h-5 ${editItem.has_computer ? 'text-emerald-400' : 'text-gray-500'}`} />
-                    <span className={`text-sm font-medium flex-1 ${editItem.has_computer ? 'text-emerald-100' : 'text-gray-400'}`}>Bilgisayar Sistemi / Lab</span>
+                    <span className={`text-sm font-medium flex-1 ${editItem.has_computer ? 'text-emerald-100' : 'text-muted'}`}>Bilgisayar Sistemi / Lab</span>
                     {editItem.has_computer && (
-                      <input type="number" min="1" max="100" className="w-20 card border border-emerald-500/30 rounded px-2 py-1 text-xs text-white focus:outline-none focus:border-emerald-500" placeholder="Adet" value={editItem.computer_count || ''} onClick={(e) => e.stopPropagation()} onChange={(e) => setEditItem({ ...editItem, computer_count: parseInt(e.target.value) || null })} />
+                      <input type="number" min="1" max="100" className="w-20 card border border-emerald-500/30 rounded px-2 py-1 text-xs text-default focus:outline-none focus:border-emerald-500" placeholder="Adet" value={editItem.computer_count || ''} onClick={(e) => e.stopPropagation()} onChange={(e) => setEditItem({ ...editItem, computer_count: parseInt(e.target.value) || null })} />
                     )}
                   </label>
                 </div>
@@ -354,19 +354,19 @@ export default function ClassroomsPage() {
 
               <div>
                 <label className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-1.5 block">Varsa Ek Notlar</label>
-                <input className="w-full card border rounded-lg px-3 py-2.5 text-sm text-gray-300 focus:outline-none focus:border-emerald-500 transition-colors placeholder:text-gray-600" placeholder="Örn: Klima arızalı, geçici depo olarak kullanılıyor..." value={editItem.notes || ''} onChange={(e) => setEditItem({ ...editItem, notes: e.target.value })} />
+                <input className="w-full card border rounded-lg px-3 py-2.5 text-sm text-muted focus:outline-none focus:border-emerald-500 transition-colors placeholder:text-gray-600" placeholder="Örn: Klima arızalı, geçici depo olarak kullanılıyor..." value={editItem.notes || ''} onChange={(e) => setEditItem({ ...editItem, notes: e.target.value })} />
               </div>
 
               <div className="pt-2 flex justify-between items-center">
                 <label className="inline-flex items-center cursor-pointer">
                   <input type="checkbox" className="sr-only peer" checked={editItem.is_active ?? true} onChange={(e) => setEditItem({ ...editItem, is_active: e.target.checked })} />
                   <div className="relative w-11 h-6 bg-gray-700 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
-                  <span className="ms-3 text-sm font-medium text-gray-300">Derslik atamalara açık (Aktif)</span>
+                  <span className="ms-3 text-sm font-medium text-muted">Derslik atamalara açık (Aktif)</span>
                 </label>
               </div>
 
               <div className="pt-4 flex gap-3 border-t mt-6">
-                <button type="button" onClick={() => setEditItem(null)} className="px-4 py-2.5 rounded-lg font-medium text-sm text-gray-400 card/50 hover:bg-gray-700 hover:text-white transition flex-1">İptal Et</button>
+                <button type="button" onClick={() => setEditItem(null)} className="px-4 py-2.5 rounded-lg font-medium text-sm text-muted card/50 hover:bg-gray-700 hover:text-default transition flex-1">İptal Et</button>
                 <button type="submit" disabled={saving} className={`px-4 py-2.5 rounded-lg text-sm font-bold text-white flex-[2] flex items-center justify-center gap-2 shadow-lg transition-all ${editItem.id ? 'bg-cyan-600 hover:brightness-110' : 'bg-cyan-600 hover:brightness-110'}`}>
                   {saving ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div> : <Save className="w-4 h-4" /> }
                   {saving ? 'Kaydediliyor...' : (editItem.id ? 'Değişiklikleri Kaydet' : 'Dersliği Oluştur')}

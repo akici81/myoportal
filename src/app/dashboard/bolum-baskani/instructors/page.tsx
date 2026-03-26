@@ -22,7 +22,7 @@ export default async function BolumBaskaniInstructorsPage() {
       <div className="flex flex-col items-center justify-center py-32 text-center rounded-2xl border border-red-800/60 border-dashed bg-red-900/10">
         <Building2 className="w-16 h-16 text-red-500 mb-4" />
         <h3 className="text-2xl font-black text-red-400 tracking-tight">Yetkisiz Erişim / Bölüm Ataması Yok</h3>
-        <p className="text-gray-400 mt-3 max-w-md mx-auto leading-relaxed">
+        <p className="text-muted mt-3 max-w-md mx-auto leading-relaxed">
           Kullanıcı hesabınızda tanımlı bir bölüm bulunamadı. Lütfen sekreterlikle iletişime geçin.
         </p>
       </div>
@@ -52,15 +52,15 @@ export default async function BolumBaskaniInstructorsPage() {
           <div className="flex items-center gap-2 mb-2">
              <span className="text-xs font-bold uppercase tracking-widest text-cyan-500 bg-cyan-500/10 px-2 py-1 rounded border border-cyan-500/20">{department?.name}</span>
           </div>
-          <h1 className="text-3xl font-black text-white">
+          <h1 className="text-3xl font-black text-default" style={{ color: 'var(--text)' }}>
             Bölüm Öğretim Elemanları
           </h1>
-          <p className="mt-2 text-gray-400">Bölümünüzde görevli kadrolu hocaların ve dışarıdan atanan eğitmenlerin listesi</p>
+          <p className="mt-2 text-muted">Bölümünüzde görevli kadrolu hocaların ve dışarıdan atanan eğitmenlerin listesi</p>
         </div>
       </div>
 
       <div className="overflow-hidden rounded-2xl border border-white/5 card/30 shadow-xl">
-        <table className="w-full text-left text-sm text-gray-300">
+        <table className="w-full text-left text-sm text-muted">
           <thead className="card text-[11px] font-black uppercase text-gray-500 tracking-widest border-b">
             <tr>
               <th className="px-6 py-4">Ad Soyad</th>
@@ -73,7 +73,7 @@ export default async function BolumBaskaniInstructorsPage() {
             {instructors && instructors.length > 0 ? (
               instructors.map(inst => (
                 <tr key={inst.id} className="hover:bg-white/[0.02] transition-colors">
-                  <td className="px-6 py-4 font-bold text-white tracking-wide">{inst.full_name}</td>
+                  <td className="px-6 py-4 font-bold text-default tracking-wide">{inst.full_name}</td>
                   <td className="px-6 py-4 text-cyan-400/80 font-medium">{inst.title || '—'}</td>
                   <td className="px-6 py-4">
                     <span className="px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-xs font-bold uppercase tracking-wider">
