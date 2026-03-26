@@ -49,13 +49,13 @@ export default function MudurYardimcisiDashboard() {
   }, [supabase])
 
   const STAT_CARDS = [
-    { label: 'Aktif Program', value: stats.programs, icon: BookOpen, color: 'text-indigo-400', bg: 'bg-indigo-500/10', border: 'border-indigo-500/20' },
+    { label: 'Aktif Program', value: stats.programs, icon: BookOpen, color: 'text-red-400', bg: 'bg-red-600/10', border: 'border-red-600/20' },
     { label: 'Derslik Sayısı', value: stats.classrooms, icon: Building2, color: 'text-rose-400', bg: 'bg-rose-500/10', border: 'border-rose-500/20' },
     { label: 'Öğretim Elemanı', value: stats.instructors, icon: Users, color: 'text-teal-400', bg: 'bg-teal-500/10', border: 'border-teal-500/20' },
   ]
 
   const V1_MODULE_CARDS = [
-    { label: 'Staj Başvuruları', value: stats.internships, icon: Briefcase, color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20', desc: 'Onay bekleyen son başvurular' },
+    { label: 'Staj Başvuruları', value: stats.internships, icon: Briefcase, color: 'text-red-400', bg: 'bg-red-600/10', border: 'border-red-600/20', desc: 'Onay bekleyen son başvurular' },
     { label: 'Aktif Komisyonlar', value: stats.commissions, icon: ClipboardList, color: 'text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/20', desc: 'Görevli komisyon sayısı' },
     { label: 'Personel Talepleri', value: stats.requests, icon: FileText, color: 'text-fuchsia-400', bg: 'bg-fuchsia-500/10', border: 'border-fuchsia-500/20', desc: 'İşleme alınmamış dilekçeler' },
   ]
@@ -65,7 +65,7 @@ export default function MudurYardimcisiDashboard() {
       {/* Header Banner */}
       <div className="relative overflow-hidden rounded-2xl card p-8 border border-purple-800/30 shadow-lg">
         <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
-          <KeyRound className="w-48 h-48 text-purple-400" />
+          <KeyRound className="w-48 h-48 text-red-400" />
         </div>
         <div className="relative z-10">
           <h1 className="text-3xl font-black flex items-center gap-3 tracking-tight" style={{ color: 'var(--text)' }}>

@@ -161,12 +161,12 @@ export default function InstructorConstraintsPage() {
       {/* Premium Header */}
       <div className="relative overflow-hidden rounded-2xl card p-8 border border-violet-800/30 shadow-lg">
         <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
-          <Settings2 className="w-48 h-48 text-violet-400" />
+          <Settings2 className="w-48 h-48 text-red-400" />
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="text-xs font-bold uppercase tracking-widest text-violet-400 bg-violet-500/10 px-2 py-1 rounded border border-violet-500/20">{departmentName}</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-red-400 bg-red-600/10 px-2 py-1 rounded border border-red-600/20">{departmentName}</span>
             </div>
             <h1 className="text-3xl font-black text-white flex items-center gap-3 tracking-tight">
               Öğretim Elemanı Kısıtları
@@ -183,7 +183,7 @@ export default function InstructorConstraintsPage() {
 
       {loading ? (
         <div className="card py-24 flex flex-col items-center justify-center rounded-2xl border">
-          <div className="w-12 h-12 rounded-full border-4 border-violet-900 border-t-violet-500 animate-spin mb-4" />
+          <div className="w-12 h-12 rounded-full border-4 border-violet-900 border-t-red-600 animate-spin mb-4" />
           <p className="text-gray-400 font-medium tracking-wide">Kısıt kuralları derleniyor...</p>
         </div>
       ) : (
@@ -191,8 +191,8 @@ export default function InstructorConstraintsPage() {
           {/* STATS */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="card border rounded-xl p-5 flex items-center gap-4 group">
-              <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20 shrink-0">
-                <User className="w-6 h-6 text-blue-500" />
+              <div className="w-12 h-12 rounded-xl bg-red-600/10 flex items-center justify-center border border-red-600/20 shrink-0">
+                <User className="w-6 h-6 text-red-600" />
               </div>
               <div>
                 <p className="text-2xl font-black text-white leading-none mb-1">{instructors.length}</p>
@@ -229,16 +229,16 @@ export default function InstructorConstraintsPage() {
           </div>
 
           <div className="flex flex-col lg:flex-row gap-4 items-stretch lg:items-center justify-between">
-             <div className="bg-violet-500/10 border border-violet-500/20 rounded-xl p-4 flex gap-3 flex-1">
-                <Info className="w-5 h-5 text-violet-400 shrink-0 mt-0.5" />
+             <div className="bg-red-600/10 border border-red-600/20 rounded-xl p-4 flex gap-3 flex-1">
+                <Info className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
                 <div>
-                   <p className="text-sm font-bold text-violet-300 mb-1">Zorunlu ve Tercih Farkı</p>
-                   <p className="text-xs text-violet-200/60 font-medium">Zorunlu kısıtlar sisteme kesinlikle işlenir. Tercihi kısıtlar esnektir, algoritma mümkün mertebe hocanın talebine uymaya çalışır ancak gerekirse o saatlere atama yapabilir.</p>
+                   <p className="text-sm font-bold text-red-300 mb-1">Zorunlu ve Tercih Farkı</p>
+                   <p className="text-xs text-red-200/60 font-medium">Zorunlu kısıtlar sisteme kesinlikle işlenir. Tercihi kısıtlar esnektir, algoritma mümkün mertebe hocanın talebine uymaya çalışır ancak gerekirse o saatlere atama yapabilir.</p>
                 </div>
              </div>
              <div className="relative min-w-[300px]">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
-                <input type="text" placeholder="Eğitmen Ara..." value={search} onChange={e => setSearch(e.target.value)} className="w-full pl-9 pr-4 py-3 card border rounded-xl text-sm font-semibold text-white focus:outline-none focus:border-violet-500 transition-colors" />
+                <input type="text" placeholder="Eğitmen Ara..." value={search} onChange={e => setSearch(e.target.value)} className="w-full pl-9 pr-4 py-3 card border rounded-xl text-sm font-semibold text-white focus:outline-none focus:border-red-600 transition-colors" />
              </div>
           </div>
 
@@ -253,14 +253,14 @@ export default function InstructorConstraintsPage() {
                       <div className="p-4 flex flex-wrap items-center justify-between cursor-pointer group" onClick={() => hasItems && setExpandedInstructors(p => p.includes(instructor.id) ? p.filter(id => id !== instructor.id) : [...p, instructor.id])}>
                          
                          <div className="flex items-center gap-4">
-                            <div className={clsx("w-10 h-10 rounded-full flex items-center justify-center border font-bold text-sm", hasItems ? 'bg-violet-500/10 border-violet-500/30 text-violet-400' : 'card text-gray-500')}>
+                            <div className={clsx("w-10 h-10 rounded-full flex items-center justify-center border font-bold text-sm", hasItems ? 'bg-red-600/10 border-red-600/30 text-red-400' : 'card text-gray-500')}>
                                {instructor.full_name.charAt(0)}
                             </div>
                             <div>
                                <p className="font-bold text-gray-200 text-lg group-hover:text-white transition-colors">{instructor.title} {instructor.full_name}</p>
                                <div className="flex items-center gap-3 mt-1">
                                   {hasItems ? (
-                                    <span className="text-xs font-semibold text-violet-400">{items.length} Geçerli Kural</span>
+                                    <span className="text-xs font-semibold text-red-400">{items.length} Geçerli Kural</span>
                                   ) : (
                                     <span className="text-xs font-medium text-gray-500">Sınırlama Yok (Tam Müsait)</span>
                                   )}
@@ -275,7 +275,7 @@ export default function InstructorConstraintsPage() {
                                   {items.filter(c => !c.is_hard).length > 0 && <span className="text-[10px] px-2 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-bold uppercase tracking-widest">{items.filter(c => !c.is_hard).length} Tercih</span>}
                                </div>
                             )}
-                            <button onClick={(e) => { e.stopPropagation(); openModal(instructor.id) }} className="w-9 h-9 flex items-center justify-center rounded-lg card/80 hover:bg-violet-600 hover:text-white text-gray-400 transition-colors border">
+                            <button onClick={(e) => { e.stopPropagation(); openModal(instructor.id) }} className="w-9 h-9 flex items-center justify-center rounded-lg card/80 hover:bg-red-700 hover:text-white text-gray-400 transition-colors border">
                                <Plus className="w-5 h-5" />
                             </button>
                             {hasItems && (
@@ -307,7 +307,7 @@ export default function InstructorConstraintsPage() {
                                            </div>
                                            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-400 font-medium">
                                               {dayLabel && <span className="text-gray-200"><span className="text-gray-500">Gün:</span> {dayLabel}</span>}
-                                              {c.time_slots && <span className="text-indigo-300 bg-indigo-500/10 px-1.5 rounded"><span className="text-indigo-500">Saat:</span> {c.time_slots.start_time?.slice(0,5)} - {c.time_slots.end_time?.slice(0,5)}</span>}
+                                              {c.time_slots && <span className="text-red-300 bg-red-600/10 px-1.5 rounded"><span className="text-red-600">Saat:</span> {c.time_slots.start_time?.slice(0,5)} - {c.time_slots.end_time?.slice(0,5)}</span>}
                                               {c.value?.max_hours && <span className="text-fuchsia-300"><span className="text-fuchsia-500">Max Limit:</span> {c.value.max_hours} Saat</span>}
                                            </div>
                                            {c.reason && (
@@ -346,7 +346,7 @@ export default function InstructorConstraintsPage() {
                  
                  <div>
                     <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block">Öğretim Elemanı Seçimi</label>
-                    <select value={editForm.instructor_id} onChange={e => setEditForm((p:any) => ({...p, instructor_id: e.target.value}))} className="w-full card border rounded-xl px-4 py-3 text-sm font-bold text-white focus:outline-none focus:border-violet-500 transition-colors form-select">
+                    <select value={editForm.instructor_id} onChange={e => setEditForm((p:any) => ({...p, instructor_id: e.target.value}))} className="w-full card border rounded-xl px-4 py-3 text-sm font-bold text-white focus:outline-none focus:border-red-600 transition-colors form-select">
                        <option value="">— Hoca Seçin —</option>
                        {instructors.map((i) => <option key={i.id} value={i.id}>{i.title} {i.full_name}</option>)}
                     </select>
@@ -360,7 +360,7 @@ export default function InstructorConstraintsPage() {
                           const Icon = t.icon
                           return (
                              <button key={t.value} type="button" onClick={() => setEditForm((p:any)=>({...p, constraint_type: t.value, selected_days:[], selected_slots:[]}))} 
-                                className={clsx("p-4 rounded-xl border text-left transition-all", isSel ? 'bg-violet-900/20 border-violet-500 ring-1 ring-violet-500/50' : 'card hover:border-gray-700')}>
+                                className={clsx("p-4 rounded-xl border text-left transition-all", isSel ? 'bg-violet-900/20 border-red-600 ring-1 ring-red-600/50' : 'card hover:border-gray-700')}>
                                 <div className="flex items-center gap-3 mb-1">
                                    <div className="p-1.5 rounded-md" style={{ backgroundColor: `${t.color}20` }}><Icon className="w-4 h-4" style={{ color: t.color }}/></div>
                                    <span className={clsx("font-bold text-sm", isSel ? 'text-white' : 'text-gray-300')}>{t.label}</span>
@@ -377,7 +377,7 @@ export default function InstructorConstraintsPage() {
                     <div className="p-4 rounded-xl card border">
                        <div className="flex items-center justify-between mb-3">
                           <label className="text-xs font-bold uppercase tracking-wider text-gray-400 block">Uygulanacak Günler</label>
-                          <button type="button" onClick={() => setEditForm((p:any)=>({...p, selected_days: p.selected_days.length === 5 ? [] : [1,2,3,4,5]}))} className="text-xs font-bold text-violet-400 hover:text-white transition-colors">
+                          <button type="button" onClick={() => setEditForm((p:any)=>({...p, selected_days: p.selected_days.length === 5 ? [] : [1,2,3,4,5]}))} className="text-xs font-bold text-red-400 hover:text-white transition-colors">
                             {editForm.selected_days.length === 5 ? 'Hiçbirini Seçme' : 'Tümünü Seç'}
                           </button>
                        </div>
@@ -385,7 +385,7 @@ export default function InstructorConstraintsPage() {
                           {DAYS.map(d => {
                              const sel = editForm.selected_days.includes(d.value)
                              return (
-                                <button key={d.value} type="button" onClick={() => toggleDay(d.value)} className={clsx("flex-1 px-3 py-2.5 rounded-lg border text-sm font-bold transition-all relative", sel ? 'bg-violet-600 border-violet-500 text-white shadow-lg' : 'card text-gray-400 hover:bg-gray-700 hover:text-white')}>
+                                <button key={d.value} type="button" onClick={() => toggleDay(d.value)} className={clsx("flex-1 px-3 py-2.5 rounded-lg border text-sm font-bold transition-all relative", sel ? 'bg-red-700 border-red-600 text-white shadow-lg' : 'card text-gray-400 hover:bg-gray-700 hover:text-white')}>
                                    {d.label}
                                    {sel && <Check className="w-3.5 h-3.5 absolute top-1 right-1 opacity-50" />}
                                 </button>
@@ -418,7 +418,7 @@ export default function InstructorConstraintsPage() {
                     <div className="p-4 rounded-xl card border">
                        <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block">Gün Başına Maksimum Ders Saati</label>
                        <div className="flex items-center gap-4">
-                          <input type="number" min={1} max={12} value={editForm.max_hours} onChange={e => setEditForm((p:any)=>({...p, max_hours: parseInt(e.target.value)||6}))} className="w-24 card border-gray-600 rounded-lg px-4 py-2 text-white font-bold text-lg text-center focus:outline-none focus:border-violet-500"/>
+                          <input type="number" min={1} max={12} value={editForm.max_hours} onChange={e => setEditForm((p:any)=>({...p, max_hours: parseInt(e.target.value)||6}))} className="w-24 card border-gray-600 rounded-lg px-4 py-2 text-white font-bold text-lg text-center focus:outline-none focus:border-red-600"/>
                           <span className="text-sm font-medium text-gray-400">Saat / Gün (Önerilen default limit = 6)</span>
                        </div>
                     </div>
@@ -449,7 +449,7 @@ export default function InstructorConstraintsPage() {
                           </button>
                        ))}
                     </div>
-                    <input type="text" value={editForm.reason} onChange={e => setEditForm((p:any)=>({...p, reason: e.target.value}))} placeholder="Örn: Rektörlük Yönetim Toplantısı" className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-violet-500 transition-colors" />
+                    <input type="text" value={editForm.reason} onChange={e => setEditForm((p:any)=>({...p, reason: e.target.value}))} placeholder="Örn: Rektörlük Yönetim Toplantısı" className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-red-600 transition-colors" />
                  </div>
               </div>
 

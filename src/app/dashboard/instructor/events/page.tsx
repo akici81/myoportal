@@ -47,7 +47,7 @@ export default function InstructorEventsPage() {
   return (
     <div className="space-y-6 animate-in">
       <div className="relative overflow-hidden rounded-2xl card p-8 border border-violet-800/30">
-        <div className="absolute -right-10 -top-10 opacity-5 rotate-12"><CalendarDays className="w-48 h-48 text-violet-400" /></div>
+        <div className="absolute -right-10 -top-10 opacity-5 rotate-12"><CalendarDays className="w-48 h-48 text-red-400" /></div>
         <div className="relative z-10">
           <h1 className="text-3xl font-bold text-white">Etkinlik Takvimi</h1>
           <p className="mt-2 text-gray-400">{MONTHS_TR[currentDate.getMonth()]} {currentDate.getFullYear()} — Yaklaşan tüm etkinlikler</p>
@@ -62,7 +62,7 @@ export default function InstructorEventsPage() {
           <button onClick={() => setCurrent(new Date())} className="ml-1 px-3 py-1.5 text-xs rounded-lg border text-gray-400 hover:text-white">Bugün</button>
         </div>
         <div className="flex gap-1.5 flex-wrap">
-          <button onClick={() => setFilterCat('all')} className={`px-3 py-1.5 text-xs rounded-lg border transition ${filterCat === 'all' ? 'border-violet-500/50 bg-violet-500/15 text-violet-400' : 'border-gray-700 text-gray-500'}`}>Tümü</button>
+          <button onClick={() => setFilterCat('all')} className={`px-3 py-1.5 text-xs rounded-lg border transition ${filterCat === 'all' ? 'border-red-600/50 bg-red-600/15 text-red-400' : 'border-gray-700 text-gray-500'}`}>Tümü</button>
           {Object.entries(CATEGORY_MAP).map(([k, v]) => (<button key={k} onClick={() => setFilterCat(k)} className={`px-3 py-1.5 text-xs rounded-lg border transition ${filterCat === k ? '' : 'border-transparent opacity-60 hover:opacity-50'}`} style={filterCat === k ? { background: v.bg, color: v.color, borderColor: v.color + '50' } : { color: v.color }}>{v.label}</button>))}
         </div>
         <div className="ml-auto flex rounded-lg overflow-hidden border">
@@ -77,8 +77,8 @@ export default function InstructorEventsPage() {
           <div className="grid grid-cols-7">
             {calendarDays.map((date, idx) => {
               const iso = date?.toISOString().split('T')[0]; const isToday = iso === today; const dayEv = date ? eventsOnDate(date) : []
-              return (<div key={idx} className={`min-h-[100px] p-1.5 border-b border-r ${date ? '' : 'opacity-0'} ${isToday ? 'bg-violet-500/5' : ''}`}>
-                {date && (<><div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold mb-1 ${isToday ? 'bg-violet-500 text-white' : 'text-gray-400'}`}>{date.getDate()}</div>
+              return (<div key={idx} className={`min-h-[100px] p-1.5 border-b border-r ${date ? '' : 'opacity-0'} ${isToday ? 'bg-red-600/5' : ''}`}>
+                {date && (<><div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold mb-1 ${isToday ? 'bg-red-600 text-white' : 'text-gray-400'}`}>{date.getDate()}</div>
                   <div className="space-y-0.5">{dayEv.slice(0, 3).map(ev => { const cat = CATEGORY_MAP[ev.category] ?? CATEGORY_MAP.diger; return (<div key={ev.id} onClick={() => setSelected(ev)} className="truncate px-1.5 py-0.5 rounded text-[10px] font-medium cursor-pointer hover:opacity-80" style={{ background: cat.bg, color: cat.color }}>{ev.start_time} {ev.title}</div>) })}
                     {dayEv.length > 3 && <div className="text-[10px] px-1.5 text-gray-600">+{dayEv.length - 3}</div>}
                   </div></>)}

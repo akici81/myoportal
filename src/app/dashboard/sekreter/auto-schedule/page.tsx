@@ -174,7 +174,7 @@ export default function AutoSchedulePage() {
       {/* Premium Header Container */}
       <div className="relative overflow-hidden rounded-2xl card p-8 border border-indigo-800/30">
         <div className="absolute top-0 right-0 p-8 opacity-5 rotate-12 pointer-events-none">
-          <Cpu className="w-48 h-48 text-indigo-400" />
+          <Cpu className="w-48 h-48 text-red-400" />
         </div>
         
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
@@ -196,15 +196,15 @@ export default function AutoSchedulePage() {
            
            {/* Stat Overview Boxes */}
            <div className="grid grid-cols-2 gap-4">
-              <div className="card p-4 rounded-xl border border-blue-500/20 bg-blue-500/5">
-                 <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400 mb-3 border border-blue-500/30">
+              <div className="card p-4 rounded-xl border border-red-600/20 bg-red-600/5">
+                 <div className="w-10 h-10 rounded-lg bg-red-600/20 flex items-center justify-center text-red-400 mb-3 border border-red-600/30">
                    <BookOpen className="w-5 h-5" />
                  </div>
                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Havuzdaki Ders</p>
                  <p className="text-2xl font-black text-white mt-1">{stats.totalCourses}</p>
               </div>
-              <div className="card p-4 rounded-xl border border-violet-500/20 bg-violet-500/5">
-                 <div className="w-10 h-10 rounded-lg bg-violet-500/20 flex items-center justify-center text-violet-400 mb-3 border border-violet-500/30">
+              <div className="card p-4 rounded-xl border border-red-600/20 bg-red-600/5">
+                 <div className="w-10 h-10 rounded-lg bg-red-600/20 flex items-center justify-center text-red-400 mb-3 border border-red-600/30">
                    <Blocks className="w-5 h-5" />
                  </div>
                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">Eğitmen Kısıtı</p>
@@ -229,7 +229,7 @@ export default function AutoSchedulePage() {
            {/* Settings Card */}
            <div className="card p-6 rounded-2xl border card">
              <h3 className="font-bold text-white mb-5 flex items-center gap-2">
-               <Wand2 className="w-5 h-5 text-indigo-400" />
+               <Wand2 className="w-5 h-5 text-red-400" />
                Motor Çalıştırma Parametreleri
              </h3>
 
@@ -237,7 +237,7 @@ export default function AutoSchedulePage() {
                 <div>
                   <label className="text-xs font-bold uppercase tracking-wider text-gray-400 ml-1">Hedef Akademik Dönem</label>
                   <select
-                    className="w-full mt-1.5 bg-gray-950/50 border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/50 transition-colors shadow-inner appearance-none cursor-pointer"
+                    className="w-full mt-1.5 bg-gray-950/50 border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-colors shadow-inner appearance-none cursor-pointer"
                     value={selectedPeriod}
                     disabled={generating}
                     onChange={(e) => setSelectedPeriod(e.target.value)}
@@ -262,7 +262,7 @@ export default function AutoSchedulePage() {
                           onChange={(e) => setClearExisting(e.target.checked)}
                           className="peer sr-only"
                         />
-                        <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gradient-to-r peer-checked:from-indigo-500 peer-checked:to-blue-500 transition-colors"></div>
+                        <div className="w-11 h-6 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gradient-to-r peer-checked:from-red-600 peer-checked:to-red-600 transition-colors"></div>
                       </div>
                     </div>
                     <div>
@@ -291,7 +291,7 @@ export default function AutoSchedulePage() {
              <button
                onClick={generateSchedule}
                disabled={generating || !selectedPeriod}
-               className="w-full mt-6 btn-glow inline-flex border border-indigo-500/50 items-center justify-center gap-3 rounded-xl bg-cyan-600 px-6 py-3.5 font-bold text-white transition-all hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(79,70,229,0.4)] disabled:opacity-50 disabled:scale-100 disabled:shadow-none"
+               className="w-full mt-6 btn-glow inline-flex border border-red-600/50 items-center justify-center gap-3 rounded-xl bg-cyan-600 px-6 py-3.5 font-bold text-white transition-all hover:scale-[1.01] hover:shadow-[0_0_20px_rgba(79,70,229,0.4)] disabled:opacity-50 disabled:scale-100 disabled:shadow-none"
              >
                {generating ? (
                  <>
@@ -312,10 +312,10 @@ export default function AutoSchedulePage() {
         <div className="lg:col-span-2 space-y-6">
            
            {!result && !generating && (
-              <div className="card p-8 rounded-2xl border border-blue-500/20 bg-gradient-to-br from-blue-900/10 to-transparent flex flex-col items-center justify-center min-h-[500px] text-center">
-                 <div className="w-24 h-24 bg-blue-500/10 rounded-full flex items-center justify-center border border-blue-500/20 shadow-inner mb-6 relative">
-                    <div className="absolute inset-0 bg-blue-500/20 rounded-full animate-ping opacity-50"></div>
-                    <Cpu className="w-12 h-12 text-blue-400" />
+              <div className="card p-8 rounded-2xl border border-red-600/20 bg-gradient-to-br from-blue-900/10 to-transparent flex flex-col items-center justify-center min-h-[500px] text-center">
+                 <div className="w-24 h-24 bg-red-600/10 rounded-full flex items-center justify-center border border-red-600/20 shadow-inner mb-6 relative">
+                    <div className="absolute inset-0 bg-red-600/20 rounded-full animate-ping opacity-50"></div>
+                    <Cpu className="w-12 h-12 text-red-400" />
                  </div>
                  <h2 className="text-2xl font-bold text-white mb-3">Motor Beklemede</h2>
                  <p className="text-gray-400 max-w-md mx-auto leading-relaxed mb-8">
@@ -323,22 +323,22 @@ export default function AutoSchedulePage() {
                  </p>
                  
                  <div className="text-left w-full max-w-lg card border p-6 rounded-2xl relative overflow-hidden">
-                    <div className="absolute top-0 left-0 w-1 h-full bg-blue-500"></div>
+                    <div className="absolute top-0 left-0 w-1 h-full bg-red-600"></div>
                     <h4 className="font-bold text-gray-200 mb-4 flex items-center gap-2">
-                       <Info className="w-4 h-4 text-blue-400" />
+                       <Info className="w-4 h-4 text-red-400" />
                        Yapay Zeka Çalışma Sırası
                     </h4>
                     <ul className="space-y-4 relative z-10">
                       <li className="flex gap-3 items-start">
-                        <span className="w-6 h-6 shrink-0 rounded bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-black border border-blue-500/30">1</span>
+                        <span className="w-6 h-6 shrink-0 rounded bg-red-600/20 text-red-400 flex items-center justify-center text-xs font-black border border-red-600/30">1</span>
                         <p className="text-sm text-gray-400 leading-snug"><span className="text-gray-200 font-semibold">Ortak Havuz Dersleri</span> en kısıtlı birimler olarak algılanır ve önce onlar bloklanır.</p>
                       </li>
                       <li className="flex gap-3 items-start">
-                        <span className="w-6 h-6 shrink-0 rounded bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-black border border-blue-500/30">2</span>
+                        <span className="w-6 h-6 shrink-0 rounded bg-red-600/20 text-red-400 flex items-center justify-center text-xs font-black border border-red-600/30">2</span>
                         <p className="text-sm text-gray-400 leading-snug"><span className="text-gray-200 font-semibold">Hoca Kısıtları (Constraints)</span> incelenir ve kapalı saat/gün/saat limitleri harici zaman blokları işaretlenir.</p>
                       </li>
                       <li className="flex gap-3 items-start">
-                        <span className="w-6 h-6 shrink-0 rounded bg-blue-500/20 text-blue-400 flex items-center justify-center text-xs font-black border border-blue-500/30">3</span>
+                        <span className="w-6 h-6 shrink-0 rounded bg-red-600/20 text-red-400 flex items-center justify-center text-xs font-black border border-red-600/30">3</span>
                         <p className="text-sm text-gray-400 leading-snug"><span className="text-gray-200 font-semibold">Aktif Çakışma Önleme</span> ile Derslik Kapasiteleri ve program öğrenci sayıları eşleşerek slotlara dizilir.</p>
                       </li>
                     </ul>
@@ -347,15 +347,15 @@ export default function AutoSchedulePage() {
            )}
 
            {generating && (
-              <div className="card p-8 rounded-2xl border border-indigo-500/30 card flex flex-col items-center justify-center min-h-[500px] text-center relative overflow-hidden">
+              <div className="card p-8 rounded-2xl border border-red-600/30 card flex flex-col items-center justify-center min-h-[500px] text-center relative overflow-hidden">
                  <div className="absolute top-0 left-0 w-full h-1 card">
                     <div className="h-full bg-cyan-600 w-1/3 animate-[slide_1.5s_ease-in-out_infinite]"></div>
                  </div>
                  <div className="w-32 h-32 relative mb-8">
-                    <div className="absolute inset-0 border-4 border-indigo-500/20 rounded-full"></div>
-                    <div className="absolute inset-0 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
+                    <div className="absolute inset-0 border-4 border-red-600/20 rounded-full"></div>
+                    <div className="absolute inset-0 border-4 border-red-600 border-t-transparent rounded-full animate-spin"></div>
                     <div className="absolute inset-0 flex items-center justify-center">
-                       <Cpu className="w-10 h-10 text-indigo-400 animate-pulse" />
+                       <Cpu className="w-10 h-10 text-red-400 animate-pulse" />
                     </div>
                  </div>
                  <h2 className="text-xl font-bold text-white mb-2 inline-flex items-center gap-2">
@@ -395,9 +395,9 @@ export default function AutoSchedulePage() {
                          <p className={clsx("text-xs font-semibold uppercase tracking-wider", result.stats.failedCourses > 0 ? "text-red-400/80" : "text-gray-500")}>Dışarıda Kalan</p>
                          <p className={clsx("text-3xl font-black mt-1", result.stats.failedCourses > 0 ? "text-red-400" : "text-white")}>{result.stats.failedCourses}</p>
                        </div>
-                       <div className="p-4 rounded-xl border border-blue-500/20 bg-blue-500/10 shadow-inner text-center">
-                         <p className="text-xs font-semibold uppercase tracking-wider text-blue-400/80">Net Ders Saati</p>
-                         <p className="text-3xl font-black text-blue-400 mt-1">{result.stats.totalHours}</p>
+                       <div className="p-4 rounded-xl border border-red-600/20 bg-red-600/10 shadow-inner text-center">
+                         <p className="text-xs font-semibold uppercase tracking-wider text-red-400/80">Net Ders Saati</p>
+                         <p className="text-3xl font-black text-red-400 mt-1">{result.stats.totalHours}</p>
                        </div>
                      </div>
 

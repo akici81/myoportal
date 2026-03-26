@@ -22,7 +22,7 @@ interface Constraint {
 const CONSTRAINT_TYPES = [
   { id: 'time_block', label: 'Belirli Saatlerde Ders Veremem', icon: Clock, color: 'text-amber-400', bg: 'bg-amber-500/10' },
   { id: 'days_off', label: 'Tüm Gün Boşluk İsteği', icon: AlertTriangle, color: 'text-red-400', bg: 'bg-red-500/10' },
-  { id: 'max_hours', label: 'Haftalık Max Ders Saati', icon: HelpCircle, color: 'text-blue-400', bg: 'bg-blue-500/10' },
+  { id: 'max_hours', label: 'Haftalık Max Ders Saati', icon: HelpCircle, color: 'text-red-400', bg: 'bg-red-600/10' },
 ]
 
 export default function InstructorConstraintsPage() {

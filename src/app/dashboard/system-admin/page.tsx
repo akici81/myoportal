@@ -55,18 +55,18 @@ export default async function SystemAdminDashboard() {
       value: departmentCount || 0, 
       icon: GraduationCap, 
       href: '/dashboard/system-admin/departments',
-      iconBg: 'bg-purple-500/10',
-      iconColor: 'text-purple-400',
-      topBar: 'from-purple-500 to-pink-500',
+      iconBg: 'bg-red-600/10',
+      iconColor: 'text-red-400',
+      topBar: 'from-red-600 to-pink-500',
     },
     { 
       label: 'Programlar', 
       value: programCount || 0, 
       icon: BookOpen, 
       href: '/dashboard/system-admin/programs',
-      iconBg: 'bg-blue-500/10',
-      iconColor: 'text-blue-400',
-      topBar: 'from-blue-500 to-cyan-500',
+      iconBg: 'bg-red-600/10',
+      iconColor: 'text-red-400',
+      topBar: 'from-red-600 to-cyan-500',
     },
     { 
       label: 'Öğretim Elemanları', 
@@ -93,7 +93,7 @@ export default async function SystemAdminDashboard() {
       href: '/dashboard/system-admin/courses',
       iconBg: 'bg-cyan-500/10',
       iconColor: 'text-cyan-400',
-      topBar: 'from-cyan-500 to-blue-500',
+      topBar: 'from-cyan-500 to-red-600',
     },
   ]
 

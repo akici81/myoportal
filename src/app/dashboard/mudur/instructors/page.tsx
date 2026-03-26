@@ -12,16 +12,16 @@ import {
 const TITLE_STYLES: Record<string, { color: string; badge: string }> = {
   'Prof. Dr.': { color: '#f59e0b', badge: 'bg-amber-500/10 text-amber-500 border-amber-500/30' },
   'Doç. Dr.': { color: '#f97316', badge: 'bg-orange-500/10 text-orange-500 border-orange-500/30' },
-  'Dr. Öğr. Üyesi': { color: '#8b5cf6', badge: 'bg-violet-500/10 text-violet-400 border-violet-500/30' },
-  'Dr.': { color: '#a855f7', badge: 'bg-purple-500/10 text-purple-400 border-purple-500/30' },
+  'Dr. Öğr. Üyesi': { color: '#8b5cf6', badge: 'bg-red-600/10 text-red-400 border-red-600/30' },
+  'Dr.': { color: '#a855f7', badge: 'bg-red-600/10 text-red-400 border-red-600/30' },
   'Öğr. Gör. Dr.': { color: '#0ea5e9', badge: 'bg-sky-500/10 text-sky-400 border-sky-500/30' },
-  'Öğr. Gör.': { color: '#3b82f6', badge: 'bg-blue-500/10 text-blue-400 border-blue-500/30' },
+  'Öğr. Gör.': { color: '#3b82f6', badge: 'bg-red-600/10 text-red-400 border-red-600/30' },
   'Arş. Gör.': { color: '#10b981', badge: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30' },
   'Uzman': { color: '#64748b', badge: 'bg-slate-500/10 text-slate-400 border-slate-500/30' },
 }
 
 const TITLES = Object.keys(TITLE_STYLES)
-const DEFAULT_STYLE = { color: '#8b5cf6', badge: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/30' }
+const DEFAULT_STYLE = { color: '#8b5cf6', badge: 'bg-red-600/10 text-red-400 border-red-600/30' }
 
 export default function InstructorsPage() {
   const supabase = createClient()
@@ -137,7 +137,7 @@ export default function InstructorsPage() {
       {/* Premium Header */}
       <div className="relative overflow-hidden rounded-2xl card p-8 border border-indigo-800/30">
         <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
-          <GraduationCap className="w-48 h-48 text-indigo-400" />
+          <GraduationCap className="w-48 h-48 text-red-400" />
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
@@ -163,16 +163,16 @@ export default function InstructorsPage() {
       <div className="card p-4 rounded-xl flex flex-col md:flex-row gap-4 items-center justify-between border">
         <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
           <div className="relative w-full sm:w-72">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-indigo-600/50" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-red-700/50" />
             <input 
-              className="w-full card border rounded-lg pl-10 pr-4 py-2.5 text-sm text-gray-200 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500/50 transition-all font-medium" 
+              className="w-full card border rounded-lg pl-10 pr-4 py-2.5 text-sm text-gray-200 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-red-600/30 focus:border-red-600/50 transition-all font-medium" 
               placeholder="İsim veya e-posta ara..." 
               value={search} 
               onChange={(e) => setSearch(e.target.value)} 
             />
           </div>
           <select 
-            className="w-full sm:w-60 card border rounded-lg px-4 py-2.5 text-sm text-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-500/50 transition-all appearance-none cursor-pointer"
+            className="w-full sm:w-60 card border rounded-lg px-4 py-2.5 text-sm text-gray-300 focus:outline-none focus:ring-2 focus:ring-red-600/30 focus:border-red-600/50 transition-all appearance-none cursor-pointer"
             value={filterDept} 
             onChange={(e) => setFilterDept(e.target.value)}
           >
@@ -187,7 +187,7 @@ export default function InstructorsPage() {
         
         <div className="flex items-center gap-6 text-sm whitespace-nowrap">
           <label className="flex items-center gap-2 cursor-pointer group">
-            <div className={`w-10 h-5 flex items-center rounded-full p-1 transition-colors ${showInactive ? 'bg-indigo-500/50' : 'bg-gray-700'}`}>
+            <div className={`w-10 h-5 flex items-center rounded-full p-1 transition-colors ${showInactive ? 'bg-red-600/50' : 'bg-gray-700'}`}>
               <div className={`bg-white w-3 h-3 rounded-full shadow-md transform duration-300 ease-in-out ${showInactive ? 'translate-x-5' : ''}`}></div>
             </div>
             <span className="text-gray-400 font-medium group-hover:text-gray-300 transition-colors">Pasifleri Göster</span>
@@ -216,7 +216,7 @@ export default function InstructorsPage() {
               {/* Department Separator / Header */}
               <div className="flex items-center gap-3 mb-5 pl-2">
                 <div className="w-9 h-9 rounded-lg flex items-center justify-center shadow-inner" style={{ background: `linear-gradient(135deg, #4f46e520, #4f46e510)`, border: `1px solid #4f46e530` }}>
-                  <BookOpen className="w-5 h-5 text-indigo-400" />
+                  <BookOpen className="w-5 h-5 text-red-400" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-white tracking-tight">
@@ -239,7 +239,7 @@ export default function InstructorsPage() {
                     <div 
                       key={i.id} 
                       className={`glass-card rounded-2xl border transition-all duration-300 flex flex-col group hover:-translate-y-1 hover:shadow-2xl hover:shadow-indigo-900/20
-                        ${i.is_active ? 'border-gray-700/50 hover:border-indigo-500/30' : 'border-red-900/20 card opacity-60 grayscale hover:grayscale-0'}`}
+                        ${i.is_active ? 'border-gray-700/50 hover:border-red-600/30' : 'border-red-900/20 card opacity-60 grayscale hover:grayscale-0'}`}
                     >
                       {/* Top Gradient Bar */}
                       <div className="h-1.5 w-full rounded-t-2xl opacity-80" style={{ backgroundColor: style.color }}></div>
@@ -259,7 +259,7 @@ export default function InstructorsPage() {
                             {initials}
                           </div>
                           <div className="min-w-0 pr-4">
-                            <h4 className="font-bold text-md text-white group-hover:text-indigo-200 transition-colors truncate">
+                            <h4 className="font-bold text-md text-white group-hover:text-red-200 transition-colors truncate">
                               {i.full_name}
                             </h4>
                             <div className={`inline-flex items-center px-2 py-0.5 mt-1 rounded text-[10px] uppercase font-bold tracking-wider border ${style.badge}`}>
@@ -312,7 +312,7 @@ export default function InstructorsPage() {
             <div className={`px-6 py-5 border-b flex justify-between items-center ${editItem.id ? 'bg-cyan-600' : 'bg-cyan-600'}`}>
               <h3 className="text-lg font-bold text-white flex items-center gap-2.5">
                 <div className="bg-white/10 p-1.5 rounded-lg border border-white/10">
-                  {editItem.id ? <Edit className="w-4 h-4 text-indigo-300" /> : <Plus className="w-4 h-4 text-violet-300" />}
+                  {editItem.id ? <Edit className="w-4 h-4 text-red-300" /> : <Plus className="w-4 h-4 text-red-300" />}
                 </div>
                 {editItem.id ? 'Personel Bilgilerini Düzenle' : 'Yeni Akademik Personel Ekle'}
               </h3>
@@ -331,7 +331,7 @@ export default function InstructorsPage() {
                   <div className="relative">
                     <UserCircle className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
                     <input 
-                      className="w-full card border rounded-lg pl-10 pr-4 py-2.5 text-sm font-medium text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/50 transition-colors placeholder:text-gray-600" 
+                      className="w-full card border rounded-lg pl-10 pr-4 py-2.5 text-sm font-medium text-white focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-colors placeholder:text-gray-600" 
                       placeholder="Örn: Dr. Ahmet Yılmaz" 
                       required 
                       value={editItem.full_name || ''} 
@@ -345,7 +345,7 @@ export default function InstructorsPage() {
                   <div>
                     <label className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1.5 block">Akademik Unvan</label>
                     <select 
-                      className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus:border-indigo-500 transition-colors form-select appearance-none font-medium" 
+                      className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus:border-red-600 transition-colors form-select appearance-none font-medium" 
                       value={editItem.title || 'Öğr. Gör.'} 
                       onChange={(e) => setEditItem({ ...editItem, title: e.target.value })}
                     >
@@ -356,7 +356,7 @@ export default function InstructorsPage() {
                   <div>
                     <label className="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-1.5 block">Bağlı Olduğu Bölüm</label>
                     <select 
-                      className="w-full card border rounded-lg px-3 py-2.5 text-sm text-gray-300 focus:outline-none focus:border-indigo-500 transition-colors form-select appearance-none" 
+                      className="w-full card border rounded-lg px-3 py-2.5 text-sm text-gray-300 focus:outline-none focus:border-red-600 transition-colors form-select appearance-none" 
                       value={editItem.department_id || ''} 
                       onChange={(e) => setEditItem({ ...editItem, department_id: e.target.value || null })}
                     >
@@ -376,7 +376,7 @@ export default function InstructorsPage() {
                     <div className="relative">
                       <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
                       <input 
-                        className="w-full card border rounded-lg pl-10 pr-4 py-2 text-sm text-gray-300 focus:outline-none focus:border-indigo-500 transition-colors" 
+                        className="w-full card border rounded-lg pl-10 pr-4 py-2 text-sm text-gray-300 focus:outline-none focus:border-red-600 transition-colors" 
                         type="email" 
                         placeholder="Kurumsal e-posta adresi (Opsiyonel)" 
                         value={editItem.email || ''} 
@@ -389,7 +389,7 @@ export default function InstructorsPage() {
                     <div className="relative">
                       <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
                       <input 
-                        className="w-full card border rounded-lg pl-10 pr-4 py-2 text-sm text-gray-300 focus:outline-none focus:border-indigo-500 transition-colors" 
+                        className="w-full card border rounded-lg pl-10 pr-4 py-2 text-sm text-gray-300 focus:outline-none focus:border-red-600 transition-colors" 
                         placeholder="Dahili veya Cep Telefonu (Opsiyonel)" 
                         value={editItem.phone || ''} 
                         onChange={(e) => setEditItem({ ...editItem, phone: e.target.value })} 

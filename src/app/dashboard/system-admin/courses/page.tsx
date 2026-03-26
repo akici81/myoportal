@@ -74,7 +74,7 @@ export default function AdminCoursesPage() {
       {/* Header */}
       <div className="relative overflow-hidden rounded-2xl card p-8 border border-purple-800/30">
         <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
-          <ClipboardList className="w-48 h-48 text-purple-400" />
+          <ClipboardList className="w-48 h-48 text-red-400" />
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
@@ -101,7 +101,7 @@ export default function AdminCoursesPage() {
         <div className="relative w-full sm:w-80">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
           <input
-            className="w-full card border rounded-lg pl-10 pr-4 py-2.5 text-sm text-gray-200 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500/30"
+            className="w-full card border rounded-lg pl-10 pr-4 py-2.5 text-sm text-gray-200 placeholder:text-gray-500 focus:outline-none focus:ring-2 focus:ring-red-600/30"
             placeholder="Ders Kodu veya Adı Ara..."
             value={search}
             onChange={e => setSearch(e.target.value)}
@@ -120,7 +120,7 @@ export default function AdminCoursesPage() {
               <th className="px-5 py-4">AKTS</th>
               <th className="px-5 py-4">Teorik</th>
               <th className="px-5 py-4">Uygulama</th>
-              <th className="px-5 py-4 text-center text-purple-400">⏱ Haftalık</th>
+              <th className="px-5 py-4 text-center text-red-400">⏱ Haftalık</th>
               <th className="px-5 py-4 text-right">Eylem</th>
             </tr>
           </thead>
@@ -131,13 +131,13 @@ export default function AdminCoursesPage() {
               <tr><td colSpan={7} className="py-16 text-center text-gray-500">Henüz ders eklenmemiş.</td></tr>
             ) : filtered.map(c => (
               <tr key={c.id} className="hover:bg-white/[0.02] transition-colors">
-                <td className="px-5 py-4 font-mono text-purple-400 font-bold">{c.code}</td>
+                <td className="px-5 py-4 font-mono text-red-400 font-bold">{c.code}</td>
                 <td className="px-5 py-4 text-white font-medium">{c.name}</td>
                 <td className="px-5 py-4 text-gray-400">{c.credit ?? '—'}</td>
                 <td className="px-5 py-4 text-gray-400">{c.theoretical_hours ?? 0}T</td>
                 <td className="px-5 py-4 text-gray-400">{c.practical_hours ?? 0}U</td>
                 <td className="px-5 py-4 text-center">
-                  <span className="inline-flex items-center justify-center min-w-[2.5rem] h-9 px-3 rounded-xl font-black text-base bg-purple-500/15 text-purple-300 border border-purple-500/20">
+                  <span className="inline-flex items-center justify-center min-w-[2.5rem] h-9 px-3 rounded-xl font-black text-base bg-red-600/15 text-red-300 border border-red-600/20">
                     {(c.theoretical_hours ?? 0) + (c.practical_hours ?? 0)} s
                   </span>
                 </td>
@@ -159,7 +159,7 @@ export default function AdminCoursesPage() {
               <X className="w-5 h-5" />
             </button>
             <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-3">
-              <ClipboardList className="w-5 h-5 text-purple-400" />
+              <ClipboardList className="w-5 h-5 text-red-400" />
               {editItem.id ? 'Dersi Düzenle' : 'Yeni Ders Ekle'}
             </h3>
 
@@ -167,12 +167,12 @@ export default function AdminCoursesPage() {
               {/* Code + Name */}
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <label className="text-xs font-medium text-gray-400 mb-1.5 block">Kodu <span className="text-purple-400">*</span></label>
-                  <input required maxLength={10} className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white font-mono uppercase focus:border-purple-500 focus:outline-none" value={editItem.code ?? ''} onChange={e => setEditItem((i: any) => ({ ...i, code: e.target.value }))} placeholder="BLG101" />
+                  <label className="text-xs font-medium text-gray-400 mb-1.5 block">Kodu <span className="text-red-400">*</span></label>
+                  <input required maxLength={10} className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white font-mono uppercase focus:border-red-600 focus:outline-none" value={editItem.code ?? ''} onChange={e => setEditItem((i: any) => ({ ...i, code: e.target.value }))} placeholder="BLG101" />
                 </div>
                 <div className="col-span-2">
-                  <label className="text-xs font-medium text-gray-400 mb-1.5 block">Ders Adı <span className="text-purple-400">*</span></label>
-                  <input required className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-purple-500 focus:outline-none" value={editItem.name ?? ''} onChange={e => setEditItem((i: any) => ({ ...i, name: e.target.value }))} placeholder="Algoritma ve Programlama" />
+                  <label className="text-xs font-medium text-gray-400 mb-1.5 block">Ders Adı <span className="text-red-400">*</span></label>
+                  <input required className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-red-600 focus:outline-none" value={editItem.name ?? ''} onChange={e => setEditItem((i: any) => ({ ...i, name: e.target.value }))} placeholder="Algoritma ve Programlama" />
                 </div>
               </div>
 
@@ -180,15 +180,15 @@ export default function AdminCoursesPage() {
               <div className="grid grid-cols-3 gap-4">
                 <div>
                   <label className="text-xs font-medium text-gray-400 mb-1.5 block">Teorik (T)</label>
-                  <input type="number" min={0} max={20} required className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-purple-500 focus:outline-none" value={editItem.theoretical_hours ?? 0} onChange={e => setEditItem((i: any) => ({ ...i, theoretical_hours: parseInt(e.target.value) || 0 }))} />
+                  <input type="number" min={0} max={20} required className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-red-600 focus:outline-none" value={editItem.theoretical_hours ?? 0} onChange={e => setEditItem((i: any) => ({ ...i, theoretical_hours: parseInt(e.target.value) || 0 }))} />
                 </div>
                 <div>
                   <label className="text-xs font-medium text-gray-400 mb-1.5 block">Uygulama (U)</label>
-                  <input type="number" min={0} max={20} required className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-purple-500 focus:outline-none" value={editItem.practical_hours ?? 0} onChange={e => setEditItem((i: any) => ({ ...i, practical_hours: parseInt(e.target.value) || 0 }))} />
+                  <input type="number" min={0} max={20} required className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-red-600 focus:outline-none" value={editItem.practical_hours ?? 0} onChange={e => setEditItem((i: any) => ({ ...i, practical_hours: parseInt(e.target.value) || 0 }))} />
                 </div>
                 <div>
-                  <label className="text-xs font-medium text-purple-400 mb-1.5 block font-bold">⏱ Haftalık Toplam</label>
-                  <div className="w-full bg-purple-900/20 border border-purple-500/30 rounded-lg px-3 py-2.5 text-purple-300 font-black text-center text-lg">
+                  <label className="text-xs font-medium text-red-400 mb-1.5 block font-bold">⏱ Haftalık Toplam</label>
+                  <div className="w-full bg-purple-900/20 border border-red-600/30 rounded-lg px-3 py-2.5 text-red-300 font-black text-center text-lg">
                     {weeklyHours(editItem)} saat
                   </div>
                 </div>
@@ -198,11 +198,11 @@ export default function AdminCoursesPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="text-xs font-medium text-gray-400 mb-1.5 block">Kredi (AKTS)</label>
-                  <input type="number" min={1} max={10} className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-purple-500 focus:outline-none" value={editItem.credit ?? ''} onChange={e => setEditItem((i: any) => ({ ...i, credit: parseInt(e.target.value) || null }))} />
+                  <input type="number" min={1} max={10} className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-red-600 focus:outline-none" value={editItem.credit ?? ''} onChange={e => setEditItem((i: any) => ({ ...i, credit: parseInt(e.target.value) || null }))} />
                 </div>
                 <div>
                   <label className="text-xs font-medium text-gray-400 mb-1.5 block">Ders Türü</label>
-                  <select className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-purple-500 focus:outline-none" value={editItem.course_type ?? 'theoretical'} onChange={e => setEditItem((i: any) => ({ ...i, course_type: e.target.value }))}>
+                  <select className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-red-600 focus:outline-none" value={editItem.course_type ?? 'theoretical'} onChange={e => setEditItem((i: any) => ({ ...i, course_type: e.target.value }))}>
                     <option value="theoretical">Teorik</option>
                     <option value="practical">Uygulama</option>
                     <option value="mixed">Karma (T+U)</option>
@@ -221,7 +221,7 @@ export default function AdminCoursesPage() {
                   { key: 'is_elective', label: 'Seçmeli' },
                 ].map(({ key, label }) => (
                   <label key={key} className="flex items-center gap-2 text-xs text-gray-400 cursor-pointer hover:text-white">
-                    <input type="checkbox" className="w-3.5 h-3.5 accent-purple-500" checked={!!editItem[key]} onChange={e => setEditItem((i: any) => ({ ...i, [key]: e.target.checked }))} />
+                    <input type="checkbox" className="w-3.5 h-3.5 accent-red-600" checked={!!editItem[key]} onChange={e => setEditItem((i: any) => ({ ...i, [key]: e.target.checked }))} />
                     {label}
                   </label>
                 ))}
@@ -229,7 +229,7 @@ export default function AdminCoursesPage() {
 
               <div className="pt-4 flex gap-3">
                 <button type="button" onClick={() => setEditItem(null)} className="flex-1 px-4 py-2.5 rounded-lg text-sm card text-gray-400 hover:bg-gray-700 hover:text-white">İptal</button>
-                <button type="submit" disabled={saving} className="flex-1 px-4 py-2.5 rounded-lg text-sm bg-purple-600 text-white hover:bg-purple-500 flex items-center justify-center gap-2">
+                <button type="submit" disabled={saving} className="flex-1 px-4 py-2.5 rounded-lg text-sm bg-red-700 text-white hover:bg-red-600 flex items-center justify-center gap-2">
                   <Save className="w-4 h-4" />
                   {saving ? 'Kaydediliyor...' : 'Kaydet'}
                 </button>

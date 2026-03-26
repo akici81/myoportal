@@ -255,7 +255,7 @@ td.time { font-weight:700; text-align:right; white-space:nowrap; color:#475569; 
         <button
           onClick={exportPDF}
           disabled={!!loading}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 shadow-lg shadow-cyan-500/20 transition-all disabled:opacity-50"
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-red-600 shadow-lg shadow-cyan-500/20 transition-all disabled:opacity-50"
           title="PDF olarak yazdır"
         >
           {loading === 'pdf'

@@ -151,7 +151,7 @@ export default function TimeSlotsPage() {
                     </span>
 
                     {slot.is_uzem_slot && (
-                      <span className="ml-3 px-2 py-1 text-xs font-bold uppercase bg-indigo-500/20 text-indigo-400 border border-indigo-500/30 rounded">
+                      <span className="ml-3 px-2 py-1 text-xs font-bold uppercase bg-red-600/20 text-red-400 border border-red-600/30 rounded">
                         UZEM
                       </span>
                     )}

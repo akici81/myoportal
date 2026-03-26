@@ -87,7 +87,7 @@ export default async function InstructorDashboard() {
       icon: CalendarDays,
       iconBg: 'bg-cyan-500/10',
       iconColor: 'text-cyan-400',
-      topBar: 'from-cyan-500 to-blue-500',
+      topBar: 'from-cyan-500 to-red-600',
     },
   ]
 

@@ -243,9 +243,9 @@ export default function CourseAssignmentsPage() {
           {/* STATS */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="card border rounded-xl p-5 flex items-center gap-4 relative overflow-hidden group">
-              <div className="absolute inset-0 bg-blue-500/5 opacity-0 group-hover:opacity-50 transition-opacity"></div>
-              <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20 shrink-0">
-                <BookOpen className="w-6 h-6 text-blue-500" />
+              <div className="absolute inset-0 bg-red-600/5 opacity-0 group-hover:opacity-50 transition-opacity"></div>
+              <div className="w-12 h-12 rounded-xl bg-red-600/10 flex items-center justify-center border border-red-600/20 shrink-0">
+                <BookOpen className="w-6 h-6 text-red-600" />
               </div>
               <div>
                 <p className="text-2xl font-black text-white leading-none mb-1">{totalCourses}</p>
@@ -276,9 +276,9 @@ export default function CourseAssignmentsPage() {
             </div>
 
             <div className="card border rounded-xl p-5 flex items-center gap-4 relative overflow-hidden group">
-              <div className="absolute inset-0 bg-purple-500/5 opacity-0 group-hover:opacity-50 transition-opacity"></div>
-              <div className="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center border border-purple-500/20 shrink-0">
-                <Users className="w-6 h-6 text-purple-500" />
+              <div className="absolute inset-0 bg-red-600/5 opacity-0 group-hover:opacity-50 transition-opacity"></div>
+              <div className="w-12 h-12 rounded-xl bg-red-600/10 flex items-center justify-center border border-red-600/20 shrink-0">
+                <Users className="w-6 h-6 text-red-600" />
               </div>
               <div>
                 <p className="text-2xl font-black text-white leading-none mb-1">{withStudentCount}</p>
@@ -348,7 +348,7 @@ export default function CourseAssignmentsPage() {
                                <div className="flex flex-col gap-1">
                                   <div className="flex items-center gap-2">
                                      <span className="text-sm font-black text-gray-200">{pc.course.code}</span>
-                                     {pc.course.is_uzem && <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-400 font-bold uppercase tracking-wider border border-indigo-500/30">UZEM</span>}
+                                     {pc.course.is_uzem && <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-red-600/20 text-red-400 font-bold uppercase tracking-wider border border-red-600/30">UZEM</span>}
                                   </div>
                                   <span className="text-xs font-semibold text-gray-400 group-hover:text-gray-300 transition-colors line-clamp-1 pr-4">{pc.course.name}</span>
                                   <div className="flex gap-1.5 mt-0.5">

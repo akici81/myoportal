@@ -23,7 +23,7 @@ export default async function SekreterDepartmentsPage() {
     <div className="space-y-6 animate-in">
       <div className="relative overflow-hidden rounded-2xl card p-8 border border-blue-800/30">
         <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
-          <GraduationCap className="w-48 h-48 text-blue-400" />
+          <GraduationCap className="w-48 h-48 text-red-400" />
         </div>
         <div className="relative z-10">
           <h1 className="text-3xl font-bold text-white">Bölümler</h1>
@@ -37,7 +37,7 @@ export default async function SekreterDepartmentsPage() {
           return (
             <div key={d.id} className="card p-5 rounded-xl border flex flex-col">
               <div className="flex items-start gap-4 mb-4">
-                <div className="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 font-bold text-lg flex items-center justify-center border border-blue-500/20 flex-shrink-0">{d.short_code}</div>
+                <div className="w-12 h-12 rounded-xl bg-red-600/10 text-red-400 font-bold text-lg flex items-center justify-center border border-red-600/20 flex-shrink-0">{d.short_code}</div>
                 <div>
                   <h3 className="font-bold text-white">{d.name}</h3>
                   <p className="text-xs text-gray-500 flex items-center gap-1 mt-1"><GraduationCap className="w-3 h-3" /> Başkan: {(d.head as any)?.full_name || <span className="text-red-400/80 italic">Atanmamış</span>}</p>

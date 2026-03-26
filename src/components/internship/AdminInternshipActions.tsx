@@ -58,7 +58,7 @@ export default function AdminInternshipActions({ internshipId, currentStatus }: 
               </button>
             )}
             {currentStatus === 'approved' && (
-              <button onClick={() => handleStatusChange('published')} className="px-4 py-2 text-xs text-left text-purple-400 hover:bg-white/5 flex items-center gap-2">
+              <button onClick={() => handleStatusChange('published')} className="px-4 py-2 text-xs text-left text-red-400 hover:bg-white/5 flex items-center gap-2">
                 <Send className="h-3 w-3" /> Yayınla
               </button>
             )}
@@ -68,7 +68,7 @@ export default function AdminInternshipActions({ internshipId, currentStatus }: 
               </button>
             )}
             {currentStatus === 'revision' && (
-              <button onClick={() => handleStatusChange('submitted')} className="px-4 py-2 text-xs text-left text-blue-400 hover:bg-white/5 flex items-center gap-2">
+              <button onClick={() => handleStatusChange('submitted')} className="px-4 py-2 text-xs text-left text-red-400 hover:bg-white/5 flex items-center gap-2">
                 <Settings className="h-3 w-3" /> İncelemeye Al
               </button>
             )}

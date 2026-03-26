@@ -181,12 +181,12 @@ export default function ClassroomsReadOnlyPage() {
                             <h5 className="text-[10px] uppercase font-bold text-gray-600 mb-2 tracking-wider">Donanımlar</h5>
                             <div className="flex flex-wrap gap-2">
                               {c.has_projector ? (
-                                <span title="Projeksiyon" className="px-2 py-1 rounded-md bg-blue-500/10 border border-blue-500/20 flex items-center gap-1 text-[11px] font-medium text-blue-400">
+                                <span title="Projeksiyon" className="px-2 py-1 rounded-md bg-red-600/10 border border-red-600/20 flex items-center gap-1 text-[11px] font-medium text-red-400">
                                   <Projector className="w-3 h-3" /> Projeksiyon
                                 </span>
                               ) : null}
                               {c.has_smartboard ? (
-                                <span title="Akıllı Tahta" className="px-2 py-1 rounded-md bg-purple-500/10 border border-purple-500/20 flex items-center gap-1 text-[11px] font-medium text-purple-400">
+                                <span title="Akıllı Tahta" className="px-2 py-1 rounded-md bg-red-600/10 border border-red-600/20 flex items-center gap-1 text-[11px] font-medium text-red-400">
                                   <Monitor className="w-3 h-3" /> Akıllı Tahta
                                 </span>
                               ) : null}

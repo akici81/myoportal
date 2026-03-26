@@ -683,10 +683,10 @@ export default function BolumBaskaniSchedulePage() {
 
               {/* ── Range Mode Settings ── */}
               {rangeMode && (
-                <div className="space-y-4 p-4 rounded-xl bg-violet-500/10 border border-violet-500/30">
+                <div className="space-y-4 p-4 rounded-xl bg-red-600/10 border border-red-600/30">
                   <div className="flex items-center gap-2">
-                    <TimerIcon className="w-4 h-4 text-violet-400" />
-                    <span className="text-sm font-bold text-violet-300">Saat Aralığı Ayarları</span>
+                    <TimerIcon className="w-4 h-4 text-red-400" />
+                    <span className="text-sm font-bold text-red-300">Saat Aralığı Ayarları</span>
                   </div>
                   <div>
                     <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-1.5 block pl-1">Gün</label>
@@ -699,7 +699,7 @@ export default function BolumBaskaniSchedulePage() {
                           className={clsx(
                             'px-3 py-1.5 rounded-lg text-xs font-bold transition-all border',
                             form.range_day === d
-                              ? 'bg-violet-600 border-violet-500 text-white'
+                              ? 'bg-red-700 border-red-600 text-white'
                               : 'border-gray-700 card/50 text-gray-400 hover:text-white'
                           )}
                         >
@@ -715,7 +715,7 @@ export default function BolumBaskaniSchedulePage() {
                         type="time"
                         value={form.range_start}
                         onChange={e => setForm(f => ({ ...f, range_start: e.target.value }))}
-                        className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/50"
+                        className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50"
                       />
                     </div>
                     <div>
@@ -724,12 +724,12 @@ export default function BolumBaskaniSchedulePage() {
                         type="time"
                         value={form.range_end}
                         onChange={e => setForm(f => ({ ...f, range_end: e.target.value }))}
-                        className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-violet-500 focus:ring-1 focus:ring-violet-500/50"
+                        className="w-full card border rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50"
                       />
                     </div>
                   </div>
                   {form.range_start && form.range_end && (
-                    <p className="text-xs text-violet-300/80 font-medium">
+                    <p className="text-xs text-red-300/80 font-medium">
                       → {timeSlots.filter(s => (s.start_time?.slice(0, 5) ?? '') >= form.range_start && (s.end_time?.slice(0, 5) ?? '') <= form.range_end).length} slot bu aralığa giriyor
                     </p>
                   )}

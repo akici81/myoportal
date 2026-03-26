@@ -36,7 +36,7 @@ export default function InstructorInternshipActions({ internshipId, currentStatu
       <button 
         onClick={() => handleStatusChange('submitted')}
         disabled={isLoading}
-        className="inline-flex items-center text-blue-400 hover:text-blue-300 text-xs font-medium bg-blue-500/10 px-3 py-1.5 rounded-lg transition-colors border border-blue-500/20 gap-1 ml-2"
+        className="inline-flex items-center text-red-400 hover:text-blue-300 text-xs font-medium bg-red-600/10 px-3 py-1.5 rounded-lg transition-colors border border-red-600/20 gap-1 ml-2"
         title="Yönetici onayı için gönder"
       >
         <Send className="h-3 w-3" /> {isLoading ? 'Gönderiliyor...' : 'Onaya Gönder'}

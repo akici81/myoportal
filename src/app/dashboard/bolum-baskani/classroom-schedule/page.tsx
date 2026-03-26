@@ -41,8 +41,8 @@ const DAYS = ['', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma']
 const TYPE_COLORS: Record<string, { bg: string, text: string, border: string }> = {
   lab: { bg: 'bg-rose-500/10', text: 'text-rose-400', border: 'border-rose-500/20' },
   atolye: { bg: 'bg-amber-500/10', text: 'text-amber-400', border: 'border-amber-500/20' },
-  normal: { bg: 'bg-blue-500/10', text: 'text-blue-400', border: 'border-blue-500/20' },
-  amfi: { bg: 'bg-purple-500/10', text: 'text-purple-400', border: 'border-purple-500/20' },
+  normal: { bg: 'bg-red-600/10', text: 'text-red-400', border: 'border-red-600/20' },
+  amfi: { bg: 'bg-red-600/10', text: 'text-red-400', border: 'border-red-600/20' },
 }
 
 export default function ClassroomSchedulePage() {
@@ -132,7 +132,7 @@ export default function ClassroomSchedulePage() {
       {/* Header Container Premium Blue */}
       <div className="relative overflow-hidden rounded-2xl card p-8 border border-blue-800/30 shadow-lg">
         <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
-          <Building2 className="w-48 h-48 text-blue-400" />
+          <Building2 className="w-48 h-48 text-red-400" />
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
@@ -151,7 +151,7 @@ export default function ClassroomSchedulePage() {
               className={clsx(
                 'flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold transition-all',
                 viewMode === 'overview'
-                  ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
+                  ? 'bg-red-600/20 text-red-400 border border-red-600/30'
                   : 'text-gray-400 hover:text-gray-200 hover:card/50 transparent border border-transparent'
               )}
             >
@@ -166,7 +166,7 @@ export default function ClassroomSchedulePage() {
               className={clsx(
                 'flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold transition-all',
                 viewMode === 'single'
-                  ? 'bg-indigo-500/20 text-indigo-400 border border-indigo-500/30'
+                  ? 'bg-red-600/20 text-red-400 border border-red-600/30'
                   : 'text-gray-400 hover:text-gray-200 hover:card/50 transparent border border-transparent'
               )}
             >
@@ -180,7 +180,7 @@ export default function ClassroomSchedulePage() {
       <div className="max-w-screen-2xl mx-auto space-y-6">
         {loading ? (
            <div className="card flex flex-col items-center justify-center py-32 text-center rounded-2xl border">
-             <div className="w-12 h-12 rounded-full border-4 border-blue-800 border-t-blue-500 animate-spin mb-4" />
+             <div className="w-12 h-12 rounded-full border-4 border-blue-800 border-t-red-600 animate-spin mb-4" />
              <h3 className="text-xl font-bold text-white tracking-tight">Derslik Verileri Yükleniyor</h3>
            </div>
         ) : viewMode === 'overview' ? (
@@ -189,7 +189,7 @@ export default function ClassroomSchedulePage() {
             <div className="px-6 py-5 border-b card flex items-center justify-between">
               <div>
                 <h3 className="text-xl font-black text-white flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-blue-400" />
+                  <Sparkles className="w-5 h-5 text-red-400" />
                   Kapasite ve Doluluk Haritası
                 </h3>
                 <p className="text-sm text-gray-500 mt-1 font-medium">
@@ -211,12 +211,12 @@ export default function ClassroomSchedulePage() {
                       setSelectedClassroom(room.id)
                       setViewMode('single')
                     }}
-                    className="p-5 rounded-2xl cursor-pointer transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/10 card border hover:border-blue-500/30 group relative overflow-hidden"
+                    className="p-5 rounded-2xl cursor-pointer transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-red-600/10 card border hover:border-red-600/30 group relative overflow-hidden"
                   >
                     <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-white/5 to-transparent rounded-bl-full opacity-50 group-hover:opacity-50 transition-opacity" />
                     
                     <div className="flex items-start justify-between mb-4 relative z-10">
-                      <h4 className="font-black text-gray-100 text-lg group-hover:text-blue-400 transition-colors dropdown-title truncate pr-2">{room.name}</h4>
+                      <h4 className="font-black text-gray-100 text-lg group-hover:text-red-400 transition-colors dropdown-title truncate pr-2">{room.name}</h4>
                       <span className={clsx('text-[10px] px-2 py-1 rounded-md font-bold uppercase tracking-wider border', styling.bg, styling.text, styling.border)}>
                         {room.type}
                       </span>
@@ -263,7 +263,7 @@ export default function ClassroomSchedulePage() {
               <div className="flex-1 min-w-[300px]">
                 <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block pl-1">İncelenen Derslik</label>
                 <select
-                  className="w-full card border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-colors font-bold shadow-inner"
+                  className="w-full card border rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-red-600/50 transition-colors font-bold shadow-inner"
                   value={selectedClassroom}
                   onChange={(e) => setSelectedClassroom(e.target.value)}
                 >
@@ -284,7 +284,7 @@ export default function ClassroomSchedulePage() {
                    </div>
                    <div className="text-center px-4 border-r">
                      <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Kapasite</p>
-                     <p className="font-bold text-indigo-400">{selectedClassroomInfo.capacity} Kişi</p>
+                     <p className="font-bold text-red-400">{selectedClassroomInfo.capacity} Kişi</p>
                    </div>
                    <div className="text-center px-4">
                      <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Tür</p>
@@ -297,10 +297,10 @@ export default function ClassroomSchedulePage() {
             {/* Stats Cards */}
             {selectedClassroom && (
               <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-                <div className="card p-5 rounded-2xl border border-blue-500/20 bg-cyan-600">
+                <div className="card p-5 rounded-2xl border border-red-600/20 bg-cyan-600">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-blue-500/10 border border-blue-500/20 shadow-inner">
-                      <BookOpen className="w-6 h-6 text-blue-400" />
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-red-600/10 border border-red-600/20 shadow-inner">
+                      <BookOpen className="w-6 h-6 text-red-400" />
                     </div>
                     <div>
                       <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-0.5">Haftalık Ders</p>
@@ -375,9 +375,9 @@ export default function ClassroomSchedulePage() {
                             return (
                               <td key={day} className="p-1.5 border-b border-r align-top relative group">
                                 {entry ? (
-                                  <div className="h-full min-h-[76px] p-2.5 rounded-xl border relative overflow-hidden flex flex-col justify-center transition-all bg-indigo-500/10 border-indigo-500/20 hover:bg-indigo-500/20 hover:border-indigo-500/40">
-                                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-indigo-500"></div>
-                                    <p className="font-black text-indigo-400 text-sm leading-tight mb-1 truncate">
+                                  <div className="h-full min-h-[76px] p-2.5 rounded-xl border relative overflow-hidden flex flex-col justify-center transition-all bg-red-600/10 border-red-600/20 hover:bg-red-600/20 hover:border-red-600/40">
+                                    <div className="absolute left-0 top-0 bottom-0 w-1 bg-red-600"></div>
+                                    <p className="font-black text-red-400 text-sm leading-tight mb-1 truncate">
                                       {entry.program_courses?.courses?.code}
                                     </p>
                                     <p className="text-[11px] text-gray-300 font-medium leading-tight truncate mb-1">
@@ -387,7 +387,7 @@ export default function ClassroomSchedulePage() {
                                       <p className="text-[10px] text-gray-500 font-bold truncate">
                                         {entry.instructors?.title} {entry.instructors?.full_name?.split(' ').slice(-1)[0]}
                                       </p>
-                                      <span className="text-[9px] font-black bg-indigo-950/50 text-indigo-300 px-1.5 py-0.5 rounded ml-1 border border-indigo-500/20 shrink-0">
+                                      <span className="text-[9px] font-black bg-indigo-950/50 text-red-300 px-1.5 py-0.5 rounded ml-1 border border-red-600/20 shrink-0">
                                         {entry.program_courses?.programs?.short_code}
                                       </span>
                                     </div>

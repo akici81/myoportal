@@ -297,9 +297,9 @@ export default function ConflictsPage() {
     
     switch (type) {
       case 'instructor':
-        return { bg: 'bg-blue-500/10', text: 'text-blue-500', border: 'border-blue-500/20' }
+        return { bg: 'bg-red-600/10', text: 'text-red-600', border: 'border-red-600/20' }
       case 'classroom':
-        return { bg: 'bg-purple-500/10', text: 'text-purple-500', border: 'border-purple-500/20' }
+        return { bg: 'bg-red-600/10', text: 'text-red-600', border: 'border-red-600/20' }
       case 'program':
         return { bg: 'bg-emerald-500/10', text: 'text-emerald-500', border: 'border-emerald-500/20' }
       case 'capacity':
@@ -443,7 +443,7 @@ export default function ConflictsPage() {
            <div className="relative w-full sm:w-80">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
               <input
-                className="w-full bg-gray-950/50 border rounded-full pl-10 pr-4 py-2 text-sm text-white focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/50 transition-colors shadow-inner placeholder:text-gray-600"
+                className="w-full bg-gray-950/50 border rounded-full pl-10 pr-4 py-2 text-sm text-white focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-colors shadow-inner placeholder:text-gray-600"
                 placeholder="Kod, gün veya hoca ara..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -455,8 +455,8 @@ export default function ConflictsPage() {
           {loading ? (
              <div className="p-20 flex flex-col items-center justify-center text-gray-500 animate-pulse">
                 <div className="relative">
-                  <div className="absolute inset-0 border-4 border-t-blue-500 border-r-transparent border-b-blue-500 border-l-transparent rounded-full animate-spin"></div>
-                  <ShieldAlert className="w-12 h-12 m-4 opacity-50 text-blue-500" />
+                  <div className="absolute inset-0 border-4 border-t-red-600 border-r-transparent border-b-red-600 border-l-transparent rounded-full animate-spin"></div>
+                  <ShieldAlert className="w-12 h-12 m-4 opacity-50 text-red-600" />
                 </div>
                 <p className="mt-4 text-lg">Algoritmalar Devrede, Analiz Yapılıyor...</p>
              </div>

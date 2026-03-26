@@ -222,7 +222,7 @@ export default function SharedCoursesPage() {
       {/* Premium Header Container */}
       <div className="relative overflow-hidden rounded-2xl card p-8 border border-indigo-800/30">
         <div className="absolute top-0 right-0 p-8 opacity-5 rotate-12 pointer-events-none">
-          <Link2 className="w-48 h-48 text-indigo-400" />
+          <Link2 className="w-48 h-48 text-red-400" />
         </div>
         
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
@@ -231,7 +231,7 @@ export default function SharedCoursesPage() {
               Yönetimsel Ortak Dersler
             </h1>
             <p className="mt-2 text-gray-400 leading-relaxed">
-              Birden fazla programda aynı anda verilen (Örn: ATA, TRD, ING) dersleri birleştirin. Ortak ders havuzları ders programı yerleşiminde <strong className="text-indigo-300">tek bir paket</strong> gibi yönetilir.
+              Birden fazla programda aynı anda verilen (Örn: ATA, TRD, ING) dersleri birleştirin. Ortak ders havuzları ders programı yerleşiminde <strong className="text-red-300">tek bir paket</strong> gibi yönetilir.
             </p>
           </div>
           <button
@@ -247,7 +247,7 @@ export default function SharedCoursesPage() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Stat Cards */}
         <div className="card p-6 rounded-2xl border flex items-center gap-4 bg-gradient-to-br from-indigo-900/10 to-transparent">
-          <div className="w-14 h-14 rounded-full bg-indigo-500/10 flex items-center justify-center border border-indigo-500/20 text-indigo-400 shadow-[0_0_15px_rgba(99,102,241,0.1)]">
+          <div className="w-14 h-14 rounded-full bg-red-600/10 flex items-center justify-center border border-red-600/20 text-red-400 shadow-[0_0_15px_rgba(99,102,241,0.1)]">
             <Layers className="w-7 h-7" />
           </div>
           <div>
@@ -257,7 +257,7 @@ export default function SharedCoursesPage() {
         </div>
 
         <div className="card p-6 rounded-2xl border flex items-center gap-4 bg-gradient-to-br from-blue-900/10 to-transparent">
-          <div className="w-14 h-14 rounded-full bg-blue-500/10 flex items-center justify-center border border-blue-500/20 text-blue-400 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
+          <div className="w-14 h-14 rounded-full bg-red-600/10 flex items-center justify-center border border-red-600/20 text-red-400 shadow-[0_0_15px_rgba(59,130,246,0.1)]">
             <Link2 className="w-7 h-7" />
           </div>
           <div>
@@ -284,13 +284,13 @@ export default function SharedCoursesPage() {
         <div className="lg:w-2/3 space-y-6">
           <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
             <h3 className="text-xl font-bold text-white flex items-center gap-2">
-              <Layers className="w-5 h-5 text-indigo-400" /> Havuz Kataloğu
+              <Layers className="w-5 h-5 text-red-400" /> Havuz Kataloğu
             </h3>
             
             <div className="relative w-full sm:w-72">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
               <input
-                className="w-full card border rounded-full pl-10 pr-4 py-2 text-sm text-white focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/50 transition-all placeholder:text-gray-600 shadow-inner"
+                className="w-full card border rounded-full pl-10 pr-4 py-2 text-sm text-white focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-all placeholder:text-gray-600 shadow-inner"
                 placeholder="Kod, ad veya program ara..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -316,7 +316,7 @@ export default function SharedCoursesPage() {
                   {search ? 'Arama kriterlerinize uygun hiçbir ortak ders grubu sistemde kayıtlı değil.' : 'Henüz iki veya daha fazla birleştirilmiş dersten oluşan bir eşleştirme havuzu yapmadınız.'}
                 </p>
                 {!search && (
-                  <button onClick={openCreateModal} className="text-indigo-400 hover:text-indigo-300 font-medium text-sm flex items-center gap-1 bg-indigo-500/10 px-4 py-2 rounded-full transition-colors">
+                  <button onClick={openCreateModal} className="text-red-400 hover:text-red-300 font-medium text-sm flex items-center gap-1 bg-red-600/10 px-4 py-2 rounded-full transition-colors">
                     <Plus className="w-4 h-4" /> Yeni Bir Tane Oluştur
                   </button>
                 )}
@@ -328,7 +328,7 @@ export default function SharedCoursesPage() {
                 return (
                   <div 
                     key={group.shared_group_id} 
-                    className="card rounded-2xl border overflow-hidden transition-all duration-300 group hover:border-indigo-500/30"
+                    className="card rounded-2xl border overflow-hidden transition-all duration-300 group hover:border-red-600/30"
                   >
                     <div 
                       onClick={() => setExpandedGroups((p) =>
@@ -345,18 +345,18 @@ export default function SharedCoursesPage() {
                         <div className="shrink-0 flex items-center justify-center">
                           <div className={clsx(
                             "w-8 h-8 rounded-full flex items-center justify-center transition-transform duration-300",
-                            isExpanded ? "bg-indigo-500/20 text-indigo-400 rotate-180" : "card text-gray-500 group-hover:bg-gray-700"
+                            isExpanded ? "bg-red-600/20 text-red-400 rotate-180" : "card text-gray-500 group-hover:bg-gray-700"
                           )}>
                             <ChevronDown className="w-5 h-5" />
                           </div>
                         </div>
                         
-                        <div className="w-12 h-12 rounded-xl bg-cyan-600 border border-indigo-500/30 flex items-center justify-center shrink-0 shadow-inner">
-                          <BookOpen className="w-6 h-6 text-indigo-400" />
+                        <div className="w-12 h-12 rounded-xl bg-cyan-600 border border-red-600/30 flex items-center justify-center shrink-0 shadow-inner">
+                          <BookOpen className="w-6 h-6 text-red-400" />
                         </div>
                         
                         <div>
-                          <p className="text-base sm:text-lg font-bold text-white group-hover:text-indigo-200 transition-colors leading-tight">
+                          <p className="text-base sm:text-lg font-bold text-white group-hover:text-red-200 transition-colors leading-tight">
                             {group.course.name}
                           </p>
                           <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-1 text-sm text-gray-400">
@@ -368,7 +368,7 @@ export default function SharedCoursesPage() {
                       </div>
 
                       <div className="flex items-center gap-3 pl-16 sm:pl-0 border-t sm:border-0 pt-3 sm:pt-0">
-                        <span className="flex items-center gap-2 bg-blue-500/10 text-blue-400 border border-blue-500/20 px-3 py-1.5 rounded-lg text-xs font-bold shrink-0">
+                        <span className="flex items-center gap-2 bg-red-600/10 text-red-400 border border-red-600/20 px-3 py-1.5 rounded-lg text-xs font-bold shrink-0">
                           <Users className="w-3.5 h-3.5" /> {group.programs.length} Program
                         </span>
                         
@@ -399,10 +399,10 @@ export default function SharedCoursesPage() {
                             {group.programs.map(({ program, programCourseId }) => (
                               <div
                                 key={programCourseId}
-                                className="flex items-center justify-between p-3 rounded-xl border card shadow-inner group/item hover:border-blue-500/30 transition-colors"
+                                className="flex items-center justify-between p-3 rounded-xl border card shadow-inner group/item hover:border-red-600/30 transition-colors"
                               >
                                 <div className="flex items-center gap-3">
-                                  <div className="w-9 h-9 rounded-lg card flex items-center justify-center border text-xs font-bold text-gray-300 group-hover/item:text-blue-400 group-hover/item:bg-blue-500/10 transition-colors">
+                                  <div className="w-9 h-9 rounded-lg card flex items-center justify-center border text-xs font-bold text-gray-300 group-hover/item:text-red-400 group-hover/item:bg-red-600/10 transition-colors">
                                     {program.short_code}
                                   </div>
                                   <p className="text-sm font-medium text-gray-200 line-clamp-1" title={program.name}>{program.name}</p>
@@ -429,12 +429,12 @@ export default function SharedCoursesPage() {
 
         {/* Right Column: AI Insights & Quick Add */}
         <div className="lg:w-1/3 space-y-6">
-          <div className="card p-6 rounded-2xl border border-indigo-500/20 bg-indigo-500/5 relative overflow-hidden group">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-3xl group-hover:bg-indigo-500/20 transition-all duration-700"></div>
+          <div className="card p-6 rounded-2xl border border-red-600/20 bg-red-600/5 relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/10 rounded-full blur-3xl group-hover:bg-red-600/20 transition-all duration-700"></div>
             
             <div className="flex flex-col gap-4 relative z-10">
-              <div className="w-12 h-12 rounded-xl bg-indigo-500/20 flex items-center justify-center border border-indigo-500/30 shadow-inner">
-                <Sparkles className="w-6 h-6 text-indigo-400" />
+              <div className="w-12 h-12 rounded-xl bg-red-600/20 flex items-center justify-center border border-red-600/30 shadow-inner">
+                <Sparkles className="w-6 h-6 text-red-400" />
               </div>
               <div>
                 <h3 className="text-lg font-bold text-white leading-tight">Potansiyel Eşleşmeler</h3>
@@ -464,7 +464,7 @@ export default function SharedCoursesPage() {
                         setSelectedPrograms([])
                         setShowModal(true)
                       }}
-                      className="w-full relative overflow-hidden flex items-center justify-between p-3 rounded-xl border border-indigo-500/10 card hover:bg-indigo-500/10 hover:border-indigo-500/30 transition-all group/btn text-left"
+                      className="w-full relative overflow-hidden flex items-center justify-between p-3 rounded-xl border border-red-600/10 card hover:bg-red-600/10 hover:border-red-600/30 transition-all group/btn text-left"
                     >
                       <div className="flex flex-col">
                         <span className="text-sm font-bold text-gray-200 group-hover/btn:text-white transition-colors">{c.code}</span>
@@ -474,7 +474,7 @@ export default function SharedCoursesPage() {
                         <span className="text-xs font-bold text-amber-500 bg-amber-500/10 px-2 py-1 rounded border border-amber-500/20">
                           {programCount} Pro.
                         </span>
-                        <ChevronRight className="w-4 h-4 text-gray-600 group-hover/btn:text-indigo-400 transition-colors" />
+                        <ChevronRight className="w-4 h-4 text-gray-600 group-hover/btn:text-red-400 transition-colors" />
                       </div>
                     </button>
                   )
@@ -507,8 +507,8 @@ export default function SharedCoursesPage() {
           <div className="card w-full max-w-lg card rounded-2xl border shadow-2xl overflow-hidden relative z-10 animate-in zoom-in-95 duration-200 flex flex-col max-h-[90vh]">
             <div className="p-6 border-b card flex items-center justify-between shrink-0">
               <h3 className="font-bold text-white text-lg flex items-center gap-2">
-                <div className="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center border border-indigo-500/30">
-                  <Link2 className="w-4 h-4 text-indigo-400" />
+                <div className="w-8 h-8 rounded-lg bg-red-600/20 flex items-center justify-center border border-red-600/30">
+                  <Link2 className="w-4 h-4 text-red-400" />
                 </div>
                 Ortak Ders Oluştur
               </h3>
@@ -528,7 +528,7 @@ export default function SharedCoursesPage() {
                 <div className="relative">
                   <BookOpen className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
                   <select
-                    className="w-full bg-gray-950/50 border rounded-xl pl-10 pr-4 py-3 text-sm text-white focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500/50 transition-colors appearance-none cursor-pointer"
+                    className="w-full bg-gray-950/50 border rounded-xl pl-10 pr-4 py-3 text-sm text-white focus:outline-none focus:border-red-600 focus:ring-1 focus:ring-red-600/50 transition-colors appearance-none cursor-pointer"
                     value={selectedCourse?.id || ''}
                     disabled={saving}
                     onChange={(e) => {
@@ -574,7 +574,7 @@ export default function SharedCoursesPage() {
                             : availablePrograms.map((p) => p.id)
                         )
                       }
-                      className="text-xs font-semibold text-indigo-400 hover:text-indigo-300 px-2 py-1 rounded bg-indigo-500/10 hover:bg-indigo-500/20 transition-colors"
+                      className="text-xs font-semibold text-red-400 hover:text-red-300 px-2 py-1 rounded bg-red-600/10 hover:bg-red-600/20 transition-colors"
                     >
                       {selectedPrograms.length === availablePrograms.length ? 'Hiçbirini Seçme' : 'Tümünü Seç'}
                     </button>
@@ -592,7 +592,7 @@ export default function SharedCoursesPage() {
                           className={clsx(
                             'w-full p-3 rounded-xl border flex items-center justify-between transition-all group',
                             selected
-                              ? 'border-indigo-500/50 bg-indigo-500/10 shadow-[0_0_10px_rgba(79,70,229,0.1)]'
+                              ? 'border-red-600/50 bg-red-600/10 shadow-[0_0_10px_rgba(79,70,229,0.1)]'
                               : 'border-gray-800 card hover:border-gray-600'
                           )}
                         >
@@ -601,7 +601,7 @@ export default function SharedCoursesPage() {
                               className={clsx(
                                 "w-9 h-9 rounded-lg flex items-center justify-center text-xs font-bold border transition-colors",
                                 selected 
-                                  ? "bg-indigo-500/20 text-indigo-400 border-indigo-500/30" 
+                                  ? "bg-red-600/20 text-red-400 border-red-600/30" 
                                   : "card text-gray-400 group-hover:bg-gray-700"
                               )}
                             >
@@ -613,7 +613,7 @@ export default function SharedCoursesPage() {
                           </div>
                           <div className={clsx(
                             "w-5 h-5 rounded-full border flex items-center justify-center transition-colors",
-                            selected ? "bg-indigo-500 border-indigo-500 text-white" : "border-gray-600 group-hover:border-gray-500"
+                            selected ? "bg-red-600 border-red-600 text-white" : "border-gray-600 group-hover:border-gray-500"
                           )}>
                              {selected && <Check className="w-3.5 h-3.5" />}
                           </div>

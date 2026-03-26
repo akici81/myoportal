@@ -321,7 +321,7 @@ export default function ProgramCoursesPage() {
                 <div className="flex items-center gap-2 opacity-0 group-hover:opacity-50 transition-opacity">
                   <button
                     onClick={() => handleEdit(pc)}
-                    className="p-2 rounded-lg bg-blue-500/20 text-blue-400 hover:bg-blue-500/30 transition-colors"
+                    className="p-2 rounded-lg bg-red-600/20 text-red-400 hover:bg-red-600/30 transition-colors"
                     title="Düzenle"
                   >
                     <Edit2 className="w-4 h-4" />

@@ -116,7 +116,7 @@ export default function EventsPage() {
       {/* Header */}
       <div className="relative overflow-hidden rounded-2xl card p-8 border border-violet-800/30">
         <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
-          <CalendarDays className="w-48 h-48 text-violet-400" />
+          <CalendarDays className="w-48 h-48 text-red-400" />
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
@@ -151,7 +151,7 @@ export default function EventsPage() {
 
         <div className="flex gap-1.5 flex-wrap">
           <button onClick={() => setFilterCat('all')}
-            className={`px-3 py-1.5 text-xs rounded-lg border transition ${filterCat === 'all' ? 'border-violet-500/50 bg-violet-500/15 text-violet-400' : 'border-gray-700 text-gray-500 hover:text-white'}`}>Tümü</button>
+            className={`px-3 py-1.5 text-xs rounded-lg border transition ${filterCat === 'all' ? 'border-red-600/50 bg-red-600/15 text-red-400' : 'border-gray-700 text-gray-500 hover:text-white'}`}>Tümü</button>
           {Object.entries(CATEGORY_MAP).map(([k, v]) => (
             <button key={k} onClick={() => setFilterCat(k)}
               className={`px-3 py-1.5 text-xs rounded-lg border transition ${filterCat === k ? '' : 'border-transparent opacity-60 hover:opacity-50'}`}
@@ -188,9 +188,9 @@ export default function EventsPage() {
               const dayEvents = date ? eventsOnDate(date) : []
               return (
                 <div key={idx}
-                  className={`min-h-[100px] p-1.5 border-b border-r transition ${date ? '' : 'opacity-0 pointer-events-none'} ${isToday ? 'bg-violet-500/5' : ''}`}>
+                  className={`min-h-[100px] p-1.5 border-b border-r transition ${date ? '' : 'opacity-0 pointer-events-none'} ${isToday ? 'bg-red-600/5' : ''}`}>
                   {date && (<>
-                    <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold mb-1 ${isToday ? 'bg-violet-500 text-white' : 'text-gray-400'}`}>
+                    <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-semibold mb-1 ${isToday ? 'bg-red-600 text-white' : 'text-gray-400'}`}>
                       {date.getDate()}
                     </div>
                     <div className="space-y-0.5">
@@ -290,39 +290,39 @@ export default function EventsPage() {
             <button onClick={() => { setShowForm(false); setForm(EMPTY_FORM) }} className="absolute right-4 top-4 p-2 text-gray-400 hover:text-white rounded-lg hover:card transition">
               <X className="w-5 h-5" />
             </button>
-            <h3 className="text-xl font-bold text-white mb-5 flex items-center gap-2"><CalendarDays className="w-5 h-5 text-violet-400" /> Yeni Etkinlik</h3>
+            <h3 className="text-xl font-bold text-white mb-5 flex items-center gap-2"><CalendarDays className="w-5 h-5 text-red-400" /> Yeni Etkinlik</h3>
             <div className="space-y-4">
               <div>
                 <label className="text-xs font-medium text-gray-400 mb-1.5 block">Başlık</label>
-                <input className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-violet-500" placeholder="Etkinlik adı" value={form.title} onChange={e => setForm(f=>({...f, title: e.target.value}))} />
+                <input className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-red-600" placeholder="Etkinlik adı" value={form.title} onChange={e => setForm(f=>({...f, title: e.target.value}))} />
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="text-xs font-medium text-gray-400 mb-1.5 block">Kategori</label>
-                  <select className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-violet-500" value={form.category} onChange={e => setForm(f=>({...f, category: e.target.value}))}>
+                  <select className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-red-600" value={form.category} onChange={e => setForm(f=>({...f, category: e.target.value}))}>
                     {Object.entries(CATEGORY_MAP).map(([k,v]) => <option key={k} value={k}>{v.label}</option>)}
                   </select>
                 </div>
                 <div>
                   <label className="text-xs font-medium text-gray-400 mb-1.5 block">Tarih</label>
-                  <input type="date" className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-violet-500" value={form.date} onChange={e => setForm(f=>({...f, date: e.target.value}))} />
+                  <input type="date" className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-red-600" value={form.date} onChange={e => setForm(f=>({...f, date: e.target.value}))} />
                 </div>
                 <div>
                   <label className="text-xs font-medium text-gray-400 mb-1.5 block">Başlangıç</label>
-                  <input type="time" className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-violet-500" value={form.start_time} onChange={e => setForm(f=>({...f, start_time: e.target.value}))} />
+                  <input type="time" className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-red-600" value={form.start_time} onChange={e => setForm(f=>({...f, start_time: e.target.value}))} />
                 </div>
                 <div>
                   <label className="text-xs font-medium text-gray-400 mb-1.5 block">Bitiş</label>
-                  <input type="time" className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-violet-500" value={form.end_time} onChange={e => setForm(f=>({...f, end_time: e.target.value}))} />
+                  <input type="time" className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-red-600" value={form.end_time} onChange={e => setForm(f=>({...f, end_time: e.target.value}))} />
                 </div>
               </div>
               <div>
                 <label className="text-xs font-medium text-gray-400 mb-1.5 block">Konum / Sınıf</label>
-                <input className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-violet-500" placeholder="B122, Amfi vb." value={form.location} onChange={e => setForm(f=>({...f, location: e.target.value}))} />
+                <input className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-red-600" placeholder="B122, Amfi vb." value={form.location} onChange={e => setForm(f=>({...f, location: e.target.value}))} />
               </div>
               <div>
                 <label className="text-xs font-medium text-gray-400 mb-1.5 block">Açıklama</label>
-                <textarea className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-violet-500 resize-none" rows={3} placeholder="Detay..." value={form.description} onChange={e => setForm(f=>({...f, description: e.target.value}))} />
+                <textarea className="w-full card border rounded-lg px-3 py-2.5 text-sm text-white focus:border-red-600 resize-none" rows={3} placeholder="Detay..." value={form.description} onChange={e => setForm(f=>({...f, description: e.target.value}))} />
               </div>
               <label className="flex items-center gap-2 cursor-pointer">
                 <input type="checkbox" checked={form.is_public} onChange={e => setForm(f=>({...f, is_public: e.target.checked}))} className="rounded" />
@@ -332,7 +332,7 @@ export default function EventsPage() {
             <div className="flex gap-3 mt-5">
               <button onClick={() => { setShowForm(false); setForm(EMPTY_FORM) }} className="flex-1 px-4 py-2.5 rounded-lg text-sm card text-gray-400 hover:bg-gray-700 hover:text-white">İptal</button>
               <button onClick={saveEvent} disabled={saving || !form.title || !form.date}
-                className="flex-1 px-4 py-2.5 rounded-lg text-sm bg-violet-600 text-white hover:bg-violet-500 disabled:opacity-50">
+                className="flex-1 px-4 py-2.5 rounded-lg text-sm bg-red-700 text-white hover:bg-red-600 disabled:opacity-50">
                 {saving ? 'Kaydediliyor...' : 'Etkinlik Ekle'}
               </button>
             </div>

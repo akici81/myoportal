@@ -368,7 +368,7 @@ export default function UsersPage() {
               <X className="w-5 h-5" />
             </button>
             <h3 className="text-xl font-bold text-white mb-1 flex items-center gap-2">
-              <div className="p-2 bg-purple-600 rounded-lg">
+              <div className="p-2 bg-red-700 rounded-lg">
                 <Shield className="w-5 h-5 text-white" />
               </div>
               Kullanıcıyı Düzenle
@@ -429,7 +429,7 @@ export default function UsersPage() {
               
               <div className="pt-4 flex gap-3">
                 <button type="button" onClick={() => setEditUser(null)} className="px-4 py-2.5 rounded-lg font-medium text-sm text-gray-400 card hover:bg-gray-700 hover:text-white transition flex-1">İptal</button>
-                <button type="submit" disabled={saving} className="px-4 py-2.5 rounded-lg text-sm font-medium text-white flex-1 flex items-center justify-center gap-2 bg-purple-600 hover:brightness-110 shadow-lg transition-all">
+                <button type="submit" disabled={saving} className="px-4 py-2.5 rounded-lg text-sm font-medium text-white flex-1 flex items-center justify-center gap-2 bg-red-700 hover:brightness-110 shadow-lg transition-all">
                   {saving ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div> : <Save className="w-4 h-4" /> }
                   {saving ? 'Kaydediliyor...' : 'Değişiklikleri Kaydet'}
                 </button>

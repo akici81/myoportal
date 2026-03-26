@@ -173,8 +173,8 @@ export function ScheduleGrid({ entries, timeSlots, readonly, onDelete, onCellCli
                     <span className="text-xs font-bold" style={{ color: 'var(--text)' }}>{slot.start_time.slice(0, 5)}</span>
                     <span className="text-[10px] font-medium mt-0.5" style={{ color: 'var(--muted)' }}>{slot.end_time.slice(0, 5)}</span>
                     {slot.is_uzem_slot && (
-                      <span className="mt-1 text-[9px] bg-indigo-500/20 text-indigo-400 px-1.5 py-0.5 rounded font-bold uppercase tracking-wider flex items-center gap-1 border border-indigo-500/30">
-                        <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" /> UZEM
+                      <span className="mt-1 text-[9px] bg-red-600/20 text-red-400 px-1.5 py-0.5 rounded font-bold uppercase tracking-wider flex items-center gap-1 border border-red-600/30">
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" /> UZEM
                       </span>
                     )}
                   </div>

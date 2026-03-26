@@ -47,8 +47,8 @@ export default async function MYClassroomsPage() {
             <div className="flex flex-wrap gap-2 text-xs">
               <span className="px-2 py-0.5 rounded bg-teal-500/10 text-teal-400 font-medium">{typeLabel[c.type] || c.type}</span>
               <span className="px-2 py-0.5 rounded bg-gray-700 text-gray-300">Kapasite: {c.capacity || '?'}</span>
-              {c.has_projector && <span className="px-2 py-0.5 rounded bg-blue-500/10 text-blue-400">Projeksiyon</span>}
-              {c.has_smartboard && <span className="px-2 py-0.5 rounded bg-purple-500/10 text-purple-400">Akıllı Tahta</span>}
+              {c.has_projector && <span className="px-2 py-0.5 rounded bg-red-600/10 text-red-400">Projeksiyon</span>}
+              {c.has_smartboard && <span className="px-2 py-0.5 rounded bg-red-600/10 text-red-400">Akıllı Tahta</span>}
               {c.has_computer && <span className="px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400">PC: {c.computer_count || '?'}</span>}
             </div>
           </div>

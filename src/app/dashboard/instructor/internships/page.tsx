@@ -49,11 +49,11 @@ export default async function InstructorInternshipsPage() {
 
   const getStatusBadge = (status: string) => {
     switch (status) {
-      case 'published': return <span className="inline-flex items-center rounded-full bg-purple-500/10 px-2.5 py-0.5 text-xs font-semibold text-purple-400 border border-purple-500/20"><CheckCircle2 className="mr-1 h-3 w-3"/> Yayında</span>
+      case 'published': return <span className="inline-flex items-center rounded-full bg-red-600/10 px-2.5 py-0.5 text-xs font-semibold text-red-400 border border-red-600/20"><CheckCircle2 className="mr-1 h-3 w-3"/> Yayında</span>
       case 'approved': return <span className="inline-flex items-center rounded-full bg-emerald-500/10 px-2.5 py-0.5 text-xs font-semibold text-emerald-400 border border-emerald-500/20"><CheckCircle2 className="mr-1 h-3 w-3"/> Onaylandı</span>
       case 'rejected': return <span className="inline-flex items-center rounded-full bg-rose-500/10 px-2.5 py-0.5 text-xs font-semibold text-rose-400 border border-rose-500/20">Reddedildi</span>
       case 'revision': return <span className="inline-flex items-center rounded-full bg-orange-500/10 px-2.5 py-0.5 text-xs font-semibold text-orange-400 border border-orange-500/20">Revizyon</span>
-      case 'submitted': return <span className="inline-flex items-center rounded-full bg-blue-500/10 px-2.5 py-0.5 text-xs font-semibold text-blue-400 border border-blue-500/20">Gönderildi</span>
+      case 'submitted': return <span className="inline-flex items-center rounded-full bg-red-600/10 px-2.5 py-0.5 text-xs font-semibold text-red-400 border border-red-600/20">Gönderildi</span>
       case 'draft': return <span className="inline-flex items-center rounded-full bg-gray-500/10 px-2.5 py-0.5 text-xs font-semibold text-gray-400 border border-gray-500/20">Taslak</span>
       case 'pending':
       default: return <span className="inline-flex items-center rounded-full bg-amber-500/10 px-2.5 py-0.5 text-xs font-semibold text-amber-400 border border-amber-500/20">Değerlendirmede</span>

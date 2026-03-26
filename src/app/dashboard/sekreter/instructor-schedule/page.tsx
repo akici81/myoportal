@@ -37,10 +37,10 @@ interface TimeSlot {
 
 const DAYS = ['', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma']
 const COLORS = [
-  'bg-blue-500/10 text-blue-400 border-blue-500/20',
+  'bg-red-600/10 text-red-400 border-red-600/20',
   'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
   'bg-amber-500/10 text-amber-400 border-amber-500/20',
-  'bg-purple-500/10 text-purple-400 border-purple-500/20',
+  'bg-red-600/10 text-red-400 border-red-600/20',
   'bg-rose-500/10 text-rose-400 border-rose-500/20',
   'bg-cyan-500/10 text-cyan-400 border-cyan-500/20',
   'bg-pink-500/10 text-pink-400 border-pink-500/20'
@@ -149,7 +149,7 @@ export default function InstructorSchedulePage() {
       {/* Header Container Premium Violet */}
       <div className="relative overflow-hidden rounded-2xl card p-8 border border-violet-800/30 shadow-lg">
         <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
-          <User className="w-48 h-48 text-violet-400" />
+          <User className="w-48 h-48 text-red-400" />
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
@@ -166,7 +166,7 @@ export default function InstructorSchedulePage() {
       <div className="max-w-screen-2xl mx-auto space-y-6">
         {loading ? (
            <div className="card flex flex-col items-center justify-center py-32 text-center rounded-2xl border">
-             <div className="w-12 h-12 rounded-full border-4 border-violet-800 border-t-violet-500 animate-spin mb-4" />
+             <div className="w-12 h-12 rounded-full border-4 border-violet-800 border-t-red-600 animate-spin mb-4" />
              <h3 className="text-xl font-bold text-white tracking-tight">Veriler Yükleniyor</h3>
            </div>
         ) : (
@@ -174,11 +174,11 @@ export default function InstructorSchedulePage() {
             
             {/* Instructor Selection & Filters */}
             <div className="card p-6 rounded-2xl border shadow-xl flex flex-wrap items-center justify-between gap-6">
-              <div className="flex-1 min-w-[300px] relative text-gray-400 focus-within:text-violet-500 transition-colors">
+              <div className="flex-1 min-w-[300px] relative text-gray-400 focus-within:text-red-600 transition-colors">
                 <Search className="w-5 h-5 absolute left-4 top-[38px]" />
                 <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block pl-1">Kadrolu Eğitmen Seçimi</label>
                 <select
-                  className="w-full card border rounded-xl pl-11 pr-4 py-3.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-violet-500/50 transition-colors font-bold shadow-inner"
+                  className="w-full card border rounded-xl pl-11 pr-4 py-3.5 text-sm text-white focus:outline-none focus:ring-2 focus:ring-red-600/50 transition-colors font-bold shadow-inner"
                   value={selectedInstructor}
                   onChange={(e) => setSelectedInstructor(e.target.value)}
                 >
@@ -192,13 +192,13 @@ export default function InstructorSchedulePage() {
               </div>
 
               {selectedInstructorInfo && (
-                <div className="flex items-center gap-4 p-3 pr-5 pl-4 rounded-xl bg-violet-900/20 border border-violet-500/30 shadow-inner">
-                  <div className="w-10 h-10 rounded-full bg-violet-500/20 flex items-center justify-center border border-violet-500/50">
-                    <User className="w-5 h-5 text-violet-400" />
+                <div className="flex items-center gap-4 p-3 pr-5 pl-4 rounded-xl bg-violet-900/20 border border-red-600/30 shadow-inner">
+                  <div className="w-10 h-10 rounded-full bg-red-600/20 flex items-center justify-center border border-red-600/50">
+                    <User className="w-5 h-5 text-red-400" />
                   </div>
                   <div>
                     <h4 className="text-sm font-black text-white">{selectedInstructorInfo.title} {selectedInstructorInfo.full_name}</h4>
-                    <p className="text-[11px] font-bold text-violet-300/80 uppercase tracking-widest mt-0.5">
+                    <p className="text-[11px] font-bold text-red-300/80 uppercase tracking-widest mt-0.5">
                       {selectedInstructorInfo.departments?.short_code || 'Bölüm Tanımsız'}
                     </p>
                   </div>
@@ -209,10 +209,10 @@ export default function InstructorSchedulePage() {
             {/* Stats Overview */}
             {selectedInstructor && (
               <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-                <div className="card p-5 rounded-2xl border border-blue-500/20 bg-cyan-600">
+                <div className="card p-5 rounded-2xl border border-red-600/20 bg-cyan-600">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-blue-500/10 border border-blue-500/20 shadow-inner">
-                      <Clock className="w-6 h-6 text-blue-400" />
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-red-600/10 border border-red-600/20 shadow-inner">
+                      <Clock className="w-6 h-6 text-red-400" />
                     </div>
                     <div>
                       <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-0.5">Haftalık Yük</p>
@@ -246,8 +246,8 @@ export default function InstructorSchedulePage() {
                 </div>
                 
                 {/* Gün Bazlı Yük Dağılımı Özeti */}
-                <div className="card p-4 rounded-2xl border border-violet-500/20 bg-cyan-600 flex flex-col justify-center">
-                  <p className="text-[10px] font-bold text-violet-400/80 uppercase tracking-widest mb-2 border-b border-violet-500/20 pb-1">Gündelik Dağılım</p>
+                <div className="card p-4 rounded-2xl border border-red-600/20 bg-cyan-600 flex flex-col justify-center">
+                  <p className="text-[10px] font-bold text-red-400/80 uppercase tracking-widest mb-2 border-b border-red-600/20 pb-1">Gündelik Dağılım</p>
                   <div className="flex items-end justify-between gap-1 h-8">
                     {[1, 2, 3, 4, 5].map((d) => {
                       const h = stats.dayHours[d];
@@ -256,7 +256,7 @@ export default function InstructorSchedulePage() {
                       return (
                         <div key={d} className="w-full flex flex-col items-center gap-1 group relative">
                           {h > 0 && <span className="absolute -top-4 text-[9px] font-bold text-white opacity-0 group-hover:opacity-50 transition-opacity">{h}s</span>}
-                          <div className={clsx("w-full rounded-sm transition-all duration-500", h > 0 ? "bg-violet-500" : "card")} style={{ height: `${height}%` }}></div>
+                          <div className={clsx("w-full rounded-sm transition-all duration-500", h > 0 ? "bg-red-600" : "card")} style={{ height: `${height}%` }}></div>
                         </div>
                       )
                     })}
@@ -281,9 +281,9 @@ export default function InstructorSchedulePage() {
                           Zaman
                         </th>
                         {[1, 2, 3, 4, 5].map((d) => (
-                          <th key={d} className={clsx("py-4 px-4 text-center font-black uppercase tracking-wider border-r w-[calc((100%-7rem)/5)]", stats.dayHours[d] > 0 ? "text-violet-300" : "text-gray-500")}>
+                          <th key={d} className={clsx("py-4 px-4 text-center font-black uppercase tracking-wider border-r w-[calc((100%-7rem)/5)]", stats.dayHours[d] > 0 ? "text-red-300" : "text-gray-500")}>
                             {DAYS[d]}
-                            {stats.dayHours[d] > 0 && <span className="ml-1.5 text-[10px] bg-violet-500/20 text-violet-400 px-1.5 py-0.5 rounded-full">{stats.dayHours[d]}s</span>}
+                            {stats.dayHours[d] > 0 && <span className="ml-1.5 text-[10px] bg-red-600/20 text-red-400 px-1.5 py-0.5 rounded-full">{stats.dayHours[d]}s</span>}
                           </th>
                         ))}
                       </tr>

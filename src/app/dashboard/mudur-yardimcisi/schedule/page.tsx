@@ -22,7 +22,7 @@ export default async function MYSchedulePage() {
   return (
     <div className="space-y-6 animate-in">
       <div className="relative overflow-hidden rounded-2xl card p-8 border border-indigo-800/30">
-        <div className="absolute -right-10 -top-10 opacity-5 rotate-12"><CalendarDays className="w-48 h-48 text-indigo-400" /></div>
+        <div className="absolute -right-10 -top-10 opacity-5 rotate-12"><CalendarDays className="w-48 h-48 text-red-400" /></div>
         <div className="relative z-10">
           <h1 className="text-3xl font-bold text-white">Tüm Ders Programları</h1>
           <p className="mt-2 text-gray-400">
@@ -44,7 +44,7 @@ export default async function MYSchedulePage() {
             return (
               <div key={d.id} className="card p-5 rounded-xl border flex flex-col">
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-400 font-bold text-lg flex items-center justify-center border border-indigo-500/20 flex-shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-red-600/10 text-red-400 font-bold text-lg flex items-center justify-center border border-red-600/20 flex-shrink-0">
                     {d.short_code}
                   </div>
                   <div>
@@ -56,7 +56,7 @@ export default async function MYSchedulePage() {
                   {deptProgs.map(p => (
                     <Link key={p.id} href={`/dashboard/sekreter/schedule?program=${p.id}`}
                       className="flex items-center gap-2 text-sm text-gray-300 hover:text-white p-2 rounded-lg hover:card/50 transition group">
-                      <BookOpen className="w-4 h-4 text-gray-500 group-hover:text-indigo-400 transition" />
+                      <BookOpen className="w-4 h-4 text-gray-500 group-hover:text-red-400 transition" />
                       {p.name}
                     </Link>
                   ))}

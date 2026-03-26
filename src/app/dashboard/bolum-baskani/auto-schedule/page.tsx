@@ -185,12 +185,12 @@ export default function AutoSchedulePage() {
       {/* Premium Header */}
       <div className="relative overflow-hidden rounded-2xl card p-8 border border-blue-800/30 shadow-lg">
         <div className="absolute -right-6 -top-6 opacity-[0.05] rotate-12">
-          <Wand2 className="w-56 h-56 text-blue-400" />
+          <Wand2 className="w-56 h-56 text-red-400" />
         </div>
         <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
             <div className="flex items-center gap-2 mb-2">
-              <span className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-blue-400 bg-blue-500/10 px-2.5 py-1 rounded border border-blue-500/20"><Sparkles className="w-3.5 h-3.5" /> Yapay Zeka Destekli Sistem</span>
+              <span className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-red-400 bg-red-600/10 px-2.5 py-1 rounded border border-red-600/20"><Sparkles className="w-3.5 h-3.5" /> Yapay Zeka Destekli Sistem</span>
               <span className="text-xs font-medium text-gray-500 hidden sm:inline-block">({departmentName})</span>
             </div>
             <h1 className="text-3xl font-black text-white flex items-center gap-3 tracking-tight">
@@ -209,15 +209,15 @@ export default function AutoSchedulePage() {
 
       {loading ? (
         <div className="card py-24 flex flex-col items-center justify-center rounded-2xl border">
-          <div className="w-12 h-12 rounded-full border-4 border-blue-900 border-t-blue-500 animate-spin mb-4" />
+          <div className="w-12 h-12 rounded-full border-4 border-blue-900 border-t-red-600 animate-spin mb-4" />
           <p className="text-gray-400 font-medium tracking-wide">Analiz yapılıyor, Lütfen bekleyin...</p>
         </div>
       ) : (
         <>
           {/* Dashboard Stats */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="card border rounded-xl p-5 flex items-center gap-4 group hover:border-blue-500/50 transition-colors">
-              <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20 shrink-0"><BookOpen className="w-6 h-6 text-blue-500" /></div>
+            <div className="card border rounded-xl p-5 flex items-center gap-4 group hover:border-red-600/50 transition-colors">
+              <div className="w-12 h-12 rounded-xl bg-red-600/10 flex items-center justify-center border border-red-600/20 shrink-0"><BookOpen className="w-6 h-6 text-red-600" /></div>
               <div><p className="text-2xl font-black text-white leading-none mb-1">{stats.totalCourses}</p><p className="text-xs font-bold text-gray-500 uppercase tracking-wider">Hedef Ders</p></div>
             </div>
             <div className="card border rounded-xl p-5 flex items-center gap-4 group hover:border-emerald-500/50 transition-colors">
@@ -238,13 +238,13 @@ export default function AutoSchedulePage() {
             {/* Konfigürasyon Panel */}
             <div className="card rounded-2xl border p-6 flex flex-col h-full">
                <h3 className="font-black text-white mb-6 flex items-center gap-2.5 text-lg">
-                  <Settings className="w-5 h-5 text-blue-500" /> Yerleştirme Algoritması Ayarları
+                  <Settings className="w-5 h-5 text-red-600" /> Yerleştirme Algoritması Ayarları
                </h3>
                
                <div className="space-y-6 flex-1">
                   <div>
                      <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block">Hedef Program</label>
-                     <select value={selectedProgram} onChange={e => setSelectedProgram(e.target.value)} className="w-full card border rounded-xl px-4 py-3 text-sm font-bold text-white focus:outline-none focus:border-blue-500 transition-colors shadow-inner">
+                     <select value={selectedProgram} onChange={e => setSelectedProgram(e.target.value)} className="w-full card border rounded-xl px-4 py-3 text-sm font-bold text-white focus:outline-none focus:border-red-600 transition-colors shadow-inner">
                         <option value="">— Lütfen Bir Program Seçin —</option>
                         {programs.map(p => <option key={p.id} value={p.id}>{p.short_code} — {p.name}</option>)}
                      </select>
@@ -252,7 +252,7 @@ export default function AutoSchedulePage() {
 
                   <div>
                      <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-2 block">Dahil Edilecek Sınıf Düzeyi</label>
-                     <select value={selectedYear} onChange={e => setSelectedYear(parseInt(e.target.value))} className="w-full card border rounded-xl px-4 py-3 text-sm font-bold text-white focus:outline-none focus:border-blue-500 transition-colors shadow-inner">
+                     <select value={selectedYear} onChange={e => setSelectedYear(parseInt(e.target.value))} className="w-full card border rounded-xl px-4 py-3 text-sm font-bold text-white focus:outline-none focus:border-red-600 transition-colors shadow-inner">
                         {YEAR_OPTIONS.map(opt => <option key={opt.value} value={opt.value}>{opt.label}</option>)}
                      </select>
                   </div>
@@ -260,9 +260,9 @@ export default function AutoSchedulePage() {
                   <div>
                      <label className="text-xs font-bold uppercase tracking-wider text-gray-400 mb-3 block">Motor Davranış Kuralları</label>
                      <div className="space-y-3">
-                        <label className={clsx("flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-all", respectConstraints ? 'bg-blue-500/10 border-blue-500/40 hover:bg-blue-500/20' : 'card hover:border-gray-700')}>
-                           <div className="flex items-center justify-center w-5 h-5 rounded mt-0.5 border border-blue-500/50 card">
-                             {respectConstraints && <Check className="w-3.5 h-3.5 text-blue-400" />}
+                        <label className={clsx("flex items-start gap-3 p-4 rounded-xl border cursor-pointer transition-all", respectConstraints ? 'bg-red-600/10 border-red-600/40 hover:bg-red-600/20' : 'card hover:border-gray-700')}>
+                           <div className="flex items-center justify-center w-5 h-5 rounded mt-0.5 border border-red-600/50 card">
+                             {respectConstraints && <Check className="w-3.5 h-3.5 text-red-400" />}
                            </div>
                            <input type="checkbox" checked={respectConstraints} onChange={e => setRespectConstraints(e.target.checked)} className="hidden" />
                            <div>
@@ -290,18 +290,18 @@ export default function AutoSchedulePage() {
             <div className="card rounded-2xl border p-6 flex flex-col h-full">
                <div className="flex items-center justify-between mb-6">
                   <h3 className="font-black text-white flex items-center gap-2.5 text-lg">
-                     <Layers className="w-5 h-5 text-indigo-500" /> Konum / Derslik Önceliği
+                     <Layers className="w-5 h-5 text-red-600" /> Konum / Derslik Önceliği
                   </h3>
-                  <button onClick={() => setShowClassroomPicker(true)} className="flex items-center justify-center w-8 h-8 rounded-full bg-indigo-500/20 text-indigo-400 hover:bg-indigo-500 hover:text-white transition-colors border border-indigo-500/30">
+                  <button onClick={() => setShowClassroomPicker(true)} className="flex items-center justify-center w-8 h-8 rounded-full bg-red-600/20 text-red-400 hover:bg-red-600 hover:text-white transition-colors border border-red-600/30">
                      <Plus className="w-4 h-4" />
                   </button>
                </div>
 
-               <div className="bg-indigo-500/5 border border-indigo-500/10 rounded-xl p-4 flex gap-3 mb-4">
-                  <Info className="w-5 h-5 text-indigo-400 shrink-0 mt-0.5" />
+               <div className="bg-red-600/5 border border-red-600/10 rounded-xl p-4 flex gap-3 mb-4">
+                  <Info className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
                   <div>
-                     <p className="text-sm font-bold text-indigo-300 mb-1">Akıllı Arama Sırası</p>
-                     <p className="text-xs text-indigo-200/60 font-medium leading-relaxed">Algoritma sınıf ararken ilk olarak aşağıdaki listeye bakar. Eğer buradaki derslikler meşgulse (ya da kapasiteleri yetmiyorsa), mecburen kampüsteki diğer uygun açık dersliklere geçer.</p>
+                     <p className="text-sm font-bold text-red-300 mb-1">Akıllı Arama Sırası</p>
+                     <p className="text-xs text-red-200/60 font-medium leading-relaxed">Algoritma sınıf ararken ilk olarak aşağıdaki listeye bakar. Eğer buradaki derslikler meşgulse (ya da kapasiteleri yetmiyorsa), mecburen kampüsteki diğer uygun açık dersliklere geçer.</p>
                   </div>
                </div>
 
@@ -323,7 +323,7 @@ export default function AutoSchedulePage() {
                                     <button onClick={() => movePriority(index, 'up')} disabled={index===0} className="hover:text-white disabled:opacity-10"><ChevronUp className="w-4 h-4" /></button>
                                     <button onClick={() => movePriority(index, 'down')} disabled={index===priorityClassrooms.length-1} className="hover:text-white disabled:opacity-10"><ChevronDown className="w-4 h-4" /></button>
                                  </div>
-                                 <div className="w-6 h-6 rounded bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-black text-xs border border-indigo-500/30">
+                                 <div className="w-6 h-6 rounded bg-red-600/20 text-red-400 flex items-center justify-center font-black text-xs border border-red-600/30">
                                     {index + 1}
                                  </div>
                                  <div className="flex-1 ml-1">
@@ -364,9 +364,9 @@ export default function AutoSchedulePage() {
                          <p className="text-[11px] font-bold text-rose-500/70 uppercase tracking-widest mb-1">Yerleşemeyen Ders</p>
                          <p className="text-2xl font-black text-rose-400">{result.stats.failedCourses}</p>
                       </div>
-                      <div className="bg-indigo-950/30 border border-indigo-500/20 rounded-xl p-4">
-                         <p className="text-[11px] font-bold text-indigo-500/70 uppercase tracking-widest mb-1">Program Saat Yükü</p>
-                         <p className="text-2xl font-black text-indigo-400">{result.stats.totalHours}</p>
+                      <div className="bg-indigo-950/30 border border-red-600/20 rounded-xl p-4">
+                         <p className="text-[11px] font-bold text-red-600/70 uppercase tracking-widest mb-1">Program Saat Yükü</p>
+                         <p className="text-2xl font-black text-red-400">{result.stats.totalHours}</p>
                       </div>
                    </div>
 
@@ -445,9 +445,9 @@ export default function AutoSchedulePage() {
                <div className="p-6 overflow-y-auto custom-scrollbar flex-1 bg-gray-950/30">
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                      {classrooms.filter(c => !priorityClassrooms.includes(c.id)).map(c => (
-                        <button key={c.id} onClick={() => { togglePriorityClassroom(c.id); setShowClassroomPicker(false) }} className="p-4 rounded-xl border card hover:bg-indigo-500/10 hover:border-indigo-500/50 transition-all text-left group">
+                        <button key={c.id} onClick={() => { togglePriorityClassroom(c.id); setShowClassroomPicker(false) }} className="p-4 rounded-xl border card hover:bg-red-600/10 hover:border-red-600/50 transition-all text-left group">
                            <div className="flex items-center gap-2 mb-2">
-                              <Building2 className="w-4 h-4 text-indigo-400 group-hover:scale-110 transition-transform" />
+                              <Building2 className="w-4 h-4 text-red-400 group-hover:scale-110 transition-transform" />
                               <span className="font-bold text-white text-sm">{c.name}</span>
                            </div>
                            <div className="flex flex-wrap items-center gap-2">
