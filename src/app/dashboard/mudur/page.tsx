@@ -46,18 +46,18 @@ export default async function MudurDashboard() {
           <Link
             key={stat.label}
             href={stat.href}
-            className="group rounded-xl bg-gray-800 p-6 transition-all hover:bg-gray-750 hover:shadow-lg"
+            className="group card-hover p-6 transition-all"
           >
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm" style={{ color: 'var(--muted)' }}>{stat.label}</p>
                 <p className="mt-1 text-3xl font-bold" style={{ color: 'var(--text)' }}>{stat.value}</p>
               </div>
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-purple-500/10 text-purple-400">
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl" style={{ background: 'var(--primary-muted)', color: 'var(--primary)' }}>
                 <stat.icon className="h-6 w-6" />
               </div>
             </div>
-            <div className="mt-4 flex items-center text-sm text-purple-400 opacity-0 transition-opacity group-hover:opacity-50">
+            <div className="mt-4 flex items-center text-sm opacity-0 transition-opacity group-hover:opacity-100" style={{ color: 'var(--primary)' }}>
               Görüntüle
               <ArrowRight className="ml-1 h-4 w-4" />
             </div>

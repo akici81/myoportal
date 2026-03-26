@@ -83,7 +83,7 @@ export default function MudurYardimcisiDashboard() {
         <h2 className="text-lg font-bold mb-4 px-1" style={{ color: 'var(--text)' }}>Öğrenci & İdari Süreçler</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {V1_MODULE_CARDS.map((stat, i) => (
-            <div key={i} className={`rounded-xl p-6 bg-cyan-600 border ${stat.border} shadow-lg`}>
+            <div key={i} className="card-hover p-6">
               <div className="flex items-center justify-between gap-4">
                 <div className={`p-3 rounded-xl ${stat.bg} ${stat.color} shrink-0`}>
                   <stat.icon className="w-6 h-6" />
@@ -108,7 +108,7 @@ export default function MudurYardimcisiDashboard() {
         <h2 className="text-lg font-bold mb-4 px-1" style={{ color: 'var(--text)' }}>Genel İzleme</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {STAT_CARDS.map((stat, i) => (
-            <div key={i} className={`rounded-xl p-6 border ${stat.border} hover:scale-[1.02] transition-transform bg-gray-900/40 shadow-lg`}>
+            <div key={i} className="card-hover p-6">
               <div className="flex items-center justify-between gap-4">
                 <div className={`p-4 rounded-xl ${stat.bg} ${stat.color} shrink-0`}>
                   <stat.icon className="w-7 h-7" />
