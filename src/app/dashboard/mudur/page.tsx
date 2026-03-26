@@ -37,8 +37,8 @@ export default async function MudurDashboard() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-2xl font-bold text-white">MYO Müdürlüğü</h1>
-        <p className="mt-1 text-gray-400">Genel bakış ve yönetim paneli</p>
+        <h1 className="text-2xl font-bold" style={{ color: 'var(--text)' }}>MYO Müdürlüğü</h1>
+        <p className="mt-1" style={{ color: 'var(--muted)' }}>Genel bakış ve yönetim paneli</p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -50,8 +50,8 @@ export default async function MudurDashboard() {
           >
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-400">{stat.label}</p>
-                <p className="mt-1 text-3xl font-bold text-white">{stat.value}</p>
+                <p className="text-sm" style={{ color: 'var(--muted)' }}>{stat.label}</p>
+                <p className="mt-1 text-3xl font-bold" style={{ color: 'var(--text)' }}>{stat.value}</p>
               </div>
               <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-purple-500/10 text-purple-400">
                 <stat.icon className="h-6 w-6" />

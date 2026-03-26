@@ -114,8 +114,8 @@ export default async function SystemAdminDashboard() {
             <div className={`mb-4 h-0.5 w-full rounded-full bg-gradient-to-r ${stat.topBar} opacity-60`} />
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-xs text-gray-500 uppercase tracking-wide">{stat.label}</p>
-                <p className="mt-1.5 text-3xl font-bold text-white">{stat.value}</p>
+                <p className="text-xs uppercase tracking-wide" style={{ color: 'var(--muted)' }}>{stat.label}</p>
+                <p className="mt-1.5 text-3xl font-bold" style={{ color: 'var(--text)' }}>{stat.value}</p>
               </div>
               <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${stat.iconBg}`}>
                 <stat.icon className={`h-6 w-6 ${stat.iconColor}`} />

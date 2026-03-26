@@ -153,8 +153,8 @@ export default async function InstructorDashboard() {
             <div className={`mb-4 h-1 w-full rounded-full bg-gradient-to-r ${stat.topBar} opacity-60`} />
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-xs text-gray-500 uppercase tracking-wide">{stat.label}</p>
-                <p className="mt-1.5 text-3xl font-bold text-white">{stat.value}</p>
+                <p className="text-xs uppercase tracking-wide" style={{ color: 'var(--muted)' }}>{stat.label}</p>
+                <p className="mt-1.5 text-3xl font-bold" style={{ color: 'var(--text)' }}>{stat.value}</p>
               </div>
               <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${stat.iconBg} ring-1 ring-white/5`}>
                 <stat.icon className={`h-6 w-6 ${stat.iconColor}`} />
@@ -166,7 +166,7 @@ export default async function InstructorDashboard() {
 
       {/* Quick Actions */}
       <div className="animate-in-delay-2">
-        <h2 className="mb-4 text-base font-semibold text-gray-300">Hızlı İşlemler</h2>
+        <h2 className="mb-4 text-base font-semibold" style={{ color: 'var(--text)' }}>Hızlı İşlemler</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {quickActions.map((action, i) => (
             <Link
@@ -178,8 +178,8 @@ export default async function InstructorDashboard() {
               <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-xl ${action.accentBg} ${action.accentColor} transition-transform duration-200 group-hover:scale-110`}>
                 <action.icon className="h-6 w-6" />
               </div>
-              <h3 className="font-medium text-white">{action.label}</h3>
-              <p className="mt-1 text-sm text-gray-500 line-clamp-2">{action.description}</p>
+              <h3 className="font-medium" style={{ color: 'var(--text)' }}>{action.label}</h3>
+              <p className="mt-1 text-sm line-clamp-2" style={{ color: 'var(--muted)' }}>{action.description}</p>
               <div className={`mt-auto pt-4 flex items-center text-sm font-medium ${action.accentColor}`}>
                 Aç
                 <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
@@ -192,7 +192,7 @@ export default async function InstructorDashboard() {
       {/* Bugünkü Derslerim */}
       <div className="animate-in-delay-3 rounded-2xl border border-white/5 bg-gray-800/30 p-6">
         <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-lg font-semibold text-white">Bugünkü Eğitmenlik ({displayDayName})</h2>
+          <h2 className="text-lg font-semibold" style={{ color: 'var(--text)' }}>Bugünkü Eğitmenlik ({displayDayName})</h2>
         </div>
         
         {todaysClasses.length > 0 ? (
@@ -204,8 +204,8 @@ export default async function InstructorDashboard() {
                     {item.time_slots?.start_time.split(':')[0]}:00
                   </div>
                   <div>
-                    <h3 className="font-medium text-white text-base">{item.course?.name || 'Bilinmiyor'}</h3>
-                    <div className="mt-1 flex items-center gap-3 text-sm text-gray-400">
+                    <h3 className="font-medium text-base" style={{ color: 'var(--text)' }}>{item.course?.name || 'Bilinmiyor'}</h3>
+                    <div className="mt-1 flex items-center gap-3 text-sm" style={{ color: 'var(--muted)' }}>
                       <span className="flex items-center gap-1.5">
                         <CalendarDays className="h-4 w-4" />
                         {item.time_slots?.start_time} - {item.time_slots?.end_time}
@@ -222,8 +222,8 @@ export default async function InstructorDashboard() {
           </div>
         ) : (
           <div className="flex h-32 flex-col items-center justify-center rounded-xl border border-dashed border-white/10 bg-gray-900/50">
-             <CalendarDays className="mb-2 h-8 w-8 text-gray-600" />
-             <p className="text-gray-400 text-sm">Bugün için planlanmış bir dersiniz bulunmuyor.</p>
+             <CalendarDays className="mb-2 h-8 w-8" style={{ color: 'var(--muted)' }} />
+             <p className="text-sm" style={{ color: 'var(--muted)' }}>Bugün için planlanmış bir dersiniz bulunmuyor.</p>
           </div>
         )}
       </div>

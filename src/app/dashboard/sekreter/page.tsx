@@ -128,10 +128,10 @@ export default async function SekreterDashboard() {
             <div className={`mb-4 h-1 w-full rounded-full bg-gradient-to-r ${stat.topBar} opacity-60`} />
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-xs text-gray-500 uppercase tracking-wide">{stat.label}</p>
-                <p className="mt-1.5 text-3xl font-bold text-white">{stat.value}</p>
+                <p className="text-xs uppercase tracking-wide" style={{ color: 'var(--muted)' }}>{stat.label}</p>
+                <p className="mt-1.5 text-3xl font-bold" style={{ color: 'var(--text)' }}>{stat.value}</p>
               </div>
-              <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${stat.iconBg} ring-1 ring-white/5`}>
+              <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${stat.iconBg} ring-1 ring-gray-200`}>
                 <stat.icon className={`h-6 w-6 ${stat.iconColor}`} />
               </div>
             </div>
@@ -141,7 +141,7 @@ export default async function SekreterDashboard() {
 
       {/* Quick Actions */}
       <div className="animate-in-delay-2">
-        <h2 className="mb-4 text-base font-semibold text-gray-300">Hızlı İşlemler</h2>
+        <h2 className="mb-4 text-base font-semibold" style={{ color: 'var(--text)' }}>Hızlı İşlemler</h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {quickActions.map((action, i) => (
             <Link
@@ -153,8 +153,8 @@ export default async function SekreterDashboard() {
               <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-xl ${action.accentBg} ${action.accentColor} transition-transform duration-200 group-hover:scale-110`}>
                 <action.icon className="h-6 w-6" />
               </div>
-              <h3 className="font-medium text-white">{action.label}</h3>
-              <p className="mt-1 text-sm text-gray-500">{action.description}</p>
+              <h3 className="font-medium" style={{ color: 'var(--text)' }}>{action.label}</h3>
+              <p className="mt-1 text-sm" style={{ color: 'var(--muted)' }}>{action.description}</p>
               <div className={`mt-4 flex items-center text-sm font-medium ${action.accentColor}`}>
                 Aç
                 <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />

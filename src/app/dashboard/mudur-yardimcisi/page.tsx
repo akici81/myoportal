@@ -68,11 +68,11 @@ export default function MudurYardimcisiDashboard() {
           <KeyRound className="w-48 h-48 text-purple-400" />
         </div>
         <div className="relative z-10">
-          <h1 className="text-3xl font-black text-white flex items-center gap-3 tracking-tight">
+          <h1 className="text-3xl font-black flex items-center gap-3 tracking-tight" style={{ color: 'var(--text)' }}>
             Müdür Yardımcısı Paneli
           </h1>
-          <p className="mt-2 text-gray-400 max-w-xl font-medium">
-            Hoş geldiniz, <span className="text-gray-300 font-bold">{userProfile?.full_name ?? 'Yönetici'}</span>. 
+          <p className="mt-2 max-w-xl font-medium" style={{ color: 'var(--muted)' }}>
+            Hoş geldiniz, <span className="font-bold" style={{ color: 'var(--text)' }}>{userProfile?.full_name ?? 'Yönetici'}</span>.
             MYO'nun tüm staj, komisyon ve bölüm istatistiklerini bu merkezden yönetebilirsiniz.
           </p>
         </div>
@@ -80,7 +80,7 @@ export default function MudurYardimcisiDashboard() {
 
       {/* V1 Modules (Ported Features) */}
       <div>
-        <h2 className="text-lg font-bold text-gray-300 mb-4 px-1">Öğrenci & İdari Süreçler</h2>
+        <h2 className="text-lg font-bold mb-4 px-1" style={{ color: 'var(--text)' }}>Öğrenci & İdari Süreçler</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {V1_MODULE_CARDS.map((stat, i) => (
             <div key={i} className={`rounded-xl p-6 bg-cyan-600 border ${stat.border} shadow-lg`}>
@@ -89,12 +89,12 @@ export default function MudurYardimcisiDashboard() {
                   <stat.icon className="w-6 h-6" />
                 </div>
                 <div className="text-right">
-                  <p className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">{stat.label}</p>
-                  <p className="text-3xl font-black text-white mt-0.5 leading-none">{stat.value}</p>
+                  <p className="text-[10px] font-bold uppercase tracking-wider" style={{ color: 'var(--muted)' }}>{stat.label}</p>
+                  <p className="text-3xl font-black mt-0.5 leading-none" style={{ color: 'var(--text)' }}>{stat.value}</p>
                 </div>
               </div>
               <div className="mt-4 pt-3 border-t border-white/5">
-                <p className="text-[11px] text-gray-400 font-medium">
+                <p className="text-[11px] font-medium" style={{ color: 'var(--muted)' }}>
                   {stat.desc}
                 </p>
               </div>
@@ -105,7 +105,7 @@ export default function MudurYardimcisiDashboard() {
 
       {/* Main Stats */}
       <div>
-        <h2 className="text-lg font-bold text-gray-300 mb-4 px-1">Genel İzleme</h2>
+        <h2 className="text-lg font-bold mb-4 px-1" style={{ color: 'var(--text)' }}>Genel İzleme</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {STAT_CARDS.map((stat, i) => (
             <div key={i} className={`rounded-xl p-6 border ${stat.border} hover:scale-[1.02] transition-transform bg-gray-900/40 shadow-lg`}>
@@ -114,8 +114,8 @@ export default function MudurYardimcisiDashboard() {
                   <stat.icon className="w-7 h-7" />
                 </div>
                 <div className="text-right">
-                  <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">{stat.label}</p>
-                  <p className="text-2xl font-black text-white mt-0.5 leading-none">{stat.value}</p>
+                  <p className="text-xs font-bold uppercase tracking-widest" style={{ color: 'var(--muted)' }}>{stat.label}</p>
+                  <p className="text-2xl font-black mt-0.5 leading-none" style={{ color: 'var(--text)' }}>{stat.value}</p>
                 </div>
               </div>
             </div>
