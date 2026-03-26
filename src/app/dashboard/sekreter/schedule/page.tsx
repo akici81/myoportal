@@ -452,7 +452,7 @@ export default function SchedulePage() {
 
       <div className="space-y-6 max-w-screen-2xl mx-auto">
         {/* Filters */}
-        <div className="card p-5 rounded-2xl border border-gray-800/60 shadow-xl relative z-20">
+        <div className="card p-5 rounded-2xl shadow-xl relative z-20">
           <div className="flex items-center gap-2 mb-4">
             <MousePointerClick className="w-4 h-4 text-cyan-500" />
             <h3 className="text-sm font-bold uppercase tracking-wider" style={{ color: 'var(--text)' }}>Hedef Program Seçimi</h3>
@@ -548,12 +548,12 @@ export default function SchedulePage() {
               </div>
             )
           ) : (
-            <div className="card flex flex-col items-center justify-center py-32 text-center rounded-2xl border border-gray-800/60 border-dashed bg-gray-900/20">
-              <div className="w-20 h-20 bg-gray-800/50 rounded-full flex items-center justify-center mb-6 ring-8 ring-gray-900/50">
-                <CalendarDays className="w-10 h-10 text-gray-600" />
+            <div className="card flex flex-col items-center justify-center py-32 text-center rounded-2xl border-dashed" style={{ borderColor: 'var(--border-2)', background: 'var(--surface-2)' }}>
+              <div className="w-20 h-20 rounded-full flex items-center justify-center mb-6" style={{ background: 'var(--primary-subtle)', color: 'var(--primary)' }}>
+                <CalendarDays className="w-10 h-10" />
               </div>
               <h3 className="text-2xl font-black tracking-tight" style={{ color: 'var(--text)' }}>Henüz Program Seçilmedi</h3>
-              <p className="text-gray-500 mt-3 max-w-md mx-auto leading-relaxed">
+              <p className="mt-3 max-w-md mx-auto leading-relaxed" style={{ color: 'var(--muted)' }}>
                 Tabloyu görüntülemek için yukarıdan bölüm ve program seçin.
               </p>
             </div>
