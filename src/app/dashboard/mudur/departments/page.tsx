@@ -8,7 +8,7 @@ export default function DepartmentsReadOnlyPage() {
   const supabase = createClient()
   const [departments, setDepts] = useState<any[]>([])
   const [programs, setPrograms] = useState<any[]>([])
-  const [profiles, setProfiles] = useState<any[]>([])
+  const [allInstructors, setAllInstructors] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState('')
   const [showInactive, setShowInactive] = useState(false)
@@ -26,15 +26,15 @@ export default function DepartmentsReadOnlyPage() {
     const { data: progs } = await supabase.from('programs').select('*').eq('is_active', true).order('name')
     setPrograms(progs ?? [])
 
-    // Load bolum_baskani profiles for dropdown
-    const { data: bolumProfs } = await supabase
-      .from('profiles')
-      .select('id, full_name, email')
-      .eq('role', 'bolum_baskani')
+    // Load all active instructors with their departments and profile links
+    const { data: instrs } = await supabase
+      .from('instructors')
+      .select('id, full_name, title, department_id, profile_id, is_active')
+      .eq('is_active', true)
       .order('full_name')
-    setProfiles(bolumProfs ?? [])
+    setAllInstructors(instrs ?? [])
 
-    const { data: instrs } = await supabase.from('instructors').select('department_id').eq('is_active', true)
+    // Count instructors per department
     const counts: Record<string, number> = {}
     instrs?.forEach((i: any) => { counts[i.department_id] = (counts[i.department_id] ?? 0) + 1 })
     setInstrCounts(counts)
@@ -157,7 +157,7 @@ export default function DepartmentsReadOnlyPage() {
                     </div>
                   </div>
                   <button
-                    onClick={() => setEditModal({ id: d.id, name: d.name, head_id: d.head_id })}
+                    onClick={() => setEditModal({ id: d.id, name: d.name, head_id: d.head_id, department_id: d.id })}
                     className="p-2 rounded-lg hover:bg-red-500/10 transition-colors group/btn"
                     title="Yönetici Ata"
                   >
@@ -228,7 +228,7 @@ export default function DepartmentsReadOnlyPage() {
             <div className="p-6 space-y-4">
               <div>
                 <label className="block text-sm font-medium text-muted mb-2">
-                  Bölüm Başkanı Seçin
+                  Öğretim Elemanı Seçin
                 </label>
                 <select
                   className="w-full card border rounded-lg px-3 py-2.5 text-sm text-default focus:outline-none focus:ring-2 focus:ring-red-500/30 focus:border-red-500/50 transition-all"
@@ -236,14 +236,16 @@ export default function DepartmentsReadOnlyPage() {
                   onChange={e => setEditModal({ ...editModal, head_id: e.target.value || null })}
                 >
                   <option value="">— Atanmamış —</option>
-                  {profiles.map(p => (
-                    <option key={p.id} value={p.id}>
-                      {p.full_name} ({p.email})
-                    </option>
-                  ))}
+                  {allInstructors
+                    .filter(ins => ins.department_id === editModal.department_id && ins.profile_id)
+                    .map(ins => (
+                      <option key={ins.id} value={ins.profile_id}>
+                        {ins.title ? `${ins.title} ${ins.full_name}` : ins.full_name}
+                      </option>
+                    ))}
                 </select>
                 <p className="text-xs text-gray-500 mt-2">
-                  Sadece <strong>Bölüm Başkanı</strong> rolündeki kullanıcılar listelenmektedir.
+                  Bu bölümdeki <strong>aktif öğretim elemanları</strong> listelenmektedir. Sadece sistemde hesabı olan eğitmenler seçilebilir.
                 </p>
               </div>
             </div>
