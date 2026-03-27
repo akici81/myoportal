@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toplu Kullanıcı Ekleme - MYO Portal</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #B71C1C 0%, #C62828 100%);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      opacity: 0.9;
+      font-size: 14px;
+    }
+
+    .stats {
+      display: flex;
+      gap: 20px;
+      padding: 20px 30px;
+      background: #f5f5f5;
+      border-bottom: 2px solid #e0e0e0;
+    }
+
+    .stat {
+      flex: 1;
+      text-align: center;
+      padding: 15px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .stat-value {
+      font-size: 32px;
+      font-weight: bold;
+      color: #B71C1C;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #666;
+      text-transform: uppercase;
+      margin-top: 5px;
+    }
+
+    .controls {
+      padding: 20px 30px;
+      background: #fafafa;
+      border-bottom: 1px solid #e0e0e0;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: #B71C1C;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #C62828;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(183, 28, 28, 0.4);
+    }
+
+    .btn-primary:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-secondary {
+      background: #f5f5f5;
+      color: #666;
+      border: 1px solid #ddd;
+    }
+
+    .btn-secondary:hover {
+      background: #e0e0e0;
+    }
+
+    .user-list {
+      max-height: 600px;
+      overflow-y: auto;
+    }
+
+    .user-item {
+      display: flex;
+      align-items: center;
+      padding: 15px 30px;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.2s;
+    }
+
+    .user-item:hover {
+      background: #f9f9f9;
+    }
+
+    .user-item.success {
+      background: #e8f5e9;
+    }
+
+    .user-item.error {
+      background: #ffebee;
+    }
+
+    .user-item.processing {
+      background: #fff3e0;
+    }
+
+    .user-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #666;
+      margin-right: 15px;
+    }
+
+    .user-info {
+      flex: 1;
+    }
+
+    .user-name {
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 4px;
+    }
+
+    .user-email {
+      font-size: 13px;
+      color: #666;
+    }
+
+    .user-department {
+      font-size: 12px;
+      color: #999;
+      margin-top: 2px;
+    }
+
+    .user-status {
+      min-width: 120px;
+      text-align: right;
+      font-size: 13px;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .status-pending {
+      background: #e3f2fd;
+      color: #1976d2;
+    }
+
+    .status-processing {
+      background: #fff3e0;
+      color: #f57c00;
+    }
+
+    .status-success {
+      background: #e8f5e9;
+      color: #388e3c;
+    }
+
+    .status-error {
+      background: #ffebee;
+      color: #d32f2f;
+    }
+
+    .user-action {
+      margin-left: 15px;
+    }
+
+    .btn-small {
+      padding: 8px 16px;
+      font-size: 12px;
+    }
+
+    .progress-bar {
+      height: 4px;
+      background: #f5f5f5;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #B71C1C 0%, #C62828 100%);
+      transition: width 0.3s;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid #f3f3f3;
+      border-top: 2px solid #B71C1C;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .error-message {
+      font-size: 11px;
+      color: #d32f2f;
+      margin-top: 4px;
+    }
+
+    .password-info {
+      background: #fff3e0;
+      border-left: 4px solid #f57c00;
+      padding: 15px;
+      margin: 20px 30px;
+      border-radius: 4px;
+    }
+
+    .password-info strong {
+      color: #e65100;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🚀 Toplu Öğretim Elemanı Ekleme</h1>
+      <p>Email'i olan 26 öğretim elemanı için kullanıcı hesabı oluştur</p>
+    </div>
+
+    <div class="password-info">
+      <strong>🔐 Ortak Şifre:</strong> Rumeli2025!
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-value" id="totalCount">26</div>
+        <div class="stat-label">Toplam</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="successCount">0</div>
+        <div class="stat-label">Başarılı</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="errorCount">0</div>
+        <div class="stat-label">Hata</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value" id="pendingCount">26</div>
+        <div class="stat-label">Bekliyor</div>
+      </div>
+    </div>
+
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+    </div>
+
+    <div class="controls">
+      <button class="btn btn-primary" id="startAllBtn" onclick="startAll()">
+        <span>▶</span> Tümünü Başlat
+      </button>
+      <button class="btn btn-secondary" id="pauseBtn" onclick="pause()" disabled>
+        <span>⏸</span> Duraklat
+      </button>
+      <button class="btn btn-secondary" onclick="location.reload()">
+        <span>🔄</span> Sıfırla
+      </button>
+    </div>
+
+    <div class="user-list" id="userList"></div>
+  </div>
+
+  <script>
+    const USERS = [
+      { id: '0542db35-de1f-41fc-8228-a3f60bfa5bff', name: 'Doğukan BAYESEN', email: 'dogukan.bayesen@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000002', deptName: 'OLH' },
+      { id: '067aa742-d883-4f58-ac92-dfddbbd3bf52', name: 'Enis Edip AKICI', email: 'eedip.akici@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000002', deptName: 'OLH' },
+      { id: '06a8ac52-31b2-43ae-8cb1-ba0439e72657', name: 'Sevcan ÖZKAN', email: 'sevcan.battal@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000002', deptName: 'OLH' },
+      { id: '12cd4a23-ae46-4020-9af0-8dae0bf2f67e', name: 'Dila EVLİYAOĞLU', email: 'dila.evliyaoglu@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000006', deptName: 'GRA/ICM' },
+      { id: '1dba3cae-94e5-4b3d-a21b-1281ab8cd627', name: 'Osman İlker AÇIKGÖZ', email: 'oilker.acikgoz@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000005', deptName: 'UCT' },
+      { id: '2efa9634-9d8d-49a7-9ba8-30b4d2f04e29', name: 'Merve ÇEVİK GÜNGÖR', email: 'merve.cevikgungor@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000006', deptName: 'GRA/ICM' },
+      { id: '35fd0c97-01cf-4ad8-9f6a-801a5c1fdb15', name: 'Mehmet ATICI', email: 'mehmet.atici@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000003', deptName: 'BLG' },
+      { id: '408b74d4-0be6-4239-9f4f-a5fe64f7cc3b', name: 'Selin GÖKMEN', email: 'selin.gokmen@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000002', deptName: 'OLH' },
+      { id: '5672a496-e51f-4401-870b-fe451df98dae', name: 'Canmert DEMİR', email: 'canmert.demir@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000003', deptName: 'BLG' },
+      { id: '65a5a79b-b367-45db-9a6f-9b7b74de35e2', name: 'Cemil GÜNERİ', email: 'cemil.guneri@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000004', deptName: 'SHU/SHK' },
+      { id: '8088fc50-8dd9-4646-89d6-8e16d3979951', name: 'Ergin AKIN', email: 'ergin.akin@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000006', deptName: 'GRA/ICM' },
+      { id: '8120057f-f3fc-47e7-b81f-954421cec876', name: 'M. Mine ÇAPUR', email: 'mine.capur@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000004', deptName: 'SHU/SHK' },
+      { id: '897f3382-7e9e-463d-91b4-ce16110a6110', name: 'Bülent TATAR', email: 'bulent.tatar@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000001', deptName: 'MBH' },
+      { id: '8c4af486-516d-44ca-8723-a9fd6aac44fb', name: 'Gürhan GÜNGÖRDÜ', email: 'gurhan.gungordu@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000005', deptName: 'UCT' },
+      { id: '91605231-1944-4883-af7d-f885f4f0c6fc', name: 'Hüseyin Şahin ÖNSOY', email: 'hsahin.onsoy@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000004', deptName: 'SHU/SHK' },
+      { id: '9b053413-0da3-40b4-aa91-a58dcd0ac3fb', name: 'Oğulcan USUFLU', email: 'ogulcan.usuflu@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000007', deptName: 'SPY/YON' },
+      { id: 'ad60d342-2ef5-415f-8234-d18b743e3777', name: 'Reyhan KESGİN ÜZEN', email: 'reyhan.kesgin@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000006', deptName: 'GRA/ICM' },
+      { id: 'b344a59e-883b-4194-b4b7-1f4678ad0d28', name: 'Furkan İŞBİLEN', email: 'furkan.isbilen@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000005', deptName: 'UCT' },
+      { id: 'b72c6d69-61c7-4309-8eb9-2aac5f440dc4', name: 'Murat Alper GÜVEN', email: 'malper.guven@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000001', deptName: 'MBH' },
+      { id: 'b86ec438-14cb-41d9-873f-b6944e8a1521', name: 'Ataberk ÇELİK', email: 'ataberk.celik@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000002', deptName: 'OLH' },
+      { id: 'd0dc8c0f-0f4d-4b82-b4a4-35c32a1057f0', name: 'Abdullah YAVUZ', email: 'abdullah.yavuz@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000003', deptName: 'BLG' },
+      { id: 'dcb2b62d-a8ae-4811-ac0b-f655381e931a', name: 'Emrah ÖZDEMİR', email: 'emrah.ozdemir@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000007', deptName: 'SPY/YON' },
+      { id: 'dffd4613-89dd-4320-ab18-db81706ad386', name: 'Şeyma Nur ÜZÜM', email: 'seymanur.uzum@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000002', deptName: 'OLH' },
+      { id: 'e3b19abb-954e-4f53-ae8c-7250a77bc3a8', name: 'Birsu Ece EKMEKÇİ', email: 'birsu.ekmekci@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000004', deptName: 'SHU/SHK' },
+      { id: 'ea0986c8-3078-4c50-b8bf-417d145a5eb1', name: 'Şebnem TAMER', email: 'sebnem.tamer@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000004', deptName: 'SHU/SHK' },
+      { id: 'fa7883b2-6616-4158-b308-4bb24828c56a', name: 'Yiğit Er YİĞİT', email: 'yigiter.yigit@rumeli.edu.tr', dept: 'a0000000-0000-0000-0000-000000000006', deptName: 'GRA/ICM' }
+    ];
+
+    let isPaused = false;
+    let isRunning = false;
+
+    // Render user list
+    function renderUsers() {
+      const html = USERS.map((user, index) => `
+        <div class="user-item" id="user-${index}">
+          <div class="user-number">${index + 1}</div>
+          <div class="user-info">
+            <div class="user-name">${user.name}</div>
+            <div class="user-email">${user.email}</div>
+            <div class="user-department">${user.deptName}</div>
+            <div class="error-message" id="error-${index}"></div>
+          </div>
+          <div class="user-status">
+            <span class="status-badge status-pending" id="status-${index}">Bekliyor</span>
+          </div>
+          <div class="user-action">
+            <button class="btn btn-primary btn-small" onclick="addUser(${index})">Ekle</button>
+          </div>
+        </div>
+      `).join('');
+      document.getElementById('userList').innerHTML = html;
+    }
+
+    // Update stats
+    function updateStats() {
+      const success = document.querySelectorAll('.status-success').length;
+      const error = document.querySelectorAll('.status-error').length;
+      const pending = document.querySelectorAll('.status-pending').length;
+
+      document.getElementById('successCount').textContent = success;
+      document.getElementById('errorCount').textContent = error;
+      document.getElementById('pendingCount').textContent = pending;
+
+      const progress = (success + error) / USERS.length * 100;
+      document.getElementById('progressFill').style.width = progress + '%';
+    }
+
+    // Add single user
+    async function addUser(index) {
+      const user = USERS[index];
+      const statusEl = document.getElementById(`status-${index}`);
+      const errorEl = document.getElementById(`error-${index}`);
+      const itemEl = document.getElementById(`user-${index}`);
+
+      statusEl.className = 'status-badge status-processing';
+      statusEl.innerHTML = '<span class="spinner"></span> İşleniyor';
+      itemEl.className = 'user-item processing';
+      errorEl.textContent = '';
+
+      try {
+        const response = await fetch('/api/admin/create-user', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: user.email,
+            password: 'Rumeli2025!',
+            full_name: user.name,
+            role: 'instructor',
+            department_id: user.dept
+          })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          // Kullanıcı oluşturuldu, şimdi instructor linkini güncelle
+          await updateInstructorLink(user.id, user.email);
+
+          statusEl.className = 'status-badge status-success';
+          statusEl.textContent = '✓ Başarılı';
+          itemEl.className = 'user-item success';
+        } else {
+          throw new Error(data.error || 'Bilinmeyen hata');
+        }
+      } catch (error) {
+        statusEl.className = 'status-badge status-error';
+        statusEl.textContent = '✗ Hata';
+        itemEl.className = 'user-item error';
+        errorEl.textContent = error.message;
+      }
+
+      updateStats();
+    }
+
+    // Update instructor profile link
+    async function updateInstructorLink(instructorId, email) {
+      // Bu işlem Supabase client üzerinden yapılmalı
+      // Şimdilik atlıyoruz, manuel SQL ile yapılacak
+      console.log(`Instructor ${instructorId} için profile_id güncellenmeli: ${email}`);
+    }
+
+    // Start all
+    async function startAll() {
+      if (isRunning) return;
+
+      isRunning = true;
+      document.getElementById('startAllBtn').disabled = true;
+      document.getElementById('pauseBtn').disabled = false;
+
+      for (let i = 0; i < USERS.length; i++) {
+        if (isPaused) break;
+
+        const statusEl = document.getElementById(`status-${i}`);
+        if (statusEl.classList.contains('status-pending')) {
+          await addUser(i);
+          await new Promise(resolve => setTimeout(resolve, 1000)); // 1 saniye bekle
+        }
+      }
+
+      isRunning = false;
+      document.getElementById('startAllBtn').disabled = false;
+      document.getElementById('pauseBtn').disabled = true;
+    }
+
+    // Pause
+    function pause() {
+      isPaused = !isPaused;
+      document.getElementById('pauseBtn').innerHTML = isPaused
+        ? '<span>▶</span> Devam Et'
+        : '<span>⏸</span> Duraklat';
+    }
+
+    // Initialize
+    renderUsers();
+    updateStats();
+  </script>
+</body>
+</html>

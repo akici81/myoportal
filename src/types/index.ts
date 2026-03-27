@@ -183,6 +183,50 @@ export interface InstructorConstraint {
 }
 
 // =============================================
+// DERS TAKİP FORMU
+// =============================================
+
+export interface LessonTrackingRecord {
+  id: string
+  schedule_entry_id: string
+  period_id: string
+  week_number: number
+  lesson_date: string
+  attendance_type: 'orgon' | 'uzem'
+  instructor_signature: 'yapildi' | 'yapilmadi' | 'telafi' | null
+  pdks_signature: 'yapildi' | 'yapilmadi' | null
+  enrolled_students: number | null
+  attending_students: number | null
+  makeup_date: string | null
+  makeup_note: string | null
+  filled_by: string | null
+  filled_at: string | null
+  created_at: string
+  updated_at: string
+  // Joined
+  schedule_entries?: ScheduleEntry & {
+    program_courses?: ProgramCourse & {
+      courses?: Course
+      programs?: Program
+    }
+    time_slots?: TimeSlot
+    classrooms?: Classroom
+    instructors?: Instructor
+  }
+}
+
+export const SIGNATURE_STATUS: Record<string, { label: string; color: string }> = {
+  yapildi:   { label: 'Yapıldı',           color: '#10b981' },
+  yapilmadi: { label: 'Yapılmadı',         color: '#ef4444' },
+  telafi:    { label: 'Telafi Yapılacak',  color: '#f59e0b' },
+}
+
+export const ATTENDANCE_TYPE: Record<string, string> = {
+  orgon: 'ÖRGÜN',
+  uzem:  'UZEM',
+}
+
+// =============================================
 // HELPER TYPES
 // =============================================
 

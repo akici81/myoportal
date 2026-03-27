@@ -8,7 +8,7 @@ import {
   LayoutDashboard, CalendarDays, BookOpen, Building2, Users,
   GraduationCap, ClipboardList, Settings, LogOut, UserCog,
   ChevronRight, Menu, X, Link2, Wand2, User, AlertTriangle,
-  Target, Briefcase, FileText, FileQuestion,
+  Target, Briefcase, FileText, FileQuestion, ClipboardCheck,
 } from 'lucide-react'
 import { useState } from 'react'
 import { ROLE_META, type UserRole } from '@/types'
@@ -74,7 +74,8 @@ const NAV_MUDUR_YARDIMCISI_GROUPS: NavGroup[] = [
 
 const NAV_SEKRETER_GROUPS: NavGroup[] = [
   { label: 'Ders Yönetimi', icon: BookOpen, defaultOpen: true, items: [
-    { label: 'Ders Programları', href: '/dashboard/sekreter/schedule', icon: BookOpen },
+    { label: 'Ders Programları',  href: '/dashboard/sekreter/schedule', icon: BookOpen },
+    { label: 'Ders Takip Formu', href: '/dashboard/sekreter/lesson-tracking', icon: ClipboardCheck },
     { label: 'Ortak Dersler',    href: '/dashboard/sekreter/shared-courses', icon: Link2 },
     { label: 'Otomatik Program', href: '/dashboard/sekreter/auto-schedule', icon: Wand2 },
   ]},
@@ -123,6 +124,7 @@ const NAV_BOLUM_BASKANI_SINGLE: NavItem[] = [
 const NAV_INSTRUCTOR_GROUPS: NavGroup[] = [
   { label: 'Akademik Planlama', icon: BookOpen, items: [
     { label: 'Ders Programım',   href: '/dashboard/instructor/schedule', icon: CalendarDays },
+    { label: 'Ders Takip Formu', href: '/dashboard/instructor/lesson-tracking', icon: ClipboardCheck },
     { label: 'Kısıtlarım',       href: '/dashboard/instructor/constraints', icon: ClipboardList },
     { label: 'Etkinlik Takvimi', href: '/dashboard/instructor/events', icon: CalendarDays },
   ]},
