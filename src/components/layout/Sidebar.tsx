@@ -11,7 +11,7 @@ import {
   Target, Briefcase, FileText, FileQuestion, ClipboardCheck,
 } from 'lucide-react'
 import { useState } from 'react'
-import { ROLE_META, type UserRole } from '@/types'
+import { ROLE_META, ROLE_ROUTES, type UserRole } from '@/types'
 import clsx from 'clsx'
 
 type NavItem  = { label: string; href: string; icon: React.ComponentType<{ className?: string }> }
@@ -19,136 +19,122 @@ type NavGroup = { label: string; icon: React.ComponentType<{ className?: string 
 
 // ── Navigasyon Tanımları ────────────────────────────────────────────────────
 
-const NAV_SYSTEM_ADMIN_GROUPS: NavGroup[] = [
-  { label: 'Platform Ayarları', icon: Settings, items: [
-    { label: 'Kullanıcı Yönetimi', href: '/dashboard/system-admin/users', icon: UserCog },
-    { label: 'Ders Saatleri',      href: '/dashboard/system-admin/time-slots', icon: CalendarDays },
+const NAV_CONFIG: Record<UserRole, { groups: NavGroup[]; singleItems?: NavItem[] }> = {
+  system_admin: { groups: [
+    { label: 'Platform Ayarları', icon: Settings, items: [
+      { label: 'Kullanıcı Yönetimi', href: '/dashboard/system-admin/users', icon: UserCog },
+      { label: 'Ders Saatleri',      href: '/dashboard/system-admin/time-slots', icon: CalendarDays },
+    ]},
+    { label: 'Akademik Birimler', icon: Building2, defaultOpen: true, items: [
+      { label: 'Bölümler',              href: '/dashboard/system-admin/departments', icon: GraduationCap },
+      { label: 'Önlisans Programları',  href: '/dashboard/system-admin/programs', icon: BookOpen },
+      { label: 'Genel Ders Havuzu',     href: '/dashboard/system-admin/courses', icon: ClipboardList },
+      { label: 'Derslikler',            href: '/dashboard/system-admin/classrooms', icon: Building2 },
+      { label: 'Öğretim Elemanları',    href: '/dashboard/system-admin/instructors', icon: Users },
+    ]},
+    { label: 'Planlama', icon: CalendarDays, items: [
+      { label: 'Ders Programları', href: '/dashboard/system-admin/schedule', icon: BookOpen },
+      { label: 'Etkinlik Takvimi', href: '/dashboard/system-admin/events', icon: CalendarDays },
+    ]},
   ]},
-  { label: 'Akademik Birimler', icon: Building2, defaultOpen: true, items: [
-    { label: 'Bölümler',              href: '/dashboard/system-admin/departments', icon: GraduationCap },
-    { label: 'Önlisans Programları',  href: '/dashboard/system-admin/programs', icon: BookOpen },
-    { label: 'Genel Ders Havuzu',     href: '/dashboard/system-admin/courses', icon: ClipboardList },
-    { label: 'Derslikler',            href: '/dashboard/system-admin/classrooms', icon: Building2 },
-    { label: 'Öğretim Elemanları',    href: '/dashboard/system-admin/instructors', icon: Users },
+  mudur: { groups: [
+    { label: 'Genel Görünüm', icon: Building2, defaultOpen: true, items: [
+      { label: 'Bölümler',           href: '/dashboard/mudur/departments', icon: GraduationCap },
+      { label: 'Öğretim Elemanları', href: '/dashboard/mudur/instructors', icon: Users },
+      { label: 'Derslikler',         href: '/dashboard/mudur/classrooms', icon: Building2 },
+    ]},
+    { label: 'Personel İşlemleri', icon: Users, items: [
+      { label: 'İzin Talepleri', href: '/dashboard/sekreter/leaves', icon: ClipboardList },
+    ]},
+    { label: 'Eğitim Planları', icon: BookOpen, items: [
+      { label: 'Ders Programları', href: '/dashboard/mudur/schedule', icon: BookOpen },
+    ]},
   ]},
-  { label: 'Planlama', icon: CalendarDays, items: [
-    { label: 'Ders Programları', href: '/dashboard/system-admin/schedule', icon: BookOpen },
-    { label: 'Etkinlik Takvimi', href: '/dashboard/system-admin/events', icon: CalendarDays },
+  mudur_yardimcisi: { groups: [
+    { label: 'Kurum Yönetimi', icon: LayoutDashboard, defaultOpen: true, items: [
+      { label: 'Bölümler',           href: '/dashboard/mudur-yardimcisi/departments', icon: GraduationCap },
+      { label: 'Eğitmen Listesi',    href: '/dashboard/mudur-yardimcisi/instructors', icon: Users },
+      { label: 'Derslikler',         href: '/dashboard/mudur-yardimcisi/classrooms', icon: Building2 },
+      { label: 'Kullanıcı Yönetimi', href: '/dashboard/mudur-yardimcisi/users', icon: UserCog },
+    ]},
+    { label: 'Akademik Birimler', icon: Target, items: [
+      { label: 'Komisyon Yönetimi', href: '/dashboard/mudur-yardimcisi/commissions', icon: Target },
+      { label: 'Staj İşlemleri',    href: '/dashboard/mudur-yardimcisi/internships', icon: Briefcase },
+    ]},
+    { label: 'Personel İşlemleri', icon: Users, items: [
+      { label: 'Genel Talepler ve Dilekçe', href: '/dashboard/mudur-yardimcisi/requests', icon: FileText },
+      { label: 'İzin Sistem Yönetimi',      href: '/dashboard/sekreter/leaves', icon: ClipboardList },
+    ]},
+    { label: 'Çizelgeler & Takvim', icon: CalendarDays, items: [
+      { label: 'Tüm Ders Programları', href: '/dashboard/mudur-yardimcisi/schedule', icon: BookOpen },
+      { label: 'Etkinlik Takvimi',     href: '/dashboard/mudur-yardimcisi/events', icon: CalendarDays },
+    ]},
   ]},
-]
-
-const NAV_MUDUR_GROUPS: NavGroup[] = [
-  { label: 'Genel Görünüm', icon: Building2, defaultOpen: true, items: [
-    { label: 'Bölümler',           href: '/dashboard/mudur/departments', icon: GraduationCap },
-    { label: 'Öğretim Elemanları', href: '/dashboard/mudur/instructors', icon: Users },
-    { label: 'Derslikler',         href: '/dashboard/mudur/classrooms', icon: Building2 },
+  sekreter: { groups: [
+    { label: 'Ders Yönetimi', icon: BookOpen, defaultOpen: true, items: [
+      { label: 'Ders Programları',  href: '/dashboard/sekreter/schedule', icon: BookOpen },
+      { label: 'Ders Takip Formu', href: '/dashboard/sekreter/lesson-tracking', icon: ClipboardCheck },
+      { label: 'Ortak Dersler',    href: '/dashboard/sekreter/shared-courses', icon: Link2 },
+      { label: 'Otomatik Program', href: '/dashboard/sekreter/auto-schedule', icon: Wand2 },
+    ]},
+    { label: 'Personel', icon: Users, items: [
+      { label: 'İzin Talepleri (Onay)', href: '/dashboard/sekreter/leaves', icon: UserCog },
+      { label: 'Hoca Kısıtları',        href: '/dashboard/sekreter/constraints', icon: ClipboardList },
+      { label: 'Hoca Programları',      href: '/dashboard/sekreter/instructor-schedule', icon: User },
+    ]},
+    { label: 'Akademik Birimler', icon: GraduationCap, items: [
+      { label: 'Bölümler',           href: '/dashboard/sekreter/departments', icon: GraduationCap },
+      { label: 'Öğretim Elemanları', href: '/dashboard/sekreter/instructors', icon: Users },
+    ]},
+    { label: 'Derslikler', icon: Building2, items: [
+      { label: 'Derslik Listesi',   href: '/dashboard/sekreter/classrooms', icon: Building2 },
+      { label: 'Derslik Kullanımı', href: '/dashboard/sekreter/classroom-schedule', icon: CalendarDays },
+    ]},
+    { label: 'Kontrol & Raporlar', icon: AlertTriangle, items: [
+      { label: 'Çakışma Raporu',    href: '/dashboard/sekreter/conflicts', icon: AlertTriangle },
+      { label: 'Akademik Dönemler', href: '/dashboard/sekreter/periods', icon: Settings },
+      { label: 'Etkinlik Takvimi',  href: '/dashboard/sekreter/events', icon: CalendarDays },
+    ]},
   ]},
-  { label: 'Personel İşlemleri', icon: Users, items: [
-    { label: 'İzin Talepleri', href: '/dashboard/sekreter/leaves', icon: ClipboardList },
+  bolum_baskani: {
+    groups: [
+      { label: 'Ders Yönetimi', icon: BookOpen, defaultOpen: true, items: [
+        { label: 'Program Müfredatı',  href: '/dashboard/bolum-baskani/program-courses', icon: ClipboardList },
+        { label: 'Ders Görevlendirme', href: '/dashboard/bolum-baskani/course-assignments', icon: UserCog },
+        { label: 'Öğrenci Sayıları',   href: '/dashboard/bolum-baskani/student-enrollments', icon: Users },
+        { label: 'Akıllı Yerleştirme', href: '/dashboard/bolum-baskani/auto-schedule', icon: Wand2 },
+      ]},
+      { label: 'Ders Programı', icon: CalendarDays, defaultOpen: true, items: [
+        { label: 'Program Görüntüle',   href: '/dashboard/bolum-baskani/schedule', icon: BookOpen },
+        { label: 'Derslik Programları', href: '/dashboard/bolum-baskani/classroom-schedule', icon: Building2 },
+      ]},
+      { label: 'Personel', icon: Users, items: [
+        { label: 'Öğretim Elemanları', href: '/dashboard/bolum-baskani/instructors', icon: Users },
+        { label: 'Hoca Kısıtları',     href: '/dashboard/bolum-baskani/instructor-constraints', icon: ClipboardList },
+      ]},
+    ],
+    singleItems: [
+      { label: 'Derslik Listesi',  href: '/dashboard/bolum-baskani/classrooms', icon: Building2 },
+      { label: 'Etkinlik Takvimi', href: '/dashboard/bolum-baskani/events', icon: CalendarDays },
+    ],
+  },
+  instructor: { groups: [
+    { label: 'Akademik Planlama', icon: BookOpen, items: [
+      { label: 'Ders Programım',   href: '/dashboard/instructor/schedule', icon: CalendarDays },
+      { label: 'Ders Takip Formu', href: '/dashboard/instructor/lesson-tracking', icon: ClipboardCheck },
+      { label: 'Kısıtlarım',       href: '/dashboard/instructor/constraints', icon: ClipboardList },
+      { label: 'Etkinlik Takvimi', href: '/dashboard/instructor/events', icon: CalendarDays },
+    ]},
+    { label: 'Öğrenci & Birim', icon: Target, items: [
+      { label: 'Komisyonlarım',     href: '/dashboard/instructor/commissions', icon: Target },
+      { label: 'Staj Sicil Ekleme', href: '/dashboard/instructor/internships', icon: Briefcase },
+    ]},
+    { label: 'Personel İşlemleri', icon: Users, items: [
+      { label: 'İzin Taleplerim',         href: '/dashboard/instructor/leaves', icon: ClipboardList },
+      { label: 'Dilekçe & Evrak İstemi',  href: '/dashboard/instructor/requests', icon: FileText },
+      { label: 'Birim İçi Değerlendirme', href: '/dashboard/instructor/evaluation', icon: FileQuestion },
+    ]},
   ]},
-  { label: 'Eğitim Planları', icon: BookOpen, items: [
-    { label: 'Ders Programları', href: '/dashboard/mudur/schedule', icon: BookOpen },
-  ]},
-]
-
-const NAV_MUDUR_YARDIMCISI_GROUPS: NavGroup[] = [
-  { label: 'Kurum Yönetimi', icon: LayoutDashboard, defaultOpen: true, items: [
-    { label: 'Bölümler',           href: '/dashboard/mudur-yardimcisi/departments', icon: GraduationCap },
-    { label: 'Eğitmen Listesi',    href: '/dashboard/mudur-yardimcisi/instructors', icon: Users },
-    { label: 'Derslikler',         href: '/dashboard/mudur-yardimcisi/classrooms', icon: Building2 },
-    { label: 'Kullanıcı Yönetimi', href: '/dashboard/mudur-yardimcisi/users', icon: UserCog },
-  ]},
-  { label: 'Akademik Birimler', icon: Target, items: [
-    { label: 'Komisyon Yönetimi', href: '/dashboard/mudur-yardimcisi/commissions', icon: Target },
-    { label: 'Staj İşlemleri',    href: '/dashboard/mudur-yardimcisi/internships', icon: Briefcase },
-  ]},
-  { label: 'Personel İşlemleri', icon: Users, items: [
-    { label: 'Genel Talepler ve Dilekçe', href: '/dashboard/mudur-yardimcisi/requests', icon: FileText },
-    { label: 'İzin Sistem Yönetimi',      href: '/dashboard/sekreter/leaves', icon: ClipboardList },
-  ]},
-  { label: 'Çizelgeler & Takvim', icon: CalendarDays, items: [
-    { label: 'Tüm Ders Programları', href: '/dashboard/mudur-yardimcisi/schedule', icon: BookOpen },
-    { label: 'Etkinlik Takvimi',     href: '/dashboard/mudur-yardimcisi/events', icon: CalendarDays },
-  ]},
-]
-
-const NAV_SEKRETER_GROUPS: NavGroup[] = [
-  { label: 'Ders Yönetimi', icon: BookOpen, defaultOpen: true, items: [
-    { label: 'Ders Programları',  href: '/dashboard/sekreter/schedule', icon: BookOpen },
-    { label: 'Ders Takip Formu', href: '/dashboard/sekreter/lesson-tracking', icon: ClipboardCheck },
-    { label: 'Ortak Dersler',    href: '/dashboard/sekreter/shared-courses', icon: Link2 },
-    { label: 'Otomatik Program', href: '/dashboard/sekreter/auto-schedule', icon: Wand2 },
-  ]},
-  { label: 'Personel', icon: Users, items: [
-    { label: 'İzin Talepleri (Onay)', href: '/dashboard/sekreter/leaves', icon: UserCog },
-    { label: 'Hoca Kısıtları',        href: '/dashboard/sekreter/constraints', icon: ClipboardList },
-    { label: 'Hoca Programları',      href: '/dashboard/sekreter/instructor-schedule', icon: User },
-  ]},
-  { label: 'Akademik Birimler', icon: GraduationCap, items: [
-    { label: 'Bölümler',           href: '/dashboard/sekreter/departments', icon: GraduationCap },
-    { label: 'Öğretim Elemanları', href: '/dashboard/sekreter/instructors', icon: Users },
-  ]},
-  { label: 'Derslikler', icon: Building2, items: [
-    { label: 'Derslik Listesi',  href: '/dashboard/sekreter/classrooms', icon: Building2 },
-    { label: 'Derslik Kullanımı', href: '/dashboard/sekreter/classroom-schedule', icon: CalendarDays },
-  ]},
-  { label: 'Kontrol & Raporlar', icon: AlertTriangle, items: [
-    { label: 'Çakışma Raporu',   href: '/dashboard/sekreter/conflicts', icon: AlertTriangle },
-    { label: 'Akademik Dönemler', href: '/dashboard/sekreter/periods', icon: Settings },
-    { label: 'Etkinlik Takvimi', href: '/dashboard/sekreter/events', icon: CalendarDays },
-  ]},
-]
-
-const NAV_BOLUM_BASKANI_GROUPS: NavGroup[] = [
-  { label: 'Ders Yönetimi', icon: BookOpen, defaultOpen: true, items: [
-    { label: 'Program Müfredatı',  href: '/dashboard/bolum-baskani/program-courses', icon: ClipboardList },
-    { label: 'Ders Görevlendirme', href: '/dashboard/bolum-baskani/course-assignments', icon: UserCog },
-    { label: 'Öğrenci Sayıları',   href: '/dashboard/bolum-baskani/student-enrollments', icon: Users },
-    { label: 'Akıllı Yerleştirme', href: '/dashboard/bolum-baskani/auto-schedule', icon: Wand2 },
-  ]},
-  { label: 'Ders Programı', icon: CalendarDays, defaultOpen: true, items: [
-    { label: 'Program Görüntüle',  href: '/dashboard/bolum-baskani/schedule', icon: BookOpen },
-    { label: 'Derslik Programları', href: '/dashboard/bolum-baskani/classroom-schedule', icon: Building2 },
-  ]},
-  { label: 'Personel', icon: Users, items: [
-    { label: 'Öğretim Elemanları', href: '/dashboard/bolum-baskani/instructors', icon: Users },
-    { label: 'Hoca Kısıtları',     href: '/dashboard/bolum-baskani/instructor-constraints', icon: ClipboardList },
-  ]},
-]
-
-const NAV_BOLUM_BASKANI_SINGLE: NavItem[] = [
-  { label: 'Derslik Listesi',  href: '/dashboard/bolum-baskani/classrooms', icon: Building2 },
-  { label: 'Etkinlik Takvimi', href: '/dashboard/bolum-baskani/events', icon: CalendarDays },
-]
-
-const NAV_INSTRUCTOR_GROUPS: NavGroup[] = [
-  { label: 'Akademik Planlama', icon: BookOpen, items: [
-    { label: 'Ders Programım',   href: '/dashboard/instructor/schedule', icon: CalendarDays },
-    { label: 'Ders Takip Formu', href: '/dashboard/instructor/lesson-tracking', icon: ClipboardCheck },
-    { label: 'Kısıtlarım',       href: '/dashboard/instructor/constraints', icon: ClipboardList },
-    { label: 'Etkinlik Takvimi', href: '/dashboard/instructor/events', icon: CalendarDays },
-  ]},
-  { label: 'Öğrenci & Birim', icon: Target, items: [
-    { label: 'Komisyonlarım',    href: '/dashboard/instructor/commissions', icon: Target },
-    { label: 'Staj Sicil Ekleme', href: '/dashboard/instructor/internships', icon: Briefcase },
-  ]},
-  { label: 'Personel İşlemleri', icon: Users, items: [
-    { label: 'İzin Taleplerim',         href: '/dashboard/instructor/leaves', icon: ClipboardList },
-    { label: 'Dilekçe & Evrak İstemi',  href: '/dashboard/instructor/requests', icon: FileText },
-    { label: 'Birim İçi Değerlendirme', href: '/dashboard/instructor/evaluation', icon: FileQuestion },
-  ]},
-]
-
-function getNavGroups(role: UserRole): NavGroup[] {
-  switch (role) {
-    case 'system_admin':    return NAV_SYSTEM_ADMIN_GROUPS
-    case 'mudur':           return NAV_MUDUR_GROUPS
-    case 'mudur_yardimcisi': return NAV_MUDUR_YARDIMCISI_GROUPS
-    case 'sekreter':        return NAV_SEKRETER_GROUPS
-    case 'bolum_baskani':   return NAV_BOLUM_BASKANI_GROUPS
-    case 'instructor':      return NAV_INSTRUCTOR_GROUPS
-    default:                return []
-  }
 }
 
 // ── Sub-components ──────────────────────────────────────────────────────────
@@ -234,17 +220,9 @@ interface SidebarProps {
 export function Sidebar({ role, userName }: SidebarProps) {
   const pathname  = usePathname()
   const [open, setOpen] = useState(false)
-  const navGroups = getNavGroups(role)
+  const { groups: navGroups, singleItems } = NAV_CONFIG[role]
   const meta      = ROLE_META[role]
-
-  const dashboardLink = {
-    system_admin:    '/dashboard/system-admin',
-    mudur:           '/dashboard/mudur',
-    mudur_yardimcisi: '/dashboard/mudur-yardimcisi',
-    sekreter:        '/dashboard/sekreter',
-    bolum_baskani:   '/dashboard/bolum-baskani',
-    instructor:      '/dashboard/instructor',
-  }[role] ?? '/dashboard/instructor'
+  const dashboardLink = ROLE_ROUTES[role]
 
   const handleLogout = async () => {
     const supabase = createClient()
@@ -291,10 +269,10 @@ export function Sidebar({ role, userName }: SidebarProps) {
           <NavGroupItem key={group.label} group={group} pathname={pathname} />
         ))}
 
-        {role === 'bolum_baskani' && (
+        {singleItems && (
           <>
             <div className="my-3" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.08)' }} />
-            {NAV_BOLUM_BASKANI_SINGLE.map(item => (
+            {singleItems.map(item => (
               <SingleNavItem key={item.href} item={item} pathname={pathname} />
             ))}
           </>

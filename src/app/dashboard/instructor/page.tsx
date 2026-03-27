@@ -1,8 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
-import Link from 'next/link'
-import { BookOpen, ClipboardList, CalendarDays, ArrowRight, LucideIcon, Building2 } from 'lucide-react'
-import { TopBar } from '@/components/layout/TopBar'
+import { BookOpen, ClipboardList, CalendarDays, Building2 } from 'lucide-react'
+import { DashboardPage } from '@/components/dashboard/DashboardPage'
 
 export default async function InstructorDashboard() {
   const supabase = await createClient()
@@ -20,11 +19,10 @@ export default async function InstructorDashboard() {
     .from('instructors')
     .select('id')
     .eq('email', user.email)
-    .single()
+    .maybeSingle()
 
   let courseCount = 0
   let scheduleCount = 0
-
   let todaysClasses: any[] = []
 
   if (instructor) {
@@ -36,165 +34,67 @@ export default async function InstructorDashboard() {
 
     const { data: programCourses } = await supabase
       .from('program_courses')
-      .select(`id, courses(name, code, course_type)`)
+      .select('id, courses(name, code, course_type)')
       .eq('instructor_id', instructor.id)
 
     if (programCourses && programCourses.length > 0) {
-      const pcIds = programCourses.map(pc => pc.id);
+      const pcIds = programCourses.map(pc => pc.id)
       const { count: sc } = await supabase
         .from('schedule_entries')
         .select('*', { count: 'exact', head: true })
         .in('program_course_id', pcIds)
       scheduleCount = sc || 0
 
-      // Bugünkü Dersleri bul (0: Pazar, 1: Pzt ... 5: Cuma)
-      const currentDay = new Date().getDay(); // 1-5 arası
-      
+      const currentDay = new Date().getDay()
       const { data: myEntries } = await supabase
         .from('schedule_entries')
         .select(`
-          day_of_week, 
-          time_slot_id, 
+          day_of_week,
+          time_slot_id,
           program_course_id,
           classrooms(name, building),
           time_slots(start_time, end_time, slot_number)
         `)
         .in('program_course_id', pcIds)
-        .eq('day_of_week', currentDay === 0 || currentDay === 6 ? 1 : currentDay) // Haftasonuysa pzt göster
+        .eq('day_of_week', currentDay === 0 || currentDay === 6 ? 1 : currentDay)
         .order('time_slots(slot_number)', { ascending: true })
 
       if (myEntries) {
-        todaysClasses = myEntries.map((e: any) => {
-           const match = programCourses.find(pc => pc.id === e.program_course_id);
-           return { ...e, course: match?.courses }
-        }).sort((a,b) => (a.time_slots?.slot_number || 0) - (b.time_slots?.slot_number || 0))
+        todaysClasses = myEntries
+          .map((e: any) => {
+            const match = programCourses.find(pc => pc.id === e.program_course_id)
+            return { ...e, course: match?.courses }
+          })
+          .sort((a, b) => (a.time_slots?.slot_number || 0) - (b.time_slots?.slot_number || 0))
       }
     }
   }
-
-  const stats = [
-    {
-      label: 'Toplam Dersim',
-      value: courseCount,
-      icon: BookOpen,
-      iconBg: 'bg-amber-500/10',
-      iconColor: 'text-amber-400',
-      topBar: 'from-amber-500 to-orange-500',
-    },
-    {
-      label: 'Haftalık Ders Saati',
-      value: scheduleCount,
-      icon: CalendarDays,
-      iconBg: 'bg-cyan-500/10',
-      iconColor: 'text-cyan-400',
-      topBar: 'from-cyan-500 to-red-600',
-    },
-  ]
-
-  const quickActions = [
-    {
-      label: 'Ders Programım',
-      href: '/dashboard/instructor/schedule',
-      icon: CalendarDays,
-      description: 'Haftalık ders programınızı görüntüleyin',
-      accentColor: 'text-amber-400',
-      accentBg: 'bg-amber-500/10',
-      hoverShadow: 'hover:shadow-amber-500/10',
-    },
-    {
-      label: 'Kısıtlarım',
-      href: '/dashboard/instructor/constraints',
-      icon: ClipboardList,
-      description: 'Müsait olmadığınız saatleri belirtin',
-      accentColor: 'text-cyan-400',
-      accentBg: 'bg-cyan-500/10',
-      hoverShadow: 'hover:shadow-cyan-500/10',
-    },
-    {
-      label: 'İzin Talepleri',
-      href: '/dashboard/instructor/leaves',
-      icon: ClipboardList,
-      description: 'Yeni izin süreci başlatın veya durumunu izleyin',
-      accentColor: 'text-rose-400',
-      accentBg: 'bg-rose-500/10',
-      hoverShadow: 'hover:shadow-rose-500/10',
-    },
-    {
-      label: 'Birim İçi Değerlendirme',
-      href: '/dashboard/instructor/evaluation',
-      icon: BookOpen,
-      description: 'Eğitim-Öğretim değerlendirme formunu doldurun',
-      accentColor: 'text-emerald-400',
-      accentBg: 'bg-emerald-500/10',
-      hoverShadow: 'hover:shadow-emerald-500/10',
-    },
-  ]
 
   const DAY_NAMES = ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi']
   const targetDay = new Date().getDay()
   const displayDayName = DAY_NAMES[targetDay === 0 || targetDay === 6 ? 1 : targetDay]
 
   return (
-    <div className="space-y-8">
-      {/* Header */}
-      <TopBar 
-        title={`Hoş Geldiniz, ${profile?.full_name || 'Hocam'}`} 
-        subtitle="Öğretim Elemanı Paneli" 
-      />
-
-      {/* Stats */}
-      <div className="grid gap-4 sm:grid-cols-2">
-        {stats.map((stat, i) => (
-          <div
-            key={stat.label}
-            className="stat-card overflow-hidden"
-            style={{ animationDelay: `${i * 0.08}s` }}
-          >
-            <div className={`mb-4 h-1 w-full rounded-full bg-gradient-to-r ${stat.topBar} opacity-60`} />
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-xs uppercase tracking-wide" style={{ color: 'var(--muted)' }}>{stat.label}</p>
-                <p className="mt-1.5 text-3xl font-bold" style={{ color: 'var(--text)' }}>{stat.value}</p>
-              </div>
-              <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${stat.iconBg} ring-1 ring-white/5`}>
-                <stat.icon className={`h-6 w-6 ${stat.iconColor}`} />
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      {/* Quick Actions */}
-      <div className="animate-in-delay-2">
-        <h2 className="mb-4 text-base font-semibold" style={{ color: 'var(--text)' }}>Hızlı İşlemler</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {quickActions.map((action, i) => (
-            <Link
-              key={action.href}
-              href={action.href}
-              className={`action-card hover:shadow-lg ${action.hoverShadow}`}
-              style={{ animationDelay: `${0.2 + i * 0.08}s` }}
-            >
-              <div className={`mb-4 flex h-12 w-12 items-center justify-center rounded-xl ${action.accentBg} ${action.accentColor} transition-transform duration-200 group-hover:scale-110`}>
-                <action.icon className="h-6 w-6" />
-              </div>
-              <h3 className="font-medium" style={{ color: 'var(--text)' }}>{action.label}</h3>
-              <p className="mt-1 text-sm line-clamp-2" style={{ color: 'var(--muted)' }}>{action.description}</p>
-              <div className={`mt-auto pt-4 flex items-center text-sm font-medium ${action.accentColor}`}>
-                Aç
-                <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-
+    <DashboardPage
+      title={`Hoş Geldiniz, ${profile?.full_name || 'Hocam'}`}
+      subtitle="Öğretim Elemanı Paneli"
+      stats={[
+        { label: 'Toplam Dersim',       value: courseCount,   icon: BookOpen,    iconBg: 'bg-amber-500/10', iconColor: 'text-amber-400', topBar: 'from-amber-500 to-orange-500' },
+        { label: 'Haftalık Ders Saati', value: scheduleCount, icon: CalendarDays, iconBg: 'bg-cyan-500/10', iconColor: 'text-cyan-400',  topBar: 'from-cyan-500 to-red-600' },
+      ]}
+      actions={[
+        { label: 'Ders Programım',          href: '/dashboard/instructor/schedule',    icon: CalendarDays,  description: 'Haftalık ders programınızı görüntüleyin',           accentColor: 'text-amber-400', accentBg: 'bg-amber-500/10', hoverShadow: 'hover:shadow-amber-500/10' },
+        { label: 'Kısıtlarım',              href: '/dashboard/instructor/constraints', icon: ClipboardList, description: 'Müsait olmadığınız saatleri belirtin',              accentColor: 'text-cyan-400',  accentBg: 'bg-cyan-500/10',  hoverShadow: 'hover:shadow-cyan-500/10' },
+        { label: 'İzin Talepleri',          href: '/dashboard/instructor/leaves',      icon: ClipboardList, description: 'Yeni izin süreci başlatın veya durumunu izleyin',  accentColor: 'text-rose-400',  accentBg: 'bg-rose-500/10',  hoverShadow: 'hover:shadow-rose-500/10' },
+        { label: 'Birim İçi Değerlendirme', href: '/dashboard/instructor/evaluation',  icon: BookOpen,      description: 'Eğitim-Öğretim değerlendirme formunu doldurun',    accentColor: 'text-emerald-400', accentBg: 'bg-emerald-500/10', hoverShadow: 'hover:shadow-emerald-500/10' },
+      ]}
+    >
       {/* Bugünkü Derslerim */}
       <div className="animate-in-delay-3 rounded-2xl border border-white/5 card/30 p-6">
         <div className="mb-6 flex items-center justify-between">
           <h2 className="text-lg font-semibold" style={{ color: 'var(--text)' }}>Bugünkü Eğitmenlik ({displayDayName})</h2>
         </div>
-        
+
         {todaysClasses.length > 0 ? (
           <div className="space-y-3">
             {todaysClasses.map((item, idx) => (
@@ -214,19 +114,19 @@ export default async function InstructorDashboard() {
                   </div>
                 </div>
                 <div className="flex items-center px-4 py-2 rounded-lg card border border-white/5 whitespace-nowrap">
-                   <Building2 className="mr-2 h-4 w-4 text-emerald-400" />
-                   <span className="text-sm font-medium text-emerald-400">{item.classrooms?.name || 'Sanal'} ({item.classrooms?.building || '-'})</span>
+                  <Building2 className="mr-2 h-4 w-4 text-emerald-400" />
+                  <span className="text-sm font-medium text-emerald-400">{item.classrooms?.name || 'Sanal'} ({item.classrooms?.building || '-'})</span>
                 </div>
               </div>
             ))}
           </div>
         ) : (
           <div className="flex h-32 flex-col items-center justify-center rounded-xl border border-dashed border-white/10 card">
-             <CalendarDays className="mb-2 h-8 w-8" style={{ color: 'var(--muted)' }} />
-             <p className="text-sm" style={{ color: 'var(--muted)' }}>Bugün için planlanmış bir dersiniz bulunmuyor.</p>
+            <CalendarDays className="mb-2 h-8 w-8" style={{ color: 'var(--muted)' }} />
+            <p className="text-sm" style={{ color: 'var(--muted)' }}>Bugün için planlanmış bir dersiniz bulunmuyor.</p>
           </div>
         )}
       </div>
-    </div>
+    </DashboardPage>
   )
 }
