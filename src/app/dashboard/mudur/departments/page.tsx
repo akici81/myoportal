@@ -2,16 +2,19 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import { GraduationCap, Search, Users, BookOpen, Building2 } from 'lucide-react'
+import { GraduationCap, Search, Users, BookOpen, Building2, Edit3, X } from 'lucide-react'
 
 export default function DepartmentsReadOnlyPage() {
   const supabase = createClient()
   const [departments, setDepts] = useState<any[]>([])
   const [programs, setPrograms] = useState<any[]>([])
+  const [profiles, setProfiles] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState('')
   const [showInactive, setShowInactive] = useState(false)
   const [instrCounts, setInstrCounts] = useState<Record<string, number>>({})
+  const [editModal, setEditModal] = useState<any>(null)
+  const [saving, setSaving] = useState(false)
 
   const load = useCallback(async () => {
     setLoading(true)
@@ -19,15 +22,23 @@ export default function DepartmentsReadOnlyPage() {
     if (!showInactive) q.eq('is_active', true)
     const { data } = await q
     setDepts(data ?? [])
-    
+
     const { data: progs } = await supabase.from('programs').select('*').eq('is_active', true).order('name')
     setPrograms(progs ?? [])
-    
+
+    // Load bolum_baskani profiles for dropdown
+    const { data: bolumProfs } = await supabase
+      .from('profiles')
+      .select('id, full_name, email')
+      .eq('role', 'bolum_baskani')
+      .order('full_name')
+    setProfiles(bolumProfs ?? [])
+
     const { data: instrs } = await supabase.from('instructors').select('department_id').eq('is_active', true)
     const counts: Record<string, number> = {}
     instrs?.forEach((i: any) => { counts[i.department_id] = (counts[i.department_id] ?? 0) + 1 })
     setInstrCounts(counts)
-    
+
     setLoading(false)
   }, [showInactive, supabase])
 
@@ -36,6 +47,26 @@ export default function DepartmentsReadOnlyPage() {
   const filtered = departments.filter(d =>
     !search || d.name.toLowerCase().includes(search.toLowerCase()) || d.short_code?.toLowerCase().includes(search.toLowerCase())
   )
+
+  const handleSave = async () => {
+    if (!editModal) return
+    setSaving(true)
+    try {
+      const { error } = await supabase
+        .from('departments')
+        .update({ head_id: editModal.head_id || null })
+        .eq('id', editModal.id)
+
+      if (error) throw error
+
+      setEditModal(null)
+      await load()
+    } catch (err: any) {
+      alert('Hata: ' + err.message)
+    } finally {
+      setSaving(false)
+    }
+  }
 
   return (
     <div className="space-y-6 animate-in">
@@ -110,7 +141,7 @@ export default function DepartmentsReadOnlyPage() {
                   ${d.is_active ? 'border-gray-700/50 hover:border-gray-600' : 'border-red-900/30 bg-red-900/5 opacity-70 grayscale-[30%] hover:grayscale-0'}`}
               >
                 <div className="flex items-start gap-4 mb-5">
-                  <div 
+                  <div
                     className="w-12 h-12 rounded-xl flex items-center justify-center font-bold text-lg flex-shrink-0 shadow-inner"
                     style={{ background: d.is_active ? 'linear-gradient(135deg, #ef444420, #ea580c10)' : '#1f2937', color: d.is_active ? '#ef4444' : '#6b7280', border: '1px solid ' + (d.is_active ? '#ef444430' : '#374151') }}
                   >
@@ -125,6 +156,13 @@ export default function DepartmentsReadOnlyPage() {
                       Yönetici: {d.head?.full_name || <span className="text-red-400/80 italic">Atanmamış</span>}
                     </div>
                   </div>
+                  <button
+                    onClick={() => setEditModal({ id: d.id, name: d.name, head_id: d.head_id })}
+                    className="p-2 rounded-lg hover:bg-red-500/10 transition-colors group/btn"
+                    title="Yönetici Ata"
+                  >
+                    <Edit3 className="w-4 h-4 text-gray-500 group-hover/btn:text-red-500" />
+                  </button>
                 </div>
 
                 <div className="flex-1">
@@ -163,6 +201,69 @@ export default function DepartmentsReadOnlyPage() {
               </div>
             )
           })}
+        </div>
+      )}
+
+      {/* Edit Modal */}
+      {editModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="card max-w-md w-full rounded-2xl shadow-2xl border animate-in zoom-in-95 duration-200">
+            <div className="p-6 border-b" style={{ borderColor: 'var(--border)' }}>
+              <div className="flex items-center justify-between">
+                <h3 className="text-xl font-bold text-default" style={{ color: 'var(--text)' }}>
+                  Bölüm Yöneticisi Ata
+                </h3>
+                <button
+                  onClick={() => setEditModal(null)}
+                  className="p-2 rounded-lg hover:bg-red-500/10 transition-colors"
+                >
+                  <X className="w-5 h-5 text-gray-500" />
+                </button>
+              </div>
+              <p className="text-muted text-sm mt-2">
+                <strong>{editModal.name}</strong> bölümüne yönetici atayın
+              </p>
+            </div>
+
+            <div className="p-6 space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-muted mb-2">
+                  Bölüm Başkanı Seçin
+                </label>
+                <select
+                  className="w-full card border rounded-lg px-3 py-2.5 text-sm text-default focus:outline-none focus:ring-2 focus:ring-red-500/30 focus:border-red-500/50 transition-all"
+                  value={editModal.head_id || ''}
+                  onChange={e => setEditModal({ ...editModal, head_id: e.target.value || null })}
+                >
+                  <option value="">— Atanmamış —</option>
+                  {profiles.map(p => (
+                    <option key={p.id} value={p.id}>
+                      {p.full_name} ({p.email})
+                    </option>
+                  ))}
+                </select>
+                <p className="text-xs text-gray-500 mt-2">
+                  Sadece <strong>Bölüm Başkanı</strong> rolündeki kullanıcılar listelenmektedir.
+                </p>
+              </div>
+            </div>
+
+            <div className="p-6 border-t flex items-center justify-end gap-3" style={{ borderColor: 'var(--border)' }}>
+              <button
+                onClick={() => setEditModal(null)}
+                className="px-4 py-2 rounded-lg text-sm font-medium text-muted hover:bg-gray-500/10 transition-colors"
+              >
+                İptal
+              </button>
+              <button
+                onClick={handleSave}
+                disabled={saving}
+                className="px-4 py-2 rounded-lg text-sm font-medium bg-red-600 hover:bg-red-700 text-white transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {saving ? 'Kaydediliyor...' : 'Kaydet'}
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>
