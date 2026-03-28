@@ -1,13 +1,13 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import { createClient } from '@/lib/supabase/client'
 import { toast } from 'sonner'
 import { Users, Plus, Edit, Search, Shield, Save, X, Mail, Phone, Building, RefreshCw } from 'lucide-react'
 import { ROLE_META, type UserRole } from '@/types'
 
 export default function UsersPage() {
-  const supabase = createClient()
+  const supabase = useMemo(() => createClient(), [])
   const [users, setUsers] = useState<any[]>([])
   const [depts, setDepts] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
