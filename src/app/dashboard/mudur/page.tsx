@@ -13,12 +13,12 @@ import {
   AlertCircle,
   CheckCircle,
   FileText,
-  Plus,
   BarChart3,
   UserPlus,
   CalendarPlus,
   FileSpreadsheet,
 } from 'lucide-react'
+import { TopBar } from '@/components/layout/TopBar'
 
 export default async function MudurDashboard() {
   const supabase = await createClient()
@@ -135,25 +135,18 @@ export default async function MudurDashboard() {
   return (
     <div className="space-y-8 pb-20">
       {/* Başlık */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-3xl font-bold" style={{ color: 'var(--text)' }}>
-            MYO Müdürlüğü
-          </h1>
-          <p className="mt-2 flex items-center gap-2" style={{ color: 'var(--muted)' }}>
-            <Calendar className="w-4 h-4" />
-            {activePeriod ? activePeriod.name : 'Aktif dönem bulunamadı'}
-          </p>
-        </div>
-        <div className="flex items-center gap-2">
+      <TopBar
+        title="MYO Müdürlüğü"
+        subtitle={activePeriod ? activePeriod.name : 'Aktif dönem bulunamadı'}
+        actions={
           <div className="px-4 py-2 rounded-xl border" style={{ background: 'var(--success-bg)', borderColor: '#86EFAC', color: 'var(--success)' }}>
             <div className="flex items-center gap-2">
               <CheckCircle className="w-4 h-4" />
               <span className="text-sm font-semibold">Sistem Aktif</span>
             </div>
           </div>
-        </div>
-      </div>
+        }
+      />
 
       {/* İstatistik Kartları */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

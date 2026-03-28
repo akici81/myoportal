@@ -9,6 +9,7 @@ export interface StatItem {
   iconBg: string
   iconColor: string
   topBar: string
+  href?: string
 }
 
 export interface ActionItem {
@@ -42,9 +43,11 @@ export function DashboardPage({ title, subtitle, badge, stats, actions, children
       <TopBar title={title} subtitle={subtitle} actions={badge} />
 
       <div className={`grid gap-4 ${gridCols}`}>
-        {stats.map((stat, i) => (
-          <div key={stat.label} className="stat-card overflow-hidden" style={{ animationDelay: `${i * 0.08}s` }}>
+        {stats.map((stat, i) => {
+          const inner = (
             <div className={`mb-4 h-1 w-full rounded-full bg-gradient-to-r ${stat.topBar} opacity-60`} />
+          )
+          const card = (
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs uppercase tracking-wide" style={{ color: 'var(--muted)' }}>{stat.label}</p>
@@ -54,8 +57,17 @@ export function DashboardPage({ title, subtitle, badge, stats, actions, children
                 <stat.icon className={`h-6 w-6 ${stat.iconColor}`} />
               </div>
             </div>
-          </div>
-        ))}
+          )
+          return stat.href ? (
+            <Link key={stat.label} href={stat.href} className="stat-card overflow-hidden block" style={{ animationDelay: `${i * 0.08}s` }}>
+              {inner}{card}
+            </Link>
+          ) : (
+            <div key={stat.label} className="stat-card overflow-hidden" style={{ animationDelay: `${i * 0.08}s` }}>
+              {inner}{card}
+            </div>
+          )
+        })}
       </div>
 
       <div className="animate-in-delay-2">

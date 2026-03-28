@@ -1,128 +1,42 @@
-'use client'
+import { createClient } from '@/lib/supabase/server'
+import { BookOpen, Building2, Users, Briefcase, FileText, ClipboardList, CalendarDays } from 'lucide-react'
+import { DashboardPage } from '@/components/dashboard/DashboardPage'
 
-import { useEffect, useState } from 'react'
-import { createClient } from '@/lib/supabase/client'
-import { BookOpen, Users, CalendarDays, KeyRound, Building2, Briefcase, FileText, ClipboardList } from 'lucide-react'
+export default async function MudurYardimcisiDashboard() {
+  const supabase = await createClient()
 
-export default function MudurYardimcisiDashboard() {
-  const supabase = createClient()
-  const [stats, setStats] = useState({
-    departments: 0,
-    classrooms: 0,
-    instructors: 0,
-    programs: 0,
-    internships: 12, // V1'den gelecek modül (Örnek Data)
-    commissions: 4,  // V1'den gelecek modül (Örnek Data)
-    requests: 28,    // V1'den gelecek modül (Örnek Data)
-  })
-
-  // Auth User
-  const [userProfile, setUserProfile] = useState<any>(null)
-
-  useEffect(() => {
-    supabase.auth.getUser().then(async ({ data: { user } }) => {
-      if (user) {
-        const { data: prof } = await supabase.from('profiles').select('*').eq('id', user.id).single()
-        setUserProfile(prof)
-      }
-    })
-
-    async function loadStats() {
-      const [dept, rooms, inst, prog] = await Promise.all([
-        supabase.from('departments').select('id', { count: 'exact' }).eq('is_active', true),
-        supabase.from('classrooms').select('id', { count: 'exact' }).eq('is_active', true),
-        supabase.from('instructors').select('id', { count: 'exact' }).eq('is_active', true),
-        supabase.from('programs').select('id', { count: 'exact' }).eq('is_active', true),
-      ])
-
-      setStats({
-        departments: dept.count ?? 0,
-        classrooms: rooms.count ?? 0,
-        instructors: inst.count ?? 0,
-        programs: prog.count ?? 0,
-        internships: 12, // V2 Premium eklentisi olarak faz sonrası bağlanacak
-        commissions: 4, 
-        requests: 28, 
-      })
-    }
-    loadStats()
-  }, [supabase])
-
-  const STAT_CARDS = [
-    { label: 'Aktif Program', value: stats.programs, icon: BookOpen, color: 'text-red-400', bg: 'bg-red-600/10', border: 'border-red-600/20' },
-    { label: 'Derslik Sayısı', value: stats.classrooms, icon: Building2, color: 'text-rose-400', bg: 'bg-rose-500/10', border: 'border-rose-500/20' },
-    { label: 'Öğretim Elemanı', value: stats.instructors, icon: Users, color: 'text-teal-400', bg: 'bg-teal-500/10', border: 'border-teal-500/20' },
-  ]
-
-  const V1_MODULE_CARDS = [
-    { label: 'Staj Başvuruları', value: stats.internships, icon: Briefcase, color: 'text-red-400', bg: 'bg-red-600/10', border: 'border-red-600/20', desc: 'Onay bekleyen son başvurular' },
-    { label: 'Aktif Komisyonlar', value: stats.commissions, icon: ClipboardList, color: 'text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/20', desc: 'Görevli komisyon sayısı' },
-    { label: 'Personel Talepleri', value: stats.requests, icon: FileText, color: 'text-fuchsia-400', bg: 'bg-fuchsia-500/10', border: 'border-fuchsia-500/20', desc: 'İşleme alınmamış dilekçeler' },
-  ]
+  const [
+    { count: classroomCount },
+    { count: instructorCount },
+    { count: programCount },
+    { count: commissionCount },
+    { count: internshipCount },
+    { count: requestCount },
+  ] = await Promise.all([
+    supabase.from('classrooms').select('*', { count: 'exact', head: true }).eq('is_active', true),
+    supabase.from('instructors').select('*', { count: 'exact', head: true }).eq('is_active', true),
+    supabase.from('programs').select('*', { count: 'exact', head: true }).eq('is_active', true),
+    supabase.from('commissions').select('*', { count: 'exact', head: true }),
+    supabase.from('internship_records').select('*', { count: 'exact', head: true }),
+    supabase.from('general_requests').select('*', { count: 'exact', head: true }),
+  ])
 
   return (
-    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-      {/* Header Banner */}
-      <div className="relative overflow-hidden rounded-2xl card p-8 border border-purple-800/30 shadow-lg">
-        <div className="absolute -right-10 -top-10 opacity-5 rotate-12">
-          <KeyRound className="w-48 h-48 text-red-400" />
-        </div>
-        <div className="relative z-10">
-          <h1 className="text-3xl font-black flex items-center gap-3 tracking-tight" style={{ color: 'var(--text)' }}>
-            Müdür Yardımcısı Paneli
-          </h1>
-          <p className="mt-2 max-w-xl font-medium" style={{ color: 'var(--muted)' }}>
-            Hoş geldiniz, <span className="font-bold" style={{ color: 'var(--text)' }}>{userProfile?.full_name ?? 'Yönetici'}</span>.
-            MYO'nun tüm staj, komisyon ve bölüm istatistiklerini bu merkezden yönetebilirsiniz.
-          </p>
-        </div>
-      </div>
-
-      {/* V1 Modules (Ported Features) */}
-      <div>
-        <h2 className="text-lg font-bold mb-4 px-1" style={{ color: 'var(--text)' }}>Öğrenci & İdari Süreçler</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {V1_MODULE_CARDS.map((stat, i) => (
-            <div key={i} className="card-hover p-6">
-              <div className="flex items-center justify-between gap-4">
-                <div className={`p-3 rounded-xl ${stat.bg} ${stat.color} shrink-0`}>
-                  <stat.icon className="w-6 h-6" />
-                </div>
-                <div className="text-right">
-                  <p className="text-[10px] font-bold uppercase tracking-wider" style={{ color: 'var(--muted)' }}>{stat.label}</p>
-                  <p className="text-3xl font-black mt-0.5 leading-none" style={{ color: 'var(--text)' }}>{stat.value}</p>
-                </div>
-              </div>
-              <div className="mt-4 pt-3 border-t border-white/5">
-                <p className="text-[11px] font-medium" style={{ color: 'var(--muted)' }}>
-                  {stat.desc}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Main Stats */}
-      <div>
-        <h2 className="text-lg font-bold mb-4 px-1" style={{ color: 'var(--text)' }}>Genel İzleme</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {STAT_CARDS.map((stat, i) => (
-            <div key={i} className="card-hover p-6">
-              <div className="flex items-center justify-between gap-4">
-                <div className={`p-4 rounded-xl ${stat.bg} ${stat.color} shrink-0`}>
-                  <stat.icon className="w-7 h-7" />
-                </div>
-                <div className="text-right">
-                  <p className="text-xs font-bold uppercase tracking-widest" style={{ color: 'var(--muted)' }}>{stat.label}</p>
-                  <p className="text-2xl font-black mt-0.5 leading-none" style={{ color: 'var(--text)' }}>{stat.value}</p>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      
-    </div>
+    <DashboardPage
+      title="Müdür Yardımcısı Paneli"
+      subtitle="Kurum yönetimi ve idari süreçler"
+      stats={[
+        { label: 'Aktif Program',    value: programCount || 0,    icon: BookOpen,    iconBg: 'bg-red-600/10',     iconColor: 'text-red-400',     topBar: 'from-red-600 to-pink-500' },
+        { label: 'Derslik',          value: classroomCount || 0,  icon: Building2,   iconBg: 'bg-rose-500/10',    iconColor: 'text-rose-400',    topBar: 'from-rose-500 to-red-600' },
+        { label: 'Öğretim Elemanı',  value: instructorCount || 0, icon: Users,       iconBg: 'bg-teal-500/10',    iconColor: 'text-teal-400',    topBar: 'from-teal-500 to-cyan-500' },
+        { label: 'Talepler',         value: requestCount || 0,    icon: FileText,    iconBg: 'bg-fuchsia-500/10', iconColor: 'text-fuchsia-400', topBar: 'from-fuchsia-500 to-purple-500' },
+      ]}
+      actions={[
+        { label: 'Komisyon Yönetimi', href: '/dashboard/mudur-yardimcisi/commissions', icon: ClipboardList, description: 'Aktif komisyonları görüntüle',  accentColor: 'text-amber-400',   accentBg: 'bg-amber-500/10',   hoverShadow: 'hover:shadow-amber-500/10' },
+        { label: 'Staj İşlemleri',    href: '/dashboard/mudur-yardimcisi/internships',  icon: Briefcase,     description: 'Staj başvurularını yönet',    accentColor: 'text-red-400',     accentBg: 'bg-red-600/10',     hoverShadow: 'hover:shadow-red-600/10' },
+        { label: 'Genel Talepler',    href: '/dashboard/mudur-yardimcisi/requests',     icon: FileText,      description: 'Dilekçe ve evrak talepleri',  accentColor: 'text-fuchsia-400', accentBg: 'bg-fuchsia-500/10', hoverShadow: 'hover:shadow-fuchsia-500/10' },
+        { label: 'Ders Programları',  href: '/dashboard/mudur-yardimcisi/schedule',     icon: CalendarDays,  description: 'Tüm program çizelgeleri',     accentColor: 'text-cyan-400',    accentBg: 'bg-cyan-500/10',    hoverShadow: 'hover:shadow-cyan-500/10' },
+      ]}
+    />
   )
 }
