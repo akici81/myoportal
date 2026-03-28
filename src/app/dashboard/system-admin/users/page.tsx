@@ -24,7 +24,7 @@ export default function UsersPage() {
   const load = useCallback(async () => {
     setLoading(true)
     const { data, error } = await supabase.from('profiles')
-      .select('*, departments!profiles_department_id_fkey(name)')
+      .select('*')
       .order('full_name')
     if (error) console.error('profiles query error:', error)
     setUsers(data ?? [])
@@ -263,7 +263,7 @@ export default function UsersPage() {
                       <td className="px-6 py-4">
                         <div className="flex items-center gap-2 text-sm text-muted">
                           <Building className="w-4 h-4 text-gray-500" />
-                          <span className="truncate max-w-[200px]">{u.departments?.name || '—'}</span>
+                          <span className="truncate max-w-[200px]">{depts.find(d => d.id === u.department_id)?.name || '—'}</span>
                         </div>
                       </td>
                       <td className="px-6 py-4">
